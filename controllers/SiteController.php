@@ -1,13 +1,19 @@
 <?php
 
+/**
+ * This class is responsible to manager the sites's related pages.
+ *
+ * @author Ivan Wilhelm <ivan.whm@me.com>
+ */
+
 namespace app\controllers;
 
+//Imports
+use app\models\UserAccess;
 use Yii;
-use yii\filters\AccessControl;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use app\models\LoginForm;
-use app\models\ContactForm;
 
 class SiteController extends Controller
 {
@@ -19,36 +25,19 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['login', 'logout', 'index'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
                         'allow' => true,
+                        'actions' => ['login'],
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout', 'index'],
                         'roles' => ['@'],
                     ],
                 ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
     }
@@ -64,20 +53,27 @@ class SiteController extends Controller
     }
 
     /**
-     * Login action.
+     * Displays the login page.
      *
      * @return string
      */
-    public function actionLogin()
-    {
-        if (!Yii::$app->user->isGuest) {
+    public function actionLogin() {
+
+        $this->layout = 'login';
+
+        if (!Yii::$app->getUser()->getIsGuest())
+        {
             return $this->goHome();
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        if ($model->load(Yii::$app->getRequest()->post()) && $model->login())
+        {
+            Yii::$app->getUser()->getIdentity()->storeLog(UserAccess::TYPE_CONNECTION);
+
             return $this->goBack();
         }
+
         return $this->render('login', [
             'model' => $model,
         ]);
@@ -90,36 +86,10 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-        Yii::$app->user->logout();
+        Yii::$app->getUser()->getIdentity()->storeLog(UserAccess::TYPE_DISCONNECTION);
+        Yii::$app->getUser()->logout();
 
         return $this->goHome();
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
 }

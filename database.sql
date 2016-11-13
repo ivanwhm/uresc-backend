@@ -1,63 +1,25 @@
---
--- Script to create the database.
--- PostgreSQL
---
--- @author Ivan Wilhelm <ivan.whm@me.com>
-
--- Sequences
-
-create sequence seq_user_user_id increment 1 minvalue 1 start 1 cache 1;
-comment on sequence seq_user_user_id is 'Sequence to generate unique user identification';
-
-create sequence seq_user_acc_user_access_id increment 1 minvalue 1 start 1 cache 1;
-comment on sequence seq_user_acc_user_access_id is 'Sequence to generate unique user access identification';
-
-
-CREATE TABLE user (
-  user_id                     INT8 default nextval('seq_user_user_id'),
-  name                        VARCHAR(100) not null,
-  email                       VARCHAR(255),
-  username                    VARCHAR(50) not null,
-  password                    VARCHAR(255) not null,
-  salt                        VARCHAR(255) not null,
-  status                      CHAR(1) default 'A' not null,
-  date_created                TIMESTAMP NOT NULL DEFAULT current_timestamp,
-  date_updated                TIMESTAMP NOT NULL DEFAULT current_timestamp,
-  CONSTRAINT pk_user_user_id PRIMARY KEY (user_id)
+CREATE TABLE ` USER ` (
+`USER_ID` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'User unique code',
+` NAME ` VARCHAR (100) NOT NULL COMMENT 'User full name',
+`EMAIL` VARCHAR (255) NULL COMMENT 'User email address',
+`USERNAME` VARCHAR (255) NOT NULL COMMENT 'Username of the user',
+` PASSWORD ` VARCHAR (255) NOT NULL COMMENT 'Password of the user',
+`SALT` VARCHAR (255) NOT NULL COMMENT 'Password SALT of the user',
+`STATUS` CHAR (1) NOT NULL DEFAULT 'A' COMMENT 'Status of the record',
+`DATE_CREATED` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date of the user was created',
+`DATE_UPDATED` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date of the last updated',
+PRIMARY KEY (`USER_ID`)
 );
-COMMENT ON TABLE user is 'Table to store the information about system users.';
-COMMENT ON COLUMN user.user_id is 'User unique code';
-COMMENT ON COLUMN user.name is 'User full name';
-COMMENT ON COLUMN user.email is 'User email address';
-COMMENT ON COLUMN user.username is 'Username of the user';
-COMMENT ON COLUMN user.password is 'Password of the user';
-COMMENT ON COLUMN user.salt is 'Password SALT of the user';
-COMMENT ON COLUMN user.status is 'Status of the record';
-COMMENT ON COLUMN user.date_created is 'Date of the user was created';
-COMMENT ON COLUMN user.date_updated is 'Date of the last updated';
 
-CREATE TABLE user_access (
-  user_access_id              INT8 DEFAULT nextval('seq_user_acc_user_access_id'),
-  user_id                     INT8 NOT NULL,
-  date_connection             TIMESTAMP NOT NULL DEFAULT current_timestamp,
-  ip                          VARCHAR(255),
-  stage                       CHAR(1) DEFAULT 'L' NOT NULL,
-  CONSTRAINT pk_user_acc_user_access_id PRIMARY KEY (user_access_id)
+CREATE TABLE `USER_ACCESS` (
+`USER_ACCESS_ID` INT UNSIGNED NOT NULL COMMENT 'Unique code of user`s access',
+`USER_ID` INT UNSIGNED NOT NULL COMMENT 'Unique code of user',
+` DATE ` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date of connection',
+`IP` VARCHAR (255) NOT NULL COMMENT 'IP of user',
+` TYPE ` CHAR (1) NOT NULL DEFAULT 'C' COMMENT 'Stage of the connection',
+PRIMARY KEY (`USER_ACCESS_ID`),
+CONSTRAINT `FK_USER_ACCESS_USER_USER_ID` FOREIGN KEY (`USER_ID`) REFERENCES ` USER ` (`USER_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
+INDEX `IDX_USER_ACCESS_USER_ID` (`USER_ID` ASC )
 );
-COMMENT ON TABLE user_access is 'Table to store the information about user`s connection';
-COMMENT ON COLUMN user_access.user_access_id is 'User access unique code';
-COMMENT ON COLUMN user_access.user_id is 'User unique code';
-COMMENT ON COLUMN user_access.date_connection is 'Date of connection';
-COMMENT ON COLUMN user_access.ip is 'IP of user';
-COMMENT ON COLUMN user_access.stage is 'Stage of the connection';
 
--- Index
-CREATE INDEX idx_user_acc_user_user_id ON user_access (user_id);
-
--- Foreign Key
-ALTER TABLE user_access
-  ADD CONSTRAINT fk_user_user_access_user_id
-  FOREIGN KEY (user_access)
-  REFERENCES user (user_id)
-  on update CASCADE on delete restrict;
 

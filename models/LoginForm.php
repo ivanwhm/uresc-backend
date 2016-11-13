@@ -4,19 +4,45 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use app\models\User;
 
 /**
  * LoginForm is the model behind the login form.
  *
- * @property User|null $user This property is read-only.
+ * @property User $user This property is read-only.
  *
+ *
+ * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 class LoginForm extends Model
 {
-    public $username;
-    public $password;
-    public $rememberMe = true;
 
+    /**
+     * The username.
+     *
+     * @var string
+     */
+    public $username;
+
+    /**
+     * The password.
+     *
+     * @var string
+     */
+    public $password;
+
+    /**
+     * The remember me option.
+     *
+     * @var bool
+     */
+    public $rememberMe = false;
+
+    /**
+     * All the information about authenticated user.
+     *
+     * @var User
+     */
     private $_user = false;
 
 
@@ -26,11 +52,8 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            // username and password are both required
             [['username', 'password'], 'required'],
-            // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
-            // password is validated by validatePassword()
             ['password', 'validatePassword'],
         ];
     }
@@ -47,20 +70,22 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             $user = $this->getUser();
 
-            if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+            if (!$user || !$user->validateAuthKey($this->password)) {
+                $this->addError($attribute, 'Usuário ou senha inválidos.');
             }
         }
     }
 
     /**
      * Logs in a user using the provided username and password.
+     *
      * @return bool whether the user is logged in successfully
      */
     public function login()
     {
-        if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+        if ($this->validate())
+        {
+            return Yii::$app->getUser()->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         }
         return false;
     }
@@ -68,14 +93,29 @@ class LoginForm extends Model
     /**
      * Finds user by [[username]]
      *
-     * @return User|null
+     * @return User
      */
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
+            $this->_user = User::findOne([
+                'status' => User::STATUS_ACTIVE,
+                'username' => $this->username
+            ]);
         }
 
         return $this->_user;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Usuário',
+            'password' => 'Senha',
+            'rememberMe' => 'Lembrar de mim'
+        ];
     }
 }
