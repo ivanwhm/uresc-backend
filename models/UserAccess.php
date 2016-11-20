@@ -1,6 +1,4 @@
 <?php
-use app\models\User;
-
 /**
  * This is the model class for table "user_access".
  *
@@ -20,6 +18,7 @@ namespace app\models;
 //Imports
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
+use app\models\User;
 
 class UserAccess extends ActiveRecord
 {

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is responsible to the default layout of this application.
  * This layout is based on SBAdmin template.
@@ -11,6 +10,7 @@
 //Imports
 use app\assets\SBAdmin\SBAdminAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\web\View;
 
 //Register SBAdmin assets to this layout
@@ -38,13 +38,13 @@ SBAdminAsset::register($this);
 
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-<!--            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">-->
-<!--                <span class="sr-only">Toggle navigation</span>-->
-<!--                <span class="icon-bar"></span>-->
-<!--                <span class="icon-bar"></span>-->
-<!--                <span class="icon-bar"></span>-->
-<!--            </button>-->
-            <a class="navbar-brand" href="<?= Yii::$app->getHomeUrl() ?>">4ª URE - Administração</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="<?= Url::to(["site/index"]) ?>">4ª URE - Administração</a>
         </div>
 
         <!-- Top Menu Items -->
@@ -62,17 +62,17 @@ SBAdminAsset::register($this);
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?= Yii::$app->getUser()->getIdentity()->getName() ?> <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-user"></i> <?= Yii::$app->getUser()->getIdentity()->getName() ?> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="<?= Yii::$app->getUrlManager()->createUrl("login/password") ?>"><i class="fa fa-fw fa-key"></i> Alterar senha</a>
+                        <a href="<?= Url::to(["login/password"]) ?>"><i class="fa fa-fw fa-key"></i> Alterar senha</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-fw fa-gear"></i> Configurações</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="<?= Yii::$app->getUrlManager()->createUrl("site/logout") ?>"><i class="fa fa-fw fa-power-off"></i> Sair</a>
+                        <a href="<?= Url::to(["site/logout"]) ?>"><i class="fa fa-fw fa-power-off"></i> Sair</a>
                     </li>
                 </ul>
             </li>
@@ -81,8 +81,20 @@ SBAdminAsset::register($this);
         <!-- Sidebar Menu Items -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
-                <li class="active">
-                    <a href="<?= Yii::$app->getUrlManager()->createUrl("site/index") ?>"><i class="fa fa-fw fa-home"></i> Principal</a>
+                <li class="<?= (Yii::$app->controller->id == "site") ? "active" : "" ?>">
+                    <a href="<?= Url::to(["site/index"]) ?>">
+                        <i class="fa fa-fw fa-home"></i> Principal
+                    </a>
+                </li>
+                <li class="<?= (Yii::$app->controller->id == "user") ? "active" : "" ?>">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo">
+                        <i class="fa fa-fw fa-pencil-square-o"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="demo" class="collapse">
+                        <li>
+                            <a href="<?= Url::to(["user/index"]) ?>"><i class="fa fa-fw fa-user"></i> Usuários</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -97,22 +109,43 @@ SBAdminAsset::register($this);
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Blank Page
-                        <small>Subheading</small>
+                        <?= $this->title ?>
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                            <i class="fa fa-dashboard"></i>  <a href="<?= Url::to(["site/index"]) ?>">Principal</a>
                         </li>
-                        <li class="active">
-                            <i class="fa fa-file"></i> Blank Page
-                        </li>
+
+                        <?php
+                            $breadcrumbs = isset($this->params["breadcrumbs"]) ? $this->params["breadcrumbs"] : [];
+                            foreach ($breadcrumbs as $breadcrumb) :
+                                $active = (isset($breadcrumb["active"]) && $breadcrumb["active"]) ?  "active" : "";
+                                $label = isset($breadcrumb["label"]) ? $breadcrumb["label"] : "";
+                                $icon = isset($breadcrumb["icon"]) ? $breadcrumb["icon"] : "";
+                                $url = isset($breadcrumb["url"]) ? $breadcrumb["url"] : "";
+                        ?>
+                            <li class="<?= $active ?>">
+                                <i class="fa <?= $icon ?>"></i>
+                                <?php if ($url != "") : ?>
+                                    <a href="<?= $url ?>">
+                                <?php endif; ?>
+                                    <?= $label ?>
+                                <?php if ($url != "") : ?>
+                                    </a>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+
                     </ol>
                 </div>
             </div>
             <!-- /.row -->
 
-        </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <?= $content ?>
+                </div>
+            </div>
         <!-- /.container-fluid -->
 
     </div>

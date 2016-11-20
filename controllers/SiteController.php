@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This class is responsible to manager the sites's related pages.
  *
@@ -38,6 +37,18 @@ class SiteController extends Controller
                         'roles' => ['@'],
                     ],
                 ],
+            ],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
             ],
         ];
     }

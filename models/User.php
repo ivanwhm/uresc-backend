@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This is the model class for table "user".
  *
@@ -12,8 +11,12 @@
  * @property string $status Status of the record
  * @property string $date_created Date of the user was created
  * @property string $date_updated Date of the last updated
+ * @property integer $user_created User that created the record
+ * @property integer $user_updated User of the last updated of the record
  *
  * @property UserAccess[] $userAccess Access of the user through the system
+ * @property User $user_created_data User object
+ * @property User $user_updated_data User object
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -30,8 +33,26 @@ use yii\web\IdentityInterface;
 class User extends ActiveRecord implements IdentityInterface
 {
 
-    const STATUS_ACTIVE = 'A';
-    const STATUS_INACTIVE = 'I';
+    const STATUS_ACTIVE = "A";
+    const STATUS_INACTIVE = "I";
+
+    /**
+     * Returns all the user status.
+     *
+     * @var array
+     */
+    public static $statusData = [
+        self::STATUS_ACTIVE => "Ativo",
+        self::STATUS_INACTIVE => "Inativo"
+    ];
+
+    /**
+     * Attribute used to compare passwords.
+     *
+     * @var string
+     */
+    public $new_password;
+
 
     /**
      * @inheritdoc
@@ -47,10 +68,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['date_created', 'date_updated'], 'safe'],
+            [['name', 'username', 'email'], 'required'],
+            [['username', 'email'], 'unique'],
+            [['email'], 'email'],
+            [['password', 'new_password'], 'required', 'on' => 'create'],
+            [['new_password'], 'compare', 'compareAttribute' => 'password', 'message' => 'As senhas informadas não são iguais.'],
+            [['password', 'date_created', 'date_updated', 'user_created', 'user_updated', 'salt'], 'safe'],
             [['name'], 'string', 'max' => 100],
-            [['email', 'username', 'password', 'salt'], 'string', 'max' => 255],
-            [['status'], 'string', 'max' => 1],
+            [['password'], 'string', 'min' => 6],
+            [['email', 'username'], 'string', 'max' => 255],
         ];
     }
 
@@ -60,15 +86,18 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributeLabels()
     {
         return [
-            'user_id' => 'ID',
+            'user_id' => 'Código',
             'name' => 'Nome',
             'email' => 'E-mail',
             'username' => 'Usuário',
             'password' => 'Senha',
+            'new_password' => 'Repita a senha',
             'salt' => 'SALT',
             'status' => 'Status',
             'date_created' => 'Data da criação',
             'date_updated' => 'Data da última atualização',
+            'user_created' => 'Usuário que criou',
+            'user_updated' => 'Usuário da última atualização'
         ];
     }
 
@@ -88,7 +117,8 @@ class User extends ActiveRecord implements IdentityInterface
      * @param $key Password Key
      * @return string
      */
-    private function passwordCrypt($password, $key) {
+    private function passwordCrypt($password, $key)
+    {
         return sha1($key . $password);
     }
 
@@ -100,10 +130,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return User::findOne([
-            'status' => User::STATUS_ACTIVE,
-            'user_id' => $id
-        ]);
+        return User::findOne(['status' => User::STATUS_ACTIVE, 'user_id' => $id]);
     }
 
     /**
@@ -171,6 +198,11 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->name;
     }
 
+    /**
+     * Store the connection log of the user.
+     *
+     * @param String $type Type of the connection
+     */
     public function storeLog($type)
     {
         $log = new UserAccess();
@@ -180,5 +212,63 @@ class User extends ActiveRecord implements IdentityInterface
         $log->ip = Yii::$app->getRequest()->getUserIP();
         $log->save(false);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeDelete()
+    {
+        if (parent::beforeDelete()) {
+            return ($this->user_id !== 1);
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if ($insert) {
+            $this->date_created = new Expression('current_timestamp');
+            $this->user_created = Yii::$app->getUser()->getId();
+            $this->salt = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+        }
+
+        $this->date_updated = new Expression('current_timestamp');
+        $this->user_updated = Yii::$app->getUser()->getId();
+
+        if ($this->password != '') {
+            $this->salt = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+            $this->password = $this->passwordCrypt($this->password, $this->salt);
+        } else {
+            $user = self::findOne($this->user_id);
+            if ($user) {
+                $this->password = $user->password;
+            }
+        }
+
+        return parent::beforeSave($insert);
+    }
+
+    /**
+     * Returns the information about the user that created the record.
+     *
+     * @return ActiveQuery
+     */
+    public function getUserCreated()
+    {
+        return $this->findOne(['user_id' => $this->user_created]);
+    }
+
+    /**
+     * Returns the information about the user of the last record updated.
+     *
+     * @return ActiveQuery
+     */
+    public function getUserUpdated()
+    {
+        return $this->findOne(['user_id' => $this->user_updated]);
+    }
+
 }
 

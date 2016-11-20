@@ -1,11 +1,4 @@
 <?php
-
-namespace app\models;
-
-use Yii;
-use yii\base\Model;
-use app\models\User;
-
 /**
  * LoginForm is the model behind the login form.
  *
@@ -14,6 +7,14 @@ use app\models\User;
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
+
+namespace app\models;
+
+//Imports
+use Yii;
+use yii\base\Model;
+use app\models\User;
+
 class LoginForm extends Model
 {
 

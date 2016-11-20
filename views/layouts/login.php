@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is responsible to login layout of this application.
  * This layout is based on SBAdmin template.
