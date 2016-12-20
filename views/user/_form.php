@@ -14,12 +14,15 @@ use app\models\User;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\web\View;
+use yii\widgets\Pjax;
 
 ?>
 
 <div class="user-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php Pjax::begin(); ?>
+
+    <?php $form = ActiveForm::begin(['options' => ['data-pjax' => true ]]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
@@ -42,5 +45,7 @@ use yii\web\View;
     </div>
 
     <?php ActiveForm::end(); ?>
+
+    <?php Pjax::end(); ?>
 
 </div>

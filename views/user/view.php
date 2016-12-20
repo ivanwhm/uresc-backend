@@ -14,6 +14,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
+use yii\widgets\Pjax;
 
 $this->title = "Visualizar usuário";
 $this->params['breadcrumbs'] = [
@@ -32,8 +33,19 @@ $this->params['breadcrumbs'] = [
 ?>
 <div class="user-view">
 
+    <?php Pjax::begin(); ?>
+
     <p>
-        <?= Html::a('Alterar', ['update', 'id' => $model->user_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Alterar', ['update', 'id' => $model->user_id], [
+                'class' => 'btn btn-primary'
+        ]) ?>
+        <?= Html::a('Excluir', ['delete', 'id' => $model->user_id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Deseja excluir este usuário?',
+                'method' => 'post',
+            ],
+        ]) ?>
     </p>
 
     <?= DetailView::widget([
@@ -65,5 +77,7 @@ $this->params['breadcrumbs'] = [
             ],
         ],
     ]) ?>
+
+    <?php Pjax::end(); ?>
 
 </div>
