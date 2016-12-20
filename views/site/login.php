@@ -43,9 +43,7 @@ use yii\widgets\ActiveForm;
                 ])->label(false) ?>
 
                 <div class="checkbox">
-                    <label>
-                        <?= $form->field($model, 'rememberMe')->checkbox() ?>
-                    </label>
+                    <?= $form->field($model, 'rememberMe')->checkbox() ?>
                 </div>
 
                 <?= Html::submitButton('Entrar', [
