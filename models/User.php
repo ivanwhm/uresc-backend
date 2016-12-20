@@ -270,5 +270,16 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->findOne(['user_id' => $this->user_updated]);
     }
 
+    /**
+     * Delete all the access information about the user.
+     * Returns the number of rows deleted.
+     *
+     * @return int
+     */
+    public function clearAccessInformation()
+    {
+        return UserAccess::deleteAll(['user_id' => $this->getId()]);
+    }
+
 }
 

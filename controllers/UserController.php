@@ -10,8 +10,10 @@ namespace app\controllers;
 //Imports
 use Yii;
 use app\models\User;
+use yii\base\Exception;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -123,7 +125,9 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->clearAccessInformation();
+        $model->delete();
 
         return $this->redirect(['index']);
     }
