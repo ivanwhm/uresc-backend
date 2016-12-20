@@ -46,6 +46,7 @@ class SBAdmin2Asset extends AssetBundle
      * @var array
      */
     public $depends = [
+        'yii\web\YiiAsset',
         "yii\web\JqueryAsset",
         "yii\bootstrap\BootstrapAsset",
         "yii\bootstrap\BootstrapPluginAsset"
