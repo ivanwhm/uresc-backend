@@ -15,7 +15,7 @@ use yii\widgets\Pjax;
 use yii\web\View;
 use yii\data\ActiveDataProvider;
 use app\models\User;
-
+use yii\helpers\Url;
 
 $this->title = 'Usuários';
 $this->params['breadcrumbs'] = [
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'] = [
         "label" => $this->title,
         "icon" => "fa-user",
         "active" => true,
-        "url" => ""
+        "url" => Url::to(["user/index"])
     ]
 ];
 ?>
@@ -52,7 +52,21 @@ $this->params['breadcrumbs'] = [
                     },
                 ],
                 [
-                    'class' => 'yii\grid\ActionColumn'
+                    'class' => 'yii\grid\ActionColumn',
+                    'template' => '{view} {update} {delete}',
+                    'buttons' => [
+                        'delete' => function($url, $model){
+                            return Html::a('<span class="glyphicon glyphicon-trash"></span>', [
+                                    'delete', 'id' => $model->id
+                            ], [
+                                'class' => '',
+                                'data' => [
+                                    'confirm' => 'Deseja excluir este usuário?',
+                                    'method' => 'post',
+                                ],
+                            ]);
+                        }
+                    ]
                 ],
             ],
         ]);
