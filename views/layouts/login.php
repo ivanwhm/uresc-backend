@@ -5,6 +5,8 @@
  *
  * @var $this View
  * @var $content string
+ *
+ * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports

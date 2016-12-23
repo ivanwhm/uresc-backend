@@ -12,40 +12,47 @@
 //Imports
 use app\models\User;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 use yii\web\View;
-use yii\widgets\Pjax;
+use yii\widgets\ActiveForm;
 
 ?>
 
 <div class="user-form">
 
-    <?php Pjax::begin(); ?>
+    <?php $form = ActiveForm::begin([
+            'id' => 'user-form',
+        ]
+    ); ?>
 
-    <?php $form = ActiveForm::begin(['options' => ['data-pjax' => true ]]); ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
+    <?= Html::tag('span', 'Informe o nome completo do usuário que irá acessar o sistema.', ['id' => 'hbName', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'aria-describedby' => 'hbEmail']) ?>
+    <?= Html::tag('span', 'Informe o endereço de e-mail do usuário que irá acessar o sistema.', ['id' => 'hbEmail', 'class' => 'help-block']) ?>
 
     <?php if ($model->getIsNewRecord()) : ?>
-        <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'aria-describedby' => 'hbUsername']) ?>
+        <?= Html::tag('span', 'Informe o identificador do usuário que irá acessar o sistema. De preferência utilize apenas uma palavra.', ['id' => 'hbUsername', 'class' => 'help-block']) ?>
     <?php endif; ?>
 
-    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'new_password')->passwordInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'status')->dropDownList(User::$statusData, ['prompt' => '---']) ?>
+    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true, 'aria-describedby' => 'hbPassword']) ?>
+    <?= Html::tag('span', 'Informe a senha do usuário que irá acessar o sistema.', ['id' => 'hbPassword', 'class' => 'help-block']) ?>
 
-    <?php if (!$model->getIsNewRecord()) : ?>
-        <?= Html::label('Criado em ' . Yii::$app->getFormatter()->asDatetime($model->date_created, 'long') . ' por ' . $model->getUserCreated()->getName() . '.') . Html::tag('br') ?>
-        <?= Html::label('Alterado em ' . Yii::$app->getFormatter()->asDatetime($model->date_updated, 'long') . ' por ' . $model->getUserUpdated()->getName() . '.') ?>
-    <?php endif; ?>
+    <?= $form->field($model, 'new_password')->passwordInput(['maxlength' => true, 'aria-describedby' => 'hbNewPassword']) ?>
+    <?= Html::tag('span', 'Repita a senha do usuário que irá acessar o sistema.', ['id' => 'hbNewPassword', 'class' => 'help-block']) ?>
+
+    <?= $form->field($model, 'status')->dropDownList(User::$statusData, ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
+    <?= Html::tag('span', 'Informe se o usuário está ativo ou inativo para acessar o sistema.', ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Criar' : 'Alterar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Criar' : 'Alterar', [
+            'class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary'
+        ]) ?>
+        <?= Html::a('Cancelar', ['index'], [
+            'class' => 'btn btn-danger',
+        ]) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
-
-    <?php Pjax::end(); ?>
 
 </div>

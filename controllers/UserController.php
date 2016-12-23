@@ -8,15 +8,13 @@
 namespace app\controllers;
 
 //Imports
-use Yii;
 use app\models\User;
-use yii\base\Exception;
+use Yii;
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
-use yii\web\HttpException;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class UserController extends Controller
 {
@@ -33,7 +31,7 @@ class UserController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-            'access' => [   
+            'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
@@ -41,7 +39,7 @@ class UserController extends Controller
                         'roles' => ['@'],
                     ],
                 ],
-            ],            
+            ],
         ];
     }
 
@@ -52,7 +50,7 @@ class UserController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => User::find(),
+            'query' => User::find()->orderBy('name'),
         ]);
 
         return $this->render('index', [
@@ -85,11 +83,9 @@ class UserController extends Controller
         $model->new_password = '';
         $model->status = User::STATUS_ACTIVE;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save())
-        {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->user_id]);
-        } else
-        {
+        } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -126,8 +122,12 @@ class UserController extends Controller
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        $model->clearAccessInformation();
-        $model->delete();
+        try {
+            $model->clearAccessInformation();
+            $model->delete();
+        } catch (\Exception $ex) {
+            throw new NotFoundHttpException('Não é possível excluir o usuário selecionado.');
+        }
 
         return $this->redirect(['index']);
     }

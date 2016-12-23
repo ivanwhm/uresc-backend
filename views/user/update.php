@@ -24,7 +24,8 @@ $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
         "icon" => "fa-user",
-        "active" => true
+        "active" => true,
+        "url" => Url::to(["user/update", 'id' => $model->user_id])
     ]
 ];
 ?>

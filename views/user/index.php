@@ -9,13 +9,12 @@
  */
 
 //Imports
-use yii\helpers\Html;
-use yii\grid\GridView;
-use yii\widgets\Pjax;
-use yii\web\View;
-use yii\data\ActiveDataProvider;
 use app\models\User;
+use yii\data\ActiveDataProvider;
+use yii\grid\GridView;
+use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\web\View;
 
 $this->title = 'Usuários';
 $this->params['breadcrumbs'] = [
@@ -32,8 +31,6 @@ $this->params['breadcrumbs'] = [
     <p>
         <?= Html::a('Novo usuário', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php Pjax::begin(); ?>
 
     <?= GridView::widget([
             'dataProvider' => $dataProvider,
@@ -71,7 +68,5 @@ $this->params['breadcrumbs'] = [
             ],
         ]);
     ?>
-
-    <?php Pjax::end(); ?>
 
 </div>

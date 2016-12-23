@@ -9,9 +9,9 @@
  */
 
 //Imports
-use yii\web\View;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
+use yii\web\View;
 
 $this->title = 'Criar usuário';
 $this->params['breadcrumbs'] = [

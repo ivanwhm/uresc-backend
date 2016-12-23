@@ -14,7 +14,6 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
-use yii\widgets\Pjax;
 
 $this->title = "Visualizar usuário";
 $this->params['breadcrumbs'] = [
@@ -27,17 +26,16 @@ $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
         "icon" => "fa-user",
-        "active" => true
+        "active" => true,
+        "url" => Url::to(["user/view", 'id' => $model->user_id])
     ]
 ];
 ?>
 <div class="user-view">
 
-    <?php Pjax::begin(); ?>
-
     <p>
         <?= Html::a('Alterar', ['update', 'id' => $model->user_id], [
-                'class' => 'btn btn-primary'
+            'class' => 'btn btn-primary'
         ]) ?>
         <?= Html::a('Excluir', ['delete', 'id' => $model->user_id], [
             'class' => 'btn btn-danger',
@@ -77,7 +75,5 @@ $this->params['breadcrumbs'] = [
             ],
         ],
     ]) ?>
-
-    <?php Pjax::end(); ?>
 
 </div>

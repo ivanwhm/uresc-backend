@@ -13,7 +13,6 @@ namespace app\models;
 //Imports
 use Yii;
 use yii\base\Model;
-use app\models\User;
 
 class LoginForm extends Model
 {
@@ -84,8 +83,7 @@ class LoginForm extends Model
      */
     public function login()
     {
-        if ($this->validate())
-        {
+        if ($this->validate()) {
             return Yii::$app->getUser()->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         }
         return false;

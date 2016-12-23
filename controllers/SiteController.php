@@ -8,11 +8,11 @@
 namespace app\controllers;
 
 //Imports
+use app\models\LoginForm;
 use app\models\UserAccess;
 use Yii;
-use yii\web\Controller;
 use yii\filters\AccessControl;
-use app\models\LoginForm;
+use yii\web\Controller;
 
 class SiteController extends Controller
 {
@@ -33,22 +33,10 @@ class SiteController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'error'],
                         'roles' => ['@'],
                     ],
                 ],
-            ],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
             ],
         ];
     }
@@ -61,6 +49,24 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * Display the error page.
+     *
+     * @return string
+     */
+    public function actionError()
+    {
+        $exception = Yii::$app->errorHandler->exception;
+
+        if ($exception !== null)
+        {
+            return $this->render('error', [
+                    'exception' => $exception,
+                ]
+            );
+        }
     }
 
     /**

@@ -87,13 +87,13 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             'user_id' => 'Código',
-            'name' => 'Nome',
+            'name' => 'Nome completo',
             'email' => 'E-mail',
-            'username' => 'Usuário',
-            'password' => 'Senha',
-            'new_password' => 'Repita a senha',
+            'username' => 'Usuário de acesso',
+            'password' => 'Senha de acesso',
+            'new_password' => 'Repita a senha de acesso',
             'salt' => 'SALT',
-            'status' => 'Status',
+            'status' => 'Estado',
             'date_created' => 'Data da criação',
             'date_updated' => 'Data da última atualização',
             'user_created' => 'Usuário que criou',
