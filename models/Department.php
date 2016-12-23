@@ -75,7 +75,7 @@ class Department extends ActiveRecord
             'id' => 'Código',
             'name' => 'Nome',
             'status' => 'Estado',
-            'info' => 'Informações',
+            'info' => 'Texto do departamento',
             'date_created' => 'Data da criação',
             'date_updated' => 'Data da última atualização',
             'user_created' => 'Usuário que criou',

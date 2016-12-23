@@ -118,6 +118,28 @@ class DepartmentController extends Controller
     }
 
     /**
+     * Updates a page of an existing Department model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     *
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionInfo($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+        {
+            return $this->redirect(['info', 'id' => $model->id]);
+        } else
+        {
+            return $this->render('info', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
      * Deletes an existing Department model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
