@@ -88,13 +88,16 @@ SBAdminAsset::register($this);
                         <i class="fa fa-fw fa-home"></i> Principal
                     </a>
                 </li>
-                <li class="<?= (Yii::$app->controller->id == "user") ? "active" : "" ?>">
+                <li class="<?= ((Yii::$app->controller->id == "user") || (Yii::$app->controller->id == "department")) ? "active" : "" ?>">
                     <a href="javascript:;" data-toggle="collapse" data-target="#demo">
                         <i class="fa fa-fw fa-pencil-square-o"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i>
                     </a>
                     <ul id="demo" class="collapse">
                         <li>
                             <a href="<?= Url::to(["user/index"]) ?>"><i class="fa fa-fw fa-user"></i> Usuários</a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(["department/index"]) ?>"><i class="fa fa-fw fa-newspaper-o"></i> Departamentos</a>
                         </li>
                     </ul>
                 </li>
