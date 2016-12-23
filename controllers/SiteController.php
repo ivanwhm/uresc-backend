@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 //Imports
+use app\models\ChangePasswordForm;
 use app\models\LoginForm;
 use app\models\UserAccess;
 use Yii;
@@ -33,7 +34,7 @@ class SiteController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout', 'index', 'error'],
+                        'actions' => ['logout', 'index', 'password'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -60,8 +61,7 @@ class SiteController extends Controller
     {
         $exception = Yii::$app->errorHandler->exception;
 
-        if ($exception !== null)
-        {
+        if ($exception !== null) {
             return $this->render('error', [
                     'exception' => $exception,
                 ]
@@ -74,18 +74,17 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionLogin() {
+    public function actionLogin()
+    {
 
         $this->layout = 'login';
 
-        if (!Yii::$app->getUser()->getIsGuest())
-        {
+        if (!Yii::$app->getUser()->getIsGuest()) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->getRequest()->post()) && $model->login())
-        {
+        if ($model->load(Yii::$app->getRequest()->post()) && $model->validate() && $model->login()) {
             Yii::$app->getUser()->getIdentity()->storeLog(UserAccess::TYPE_CONNECTION);
 
             return $this->goBack();
@@ -107,6 +106,23 @@ class SiteController extends Controller
         Yii::$app->getUser()->logout();
 
         return $this->goHome();
+    }
+
+    /**
+     * Change password action.
+     *
+     * @return string
+     */
+    public function actionPassword()
+    {
+        $model = new ChangePasswordForm();
+        if ($model->load(Yii::$app->getRequest()->post()) && $model->validate() && $model->changePassword()) {
+            return $this->actionLogout();
+        }
+
+        return $this->render('password', [
+            'model' => $model,
+        ]);
     }
 
 }

@@ -66,13 +66,13 @@ SBAdminAsset::register($this);
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-user"></i> <?= Yii::$app->getUser()->getIdentity()->getName() ?> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-<!--                    <li>-->
-<!--                        <a href="--><?//= Url::to(["login/password"]) ?><!--"><i class="fa fa-fw fa-key"></i> Alterar senha</a>-->
-<!--                    </li>-->
+                    <li>
+                        <a href="<?= Url::to(["site/password"]) ?>"><i class="fa fa-fw fa-key"></i> Alterar senha</a>
+                    </li>
 <!--                    <li>-->
 <!--                        <a href="#"><i class="fa fa-fw fa-gear"></i> Configurações</a>-->
 <!--                    </li>-->
-<!--                    <li class="divider"></li>-->
+                    <li class="divider"></li>
                     <li>
                         <a href="<?= Url::to(["site/logout"]) ?>"><i class="fa fa-fw fa-power-off"></i> Sair</a>
                     </li>
