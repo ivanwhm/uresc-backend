@@ -34,6 +34,9 @@ $this->params['breadcrumbs'] = [
 <div class="user-view">
 
     <p>
+        <?= Html::a('Novo', ['create'], [
+            'class' => 'btn btn-success'
+        ]) ?>
         <?= Html::a('Alterar', ['update', 'id' => $model->user_id], [
             'class' => 'btn btn-primary'
         ]) ?>

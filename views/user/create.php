@@ -4,6 +4,7 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
+ * @var $model User
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */

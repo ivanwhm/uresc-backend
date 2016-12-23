@@ -29,7 +29,7 @@ $this->params['breadcrumbs'] = [
 <div class="user-index">
 
     <p>
-        <?= Html::a('Novo usuário', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Novo', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

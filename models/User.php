@@ -17,6 +17,8 @@
  * @property UserAccess[] $userAccess Access of the user through the system
  * @property User $user_created_data User object
  * @property User $user_updated_data User object
+ * @property Department[] $departmentUserCreated Departments objects that user has created
+ * @property Department[] $departmentUserUpdated Departments objects that user has updated
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -103,11 +105,32 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Return the access of the user through the system.
+     *
      * @return ActiveQuery
      */
     public function getUserAccess()
     {
         return $this->hasMany(UserAccess::className(), ['user_id' => 'user_id']);
+    }
+
+    /**
+     * Return all the departments that user has created.
+     *
+     * @return ActiveQuery
+     */
+    public function getDepartmentUserCreated()
+    {
+        return $this->hasMany(Department::className(), ['user_created' => 'user_id']);
+    }
+
+    /**
+     * Return all the departments that user has updated.
+     *
+     * @return ActiveQuery
+     */
+    public function getDepartmentUserUpdated()
+    {
+        return $this->hasMany(Department::className(), ['user_updated' => 'user_id']);
     }
 
     /**
@@ -218,7 +241,8 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function beforeDelete()
     {
-        if (parent::beforeDelete()) {
+        if (parent::beforeDelete())
+        {
             return ($this->user_id !== 1);
         }
     }
@@ -228,7 +252,8 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function beforeSave($insert)
     {
-        if ($insert) {
+        if ($insert)
+        {
             $this->date_created = new Expression('current_timestamp');
             $this->user_created = Yii::$app->getUser()->getId();
             $this->salt = Yii::$app->getSecurity()->generatePasswordHash($this->password);
@@ -237,12 +262,15 @@ class User extends ActiveRecord implements IdentityInterface
         $this->date_updated = new Expression('current_timestamp');
         $this->user_updated = Yii::$app->getUser()->getId();
 
-        if ($this->password != '') {
+        if ($this->password != '')
+        {
             $this->salt = Yii::$app->getSecurity()->generatePasswordHash($this->password);
             $this->password = $this->passwordCrypt($this->password, $this->salt);
-        } else {
+        } else
+        {
             $user = self::findOne($this->user_id);
-            if ($user) {
+            if ($user)
+            {
                 $this->password = $user->password;
             }
         }

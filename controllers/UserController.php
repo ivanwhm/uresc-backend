@@ -9,6 +9,7 @@ namespace app\controllers;
 
 //Imports
 use app\models\User;
+use Exception;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -45,6 +46,7 @@ class UserController extends Controller
 
     /**
      * Lists all User models.
+     *
      * @return mixed
      */
     public function actionIndex()
@@ -60,6 +62,7 @@ class UserController extends Controller
 
     /**
      * Displays a single User model.
+     *
      * @param integer $id
      * @return mixed
      */
@@ -73,6 +76,7 @@ class UserController extends Controller
     /**
      * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -83,9 +87,11 @@ class UserController extends Controller
         $model->new_password = '';
         $model->status = User::STATUS_ACTIVE;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+        {
             return $this->redirect(['view', 'id' => $model->user_id]);
-        } else {
+        } else
+        {
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -95,6 +101,7 @@ class UserController extends Controller
     /**
      * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param integer $id
      * @return mixed
      */
@@ -104,9 +111,11 @@ class UserController extends Controller
         $model->password = '';
         $model->new_password = '';
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+        {
             return $this->redirect(['view', 'id' => $model->user_id]);
-        } else {
+        } else
+        {
             return $this->render('update', [
                 'model' => $model,
             ]);
@@ -116,16 +125,20 @@ class UserController extends Controller
     /**
      * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
      * @return mixed
+     * @throws NotFoundHttpException If the user cannot be deleted
      */
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        try {
+        try
+        {
             $model->clearAccessInformation();
             $model->delete();
-        } catch (\Exception $ex) {
+        } catch (Exception $ex)
+        {
             throw new NotFoundHttpException('Não é possível excluir o usuário selecionado.');
         }
 
@@ -135,15 +148,18 @@ class UserController extends Controller
     /**
      * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param integer $id
      * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null)
+        {
             return $model;
-        } else {
+        } else
+        {
             throw new NotFoundHttpException('A página solicitada não existe.');
         }
     }
