@@ -25,24 +25,24 @@ use yii\widgets\ActiveForm;
     ); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
-    <?= Html::tag('span', 'Informe o nome completo do usuário que irá acessar o sistema.', ['id' => 'hbName', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe o nome completo do usuário que irá acessar o sistema.', ['id' => 'hbName', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'aria-describedby' => 'hbEmail']) ?>
-    <?= Html::tag('span', 'Informe o endereço de e-mail do usuário que irá acessar o sistema.', ['id' => 'hbEmail', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe o endereço de e-mail do usuário que irá acessar o sistema.', ['id' => 'hbEmail', 'class' => 'help-block']) ?>
 
     <?php if ($model->getIsNewRecord()) : ?>
         <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'aria-describedby' => 'hbUsername']) ?>
-        <?= Html::tag('span', 'Informe o identificador do usuário que irá acessar o sistema. De preferência utilize apenas uma palavra.', ['id' => 'hbUsername', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe o identificador do usuário que irá acessar o sistema. De preferência utilize apenas uma palavra.', ['id' => 'hbUsername', 'class' => 'help-block']) ?>
     <?php endif; ?>
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true, 'aria-describedby' => 'hbPassword']) ?>
-    <?= Html::tag('span', 'Informe a senha do usuário que irá acessar o sistema.', ['id' => 'hbPassword', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe a senha do usuário que irá acessar o sistema.', ['id' => 'hbPassword', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'new_password')->passwordInput(['maxlength' => true, 'aria-describedby' => 'hbNewPassword']) ?>
-    <?= Html::tag('span', 'Repita a senha do usuário que irá acessar o sistema.', ['id' => 'hbNewPassword', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Repita a senha do usuário que irá acessar o sistema.', ['id' => 'hbNewPassword', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'status')->dropDownList(User::$statusData, ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
-    <?= Html::tag('span', 'Informe se o usuário está ativo ou inativo para acessar o sistema.', ['id' => 'hbStatus', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe se o usuário está ativo ou inativo para acessar o sistema.', ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Criar' : 'Alterar', [
