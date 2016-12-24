@@ -20,7 +20,7 @@ $this->title = 'Categorias de arquivos';
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => "fa-archive",
+        "icon" => "fa-file-archive-o",
         "active" => true,
         "url" => Url::to(["download-category/index"])
     ]
