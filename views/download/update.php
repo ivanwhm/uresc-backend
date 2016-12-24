@@ -1,10 +1,10 @@
 <?php
 /**
- * Displays the update page to Download Category CRUD.
+ * Displays the update page to Download CRUD.
  *
  * @var $this View
  * @var $model User
- * @var $model DownloadCategory
+ * @var $model Download
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -15,23 +15,23 @@ use app\models\User;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Alterar categoria de arquivos';
+$this->title = 'Alterar arquivo';
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Categorias de arquivos",
+        "label" => "Arquivos",
         "icon" => "fa-archive",
         "active" => false,
-        "url" => Url::to(["download-category/index"])
+        "url" => Url::to(["download/index"])
     ],
     [
         "label" => $this->title,
         "icon" => "fa-archive",
         "active" => true,
-        "url" => Url::to(["download-category/update", 'id' => $model->id])
+        "url" => Url::to(["download/update", 'id' => $model->id])
     ]
 ];
 ?>
-<div class="download-category-update">
+<div class="download-update">
 
     <?= $this->render('_form', [
         'model' => $model,

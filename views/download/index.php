@@ -1,6 +1,6 @@
 <?php
 /**
- * Displays the index page to Download Category CRUD.
+ * Displays the index page to Download CRUD.
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
@@ -9,24 +9,24 @@
  */
 
 //Imports
-use app\models\DownloadCategory;
+use app\models\Download;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Categorias de arquivos';
+$this->title = 'Arquivos';
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
         "icon" => "fa-archive",
         "active" => true,
-        "url" => Url::to(["download-category/index"])
+        "url" => Url::to(["download/index"])
     ]
 ];
 ?>
-<div class="download-category-index">
+<div class="download-index">
 
     <p>
         <?= Html::a('Novo', ['create'], ['class' => 'btn btn-success']) ?>
@@ -41,9 +41,15 @@ $this->params['breadcrumbs'] = [
             'id',
             'name',
             [
+                'attribute' => 'category_id',
+                'value' => function ($data) {
+                    return $data->getCategory()->name;
+                },
+            ],
+            [
                 'attribute' => 'status',
                 'value' => function ($data) {
-                    return DownloadCategory::$statusData[$data->status];
+                    return Download::$statusData[$data->status];
                 },
             ],
             [
@@ -54,9 +60,9 @@ $this->params['breadcrumbs'] = [
                         return Html::a('<span class="glyphicon glyphicon-trash"></span>', [
                             'delete', 'id' => $model->id
                         ], [
-                            'class' => 'DownloadCategory',
+                            'class' => 'Download',
                             'data' => [
-                                'confirm' => 'Deseja excluir esta categoria de arquivo?',
+                                'confirm' => 'Deseja excluir este arquivo?',
                                 'method' => 'post',
                             ],
                         ]);

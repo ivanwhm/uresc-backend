@@ -12,7 +12,6 @@
 
 //Imports
 use app\assets\SBAdmin\SBAdminAsset;
-use app\components\General;
 use app\models\Department;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -29,7 +28,7 @@ SBAdminAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <?= Html::csrfMetaTags() ?>
-    <title>4ª URE - Administração</title>
+    <title>4ª URE - Administração - <?= $this->title ?></title>
     <?php $this->head() ?>
 </head>
 <body>
@@ -99,7 +98,7 @@ SBAdminAsset::register($this);
                     </a>
                     <ul id="records" class="collapse">
                         <li>
-                            <a href="<?= Url::to(["download-category/index"]) ?>"><i class="fa fa-fw fa-archive"></i> Categorias de download</a>
+                            <a href="<?= Url::to(["download-category/index"]) ?>"><i class="fa fa-fw fa-archive"></i> Categorias de arquivos</a>
                         </li>
                         <li>
                             <a href="<?= Url::to(["department/index"]) ?>"><i class="fa fa-fw fa-newspaper-o"></i> Departamentos</a>
@@ -109,7 +108,7 @@ SBAdminAsset::register($this);
                         </li>
                     </ul>
                 </li>
-                <?php  $departments = General::getDepartments() ?>
+                <?php  $departments = Department::getDepartments() ?>
                 <?php if (count($departments) > 0) : ?>
                 <li class="<?= ((Yii::$app->controller->id == "department") && (Yii::$app->controller->action->id == "info")) ? "active" : "" ?>">
                     <a href="javascript:;" data-toggle="collapse" data-target="#department">
@@ -126,7 +125,11 @@ SBAdminAsset::register($this);
                     </ul>
                 </li>
                 <?php endif; ?>
-
+                <li class="<?= (Yii::$app->controller->id == "download") ? "active" : "" ?>">
+                    <a href="<?= Url::to(["download/index"]) ?>">
+                        <i class="fa fa-fw fa-archive"></i> Arquivos
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

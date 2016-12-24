@@ -121,4 +121,12 @@ class Department extends ActiveRecord
         return parent::beforeSave($insert);
     }
 
+    /**
+     * @return Department[]
+     */
+    public static function getDepartments()
+    {
+        return self::find(['status' => self::STATUS_ACTIVE])->orderBy('name')->all();
+    }
+
 }

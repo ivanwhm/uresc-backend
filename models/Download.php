@@ -1,37 +1,37 @@
 <?php
 /**
- * This is the model class for table "download_category".
+ * This is the model class for table "download".
  *
- * @property integer $id Download category's unique ID.
- * @property string $name Download category's name
- * @property string $status Download category's status.
- * @property string $date_created Download category's date of creation.
- * @property string $date_updated Download category's date of updated.
- * @property integer $user_created Download category's user created.
- * @property integer $user_updated Download category's user updated.
+ * @property integer $id Downloads's ID.
+ * @property string $name Download' name.
+ * @property integer $category_id Download's category.
+ * @property string $address Download's file address.
+ * @property string $status Download's status.
+ * @property string $date_created Download's date of creation.
+ * @property string $date_updated Download's date of updated.
+ * @property integer $user_created Download's user created.
+ * @property integer $user_updated Download's user updated.
  *
- * @property User $userCreated User that created the download category.
- * @property User $userUpdated User that updated the download category.
+ * @property DownloadCategory $category DownloadCategory of the download record.
+ * @property User $userCreated User that created the download.
+ * @property User $userUpdated User that updated the download.
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
-
 namespace app\models;
 
 //Imports
 use Yii;
-use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 
-class DownloadCategory extends ActiveRecord
+class Download extends ActiveRecord
 {
-
     const STATUS_ACTIVE = "A";
     const STATUS_INACTIVE = "I";
 
     /**
-     * Returns all the download category status.
+     * Returns all the download status.
      *
      * @var array
      */
@@ -45,7 +45,7 @@ class DownloadCategory extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'download_category';
+        return 'download';
     }
 
     /**
@@ -54,11 +54,13 @@ class DownloadCategory extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'status'], 'required'],
+            [['name', 'category_id', 'address'], 'required'],
             [['date_created', 'date_updated', 'user_created', 'user_updated'], 'safe'],
-            [['user_created', 'user_updated'], 'integer'],
-            [['name'], 'string', 'max' => 59],
+            [['name'], 'string', 'max' => 50],
+            [['address'], 'string', 'max' => 255],
+            [['address'], 'url'],
             [['status'], 'string', 'max' => 1],
+            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => DownloadCategory::className(), 'targetAttribute' => ['category_id' => 'id']],
             [['user_created'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_created' => 'user_id']],
             [['user_updated'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_updated' => 'user_id']],
         ];
@@ -72,6 +74,8 @@ class DownloadCategory extends ActiveRecord
         return [
             'id' => 'Código',
             'name' => 'Nome',
+            'category_id' => 'Categoria',
+            'address' => 'Endereço do arquivo',
             'status' => 'Estado',
             'date_created' => 'Data da criação',
             'date_updated' => 'Data da última atualização',
@@ -81,9 +85,19 @@ class DownloadCategory extends ActiveRecord
     }
 
     /**
+     * Return the download's category.
+     *
+     * @return DownloadCategory
+     */
+    public function getCategory()
+    {
+        return DownloadCategory::findOne(['id' => $this->category_id]);
+    }
+
+    /**
      * Returns the user that created the download category.
      *
-     * @return ActiveQuery
+     * @return User
      */
     public function getUserCreated()
     {
@@ -93,13 +107,12 @@ class DownloadCategory extends ActiveRecord
     /**
      * Returns the user that updated the download category.
      *
-     * @return ActiveQuery
+     * @return User
      */
     public function getUserUpdated()
     {
         return User::findOne(['user_id' => $this->user_updated]);
     }
-
 
     /**
      * @inheritdoc
@@ -117,19 +130,4 @@ class DownloadCategory extends ActiveRecord
 
         return parent::beforeSave($insert);
     }
-
-    /**
-     * @return array
-     */
-    public static function getDownloadCategories()
-    {
-        $all = [];
-        $categories = self::find(['status' => self::STATUS_ACTIVE])->orderBy('name')->all();
-        foreach ($categories as $category)
-        {
-            $all[$category->id] = $category->name;
-        }
-        return $all;
-    }
-
 }
