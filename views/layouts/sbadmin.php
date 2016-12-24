@@ -98,7 +98,7 @@ SBAdminAsset::register($this);
                     </a>
                     <ul id="records" class="collapse">
                         <li>
-                            <a href="<?= Url::to(["download-category/index"]) ?>"><i class="fa fa-fw fa-archive"></i> Categorias de arquivos</a>
+                            <a href="<?= Url::to(["download-category/index"]) ?>"><i class="fa fa-fw fa-file-archive-o"></i> Categorias de arquivos</a>
                         </li>
                         <li>
                             <a href="<?= Url::to(["department/index"]) ?>"><i class="fa fa-fw fa-newspaper-o"></i> Departamentos</a>
