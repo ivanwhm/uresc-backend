@@ -99,10 +99,13 @@ SBAdminAsset::register($this);
                     </a>
                     <ul id="records" class="collapse">
                         <li>
-                            <a href="<?= Url::to(["user/index"]) ?>"><i class="fa fa-fw fa-user"></i> Usuários</a>
+                            <a href="<?= Url::to(["download-category/index"]) ?>"><i class="fa fa-fw fa-archive"></i> Categorias de download</a>
                         </li>
                         <li>
                             <a href="<?= Url::to(["department/index"]) ?>"><i class="fa fa-fw fa-newspaper-o"></i> Departamentos</a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(["user/index"]) ?>"><i class="fa fa-fw fa-user"></i> Usuários</a>
                         </li>
                     </ul>
                 </li>
