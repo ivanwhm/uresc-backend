@@ -42,6 +42,8 @@ $this->params['breadcrumbs'] = [
 
         <?= $form->field($model, 'info')->textarea(['rows' =>'15', 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
         <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Descreva o texto relacionado ao departamento.', ['id' => 'hbName', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> Última alteração em ' . Yii::$app->getFormatter()->asDatetime($model->date_updated, 'long') . ' por ' . $model->getUserUpdated()->getName() . '.', ['class' => 'help-block']) ?>
+
 
         <div class="form-group">
             <?= Html::submitButton('Atualizar', ['class' => 'btn btn-primary']) ?>
