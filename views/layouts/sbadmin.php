@@ -111,26 +111,31 @@ SBAdminAsset::register($this);
                         </li>
                     </ul>
                 </li>
-                <?php  $departments = Department::getDepartments() ?>
-                <?php if (count($departments) > 0) : ?>
-                <li class="<?= ((Yii::$app->controller->id == "department") && (Yii::$app->controller->action->id == "info")) ? "active" : "" ?>">
-                    <a href="javascript:;" data-toggle="collapse" data-target="#department">
-                        <i class="fa fa-fw fa-newspaper-o"></i> Departamentos <i class="fa fa-fw fa-caret-down"></i>
-                    </a>
-                    <ul id="department" class="collapse">
-                        <?php foreach ($departments as $department) : ?>
-                            <li>
-                                <a href="<?= Url::to(["department/info", 'id' => $department->id]) ?>">
-                                    <i class="fa fa-fw fa-newspaper-o"></i> <?= $department->name ?>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </li>
-                <?php endif; ?>
                 <li class="<?= (Yii::$app->controller->id == "download") ? "active" : "" ?>">
                     <a href="<?= Url::to(["download/index"]) ?>">
                         <i class="fa fa-fw fa-archive"></i> Arquivos
+                    </a>
+                </li>
+                <?php  $departments = Department::getDepartments() ?>
+                <?php if (count($departments) > 0) : ?>
+                    <li class="<?= ((Yii::$app->controller->id == "department") && (Yii::$app->controller->action->id == "info")) ? "active" : "" ?>">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#department">
+                            <i class="fa fa-fw fa-newspaper-o"></i> Departamentos <i class="fa fa-fw fa-caret-down"></i>
+                        </a>
+                        <ul id="department" class="collapse">
+                            <?php foreach ($departments as $department) : ?>
+                                <li>
+                                    <a href="<?= Url::to(["department/info", 'id' => $department->id]) ?>">
+                                        <i class="fa fa-fw fa-newspaper-o"></i> <?= $department->name ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                <?php endif; ?>
+                <li class="<?= (Yii::$app->controller->id == "gallery") ? "active" : "" ?>">
+                    <a href="<?= Url::to(["gallery/index"]) ?>">
+                        <i class="fa fa-fw fa-picture-o"></i> Galerias
                     </a>
                 </li>
             </ul>
