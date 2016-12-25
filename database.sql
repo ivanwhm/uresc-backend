@@ -77,3 +77,18 @@ CONSTRAINT `fk_download_category_id` FOREIGN KEY (`category_id`) REFERENCES `dow
 CONSTRAINT `fk_download_user_created` FOREIGN KEY (`user_created`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE,
 CONSTRAINT `fk_download_user_updated` FOREIGN KEY (`user_updated`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+CREATE TABLE `gallery_category` (
+`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+`name` varchar(59) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
+`status` char(1) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'A',
+`date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+`date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+`user_created` int(10) unsigned NOT NULL,
+`user_updated` int(10) unsigned NOT NULL,
+PRIMARY KEY (`id`),
+KEY `Idx_gallery_category_user_created` (`user_created`),
+KEY `Idx_gallery_category_user_updated` (`user_updated`),
+CONSTRAINT `fk_gallery_category_user_created` FOREIGN KEY (`user_created`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE,
+CONSTRAINT `fk_gallery_category_user_updated` FOREIGN KEY (`user_updated`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
