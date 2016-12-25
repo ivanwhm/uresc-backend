@@ -20,14 +20,8 @@ use yii\widgets\ActiveForm;
 $this->title = 'Departamento: ' . $model->name;
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Departamentos",
-        "icon" => "fa-newspaper-o",
-        "active" => false,
-        "url" => Url::to(["department/index"])
-    ],
-    [
         "label" => $this->title,
-        "icon" => "fa-newspaper-o",
+        "icon" => "fa-file-o",
         "active" => true,
         "url" => Url::to(["department/info", 'id' => $model->id])
     ]

@@ -104,7 +104,7 @@ SBAdminAsset::register($this);
                             <a href="<?= Url::to(["gallery-category/index"]) ?>"><i class="fa fa-fw fa-file-picture-o"></i> Categorias de galerias</a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(["department/index"]) ?>"><i class="fa fa-fw fa-newspaper-o"></i> Departamentos</a>
+                            <a href="<?= Url::to(["department/index"]) ?>"><i class="fa fa-fw fa-files-o"></i> Departamentos</a>
                         </li>
                         <li>
                             <a href="<?= Url::to(["user/index"]) ?>"><i class="fa fa-fw fa-user"></i> Usuários</a>
@@ -120,13 +120,13 @@ SBAdminAsset::register($this);
                 <?php if (count($departments) > 0) : ?>
                     <li class="<?= ((Yii::$app->controller->id == "department") && (Yii::$app->controller->action->id == "info")) ? "active" : "" ?>">
                         <a href="javascript:;" data-toggle="collapse" data-target="#department">
-                            <i class="fa fa-fw fa-newspaper-o"></i> Departamentos <i class="fa fa-fw fa-caret-down"></i>
+                            <i class="fa fa-fw fa-file-o"></i> Departamentos <i class="fa fa-fw fa-caret-down"></i>
                         </a>
                         <ul id="department" class="collapse">
                             <?php foreach ($departments as $department) : ?>
                                 <li>
                                     <a href="<?= Url::to(["department/info", 'id' => $department->id]) ?>">
-                                        <i class="fa fa-fw fa-newspaper-o"></i> <?= $department->name ?>
+                                        <i class="fa fa-fw fa-file-o"></i> <?= $department->name ?>
                                     </a>
                                 </li>
                             <?php endforeach; ?>
