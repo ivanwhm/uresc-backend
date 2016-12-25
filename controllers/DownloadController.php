@@ -47,7 +47,7 @@ class DownloadController extends Controller
     /**
      * Lists all Download models.
      *
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
@@ -63,8 +63,8 @@ class DownloadController extends Controller
     /**
      * Displays a single Download model.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id Download ID
+     * @return string
      */
     public function actionView($id)
     {
@@ -77,16 +77,18 @@ class DownloadController extends Controller
      * Creates a new Download model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      *
-     * @return mixed
+     * @return string
      */
     public function actionCreate()
     {
         $model = new Download();
         $model->status = Download::STATUS_ACTIVE;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+        {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        } else
+        {
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -97,16 +99,18 @@ class DownloadController extends Controller
      * Updates an existing Download model.
      * If update is successful, the browser will be redirected to the 'view' page.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id Download ID
+     * @return string
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+        {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        } else
+        {
             return $this->render('update', [
                 'model' => $model,
             ]);
@@ -117,16 +121,19 @@ class DownloadController extends Controller
      * Deletes an existing Download model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id Download ID
+     * @return string
+     *
      * @throws NotFoundHttpException if the model cannot be deleted
      */
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        try {
+        try
+        {
             $model->delete();
-        } catch (Exception $ex) {
+        } catch (Exception $ex)
+        {
             throw new NotFoundHttpException('Não é possível excluir o arquivo selecionado.');
         }
 
@@ -137,15 +144,18 @@ class DownloadController extends Controller
      * Finds the Download model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      *
-     * @param integer $id
-     * @return Download the loaded model
+     * @param integer $id Download ID
+     * @return Download
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Download::findOne($id)) !== null) {
+        if (($model = Download::findOne($id)) !== null)
+        {
             return $model;
-        } else {
+        } else
+        {
             throw new NotFoundHttpException('O arquivo solicitado não existe.');
         }
     }

@@ -47,7 +47,7 @@ class DepartmentController extends Controller
     /**
      * Lists all Departments models.
      *
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
@@ -63,8 +63,8 @@ class DepartmentController extends Controller
     /**
      * Displays a single Department model.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id Department ID
+     * @return string
      */
     public function actionView($id)
     {
@@ -77,7 +77,7 @@ class DepartmentController extends Controller
      * Creates a new Department model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      *
-     * @return mixed
+     * @return string
      */
     public function actionCreate()
     {
@@ -99,8 +99,8 @@ class DepartmentController extends Controller
      * Updates an existing Department model.
      * If update is successful, the browser will be redirected to the 'view' page.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id Department ID
+     * @return string
      */
     public function actionUpdate($id)
     {
@@ -121,8 +121,8 @@ class DepartmentController extends Controller
      * Updates a page of an existing Department model.
      * If update is successful, the browser will be redirected to the 'view' page.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id Department ID
+     * @return string
      */
     public function actionInfo($id)
     {
@@ -143,9 +143,10 @@ class DepartmentController extends Controller
      * Deletes an existing Department model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the department cannot be deleted
+     * @param integer $id Department ID
+     * @return string
+     *
+     * @throws NotFoundHttpException if the model cannot be deleted
      */
     public function actionDelete($id)
     {
@@ -165,8 +166,9 @@ class DepartmentController extends Controller
      * Finds the Department model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      *
-     * @param integer $id
-     * @return Department the loaded model
+     * @param integer $id Department ID
+     * @return Department
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

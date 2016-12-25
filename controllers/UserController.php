@@ -47,7 +47,7 @@ class UserController extends Controller
     /**
      * Lists all User models.
      *
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
@@ -63,8 +63,8 @@ class UserController extends Controller
     /**
      * Displays a single User model.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id User ID
+     * @return string
      */
     public function actionView($id)
     {
@@ -77,7 +77,7 @@ class UserController extends Controller
      * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      *
-     * @return mixed
+     * @return string
      */
     public function actionCreate()
     {
@@ -102,8 +102,8 @@ class UserController extends Controller
      * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id User ID
+     * @return string
      */
     public function actionUpdate($id)
     {
@@ -126,8 +126,9 @@ class UserController extends Controller
      * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id User ID
+     * @return string
+     *
      * @throws NotFoundHttpException If the user cannot be deleted
      */
     public function actionDelete($id)
@@ -149,8 +150,9 @@ class UserController extends Controller
      * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      *
-     * @param integer $id
-     * @return User the loaded model
+     * @param integer $id User ID
+     * @return User
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
@@ -160,7 +162,7 @@ class UserController extends Controller
             return $model;
         } else
         {
-            throw new NotFoundHttpException('A página solicitada não existe.');
+            throw new NotFoundHttpException('O usuário solicitado não existe.');
         }
     }
 }

@@ -47,7 +47,7 @@ class GalleryController extends Controller
     /**
      * Lists all Gallery models.
      *
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
@@ -63,8 +63,8 @@ class GalleryController extends Controller
     /**
      * Displays a single Gallery model.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id Gallery ID
+     * @return string
      */
     public function actionView($id)
     {
@@ -77,15 +77,18 @@ class GalleryController extends Controller
      * Finds the Gallery model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      *
-     * @param integer $id
-     * @return Gallery the loaded model
+     * @param integer $id Gallery ID
+     * @return Gallery
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Gallery::findOne($id)) !== null) {
+        if (($model = Gallery::findOne($id)) !== null)
+        {
             return $model;
-        } else {
+        } else
+        {
             throw new NotFoundHttpException('O arquivo solicitado não existe.');
         }
     }
@@ -94,16 +97,18 @@ class GalleryController extends Controller
      * Creates a new Gallery model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      *
-     * @return mixed
+     * @return string
      */
     public function actionCreate()
     {
         $model = new Gallery();
         $model->status = Gallery::STATUS_ACTIVE;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+        {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        } else
+        {
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -114,16 +119,18 @@ class GalleryController extends Controller
      * Updates an existing Gallery model.
      * If update is successful, the browser will be redirected to the 'view' page.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id Gallery ID
+     * @return string
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+        {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        } else
+        {
             return $this->render('update', [
                 'model' => $model,
             ]);
@@ -134,16 +141,19 @@ class GalleryController extends Controller
      * Deletes an existing Gallery model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id Gallery ID
+     * @return string
+     *
      * @throws NotFoundHttpException if the model cannot be deleted
      */
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
-        try {
+        try
+        {
             $model->delete();
-        } catch (Exception $ex) {
+        } catch (Exception $ex)
+        {
             throw new NotFoundHttpException('Não é possível excluir o arquivo selecionado.');
         }
 

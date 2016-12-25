@@ -47,7 +47,7 @@ class DownloadCategoryController extends Controller
     /**
      * Lists all Download Category models.
      *
-     * @return mixed
+     * @return string
      */
     public function actionIndex()
     {
@@ -63,8 +63,8 @@ class DownloadCategoryController extends Controller
     /**
      * Displays a single Download Category model.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id Download Category ID
+     * @return string
      */
     public function actionView($id)
     {
@@ -77,7 +77,7 @@ class DownloadCategoryController extends Controller
      * Creates a new Download Category model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      *
-     * @return mixed
+     * @return string
      */
     public function actionCreate()
     {
@@ -99,8 +99,8 @@ class DownloadCategoryController extends Controller
      * Updates an existing Download Category model.
      * If update is successful, the browser will be redirected to the 'view' page.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id Download Category ID
+     * @return string
      */
     public function actionUpdate($id)
     {
@@ -121,8 +121,9 @@ class DownloadCategoryController extends Controller
      * Deletes an existing Download Category model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
-     * @param integer $id
-     * @return mixed
+     * @param integer $id Download Category ID
+     * @return string
+     *
      * @throws NotFoundHttpException if the model cannot be deleted
      */
     public function actionDelete($id)
@@ -143,8 +144,9 @@ class DownloadCategoryController extends Controller
      * Finds the Download Category model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      *
-     * @param integer $id
-     * @return DownloadCategory the loaded model
+     * @param integer $id Download Category ID
+     * @return DownloadCategory
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
