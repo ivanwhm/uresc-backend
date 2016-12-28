@@ -28,6 +28,16 @@ $config = [
             ],
         ]
     ],
+    'modules' => [
+        'ckeditor' => [
+            'class' => 'wadeshuler\ckeditor\Module',
+            'preset' => 'standard',
+            'widgetClientOptions' => [
+                'rows' =>'15',
+                'language' => 'pt',
+            ],
+        ],
+    ],
     'params' => $params,
     'layout' => 'sbadmin',
 ];

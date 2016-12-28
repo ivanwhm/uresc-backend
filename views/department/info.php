@@ -12,6 +12,7 @@
 //Imports
 use app\models\Department;
 use app\models\User;
+use wadeshuler\ckeditor\widgets\CKEditor;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -34,7 +35,7 @@ $this->params['breadcrumbs'] = [
 
         <?php $form = ActiveForm::begin(['id' => 'department-form']); ?>
 
-        <?= $form->field($model, 'info')->textarea(['rows' =>'15', 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
+        <?= $form->field($model, 'info')->widget(CKEditor::className()) ?>
         <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Descreva o texto relacionado ao departamento.', ['id' => 'hbName', 'class' => 'help-block']) ?>
         <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> Última alteração em ' . Yii::$app->getFormatter()->asDatetime($model->date_updated, 'long') . ' por ' . $model->getUserUpdated()->getName() . '.', ['class' => 'help-block']) ?>
 
