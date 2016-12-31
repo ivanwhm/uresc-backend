@@ -92,11 +92,14 @@ SBAdminAsset::register($this);
                         <i class="fa fa-fw fa-home"></i> Principal
                     </a>
                 </li>
-                <li class="<?= ((Yii::$app->controller->id == "user") || ((Yii::$app->controller->id == "department") && (Yii::$app->controller->action->id !== "info")) || (Yii::$app->controller->id == "download-category") || (Yii::$app->controller->id == "gallery-category")) ? "active" : "" ?>">
+                <li class="<?= ((Yii::$app->controller->id == "user") || ((Yii::$app->controller->id == "department") && (Yii::$app->controller->action->id !== "info")) || (Yii::$app->controller->id == "download-category") || (Yii::$app->controller->id == "gallery-category") || (Yii::$app->controller->id == "calendar")) ? "active" : "" ?>">
                     <a href="javascript:;" data-toggle="collapse" data-target="#records">
                         <i class="fa fa-fw fa-pencil-square-o"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i>
                     </a>
                     <ul id="records" class="collapse">
+                        <li>
+                            <a href="<?= Url::to(["calendar/index"]) ?>"><i class="fa fa-fw fa-calendar-o"></i> Calendários</a>
+                        </li>
                         <li>
                             <a href="<?= Url::to(["download-category/index"]) ?>"><i class="fa fa-fw fa-file-archive-o"></i> Categorias de arquivos</a>
                         </li>
