@@ -89,7 +89,7 @@ class UserController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
-            return $this->redirect(['view', 'id' => $model->user_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else
         {
             return $this->render('create', [
@@ -113,7 +113,7 @@ class UserController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
-            return $this->redirect(['view', 'id' => $model->user_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else
         {
             return $this->render('update', [

@@ -59,8 +59,8 @@ class DownloadCategory extends ActiveRecord
             [['user_created', 'user_updated'], 'integer'],
             [['name'], 'string', 'max' => 59],
             [['status'], 'string', 'max' => 1],
-            [['user_created'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_created' => 'user_id']],
-            [['user_updated'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_updated' => 'user_id']],
+            [['user_created'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_created' => 'id']],
+            [['user_updated'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_updated' => 'id']],
         ];
     }
 
@@ -87,7 +87,7 @@ class DownloadCategory extends ActiveRecord
      */
     public function getUserCreated()
     {
-        return User::findOne(['user_id' => $this->user_created]);
+        return User::findOne(['id' => $this->user_created]);
     }
 
     /**
@@ -97,7 +97,7 @@ class DownloadCategory extends ActiveRecord
      */
     public function getUserUpdated()
     {
-        return User::findOne(['user_id' => $this->user_updated]);
+        return User::findOne(['id' => $this->user_updated]);
     }
 
 

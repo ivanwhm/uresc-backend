@@ -2,7 +2,7 @@
 /**
  * This is the model class for table "user".
  *
- * @property integer $user_id User unique code
+ * @property integer $id User unique code
  * @property string $name User full name
  * @property string $email User email address
  * @property string $username Username of the user
@@ -88,7 +88,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributeLabels()
     {
         return [
-            'user_id' => 'Código',
+            'id' => 'Código',
             'name' => 'Nome completo',
             'email' => 'E-mail',
             'username' => 'Usuário de acesso',
@@ -110,7 +110,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getUserAccess()
     {
-        return $this->hasMany(UserAccess::className(), ['user_id' => 'user_id']);
+        return $this->hasMany(UserAccess::className(), ['user_id' => 'id']);
     }
 
     /**
@@ -120,7 +120,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getDepartmentUserCreated()
     {
-        return $this->hasMany(Department::className(), ['user_created' => 'user_id']);
+        return $this->hasMany(Department::className(), ['user_created' => 'id']);
     }
 
     /**
@@ -130,7 +130,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getDepartmentUserUpdated()
     {
-        return $this->hasMany(Department::className(), ['user_updated' => 'user_id']);
+        return $this->hasMany(Department::className(), ['user_updated' => 'id']);
     }
 
     /**
@@ -153,7 +153,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return User::findOne(['status' => User::STATUS_ACTIVE, 'user_id' => $id]);
+        return User::findOne(['status' => User::STATUS_ACTIVE, 'id' => $id]);
     }
 
     /**
@@ -178,7 +178,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getId()
     {
-        return $this->user_id;
+        return $this->id;
     }
 
     /**
@@ -229,7 +229,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function storeLog($type)
     {
         $log = new UserAccess();
-        $log->user_id = $this->user_id;
+        $log->user_id = $this->id;
         $log->type = $type;
         $log->date = new Expression('current_timestamp');
         $log->ip = Yii::$app->getRequest()->getUserIP();
@@ -243,7 +243,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         if (parent::beforeDelete())
         {
-            return ($this->user_id !== 1);
+            return ($this->id !== 1);
         }
     }
 
@@ -268,7 +268,7 @@ class User extends ActiveRecord implements IdentityInterface
             $this->password = $this->passwordCrypt($this->password, $this->salt);
         } else
         {
-            $user = self::findOne($this->user_id);
+            $user = self::findOne($this->id);
             if ($user)
             {
                 $this->password = $user->password;
@@ -285,7 +285,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getUserCreated()
     {
-        return $this->findOne(['user_id' => $this->user_created]);
+        return $this->findOne(['id' => $this->user_created]);
     }
 
     /**
@@ -295,7 +295,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getUserUpdated()
     {
-        return $this->findOne(['user_id' => $this->user_updated]);
+        return $this->findOne(['id' => $this->user_updated]);
     }
 
     /**
@@ -306,7 +306,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function clearAccessInformation()
     {
-        return UserAccess::deleteAll(['user_id' => $this->getId()]);
+        return UserAccess::deleteAll(['id' => $this->getId()]);
     }
 
 }

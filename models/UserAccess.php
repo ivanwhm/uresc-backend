@@ -45,7 +45,7 @@ class UserAccess extends ActiveRecord
             [['date'], 'safe'],
             [['ip'], 'string', 'max' => 255],
             [['type'], 'string', 'max' => 1],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'user_id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -70,7 +70,7 @@ class UserAccess extends ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['user_id' => 'user_id']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
 

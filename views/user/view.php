@@ -27,7 +27,7 @@ $this->params['breadcrumbs'] = [
         "label" => $this->title,
         "icon" => "fa-user",
         "active" => true,
-        "url" => Url::to(["user/view", 'id' => $model->user_id])
+        "url" => Url::to(["user/view", 'id' => $model->id])
     ]
 ];
 ?>
@@ -37,10 +37,10 @@ $this->params['breadcrumbs'] = [
         <?= Html::a('Novo', ['create'], [
             'class' => 'btn btn-success'
         ]) ?>
-        <?= Html::a('Alterar', ['update', 'id' => $model->user_id], [
+        <?= Html::a('Alterar', ['update', 'id' => $model->id], [
             'class' => 'btn btn-primary'
         ]) ?>
-        <?= Html::a('Excluir', ['delete', 'id' => $model->user_id], [
+        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Deseja excluir este usuário?',
@@ -52,7 +52,7 @@ $this->params['breadcrumbs'] = [
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'user_id',
+            'id',
             'name',
             'email:email',
             'username',
