@@ -146,6 +146,11 @@ SBAdminAsset::register($this);
                         <i class="fa fa-fw fa-picture-o"></i> Galerias
                     </a>
                 </li>
+                <li class="<?= (Yii::$app->controller->id == "news") ? "active" : "" ?>">
+                    <a href="<?= Url::to(["news/index"]) ?>">
+                        <i class="fa fa-fw fa-newspaper-o"></i> Notícias
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
