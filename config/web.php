@@ -1,5 +1,7 @@
 <?php
 
+use \kartik\datecontrol\Module;
+
 $params = require(__DIR__ . '/params.php');
 
 $config = [
@@ -9,6 +11,7 @@ $config = [
     'bootstrap' => ['log'],
     'language' => 'pt-BR',
     'sourceLanguage' => 'en-US',
+    'timeZone' => 'UTC',
     'components' => [
         'request' => [
             'cookieValidationKey' => 'uP-z2cT7YulFE9un9M-YBOHCuLpfysEm',
@@ -26,24 +29,44 @@ $config = [
             'showScriptName' => false,
             'rules' => [
             ],
-        ]
+        ],
     ],
     'modules' => [
         'ckeditor' => [
-            'class' => 'wadeshuler\ckeditor\Module',
+            'class' => '\wadeshuler\ckeditor\Module',
             'preset' => 'standard',
             'widgetClientOptions' => [
                 'rows' =>'15',
                 'language' => 'pt',
             ],
         ],
+        'datecontrol' =>  [
+            'class' => '\kartik\datecontrol\Module',
+            'displaySettings' => [
+                Module::FORMAT_DATE => 'dd/MM/yyyy',
+                Module::FORMAT_TIME => 'HH:mm',
+                Module::FORMAT_DATETIME => 'dd/MM/yyyy HH:mm',
+            ],
+            'saveSettings' => [
+                Module::FORMAT_DATE => 'php:Y-m-d',
+                Module::FORMAT_TIME => 'php:H:i:s',
+                Module::FORMAT_DATETIME => 'php:Y-m-d H:i:s',
+            ],
+            'displayTimezone' => 'UTC',
+            'saveTimezone' => 'UTC',
+            'autoWidget' => true,
+            'autoWidgetSettings' => [
+                Module::FORMAT_DATE => ['type' => 3, 'pluginOptions' => ['autoclose' => true]],
+                Module::FORMAT_DATETIME => ['type' => 3, 'pluginOptions' => ['autoclose' => true]],
+                Module::FORMAT_TIME => ['pluginOptions' => ['autoclose' => true]],
+            ],
+        ]
     ],
     'params' => $params,
     'layout' => 'sbadmin',
 ];
 
 if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
