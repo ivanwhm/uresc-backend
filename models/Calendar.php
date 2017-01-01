@@ -19,9 +19,10 @@ namespace app\models;
 
 //Imports
 use Yii;
+use yii\db\ActiveRecord;
 use yii\db\Expression;
 
-class Calendar extends \yii\db\ActiveRecord
+class Calendar extends ActiveRecord
 {
     const STATUS_ACTIVE = "A";
     const STATUS_INACTIVE = "I";

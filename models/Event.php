@@ -24,9 +24,10 @@ namespace app\models;
 
 //Imports
 use Yii;
+use yii\db\ActiveRecord;
 use yii\db\Expression;
 
-class Event extends \yii\db\ActiveRecord
+class Event extends ActiveRecord
 {
     /**
      * @inheritdoc
