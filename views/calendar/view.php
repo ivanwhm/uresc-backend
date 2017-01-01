@@ -61,7 +61,7 @@ $this->params['breadcrumbs'] = [
             ],
             [
                 'attribute' => 'date_created',
-                'format' => ['datetime', 'long']
+                'format' => ['datetime', 'short']
             ],
             [
                 'attribute' => 'user_created',
@@ -69,7 +69,7 @@ $this->params['breadcrumbs'] = [
             ],
             [
                 'attribute' => 'date_updated',
-                'format' => ['datetime', 'long']
+                'format' => ['datetime', 'short']
             ],
             [
                 'attribute' => 'user_updated',
