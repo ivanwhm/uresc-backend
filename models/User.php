@@ -7,10 +7,11 @@
  * @property string $email User email address
  * @property string $username Username of the user
  * @property string $password Password of the user
+ * @property string $can_config Indicate if the user can configure the application
  * @property string $salt Password SALT of the user
  * @property string $status Status of the record
- * @property string $date_created Date of the user was created
- * @property string $date_updated Date of the last updated
+ * @property datetime $date_created Date of the user was created
+ * @property datetime $date_updated Date of the last updated
  * @property integer $user_created User that created the record
  * @property integer $user_updated User of the last updated of the record
  *
@@ -37,6 +38,8 @@ class User extends ActiveRecord implements IdentityInterface
 
     const STATUS_ACTIVE = "A";
     const STATUS_INACTIVE = "I";
+    const CONFIG_YES = "Y";
+    const CONFIG_NO = "N";
 
     /**
      * Returns all the user status.
@@ -46,6 +49,16 @@ class User extends ActiveRecord implements IdentityInterface
     public static $statusData = [
         self::STATUS_ACTIVE => "Ativo",
         self::STATUS_INACTIVE => "Inativo"
+    ];
+
+    /**
+     * Returns all the config options.
+     *
+     * @var array
+     */
+    public static $configData = [
+        self::CONFIG_YES => 'Sim',
+        self::CONFIG_NO => 'Não'
     ];
 
     /**
@@ -70,7 +83,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['name', 'username', 'email', 'status'], 'required'],
+            [['name', 'username', 'email', 'can_config', 'status'], 'required'],
             [['username', 'email'], 'unique'],
             [['email'], 'email'],
             [['password', 'new_password'], 'required', 'on' => 'create'],
@@ -91,6 +104,7 @@ class User extends ActiveRecord implements IdentityInterface
             'id' => 'Código',
             'name' => 'Nome completo',
             'email' => 'E-mail',
+            'can_config' => 'Pode acessar as configurações',
             'username' => 'Usuário de acesso',
             'password' => 'Senha de acesso',
             'new_password' => 'Repita a senha de acesso',
@@ -307,6 +321,16 @@ class User extends ActiveRecord implements IdentityInterface
     public function clearAccessInformation()
     {
         return UserAccess::deleteAll(['id' => $this->getId()]);
+    }
+
+    /**
+     * Returns if the user can access the configuration pages.
+     *
+     * @return bool
+     */
+    public function getIsCanConfig()
+    {
+        return $this->can_config == self::CONFIG_YES;
     }
 
 }

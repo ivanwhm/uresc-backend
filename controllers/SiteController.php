@@ -9,11 +9,13 @@ namespace app\controllers;
 
 //Imports
 use app\models\ChangePasswordForm;
+use app\models\Config;
 use app\models\LoginForm;
 use app\models\UserAccess;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
@@ -128,4 +130,30 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * Updates a page of an existing Config model.
+     * If update is successful, the browser will be redirected to the 'config' page.
+     *
+     * @return string
+     *
+     * @throws NotFoundHttpException If the user cannot be deleted
+     */
+    public function actionConfig()
+    {
+        if ((($model = Config::findOne(1)) !== null) and (Yii::$app->getUser()->getIdentity()->getIsCanConfig()))
+        {
+            if ($model->load(Yii::$app->request->post()) && $model->save())
+            {
+                return $this->redirect(['config']);
+            } else
+            {
+                return $this->render('config', [
+                    'model' => $model,
+                ]);
+            }
+        } else
+        {
+            throw new NotFoundHttpException('A configuração solicitada não existe.');
+        }
+    }
 }

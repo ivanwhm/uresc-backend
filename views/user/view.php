@@ -61,6 +61,10 @@ $this->params['breadcrumbs'] = [
                 'value' => User::$statusData[$model->status]
             ],
             [
+                'attribute' => 'can_config',
+                'value' => User::$configData[$model->can_config]
+            ],
+            [
                 'attribute' => 'date_created',
                 'format' => ['datetime', 'short']
             ],

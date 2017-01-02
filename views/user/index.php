@@ -49,6 +49,12 @@ $this->params['breadcrumbs'] = [
                     },
                 ],
                 [
+                    'attribute' => 'can_config',
+                    'value' => function ($data) {
+                        return User::$configData[$data->can_config];
+                    },
+                ],
+                [
                     'class' => 'yii\grid\ActionColumn',
                     'template' => '{view} {update} {delete}',
                     'buttons' => [

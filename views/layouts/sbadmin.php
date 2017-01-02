@@ -73,9 +73,11 @@ SBAdminAsset::register($this);
                     <li>
                         <a href="<?= Url::to(["site/password"]) ?>"><i class="fa fa-fw fa-key"></i> Alterar senha</a>
                     </li>
-                    <!--                    <li>-->
-                    <!--                        <a href="#"><i class="fa fa-fw fa-gear"></i> Configurações</a>-->
-                    <!--                    </li>-->
+                    <?php if (Yii::$app->getUser()->getIdentity()->getIsCanConfig()): ?>
+                        <li>
+                            <a href="<?= Url::to(["site/config"]) ?>"><i class="fa fa-fw fa-gear"></i> Configurações</a>
+                        </li>
+                    <?php endif; ?>
                     <li class="divider"></li>
                     <li>
                         <a href="<?= Url::to(["site/logout"]) ?>"><i class="fa fa-fw fa-power-off"></i> Sair</a>
