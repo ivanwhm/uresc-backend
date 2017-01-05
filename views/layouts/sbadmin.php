@@ -121,6 +121,11 @@ SBAdminAsset::register($this);
                         <i class="fa fa-fw fa-archive"></i> Arquivos
                     </a>
                 </li>
+                <li class="<?= (Yii::$app->controller->id == "contact") ? "active" : "" ?>">
+                    <a href="<?= Url::to(["contact/index"]) ?>">
+                        <i class="fa fa-fw fa-mail-reply-all"></i> Contatos
+                    </a>
+                </li>
                 <?php  $departments = Department::getDepartments() ?>
                 <?php if (count($departments) > 0) : ?>
                     <li class="<?= ((Yii::$app->controller->id == "department") && (Yii::$app->controller->action->id == "info")) ? "active" : "" ?>">
