@@ -55,7 +55,7 @@ use yii\widgets\ActiveForm;
         <?= Html::submitButton($model->isNewRecord ? 'Adicionar' : 'Alterar', [
             'class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary'
         ]) ?>
-        <?= Html::a('Cancelar', ['index'], [
+        <?= Html::a('Cancelar', $model->getIsNewRecord() ? ['index'] : ['view', 'id' => $model->id], [
             'class' => 'btn btn-danger',
         ]) ?>
     </div>
