@@ -38,8 +38,8 @@ use yii\widgets\ActiveForm;
     <?php endif; ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Adicionar' : 'Alterar', [
-            'class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary'
+        <?= Html::submitButton('Salvar', [
+            'class' => $model->getIsNewRecord() ? 'btn btn-success' : 'btn btn-primary'
         ]) ?>
         <?= Html::a('Cancelar', $model->getIsNewRecord() ? ['index'] : ['view', 'id' => $model->id], [
             'class' => 'btn btn-danger',

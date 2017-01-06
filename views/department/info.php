@@ -41,7 +41,7 @@ $this->params['breadcrumbs'] = [
 
 
         <div class="form-group">
-            <?= Html::submitButton('Atualizar', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('Salvar', ['class' => 'btn btn-primary']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
