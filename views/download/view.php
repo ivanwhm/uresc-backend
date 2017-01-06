@@ -35,19 +35,9 @@ $this->params['breadcrumbs'] = [
 <div class="download-view">
 
     <p>
-        <?= Html::a('Novo', ['create'], [
-            'class' => 'btn btn-success'
-        ]) ?>
-        <?= Html::a('Alterar', ['update', 'id' => $model->id], [
-            'class' => 'btn btn-primary'
-        ]) ?>
-        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Deseja excluir este arquivo?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Excluir', ['delete', 'id' => $model->id], ['class' => 'btn btn-danger', 'data' => ['confirm' => 'Deseja excluir este arquivo?', 'method' => 'post']]) ?>
     </p>
 
     <?= DetailView::widget([
