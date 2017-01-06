@@ -14,7 +14,7 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Criar usuário';
+$this->title = 'Adicionar usuário';
 $this->params['breadcrumbs'] = [
     [
         "label" => "Usuários",

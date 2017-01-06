@@ -15,7 +15,7 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Criar categoria de galerias';
+$this->title = 'Adicionar categoria de galerias';
 $this->params['breadcrumbs'] = [
     [
         "label" => "Categorias de galerias",

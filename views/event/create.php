@@ -15,7 +15,7 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Criar evento';
+$this->title = 'Adicionar evento';
 $this->params['breadcrumbs'] = [
     [
         "label" => "Eventos",

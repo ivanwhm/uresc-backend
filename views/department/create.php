@@ -14,7 +14,7 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Criar departamento';
+$this->title = 'Adicionar departamento';
 $this->params['breadcrumbs'] = [
     [
         "label" => "Departamentos",

@@ -15,7 +15,7 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Criar um arquivo';
+$this->title = 'Adicionar um arquivo';
 $this->params['breadcrumbs'] = [
     [
         "label" => "Arquivos",
