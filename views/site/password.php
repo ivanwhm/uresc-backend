@@ -45,12 +45,8 @@ $this->params['breadcrumbs'] = array(
         <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Repita a senha do usuário que irá acessar o sistema.', ['id' => 'hbRepeatNewPassword', 'class' => 'help-block']) ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Alterar', [
-                'class' => 'btn btn-success'
-            ]) ?>
-            <?= Html::a('Cancelar', ['index'], [
-                'class' => 'btn btn-danger',
-            ]) ?>
+            <?= Html::submitButton('Alterar senha', ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Cancelar', ['index'], ['class' => 'btn btn-danger']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
