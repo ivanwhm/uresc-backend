@@ -117,4 +117,14 @@ class Center extends ActiveRecord
         return parent::beforeSave($insert);
     }
 
+    /**
+     * Return all the spiritists centers.
+     *
+     * @return integer
+     */
+    public static function getCenterCount()
+    {
+        return self::find()->count();
+    }
+
 }

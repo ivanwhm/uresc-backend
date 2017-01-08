@@ -8,9 +8,13 @@
 namespace app\controllers;
 
 //Imports
+use app\models\Center;
 use app\models\ChangePasswordForm;
 use app\models\Config;
+use app\models\Contact;
+use app\models\Event;
 use app\models\LoginForm;
+use app\models\News;
 use app\models\UserAccess;
 use Yii;
 use yii\filters\AccessControl;
@@ -51,7 +55,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index',[
+            'contacts' => Contact::getContactsAwaitingAnswer(),
+            'events' => Event::getFurtherEvents(),
+            'centers' => Center::getCenterCount(),
+            'news' => News::getUnpublishedNews()
+        ]);
     }
 
     /**

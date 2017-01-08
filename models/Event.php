@@ -123,4 +123,14 @@ class Event extends ActiveRecord
         return parent::beforeSave($insert);
     }
 
+    /**
+     * Returns all the further events.
+     *
+     * @return integer
+     */
+    public static function getFurtherEvents()
+    {
+        return self::find(['date > now()'])->count();
+    }
+
 }

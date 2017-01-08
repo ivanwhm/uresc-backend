@@ -116,4 +116,14 @@ class News extends ActiveRecord
 
         return parent::beforeSave($insert);
     }
+
+    /**
+     * Returns all the unpublished news.
+     *
+     * @return integer
+     */
+    public static function getUnpublishedNews()
+    {
+        return self::find(['published' => self::PUBLISHED_NO])->count();
+    }
 }

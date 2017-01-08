@@ -91,4 +91,14 @@ class Contact extends ActiveRecord
     {
         return User::findOne(['id' => $this->answer_user_id]);
     }
+
+    /**
+     * Returns all the contacts awaiting answer.
+     *
+     * @return integer
+     */
+    public static function getContactsAwaitingAnswer()
+    {
+        return self::find(['answer_sent' => self::ANSWER_SENT_NO])->count();
+    }
 }
