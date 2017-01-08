@@ -13,6 +13,7 @@
 //Imports
 use app\assets\SBAdmin\SBAdminAsset;
 use app\models\Department;
+use app\models\Page;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -94,7 +95,7 @@ SBAdminAsset::register($this);
                         <i class="fa fa-fw fa-home"></i> Principal
                     </a>
                 </li>
-                <li class="<?= ((Yii::$app->controller->id == "user") || ((Yii::$app->controller->id == "department") && (Yii::$app->controller->action->id !== "info")) || (Yii::$app->controller->id == "download-category") || (Yii::$app->controller->id == "gallery-category") || (Yii::$app->controller->id == "calendar")) ? "active" : "" ?>">
+                <li class="<?= ((Yii::$app->controller->id == "user") || ((Yii::$app->controller->id == "department") && (Yii::$app->controller->action->id !== "info")) || (Yii::$app->controller->id == "download-category") || (Yii::$app->controller->id == "gallery-category") || (Yii::$app->controller->id == "calendar") || ((Yii::$app->controller->id == "page") && (Yii::$app->controller->action->id !== "info")) ) ? "active" : "" ?>">
                     <a href="javascript:;" data-toggle="collapse" data-target="#records">
                         <i class="fa fa-fw fa-pencil-square-o"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i>
                     </a>
@@ -110,6 +111,9 @@ SBAdminAsset::register($this);
                         </li>
                         <li>
                             <a href="<?= Url::to(["department/index"]) ?>"><i class="fa fa-fw fa-files-o"></i> Departamentos</a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(["page/index"]) ?>"><i class="fa fa-fw fa-clipboard"></i> Páginas</a>
                         </li>
                         <li>
                             <a href="<?= Url::to(["user/index"]) ?>"><i class="fa fa-fw fa-user"></i> Usuários</a>
@@ -163,6 +167,23 @@ SBAdminAsset::register($this);
                         <i class="fa fa-fw fa-newspaper-o"></i> Notícias
                     </a>
                 </li>
+                <?php  $pages = Page::getPages() ?>
+                <?php if (count($pages) > 0) : ?>
+                    <li class="<?= ((Yii::$app->controller->id == "page") && (Yii::$app->controller->action->id == "info")) ? "active" : "" ?>">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#page">
+                            <i class="fa fa-fw fa-clipboard"></i> Páginas <i class="fa fa-fw fa-caret-down"></i>
+                        </a>
+                        <ul id="page" class="collapse">
+                            <?php foreach ($pages as $page) : ?>
+                                <li>
+                                    <a href="<?= Url::to(["page/info", 'id' => $page->id]) ?>">
+                                        <i class="fa fa-fw fa-clipboard"></i> <?= $page->name ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
