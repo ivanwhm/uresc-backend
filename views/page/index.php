@@ -41,12 +41,6 @@ $this->params['breadcrumbs'] = [
             'id',
             'name',
             [
-                'attribute' => 'type',
-                'value' => function ($data) {
-                    return Page::$typeData[$data->type];
-                },
-            ],
-            [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {update} {delete}',
                 'buttons' => [

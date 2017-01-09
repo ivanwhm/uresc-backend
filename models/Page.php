@@ -4,7 +4,6 @@
  *
  * @property integer $id Page's ID.
  * @property string $name Page's name.
- * @property string $type Page's type.
  * @property string $text Page's text.
  * @property datetime $date_created Page's date of creation.
  * @property datetime $date_updated Page's date of updated.
@@ -25,21 +24,6 @@ use yii\db\Expression;
 
 class Page extends ActiveRecord
 {
-    const PAGE_TYPE_URE = "U";
-    const PAGE_TYPE_LIGHT_MESSENGERS = "M";
-    const PAGE_THE_SPIRITISM = 'S';
-
-    /**
-     * Returns all the page types.
-     *
-     * @var array
-     */
-    public static $typeData = [
-        self::PAGE_TYPE_URE => "4ª URE",
-        self::PAGE_TYPE_LIGHT_MESSENGERS => "Mensageiros da Luz",
-        self::PAGE_THE_SPIRITISM => 'O Espiritismo'
-    ];
-
     /**
      * @inheritdoc
      */
@@ -54,13 +38,12 @@ class Page extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'type'], 'required'],
+            [['name'], 'required'],
             [['text'], 'required', 'on' => 'info'],
             [['text'], 'string'],
             [['user_created', 'user_updated', 'date_created', 'date_updated'], 'safe'],
             [['user_created', 'user_updated'], 'integer'],
             [['name'], 'string', 'max' => 150],
-            [['type'], 'string', 'max' => 1],
             [['user_created'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_created' => 'id']],
             [['user_updated'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_updated' => 'id']],
         ];
@@ -74,7 +57,6 @@ class Page extends ActiveRecord
         return [
             'id' => 'Código',
             'name' => 'Nome',
-            'type' => 'Tipo',
             'text' => 'Texto da página',
             'date_created' => 'Data da criação',
             'date_updated' => 'Data da última atualização',

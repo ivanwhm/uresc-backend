@@ -46,11 +46,6 @@ $this->params['breadcrumbs'] = [
             'id',
             'name',
             [
-                'attribute' => 'type',
-                'value' => Page::$typeData[$model->type]
-            ],
-            'text',
-            [
                 'attribute' => 'date_created',
                 'format' => ['datetime', 'short']
             ],
