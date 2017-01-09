@@ -42,6 +42,9 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'end_time')->widget(DateControl::classname(), ['type'=>DateControl::FORMAT_TIME]) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe a hora de término do evento.', ['id' => 'hbEndTime', 'class' => 'help-block']) ?>
 
+    <?= $form->field($model, 'place')->textarea(['maxlength' => true, 'rows' => 3, 'aria-describedby' => 'hbPlace']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe o local (endereço) do evento.', ['id' => 'hbPlace', 'class' => 'help-block']) ?>
+
     <?= $form->field($model, 'info')->widget(CKEditor::className()) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Descreva as informações sobre o evento.', ['id' => 'hbInfo', 'class' => 'help-block']) ?>
 

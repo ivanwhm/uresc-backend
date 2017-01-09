@@ -135,6 +135,7 @@ CREATE TABLE `event` (
 `date` date NOT NULL,
 `start_time` time NOT NULL,
 `end_time` time NOT NULL,
+`place` text COLLATE utf8_swedish_ci NOT NULL,
 `info` text COLLATE utf8_swedish_ci,
 `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,

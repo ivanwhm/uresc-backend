@@ -8,7 +8,8 @@
  * @property date $date Event's date.
  * @property time $start_time Event's start time.
  * @property time $end_time Event's end time.
- * @property string $info Event' more information.
+ * @property string $place Event's place.
+ * @property string $info Event's more information.
  * @property datetime $date_created Events's date of creation.
  * @property datetime $date_updated Events's date of updated.
  * @property integer $user_created Events's user created.
@@ -43,10 +44,10 @@ class Event extends ActiveRecord
     public function rules()
     {
         return [
-            [['calendar_id', 'date', 'start_time', 'end_time'], 'required'],
+            [['calendar_id', 'date', 'start_time', 'end_time', 'place'], 'required'],
             [['calendar_id', 'user_created', 'user_updated'], 'integer'],
             [['date_created', 'date_updated', 'user_created', 'user_updated'], 'safe'],
-            [['info'], 'string'],
+            [['info', 'place'], 'string'],
             [['name'], 'string', 'max' => 100],
             [['calendar_id'], 'exist', 'skipOnError' => true, 'targetClass' => Calendar::className(), 'targetAttribute' => ['calendar_id' => 'id']],
             [['user_created'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_created' => 'id']],
@@ -66,6 +67,7 @@ class Event extends ActiveRecord
             'date' => 'Data',
             'start_time' => 'Início',
             'end_time' => 'Término',
+            'place' => 'Local',
             'info' => 'Mais informações',
             'date_created' => 'Data da criação',
             'date_updated' => 'Data da última atualização',
