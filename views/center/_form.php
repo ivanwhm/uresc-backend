@@ -14,6 +14,7 @@ use app\models\Center;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
+use yii\widgets\MaskedInput;
 
 ?>
 
@@ -39,7 +40,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'state')->textInput(['maxlength' => true, 'aria-describedby' => 'hbState']) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe a unidade federativa do centro espírita.', ['id' => 'hbState', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'phone')->textInput(['maxlength' => true, 'aria-describedby' => 'hbPhone']) ?>
+    <?= $form->field($model, 'phone')->widget(MaskedInput::className(), ['mask' => '(99) 9999-9999']) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe o telefone do centro espírita.', ['id' => 'hbPhone', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'aria-describedby' => 'hbEmail']) ?>

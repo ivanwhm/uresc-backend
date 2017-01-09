@@ -46,7 +46,7 @@ $this->params['breadcrumbs'] = [
             'id',
             'name',
             [
-                'attribute' => 'category',
+                'attribute' => 'category_id',
                 'value' => $model->getCategory()->name
             ],
             'address:url',

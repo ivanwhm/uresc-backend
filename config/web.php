@@ -30,6 +30,9 @@ $config = [
             'rules' => [
             ],
         ],
+        'formatter' => [
+            'class' => 'app\components\UreFormatter',
+        ]
     ],
     'modules' => [
         'ckeditor' => [

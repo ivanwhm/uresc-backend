@@ -62,7 +62,7 @@ $this->params['breadcrumbs'] = [
                 'attribute' => 'end_time',
                 'format' => ['time', 'short']
             ],
-            'place',
+            'place:ntext',
             [
                 'attribute' => 'date_created',
                 'format' => ['datetime', 'short']

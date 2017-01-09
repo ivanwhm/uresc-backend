@@ -47,7 +47,7 @@ $this->params['breadcrumbs'] = [
                 'attribute' => 'contact_date',
                 'format' => ['datetime', 'short']
             ],
-            'contact_message',
+            'contact_message:ntext',
             'contact_ip',
             [
                 'attribute' => 'answer_sent',
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'] = [
                 'attribute' => 'answer_user_id',
                 'value' => ($model->getAnswerUser() instanceof User) ? $model->getAnswerUser()->getName() : ''
             ],
-            'answer_message'
+            'answer_message:ntext'
         ],
     ]) ?>
 

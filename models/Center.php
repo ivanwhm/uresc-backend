@@ -51,7 +51,7 @@ class Center extends ActiveRecord
             [['address'], 'string', 'max' => 255],
             [['city', 'email'], 'string', 'max' => 150],
             [['state'], 'string', 'max' => 2],
-            [['phone'], 'string', 'max' => 11],
+            [['phone'], 'string', 'max' => 15],
             [['user_created'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_created' => 'id']],
             [['user_updated'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_updated' => 'id']],
         ];
@@ -113,6 +113,7 @@ class Center extends ActiveRecord
 
         $this->date_updated = new Expression('current_timestamp');
         $this->user_updated = Yii::$app->getUser()->getId();
+        $this->phone = preg_replace("/[^0-9]/", "", $this->phone);
 
         return parent::beforeSave($insert);
     }
