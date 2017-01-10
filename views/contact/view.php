@@ -10,7 +10,6 @@
 
 //Imports
 use app\models\Contact;
-use app\models\User;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -35,7 +34,7 @@ $this->params['breadcrumbs'] = [
 <div class="contact-view">
 
     <p>
-        <?= ($model->getIsNoAnswerSent()) ? Html::a('Responder', ['answer', 'id' => $model->id], ['class' => 'btn btn-success']) : '' ?>
+        <?= (!$model->getIsAnswerSent()) ? Html::a('Responder', ['answer', 'id' => $model->id], ['class' => 'btn btn-success']) : '' ?>
     </p>
 
     <?= DetailView::widget([

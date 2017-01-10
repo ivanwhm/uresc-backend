@@ -155,7 +155,7 @@ class PageController extends Controller
             $model->delete();
         } catch (Exception $ex)
         {
-            throw new NotFoundHttpException('Não é possível excluir a página "'. $model->name .'" selecionada.');
+            throw new NotFoundHttpException('Não é possível excluir a página selecionada.');
         }
 
         return $this->redirect(['index']);

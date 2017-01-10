@@ -7,8 +7,8 @@
  * @property integer $category_id Gallery's category.
  * @property string $address Gallery's file address.
  * @property string $status Gallery's status.
- * @property string $date_created Gallery's date of creation.
- * @property string $date_updated Gallery's date of updated.
+ * @property datetime $date_created Gallery's date of creation.
+ * @property datetime $date_updated Gallery's date of updated.
  * @property integer $user_created Gallery's user created.
  * @property integer $user_updated Gallery's user updated.
  *
@@ -27,18 +27,9 @@ use yii\db\Expression;
 
 class Gallery extends ActiveRecord
 {
+
     const STATUS_ACTIVE = "A";
     const STATUS_INACTIVE = "I";
-
-    /**
-     * Returns all the gallery status.
-     *
-     * @var array
-     */
-    public static $statusData = [
-        self::STATUS_ACTIVE => "Ativo",
-        self::STATUS_INACTIVE => "Inativo"
-    ];
 
     /**
      * @inheritdoc
@@ -140,7 +131,20 @@ class Gallery extends ActiveRecord
      */
     public function getStatus()
     {
-        return ($this->status != '') ? self::$statusData[$this->status] : '';
+        return ($this->status != '') ? self::getStatusData()[$this->status] : '';
+    }
+
+    /**
+     * Returns all the gallery status information.
+     *
+     * @return array
+     */
+    public static function getStatusData()
+    {
+        return [
+            self::STATUS_ACTIVE => "Ativo",
+            self::STATUS_INACTIVE => "Inativo"
+        ];
     }
 
 }

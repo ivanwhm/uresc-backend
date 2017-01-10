@@ -181,7 +181,7 @@ class NewsController extends Controller
         $model->published = News::PUBLISHED_YES;
         $model->save(false);
 
-        return $this->redirect(['index']);
+        return $this->redirect(['view', 'id' => $model->id]);
     }
 
     /**
@@ -197,6 +197,6 @@ class NewsController extends Controller
         $model->published = News::PUBLISHED_NO;
         $model->save(false);
 
-        return $this->redirect(['index']);
+        return $this->redirect(['view', 'id' => $model->id]);
     }
 }

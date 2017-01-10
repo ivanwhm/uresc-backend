@@ -91,7 +91,7 @@ class Event extends ActiveRecord
     }
 
     /**
-     * Returns the user that created the calendar.
+     * Returns the user that created the event.
      *
      * @return User
      */
@@ -101,7 +101,7 @@ class Event extends ActiveRecord
     }
 
     /**
-     * Returns the user that updated the calendar.
+     * Returns the user that updated the event.
      *
      * @return User
      */

@@ -3,7 +3,6 @@
  * Displays the update page to configuration info.
  *
  * @var $this View
- * @var $model User
  * @var $model Config
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
@@ -11,8 +10,6 @@
 
 //Imports
 use app\models\Config;
-use app\models\User;
-use wadeshuler\ckeditor\widgets\CKEditor;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -44,7 +41,7 @@ $this->params['breadcrumbs'] = [
         <?= $form->field($model, 'phrase_author')->textInput(['maxlength' => true, 'aria-describedby' => 'hbAuthorPhrase']) ?>
         <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Descreva o autor da frase a ser exibida no cabeçalho da página principal.', ['id' => 'hbAuthorPhrase', 'class' => 'help-block']) ?>
 
-        <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> Última alteração em ' . Yii::$app->getFormatter()->asDatetime($model->date_updated, 'short') . ' por ' . $model->getUserUpdated()->getName() . '.', ['class' => 'help-block']) ?>
+        <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> Última alteração em ' . Yii::$app->getFormatter()->asDatetime($model->date_updated) . ' por ' . $model->getUserUpdated()->getName() . '.', ['class' => 'help-block']) ?>
 
 
         <div class="form-group">

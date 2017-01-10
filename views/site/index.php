@@ -1,4 +1,13 @@
 <?php
+/**
+ * This file is responsible to show index default page.
+ *
+ * @var $this View
+ *
+ * @author Ivan Wilhelm <ivan.whm@me.com>
+ */
+
+//Imports
 use yii\helpers\Url;
 
 $this->title = 'Principal';

@@ -4,7 +4,7 @@
  *
  * @property integer $user_access_id Unique code of user`s access
  * @property integer $user_id Unique code of user
- * @property string $date Date of connection
+ * @property datetime $date Date of connection
  * @property string $ip IP of user
  * @property string $type Type of the connection
  *
@@ -18,7 +18,6 @@ namespace app\models;
 //Imports
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
-use app\models\User;
 
 class UserAccess extends ActiveRecord
 {
@@ -66,7 +65,7 @@ class UserAccess extends ActiveRecord
     /**
      * Returns the information about the user.
      *
-     * @return ActiveQuery
+     * @return User
      */
     public function getUser()
     {

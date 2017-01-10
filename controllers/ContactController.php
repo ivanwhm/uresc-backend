@@ -9,7 +9,6 @@ namespace app\controllers;
 
 //Imports
 use app\models\Contact;
-use Exception;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\db\Expression;
@@ -107,9 +106,9 @@ class ContactController extends Controller
     {
         $model = $this->findModel($id);
 
-        if (!$model->getIsNoAnswerSent())
+        if ($model->getIsAnswerSent())
         {
-            throw new NotFoundHttpException('Este contato já foi respondido.');
+            throw new NotFoundHttpException('Esta mensagem já foi respondida.');
         }
 
         if ($model->load(Yii::$app->request->post()))

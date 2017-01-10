@@ -6,7 +6,7 @@
  * @property string $phrase Phrase that will be presented in header page.
  * @property string $phrase_author Author of the phrase that will be presented in header page.
  * @property string $page_title Title of the main page.
- * @property string $date_updated Config's date of updated.
+ * @property datetime $date_updated Config's date of updated.
  * @property integer $user_updated Config's user updated.
  *
  * @property User $userUpdated User that updated the calendar.

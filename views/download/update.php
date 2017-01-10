@@ -3,15 +3,13 @@
  * Displays the update page to Download CRUD.
  *
  * @var $this View
- * @var $model User
  * @var $model Download
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports
-use app\models\DownloadCategory;
-use app\models\User;
+use app\models\Download;
 use yii\helpers\Url;
 use yii\web\View;
 

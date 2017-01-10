@@ -5,8 +5,8 @@
  * @property integer $id Calendar's unique ID.
  * @property string $name Calendar's name
  * @property string $status Calendar's status.
- * @property string $date_created Calendar's date of creation.
- * @property string $date_updated Calendar's date of updated.
+ * @property datetime $date_created Calendar's date of creation.
+ * @property datetime $date_updated Calendar's date of updated.
  * @property integer $user_created Calendar's user created.
  * @property integer $user_updated Calendar's user updated.
  *
@@ -26,16 +26,6 @@ class Calendar extends ActiveRecord
 {
     const STATUS_ACTIVE = "A";
     const STATUS_INACTIVE = "I";
-
-    /**
-     * Returns all the download category status.
-     *
-     * @var array
-     */
-    public static $statusData = [
-        self::STATUS_ACTIVE => "Ativo",
-        self::STATUS_INACTIVE => "Inativo"
-    ];
 
     /**
      * @inheritdoc
@@ -118,7 +108,7 @@ class Calendar extends ActiveRecord
     }
 
     /**
-     * Returns all the information about calendars.
+     * Returns all the information about calendar categories.
      *
      * @return array
      */
@@ -134,12 +124,25 @@ class Calendar extends ActiveRecord
     }
 
     /**
-     * Return the description of calendar status.
+     * Return the description of the calendar status.
      *
      * @return string
      */
     public function getStatus()
     {
-        return ($this->status != '') ? Calendar::$statusData[$this->status] : '';
+        return ($this->status != '') ? Calendar::getStatusData()[$this->status] : '';
+    }
+
+    /**
+     * Returns all the calendar status information.
+     *
+     * @return array
+     */
+    public static function getStatusData()
+    {
+        return [
+            self::STATUS_ACTIVE => "Ativo",
+            self::STATUS_INACTIVE => "Inativo"
+        ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * ChangePasswordForm is the model behind the site page to change the user' password.
+ * ChangePasswordForm is the model behind the site page to change the user's password.
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -14,16 +14,22 @@ use yii\base\Model;
 class ChangePasswordForm extends Model
 {
     /**
-     * @var string $oldPassword Old password
+     * Old password.
+     *
+     * @var string $oldPassword
      */
     public $oldPassword;
 
     /**
-     * @var string $newPassword New password
+     * New password.
+     *
+     * @var string $newPassword
      */
     public $newPassword;
 
     /**
+     * Repeat New password.
+     *
      * @var string $repeatNewPassword
      */
     public $repeatNewPassword;
@@ -61,10 +67,12 @@ class ChangePasswordForm extends Model
      */
     public function validatePassword($attribute, $params)
     {
-        if (!$this->hasErrors()) {
+        if (!$this->hasErrors())
+        {
             $user = Yii::$app->getUser()->getIdentity();
 
-            if (!$user || !$user->validateAuthKey($this->oldPassword)) {
+            if (!$user || !$user->validateAuthKey($this->oldPassword))
+            {
                 $this->addError($attribute, 'A senha atual não é válida.');
             }
         }

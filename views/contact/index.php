@@ -9,7 +9,6 @@
  */
 
 //Imports
-use app\models\Contact;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -56,7 +55,7 @@ $this->params['breadcrumbs'] = [
                 ],
                 'visibleButtons' => [
                     'answer' => function ($model, $key, $index) {
-                        return $model->getIsNoAnswerSent();
+                        return !$model->getIsAnswerSent();
                     },
                 ],
             ],

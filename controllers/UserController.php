@@ -86,7 +86,7 @@ class UserController extends Controller
         $model->password = '';
         $model->new_password = '';
         $model->status = User::STATUS_ACTIVE;
-        $model->config = User::CONFIG_NO;
+        $model->can_config = User::CONFIG_NO;
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {

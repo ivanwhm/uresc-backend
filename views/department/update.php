@@ -3,14 +3,13 @@
  * Displays the update page to Department CRUD.
  *
  * @var $this View
- * @var $model User
  * @var $model Department
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports
-use app\models\User;
+use app\models\Department;
 use yii\helpers\Url;
 use yii\web\View;
 

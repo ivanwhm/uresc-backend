@@ -10,8 +10,6 @@
 
 //Imports
 use app\models\Event;
-use app\models\User;
-use app\models\Calendar;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;

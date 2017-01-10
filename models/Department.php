@@ -6,8 +6,8 @@
  * @property string $name Department's name
  * @property string $status Department's status.
  * @property string $info Department's text.
- * @property string $date_created Department's date of creation.
- * @property string $date_updated Department's date of updated.
+ * @property datetime $date_created Department's date of creation.
+ * @property datetime $date_updated Department's date of updated.
  * @property integer $user_created Department's user created.
  * @property integer $user_updated Department's user updated.
  *
@@ -21,7 +21,6 @@ namespace app\models;
 
 //Imports
 use Yii;
-use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 
@@ -30,16 +29,6 @@ class Department extends ActiveRecord
 
     const STATUS_ACTIVE = "A";
     const STATUS_INACTIVE = "I";
-
-    /**
-     * Returns all the user status.
-     *
-     * @var array
-     */
-    public static $statusData = [
-        self::STATUS_ACTIVE => "Ativo",
-        self::STATUS_INACTIVE => "Inativo"
-    ];
 
     /**
      * @inheritdoc
@@ -88,7 +77,7 @@ class Department extends ActiveRecord
     /**
      * Returns the user that created the department.
      *
-     * @return ActiveQuery
+     * @return User
      */
     public function getUserCreated()
     {
@@ -98,7 +87,7 @@ class Department extends ActiveRecord
     /**
      * Returns the user that updated the department.
      *
-     * @return ActiveQuery
+     * @return User
      */
     public function getUserUpdated()
     {
@@ -132,13 +121,26 @@ class Department extends ActiveRecord
     }
 
     /**
+     * Returns all the department status information.
+     *
+     * @return array
+     */
+    public static function getStatusData()
+    {
+        return [
+            self::STATUS_ACTIVE => "Ativo",
+            self::STATUS_INACTIVE => "Inativo"
+        ];
+    }
+
+    /**
      * Return the description of department status.
      *
      * @return string
      */
     public function getStatus()
     {
-        return ($this->status != '') ? self::$statusData[$this->status] : '';
+        return ($this->status != '') ? self::getStatusData()[$this->status] : '';
     }
 
 }

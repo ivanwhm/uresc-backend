@@ -42,26 +42,6 @@ class User extends ActiveRecord implements IdentityInterface
     const CONFIG_NO = "N";
 
     /**
-     * Returns all the user status.
-     *
-     * @var array
-     */
-    public static $statusData = [
-        self::STATUS_ACTIVE => "Ativo",
-        self::STATUS_INACTIVE => "Inativo"
-    ];
-
-    /**
-     * Returns all the config options.
-     *
-     * @var array
-     */
-    public static $configData = [
-        self::CONFIG_YES => 'Sim',
-        self::CONFIG_NO => 'Não'
-    ];
-
-    /**
      * Attribute used to compare passwords.
      *
      * @var string
@@ -297,7 +277,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Returns the information about the user that created the record.
      *
-     * @return ActiveQuery
+     * @return User
      */
     public function getUserCreated()
     {
@@ -307,7 +287,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Returns the information about the user of the last record updated.
      *
-     * @return ActiveQuery
+     * @return User
      */
     public function getUserUpdated()
     {
@@ -342,7 +322,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getStatus()
     {
-        return ($this->status != '') ? self::$statusData[$this->status] : '';
+        return ($this->status != '') ? self::getStatusData()[$this->status] : '';
     }
 
     /**
@@ -352,7 +332,33 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getCanConfig()
     {
-        return ($this->can_config != '') ? self::$configData[$this->can_config] : '';
+        return ($this->can_config != '') ? self::getCanConfigData()[$this->can_config] : '';
+    }
+
+    /**
+     * Returns all the user status information.
+     *
+     * @return array
+     */
+    public static function getStatusData()
+    {
+        return [
+            self::STATUS_ACTIVE => "Ativo",
+            self::STATUS_INACTIVE => "Inativo"
+        ];
+    }
+
+    /**
+     * Returns all the config options.
+     *
+     * @return array
+     */
+    public static function getCanConfigData()
+    {
+        return [
+            self::CONFIG_YES => 'Sim',
+            self::CONFIG_NO => 'Não'
+        ];
     }
 }
 

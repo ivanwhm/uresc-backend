@@ -3,7 +3,6 @@
  * Displays the update page to department info.
  *
  * @var $this View
- * @var $model User
  * @var $model Department
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
@@ -11,7 +10,6 @@
 
 //Imports
 use app\models\Department;
-use app\models\User;
 use wadeshuler\ckeditor\widgets\CKEditor;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -37,7 +35,7 @@ $this->params['breadcrumbs'] = [
 
         <?= $form->field($model, 'info')->widget(CKEditor::className()) ?>
         <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Descreva o texto relacionado ao departamento.', ['id' => 'hbName', 'class' => 'help-block']) ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> Última alteração em ' . Yii::$app->getFormatter()->asDatetime($model->date_updated, 'short') . ' por ' . $model->getUserUpdated()->getName() . '.', ['class' => 'help-block']) ?>
+        <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> Última alteração em ' . Yii::$app->getFormatter()->asDatetime($model->date_updated) . ' por ' . $model->getUserUpdated()->getName() . '.', ['class' => 'help-block']) ?>
 
 
         <div class="form-group">

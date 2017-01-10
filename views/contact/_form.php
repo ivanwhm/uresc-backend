@@ -34,8 +34,12 @@ use yii\widgets\ActiveForm;
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Descreva o texto da resposta.', ['id' => 'hbAnswerMessage', 'class' => 'help-block']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Responder', ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Cancelar', ['view', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
+        <?= Html::submitButton('Responder', [
+                'class' => 'btn btn-primary'
+        ]) ?>
+        <?= Html::a('Cancelar', ['view', 'id' => $model->id], [
+                'class' => 'btn btn-danger'
+        ]) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

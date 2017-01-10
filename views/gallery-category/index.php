@@ -9,7 +9,6 @@
  */
 
 //Imports
-use app\models\GalleryCategory;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;

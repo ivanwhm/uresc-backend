@@ -5,8 +5,8 @@
  * @property integer $id Gallery category's unique ID.
  * @property string $name Gallery category's name
  * @property string $status Gallery category's status.
- * @property string $date_created Gallery category's date of creation.
- * @property string $date_updated Gallery category's date of updated.
+ * @property datetime $date_created Gallery category's date of creation.
+ * @property datetime $date_updated Gallery category's date of updated.
  * @property integer $user_created Gallery category's user created.
  * @property integer $user_updated Gallery category's user updated.
  *
@@ -27,16 +27,6 @@ class GalleryCategory extends ActiveRecord
 
     const STATUS_ACTIVE = "A";
     const STATUS_INACTIVE = "I";
-
-    /**
-     * Returns all the gallery category status.
-     *
-     * @var array
-     */
-    public static $statusData = [
-        self::STATUS_ACTIVE => "Ativo",
-        self::STATUS_INACTIVE => "Inativo"
-    ];
 
     /**
      * @inheritdoc
@@ -119,6 +109,8 @@ class GalleryCategory extends ActiveRecord
     }
 
     /**
+     * Returns all the gallery categories.
+     *
      * @return array
      */
     public static function getGalleryCategories()
@@ -132,14 +124,26 @@ class GalleryCategory extends ActiveRecord
         return $all;
     }
 
+    /**
+     * Returns all the gallery category status.
+     *
+     * @return array
+     */
+    public static function getStatusData()
+    {
+        return [
+            self::STATUS_ACTIVE => "Ativo",
+            self::STATUS_INACTIVE => "Inativo"
+        ];
+    }
 
     /**
-     * Return the description of gallery category status.
+     * Returns the description of gallery category status.
      *
      * @return string
      */
     public function getStatus()
     {
-        return ($this->status != '') ? self::$statusData[$this->status] : '';
+        return ($this->status != '') ? self::getStatusData()[$this->status] : '';
     }
 }

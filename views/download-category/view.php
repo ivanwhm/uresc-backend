@@ -10,7 +10,6 @@
 
 //Imports
 use app\models\DownloadCategory;
-use app\models\User;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;

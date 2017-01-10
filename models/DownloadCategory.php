@@ -5,8 +5,8 @@
  * @property integer $id Download category's unique ID.
  * @property string $name Download category's name
  * @property string $status Download category's status.
- * @property string $date_created Download category's date of creation.
- * @property string $date_updated Download category's date of updated.
+ * @property datetime $date_created Download category's date of creation.
+ * @property datetime $date_updated Download category's date of updated.
  * @property integer $user_created Download category's user created.
  * @property integer $user_updated Download category's user updated.
  *
@@ -20,7 +20,6 @@ namespace app\models;
 
 //Imports
 use Yii;
-use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 
@@ -29,16 +28,6 @@ class DownloadCategory extends ActiveRecord
 
     const STATUS_ACTIVE = "A";
     const STATUS_INACTIVE = "I";
-
-    /**
-     * Returns all the download category status.
-     *
-     * @var array
-     */
-    public static $statusData = [
-        self::STATUS_ACTIVE => "Ativo",
-        self::STATUS_INACTIVE => "Inativo"
-    ];
 
     /**
      * @inheritdoc
@@ -85,7 +74,7 @@ class DownloadCategory extends ActiveRecord
     /**
      * Returns the user that created the download category.
      *
-     * @return ActiveQuery
+     * @return User
      */
     public function getUserCreated()
     {
@@ -95,7 +84,7 @@ class DownloadCategory extends ActiveRecord
     /**
      * Returns the user that updated the download category.
      *
-     * @return ActiveQuery
+     * @return User
      */
     public function getUserUpdated()
     {
@@ -121,6 +110,8 @@ class DownloadCategory extends ActiveRecord
     }
 
     /**
+     * Returns all the download categories.
+     *
      * @return array
      */
     public static function getDownloadCategories()
@@ -135,12 +126,25 @@ class DownloadCategory extends ActiveRecord
     }
 
     /**
+     * Returns all the download category status information.
+     *
+     * @return array
+     */
+    public static function getStatusData()
+    {
+        return [
+            self::STATUS_ACTIVE => "Ativo",
+            self::STATUS_INACTIVE => "Inativo"
+        ];
+    }
+
+    /**
      * Return the description of download category status.
      *
      * @return string
      */
     public function getStatus()
     {
-        return ($this->status != '') ? self::$statusData[$this->status] : '';
+        return ($this->status != '') ? self::getStatusData()[$this->status] : '';
     }
 }

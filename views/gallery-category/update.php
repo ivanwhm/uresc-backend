@@ -3,7 +3,6 @@
  * Displays the update page to Gallery Category CRUD.
  *
  * @var $this View
- * @var $model User
  * @var $model GalleryCategory
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
@@ -11,7 +10,6 @@
 
 //Imports
 use app\models\GalleryCategory;
-use app\models\User;
 use yii\helpers\Url;
 use yii\web\View;
 

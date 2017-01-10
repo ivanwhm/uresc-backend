@@ -7,8 +7,8 @@
  * @property integer $category_id Download's category.
  * @property string $address Download's file address.
  * @property string $status Download's status.
- * @property string $date_created Download's date of creation.
- * @property string $date_updated Download's date of updated.
+ * @property datetime $date_created Download's date of creation.
+ * @property datetime $date_updated Download's date of updated.
  * @property integer $user_created Download's user created.
  * @property integer $user_updated Download's user updated.
  *
@@ -29,16 +29,6 @@ class Download extends ActiveRecord
 {
     const STATUS_ACTIVE = "A";
     const STATUS_INACTIVE = "I";
-
-    /**
-     * Returns all the download status.
-     *
-     * @var array
-     */
-    public static $statusData = [
-        self::STATUS_ACTIVE => "Ativo",
-        self::STATUS_INACTIVE => "Inativo"
-    ];
 
     /**
      * @inheritdoc
@@ -88,7 +78,7 @@ class Download extends ActiveRecord
     }
 
     /**
-     * Return the download's category.
+     * Return the download categories model.
      *
      * @return DownloadCategory
      */
@@ -135,12 +125,25 @@ class Download extends ActiveRecord
     }
 
     /**
+     * Returns all the download status information.
+     *
+     * @return array
+     */
+    public static function getStatusData()
+    {
+        return [
+            self::STATUS_ACTIVE => "Ativo",
+            self::STATUS_INACTIVE => "Inativo"
+        ];
+    }
+
+    /**
      * Return the description of download status.
      *
      * @return string
      */
     public function getStatus()
     {
-        return ($this->status != '') ? self::$statusData[$this->status] : '';
+        return ($this->status != '') ? self::getStatusData()[$this->status] : '';
     }
 }

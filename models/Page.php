@@ -68,7 +68,7 @@ class Page extends ActiveRecord
     }
 
     /**
-     * Returns the user that created the calendar.
+     * Returns the user that created the page.
      *
      * @return User
      */
@@ -78,7 +78,7 @@ class Page extends ActiveRecord
     }
 
     /**
-     * Returns the user that updated the calendar.
+     * Returns the user that updated the page.
      *
      * @return User
      */

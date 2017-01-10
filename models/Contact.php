@@ -8,7 +8,7 @@
  * @property datetime $contact_date Contact's date.
  * @property string $contact_ip Contact's IP.
  * @property string $answer_message Contact's answer message.
- * @property string $answer_date Contact's answer date.
+ * @property datetime $answer_date Contact's answer date.
  * @property integer $answer_user_id Contact's answer user.
  * @property string $answer_sent Contact's answer sent?
  *
@@ -27,16 +27,6 @@ class Contact extends ActiveRecord
 
     const ANSWER_SENT_YES = "Y";
     const ANSWER_SENT_NO = "N";
-
-    /**
-     * Returns all the answer sent options.
-     *
-     * @var array
-     */
-    public static $answerSentData = [
-        self::ANSWER_SENT_YES => "Sim",
-        self::ANSWER_SENT_NO => "Não"
-    ];
 
     /**
      * @inheritdoc
@@ -82,7 +72,6 @@ class Contact extends ActiveRecord
         ];
     }
 
-
     /**
      * Returns the user that answered the contact's message.
      *
@@ -104,13 +93,26 @@ class Contact extends ActiveRecord
     }
 
     /**
+     * Returns all the answer sent description options.
+     *
+     * @return array
+     */
+    public static function getSentData()
+    {
+        return [
+            self::ANSWER_SENT_YES => "Sim",
+            self::ANSWER_SENT_NO => "Não"
+        ];
+    }
+
+    /**
      * Return the description of the answer sent information.
      *
      * @return string
      */
     public function getAnswerSent()
     {
-        return ($this->answer_sent != '') ? self::$answerSentData[$this->answer_sent] : '';
+        return ($this->answer_sent != '') ? self::getSentData()[$this->answer_sent] : '';
     }
 
     /**
@@ -118,8 +120,8 @@ class Contact extends ActiveRecord
      *
      * @return bool
      */
-    public function getIsNoAnswerSent()
+    public function getIsAnswerSent()
     {
-        return $this->answer_sent === self::ANSWER_SENT_NO;
+        return $this->answer_sent === self::ANSWER_SENT_YES;
     }
 }

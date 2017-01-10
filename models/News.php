@@ -30,16 +30,6 @@ class News extends ActiveRecord
     const PUBLISHED_NO = "N";
 
     /**
-     * Returns all the published options.
-     *
-     * @var array
-     */
-    public static $publishedData = [
-        self::PUBLISHED_YES => "Sim",
-        self::PUBLISHED_NO => "Não"
-    ];
-
-    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -130,13 +120,26 @@ class News extends ActiveRecord
     }
 
     /**
+     * Returns all the published options.
+     *
+     * @return array
+     */
+    public static function getPublishedData()
+    {
+        return [
+            self::PUBLISHED_YES => "Sim",
+            self::PUBLISHED_NO => "Não"
+        ];
+    }
+
+    /**
      * Return the published description of the news.
      *
      * @return string
      */
     public function getPublished()
     {
-        return ($this->published != '') ? self::$publishedData[$this->published] : '';
+        return ($this->published != '') ? self::getPublishedData()[$this->published] : '';
     }
 
     /**

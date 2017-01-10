@@ -3,7 +3,6 @@
  * Displays the update page to Event CRUD.
  *
  * @var $this View
- * @var $model User
  * @var $model Event
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
@@ -11,7 +10,6 @@
 
 //Imports
 use app\models\Event;
-use app\models\User;
 use yii\helpers\Url;
 use yii\web\View;
 
