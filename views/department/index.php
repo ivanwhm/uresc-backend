@@ -42,7 +42,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'status',
                 'value' => function ($data) {
-                    return \app\models\Department::$statusData[$data->status];
+                    return $data->getStatus();
                 },
             ],
             [

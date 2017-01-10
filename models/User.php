@@ -113,7 +113,9 @@ class User extends ActiveRecord implements IdentityInterface
             'date_created' => 'Data da criação',
             'date_updated' => 'Data da última atualização',
             'user_created' => 'Usuário que criou',
-            'user_updated' => 'Usuário da última atualização'
+            'user_updated' => 'Usuário da última atualização',
+            'usercreated.name' => 'Usuário que criou',
+            'userupdated.name' => 'Usuário da última atualização',
         ];
     }
 
@@ -333,5 +335,24 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->can_config == self::CONFIG_YES;
     }
 
+    /**
+     * Returns the status description of the user.
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return ($this->status != '') ? self::$statusData[$this->status] : '';
+    }
+
+    /**
+     * Returns the can config description of the user.
+     *
+     * @return string
+     */
+    public function getCanConfig()
+    {
+        return ($this->can_config != '') ? self::$configData[$this->can_config] : '';
+    }
 }
 

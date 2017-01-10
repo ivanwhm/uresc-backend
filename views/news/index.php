@@ -43,7 +43,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'published',
                 'value' => function ($data) {
-                    return News::$publishedData[$data->published];
+                    return $data->getPublished();
                 },
             ],
             [
@@ -90,13 +90,13 @@ $this->params['breadcrumbs'] = [
                 ],
                 'visibleButtons' => [
                     'update' => function ($model, $key, $index) {
-                        return $model->published === News::PUBLISHED_NO;
+                        return !$model->getIsPublished();
                     },
                     'published' => function ($model, $key, $index) {
-                        return $model->published === News::PUBLISHED_NO;
+                        return !$model->getIsPublished();
                     },
                     'unpublished' => function ($model, $key, $index) {
-                        return $model->published === News::PUBLISHED_YES;
+                        return $model->getIsPublished();
                     }
                 ]
             ],

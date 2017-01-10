@@ -79,7 +79,7 @@ class ContactController extends Controller
      * If the model is not found, a 404 HTTP exception will be thrown.
      *
      * @param integer $id Contact ID
-     * @return News
+     * @return Contact
      *
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -107,7 +107,7 @@ class ContactController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->answer_sent == Contact::ANSWER_SENT_YES)
+        if (!$model->getIsNoAnswerSent())
         {
             throw new NotFoundHttpException('Este contato já foi respondido.');
         }

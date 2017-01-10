@@ -56,7 +56,8 @@ class Config extends ActiveRecord
             'phrase_author' => 'Autor da frase principal',
             'page_title' => 'Título da página principal',
             'date_updated' => 'Data da última atualização',
-            'user_updated' => 'Usuário da última atualização'
+            'user_updated' => 'Usuário da última atualização',
+            'userupdated.name' => 'Usuário da última atualização',
         ];
     }
 

@@ -40,16 +40,11 @@ $this->params['breadcrumbs'] = [
             ],
             'id',
             'name',
-            [
-                'attribute' => 'category_id',
-                'value' => function ($data) {
-                    return $data->getCategory()->name;
-                },
-            ],
+            'category.name',
             [
                 'attribute' => 'status',
                 'value' => function ($data) {
-                    return Gallery::$statusData[$data->status];
+                    return $data->getStatus();
                 },
             ],
             [

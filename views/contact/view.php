@@ -35,7 +35,7 @@ $this->params['breadcrumbs'] = [
 <div class="contact-view">
 
     <p>
-        <?= ($model->answer_sent == Contact::ANSWER_SENT_NO) ? Html::a('Responder', ['answer', 'id' => $model->id], ['class' => 'btn btn-success']) : '' ?>
+        <?= ($model->getIsNoAnswerSent()) ? Html::a('Responder', ['answer', 'id' => $model->id], ['class' => 'btn btn-success']) : '' ?>
     </p>
 
     <?= DetailView::widget([
@@ -43,24 +43,15 @@ $this->params['breadcrumbs'] = [
         'attributes' => [
             'id',
             'contact_email:email',
-            [
-                'attribute' => 'contact_date',
-                'format' => ['datetime', 'short']
-            ],
+            'contact_date:datetime',
             'contact_message:ntext',
             'contact_ip',
             [
                 'attribute' => 'answer_sent',
-                'value' => Contact::$answerSentData[$model->answer_sent]
+                'value' => $model->getAnswerSent()
             ],
-            [
-                'attribute' => 'answer_date',
-                'format' => ['datetime', 'short']
-            ],
-            [
-                'attribute' => 'answer_user_id',
-                'value' => ($model->getAnswerUser() instanceof User) ? $model->getAnswerUser()->getName() : ''
-            ],
+            'answer_date:datetime',
+            'answeruser.name',
             'answer_message:ntext'
         ],
     ]) ?>

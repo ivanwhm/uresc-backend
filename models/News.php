@@ -77,7 +77,9 @@ class News extends ActiveRecord
             'date_created' => 'Data da criação',
             'date_updated' => 'Data da última atualização',
             'user_created' => 'Usuário que criou',
-            'user_updated' => 'Usuário da última atualização'
+            'user_updated' => 'Usuário da última atualização',
+            'usercreated.name' => 'Usuário que criou',
+            'userupdated.name' => 'Usuário da última atualização',
         ];
     }
 
@@ -125,5 +127,25 @@ class News extends ActiveRecord
     public static function getUnpublishedNews()
     {
         return self::find(['published' => self::PUBLISHED_NO])->count();
+    }
+
+    /**
+     * Return the published description of the news.
+     *
+     * @return string
+     */
+    public function getPublished()
+    {
+        return ($this->published != '') ? self::$publishedData[$this->published] : '';
+    }
+
+    /**
+     * Return if the news was published.
+     *
+     * @return bool
+     */
+    public function getIsPublished()
+    {
+        return $this->published == self::PUBLISHED_YES;
     }
 }

@@ -32,6 +32,10 @@ $config = [
         ],
         'formatter' => [
             'class' => 'app\components\UreFormatter',
+            'datetimeFormat' => 'short',
+            'dateFormat' => 'short',
+            'timeFormat' => 'short',
+            'nullDisplay' => ''
         ]
     ],
     'modules' => [

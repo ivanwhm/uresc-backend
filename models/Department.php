@@ -79,7 +79,9 @@ class Department extends ActiveRecord
             'date_created' => 'Data da criação',
             'date_updated' => 'Data da última atualização',
             'user_created' => 'Usuário que criou',
-            'user_updated' => 'Usuário da última atualização'
+            'user_updated' => 'Usuário da última atualização',
+            'usercreated.name' => 'Usuário que criou',
+            'userupdated.name' => 'Usuário da última atualização',
         ];
     }
 
@@ -127,6 +129,16 @@ class Department extends ActiveRecord
     public static function getDepartments()
     {
         return self::find(['status' => self::STATUS_ACTIVE])->orderBy('name')->all();
+    }
+
+    /**
+     * Return the description of department status.
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return ($this->status != '') ? self::$statusData[$this->status] : '';
     }
 
 }

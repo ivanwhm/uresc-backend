@@ -46,39 +46,15 @@ $this->params['breadcrumbs'] = [
         'attributes' => [
             'id',
             'name',
-            [
-                'attribute' => 'calendar_id',
-                'value' => ($model->getCalendar() instanceof Calendar) ? $model->getCalendar()->name : ''
-            ],
-            [
-                'attribute' => 'date',
-                'format' => ['date', 'short']
-            ],
-            [
-                'attribute' => 'start_time',
-                'format' => ['time', 'short']
-            ],
-            [
-                'attribute' => 'end_time',
-                'format' => ['time', 'short']
-            ],
+            'calendar.name',
+            'date:date',
+            'start_time:time',
+            'end_time:time',
             'place:ntext',
-            [
-                'attribute' => 'date_created',
-                'format' => ['datetime', 'short']
-            ],
-            [
-                'attribute' => 'user_created',
-                'value' => ($model->getUserCreated() instanceof User) ? $model->getUserCreated()->getName() : ''
-            ],
-            [
-                'attribute' => 'date_updated',
-                'format' => ['datetime', 'short']
-            ],
-            [
-                'attribute' => 'user_updated',
-                'value' => ($model->getUserUpdated() instanceof User) ? $model->getUserUpdated()->getName() : ''
-            ],
+            'date_created:datetime',
+            'usercreated.name',
+            'date_updated:datetime',
+            'userupdated.name',
         ],
     ]) ?>
 

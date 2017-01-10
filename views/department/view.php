@@ -47,24 +47,12 @@ $this->params['breadcrumbs'] = [
             'name',
             [
                 'attribute' => 'status',
-                'value' => Department::$statusData[$model->status]
+                'value' => $model->getStatus()
             ],
-            [
-                'attribute' => 'date_created',
-                'format' => ['datetime', 'short']
-            ],
-            [
-                'attribute' => 'user_created',
-                'value' => ($model->getUserCreated() instanceof User) ? $model->getUserCreated()->getName() : ''
-            ],
-            [
-                'attribute' => 'date_updated',
-                'format' => ['datetime', 'short']
-            ],
-            [
-                'attribute' => 'user_updated',
-                'value' => ($model->getUserUpdated() instanceof User) ? $model->getUserUpdated()->getName() : ''
-            ],
+            'date_created:datetime',
+            'usercreated.name',
+            'date_updated:datetime',
+            'userupdated.name',
         ],
     ]) ?>
 

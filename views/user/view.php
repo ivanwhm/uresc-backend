@@ -48,28 +48,16 @@ $this->params['breadcrumbs'] = [
             'username',
             [
                 'attribute' => 'status',
-                'value' => User::$statusData[$model->status]
+                'value' => $model->getStatus()
             ],
             [
                 'attribute' => 'can_config',
-                'value' => User::$configData[$model->can_config]
+                'value' => $model->getCanConfig()
             ],
-            [
-                'attribute' => 'date_created',
-                'format' => ['datetime', 'short']
-            ],
-            [
-                'attribute' => 'user_created',
-                'value' => ($model->getUserCreated() instanceof User) ? $model->getUserCreated()->getName() : ''
-            ],
-            [
-                'attribute' => 'date_updated',
-                'format' => ['datetime', 'short']
-            ],
-            [
-                'attribute' => 'user_updated',
-                'value' => ($model->getUserUpdated() instanceof User) ? $model->getUserUpdated()->getName() : ''
-            ],
+            'date_created:datetime',
+            'usercreated.name',
+            'date_updated:datetime',
+            'userupdated.name',
         ],
     ]) ?>
 

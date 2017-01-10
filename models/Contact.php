@@ -77,6 +77,7 @@ class Contact extends ActiveRecord
             'answer_message' => 'Resposta',
             'answer_date' => 'Data da resposta',
             'answer_user_id' => 'Usuário que respondeu',
+            'answeruser.name' => 'Usuário que respondeu',
             'answer_sent' => 'Respondido?',
         ];
     }
@@ -100,5 +101,25 @@ class Contact extends ActiveRecord
     public static function getContactsAwaitingAnswer()
     {
         return self::find(['answer_sent' => self::ANSWER_SENT_NO])->count();
+    }
+
+    /**
+     * Return the description of the answer sent information.
+     *
+     * @return string
+     */
+    public function getAnswerSent()
+    {
+        return ($this->answer_sent != '') ? self::$answerSentData[$this->answer_sent] : '';
+    }
+
+    /**
+     * Returns if the answer was sent.
+     *
+     * @return bool
+     */
+    public function getIsNoAnswerSent()
+    {
+        return $this->answer_sent === self::ANSWER_SENT_NO;
     }
 }

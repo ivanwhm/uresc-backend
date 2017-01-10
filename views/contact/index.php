@@ -36,15 +36,12 @@ $this->params['breadcrumbs'] = [
             ],
             'id',
             'contact_email:email',
-            [
-                'attribute' => 'contact_date',
-                'format' => ['datetime', 'short']
-            ],
+            'contact_date:datetime',
             'contact_message',
             [
                 'attribute' => 'answer_sent',
                 'value' => function ($data) {
-                    return Contact::$answerSentData[$data->answer_sent];
+                    return $data->getAnswerSent();
                 },
             ],
             [
@@ -59,7 +56,7 @@ $this->params['breadcrumbs'] = [
                 ],
                 'visibleButtons' => [
                     'answer' => function ($model, $key, $index) {
-                        return $model->answer_sent === Contact::ANSWER_SENT_NO;
+                        return $model->getIsNoAnswerSent();
                     },
                 ],
             ],

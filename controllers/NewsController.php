@@ -128,7 +128,7 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->published == News::PUBLISHED_YES)
+        if ($model->getIsPublished())
         {
             throw new NotFoundHttpException('Notícias publicadas não podem ser alteradas.');
         }

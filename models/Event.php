@@ -63,6 +63,7 @@ class Event extends ActiveRecord
         return [
             'id' => 'Código',
             'calendar_id' => 'Calendário',
+            'calendar.name' => 'Calendário',
             'name' => 'Descrição',
             'date' => 'Data',
             'start_time' => 'Início',
@@ -72,7 +73,9 @@ class Event extends ActiveRecord
             'date_created' => 'Data da criação',
             'date_updated' => 'Data da última atualização',
             'user_created' => 'Usuário que criou',
-            'user_updated' => 'Usuário da última atualização'
+            'user_updated' => 'Usuário da última atualização',
+            'usercreated.name' => 'Usuário que criou',
+            'userupdated.name' => 'Usuário da última atualização',
         ];
     }
 

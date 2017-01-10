@@ -36,10 +36,10 @@ $this->params['breadcrumbs'] = [
 
     <p>
         <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
-        <?= ($model->published == News::PUBLISHED_NO) ? Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : '' ?>
+        <?= (!$model->getIsPublished()) ? Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : '' ?>
         <?= Html::a('Excluir', ['delete', 'id' => $model->id], ['class' => 'btn btn-danger', 'data' => ['confirm' => 'Deseja excluir esta notícia?', 'method' => 'post']]) ?>
-        <?= ($model->published == News::PUBLISHED_NO) ? Html::a('Publicar', ['published', 'id' => $model->id], ['class' => 'btn btn-info', 'data' => ['confirm' => 'Deseja publicar esta notícia?', 'method' => 'post']]) : '' ?>
-        <?= ($model->published == News::PUBLISHED_YES) ? Html::a('Despublicar', ['unpublished', 'id' => $model->id], ['class' => 'btn btn-info', 'data' => ['confirm' => 'Deseja despublicar esta notícia?', 'method' => 'post']]) : '' ?>
+        <?= (!$model->getIsPublished()) ? Html::a('Publicar', ['published', 'id' => $model->id], ['class' => 'btn btn-info', 'data' => ['confirm' => 'Deseja publicar esta notícia?', 'method' => 'post']]) : '' ?>
+        <?= ($model->getIsPublished()) ? Html::a('Despublicar', ['unpublished', 'id' => $model->id], ['class' => 'btn btn-info', 'data' => ['confirm' => 'Deseja despublicar esta notícia?', 'method' => 'post']]) : '' ?>
     </p>
 
     <?= DetailView::widget([
@@ -49,25 +49,12 @@ $this->params['breadcrumbs'] = [
             'title',
             [
                 'attribute' => 'published',
-                'value' => News::$publishedData[$model->published]
+                'value' => $model->getPublished()
             ],
-            [
-                'attribute' => 'date_created',
-                'format' => ['datetime', 'short']
-            ],
-            [
-                'attribute' => 'user_created',
-                'value' => ($model->getUserCreated() instanceof User) ? $model->getUserCreated()->getName() : ''
-            ],
-            'text:html',
-            [
-                'attribute' => 'date_updated',
-                'format' => ['datetime', 'short']
-            ],
-            [
-                'attribute' => 'user_updated',
-                'value' => ($model->getUserUpdated() instanceof User) ? $model->getUserUpdated()->getName() : ''
-            ],
+            'date_created:datetime',
+            'usercreated.name',
+            'date_updated:datetime',
+            'userupdated.name',
         ],
     ]) ?>
 

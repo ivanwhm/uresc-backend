@@ -43,7 +43,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'status',
                 'value' => function ($data) {
-                    return Calendar::$statusData[$data->status];
+                    return $data->getStatus();
                 },
             ],
             [

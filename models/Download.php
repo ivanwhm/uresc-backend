@@ -75,12 +75,15 @@ class Download extends ActiveRecord
             'id' => 'Código',
             'name' => 'Nome',
             'category_id' => 'Categoria',
+            'category.name' => 'Categoria',
             'address' => 'Endereço do arquivo',
             'status' => 'Estado',
             'date_created' => 'Data da criação',
             'date_updated' => 'Data da última atualização',
             'user_created' => 'Usuário que criou',
-            'user_updated' => 'Usuário da última atualização'
+            'user_updated' => 'Usuário da última atualização',
+            'usercreated.name' => 'Usuário que criou',
+            'userupdated.name' => 'Usuário da última atualização',
         ];
     }
 
@@ -129,5 +132,15 @@ class Download extends ActiveRecord
         $this->user_updated = Yii::$app->getUser()->getId();
 
         return parent::beforeSave($insert);
+    }
+
+    /**
+     * Return the description of download status.
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return ($this->status != '') ? self::$statusData[$this->status] : '';
     }
 }

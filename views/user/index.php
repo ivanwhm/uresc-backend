@@ -45,13 +45,13 @@ $this->params['breadcrumbs'] = [
                 [
                     'attribute' => 'status',
                     'value' => function ($data) {
-                        return User::$statusData[$data->status];
+                        return $data->getStatus();
                     },
                 ],
                 [
                     'attribute' => 'can_config',
                     'value' => function ($data) {
-                        return User::$configData[$data->can_config];
+                        return $data->getCanConfig();
                     },
                 ],
                 [

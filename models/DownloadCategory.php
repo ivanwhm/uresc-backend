@@ -76,7 +76,9 @@ class DownloadCategory extends ActiveRecord
             'date_created' => 'Data da criação',
             'date_updated' => 'Data da última atualização',
             'user_created' => 'Usuário que criou',
-            'user_updated' => 'Usuário da última atualização'
+            'user_updated' => 'Usuário da última atualização',
+            'usercreated.name' => 'Usuário que criou',
+            'userupdated.name' => 'Usuário da última atualização',
         ];
     }
 
@@ -132,4 +134,13 @@ class DownloadCategory extends ActiveRecord
         return $all;
     }
 
+    /**
+     * Return the description of download category status.
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return ($this->status != '') ? self::$statusData[$this->status] : '';
+    }
 }

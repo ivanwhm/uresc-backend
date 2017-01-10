@@ -40,24 +40,10 @@ $this->params['breadcrumbs'] = [
             ],
             'id',
             'name',
-            [
-                'attribute' => 'calendar_id',
-                'value' => function ($data) {
-                    return $data->getCalendar()->name;
-                },
-            ],
-            [
-                'attribute' => 'date',
-                'format' => ['date', 'short']
-            ],
-            [
-                'attribute' => 'start_time',
-                'format' => ['time', 'short']
-            ],
-            [
-                'attribute' => 'end_time',
-                'format' => ['time', 'short']
-            ],
+            'calendar.name',
+            'date:date',
+            'start_time.time',
+            'end_time.time',
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {update} {delete}',
