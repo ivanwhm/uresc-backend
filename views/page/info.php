@@ -35,7 +35,7 @@ $this->params['breadcrumbs'] = [
 
         <?= $form->field($model, 'text')->widget(CKEditor::className()) ?>
         <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Descreva o texto relacionado a página.', ['id' => 'hbName', 'class' => 'help-block']) ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> Última alteração em ' . Yii::$app->getFormatter()->asDatetime($model->date_updated) . ' por ' . $model->getUserUpdated()->getName() . '.', ['class' => 'help-block']) ?>
+        <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> ' . $model->printLastUpdatedInformation(), ['class' => 'help-block']) ?>
 
         <div class="form-group">
             <?= Html::submitButton('Salvar', ['class' => 'btn btn-primary']) ?>

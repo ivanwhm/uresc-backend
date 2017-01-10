@@ -151,4 +151,24 @@ class News extends ActiveRecord
     {
         return $this->published == self::PUBLISHED_YES;
     }
+
+    /**
+     * Returns the created information to print on views.
+     *
+     * @return string
+     */
+    public function printCreatedInformation()
+    {
+        return 'Criado em ' . Yii::$app->getFormatter()->asDatetime($this->date_created) . ' por ' . $this->getUserCreated()->getName() . '.';
+    }
+
+    /**
+     * Returns the last updated information to print on views.
+     *
+     * @return string
+     */
+    public function printLastUpdatedInformation()
+    {
+        return 'Última alteração em ' . Yii::$app->getFormatter()->asDatetime($this->date_updated) . ' por ' . $this->getUserUpdated()->getName() . '.';
+    }
 }

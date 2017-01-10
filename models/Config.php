@@ -82,4 +82,15 @@ class Config extends ActiveRecord
         $this->user_updated = Yii::$app->getUser()->getId();
 
         return parent::beforeSave($insert);
-    }}
+    }
+
+    /**
+     * Returns the last updated information to print on views.
+     *
+     * @return string
+     */
+    public function printLastUpdatedInformation()
+    {
+        return 'Última alteração em ' . Yii::$app->getFormatter()->asDatetime($this->date_updated) . ' por ' . $this->getUserUpdated()->getName() . '.';
+    }
+}
