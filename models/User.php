@@ -252,7 +252,7 @@ class User extends ActiveRecord implements IdentityInterface
         {
             $this->date_created = new Expression('current_timestamp');
             $this->user_created = Yii::$app->getUser()->getId();
-            $this->salt = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+            $this->salt = Yii::$app->getSecurity()->generateRandomString(64);
         }
 
         $this->date_updated = new Expression('current_timestamp');
@@ -260,7 +260,7 @@ class User extends ActiveRecord implements IdentityInterface
 
         if ($this->password != '')
         {
-            $this->salt = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+            $this->salt = Yii::$app->getSecurity()->generateRandomString(64);
             $this->password = $this->passwordCrypt($this->password, $this->salt);
         } else
         {

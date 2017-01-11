@@ -6,7 +6,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'uresc-backend',
-    'name' => '4ª URE - Administração',
+    'name' => 'Administração',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'language' => 'pt-BR',
@@ -18,7 +18,7 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'enableSession' => true
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -63,9 +63,23 @@ $config = [
             'saveTimezone' => 'UTC',
             'autoWidget' => true,
             'autoWidgetSettings' => [
-                Module::FORMAT_DATE => ['type' => 3, 'pluginOptions' => ['autoclose' => true]],
-                Module::FORMAT_DATETIME => ['type' => 3, 'pluginOptions' => ['autoclose' => true]],
-                Module::FORMAT_TIME => ['pluginOptions' => ['autoclose' => true]],
+                Module::FORMAT_DATE => [
+                    'type' => 3,
+                    'pluginOptions' => [
+                        'autoclose' => true
+                    ]
+                ],
+                Module::FORMAT_DATETIME => [
+                    'type' => 3,
+                    'pluginOptions' => [
+                        'autoclose' => true
+                    ]
+                ],
+                Module::FORMAT_TIME => [
+                    'pluginOptions' => [
+                        'autoclose' => true
+                    ]
+                ],
             ],
         ]
     ],

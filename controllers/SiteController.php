@@ -31,16 +31,15 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['login', 'logout', 'index'],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['login'],
+                        'actions' => ['login', 'error'],
                         'roles' => ['?'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout', 'index', 'password'],
+                        'actions' => ['logout', 'index', 'password', 'config'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -70,7 +69,7 @@ class SiteController extends Controller
      */
     public function actionError()
     {
-        $exception = Yii::$app->errorHandler->exception;
+        $exception = Yii::$app->getErrorHandler()->exception;
 
         if ($exception !== null)
         {
@@ -149,9 +148,10 @@ class SiteController extends Controller
      */
     public function actionConfig()
     {
-        if ((($model = Config::findOne(1)) !== null) and (Yii::$app->getUser()->getIdentity()->getIsCanConfig()))
+        if ((($model = Config::findOne(1)) !== null) and
+            (Yii::$app->getUser()->getIdentity()->getIsCanConfig()))
         {
-            if ($model->load(Yii::$app->request->post()) && $model->save())
+            if ($model->load(Yii::$app->getRequest()->post()) && $model->save())
             {
                 return $this->redirect(['config']);
             } else

@@ -25,7 +25,7 @@ SBAdmin2Asset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <?= Html::csrfMetaTags() ?>
-    <title>4ª URE - Administração</title>
+    <title><?= Yii::$app->name ?></title>
     <?php $this->head() ?>
 </head>
 <body>

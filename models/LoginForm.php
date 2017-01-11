@@ -32,13 +32,6 @@ class LoginForm extends Model
     public $password;
 
     /**
-     * The remember me option.
-     *
-     * @var bool
-     */
-    public $rememberMe = false;
-
-    /**
      * All the information about authenticated user.
      *
      * @var User
@@ -53,7 +46,6 @@ class LoginForm extends Model
     {
         return [
             [['username', 'password'], 'required'],
-            ['rememberMe', 'boolean'],
             ['password', 'validatePassword'],
         ];
     }
@@ -71,8 +63,10 @@ class LoginForm extends Model
         {
             $user = $this->getUser();
 
-            if (!$user || !$user->validateAuthKey($this->password)) {
-                $this->addError($attribute, 'Usuário ou senha inválidos.');
+            if (!$user || !$user->validateAuthKey($this->password))
+            {
+                $this->addError('username', '');
+                $this->addError('password', 'Usuário ou senha inválidos.');
             }
         }
     }
@@ -86,7 +80,7 @@ class LoginForm extends Model
     {
         if ($this->validate())
         {
-            return Yii::$app->getUser()->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+            return Yii::$app->getUser()->login($this->getUser());
         }
         return false;
     }
@@ -116,8 +110,7 @@ class LoginForm extends Model
     {
         return [
             'username' => 'Usuário',
-            'password' => 'Senha',
-            'rememberMe' => 'Lembrar de mim'
+            'password' => 'Senha'
         ];
     }
 }

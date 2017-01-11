@@ -3,6 +3,7 @@
  * Displays the login page.
  *
  * @var $this View
+ * @var $form ActiveForm
  * @var $model LoginForm;
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
@@ -17,13 +18,17 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="col-md-4 col-md-offset-4">
+
     <div class="login-panel logo-panel">
-        <img src="/images/logo.png" alt="Logo 4ª URE">
+        <img src="/images/logo.png" alt="Logo">
     </div>
+
     <div class="panel panel-default">
+
         <div class="panel-heading">
-            <h3 class="panel-title">4ª URE - Entrada</h3>
+            <h3 class="panel-title">Acesso</h3>
         </div>
+
         <div class="panel-body">
 
             <?php $form = ActiveForm::begin([
@@ -33,18 +38,12 @@ use yii\widgets\ActiveForm;
             <fieldset>
                 <?= $form->field($model, 'username')->textInput([
                     'autofocus' => true,
-                    'placeholder' => $model->getAttributeLabel('username'),
                     'class' => 'form-control',
-                ])->label(false) ?>
+                ]) ?>
 
                 <?= $form->field($model, 'password')->passwordInput([
-                    'placeholder' => $model->getAttributeLabel('password'),
                     'class' => 'form-control'
-                ])->label(false) ?>
-
-                <div class="checkbox">
-                    <?= $form->field($model, 'rememberMe')->checkbox() ?>
-                </div>
+                ]) ?>
 
                 <?= Html::submitButton('Entrar', [
                     'class' => 'btn btn-lg btn-success btn-block',
