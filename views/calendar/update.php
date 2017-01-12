@@ -15,10 +15,10 @@ use app\models\User;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Alterar calendário';
+$this->title = Yii::t('calendar', 'Update calendar');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Calendários",
+        "label" => Yii::t('calendar', 'Calendars'),
         "icon" => "fa-calendar-o",
         "active" => false,
         "url" => Url::to(["calendar/index"])

@@ -134,7 +134,7 @@ class CalendarController extends Controller
             $model->delete();
         } catch (Exception $ex)
         {
-            throw new NotFoundHttpException('Não é possível excluir o calendário selecionado.');
+            throw new NotFoundHttpException(Yii::t('calendar', 'You can not delete the selected calendar.'));
         }
 
         return $this->redirect(['index']);
@@ -156,7 +156,7 @@ class CalendarController extends Controller
             return $model;
         } else
         {
-            throw new NotFoundHttpException('O calendário solicitado não existe.');
+            throw new NotFoundHttpException(Yii::t('calendar', 'The requested calendar does not exist.'));
         }
     }
 }

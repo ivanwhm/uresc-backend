@@ -10,7 +10,7 @@
 //Imports
 use yii\helpers\Url;
 
-$this->title = 'Principal';
+$this->title = Yii::t('general', 'Home');
 
 ?>
 <div class="row">

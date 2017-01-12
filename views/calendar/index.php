@@ -4,6 +4,8 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
+ * @var $data Calendar
+ * @var $model Calendar
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -16,7 +18,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Calendários';
+$this->title = Yii::t('calendar', 'Calendars');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -29,7 +31,7 @@ $this->params['breadcrumbs'] = [
 <div class="calendar-index">
 
     <p>
-        <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -56,7 +58,7 @@ $this->params['breadcrumbs'] = [
                         ], [
                             'class' => 'Calendar',
                             'data' => [
-                                'confirm' => 'Deseja excluir este calendário?',
+                                'confirm' => Yii::t('calendar', 'Do you want to delete this calendar?'),
                                 'method' => 'post',
                             ],
                         ]);

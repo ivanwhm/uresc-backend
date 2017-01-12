@@ -15,10 +15,10 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Adicionar calendário';
+$this->title = Yii::t('calendar', 'Add calendar');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Calendários",
+        "label" => Yii::t('calendar', 'Calendars'),
         "icon" => "fa-calendar-o",
         "active" => false,
         "url" => Url::to(["calendar/index"])

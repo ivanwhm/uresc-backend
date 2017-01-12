@@ -24,10 +24,10 @@ use yii\widgets\ActiveForm;
     ]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe o nome do calendário.', ['id' => 'hbName', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('calendar', 'Enter the name of the calendar.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'status')->dropDownList(Calendar::getStatusData(), ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe se o calendário está ativo ou inativo.', ['id' => 'hbStatus', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('calendar', 'Please tell us if the calendar status is active or inactive.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 
     <?php if (!$model->getIsNewRecord()) : ?>
         <?= Html::tag('br') ?>
@@ -36,10 +36,10 @@ use yii\widgets\ActiveForm;
     <?php endif; ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Salvar', [
+        <?= Html::submitButton(Yii::t('general', 'Save'), [
                 'class' => $model->getIsNewRecord() ? 'btn btn-success' : 'btn btn-primary'
         ]) ?>
-        <?= Html::a('Cancelar', $model->getIsNewRecord() ? ['index'] : ['view', 'id' => $model->id], [
+        <?= Html::a(Yii::t('general', 'Cancel'), $model->getIsNewRecord() ? ['index'] : ['view', 'id' => $model->id], [
                 'class' => 'btn btn-danger'
         ]) ?>
     </div>

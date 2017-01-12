@@ -16,10 +16,10 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
 
-$this->title = "Visualizar calendário";
+$this->title = Yii::t('calendar', 'View calendar');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Calendários",
+        "label" => Yii::t('calendar', 'Calendars'),
         "icon" => "fa-calendar-o",
         "active" => false,
         "url" => Url::to(["calendar/index"])
@@ -35,9 +35,15 @@ $this->params['breadcrumbs'] = [
 <div class="calendar-view">
 
     <p>
-        <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Excluir', ['delete', 'id' => $model->id], ['class' => 'btn btn-danger', 'data' => ['confirm' => 'Deseja excluir este calendário?', 'method' => 'post']]) ?>
+        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                        'confirm' => Yii::t('calendar', 'Do you want to delete this calendar?'),
+                        'method' => 'post'
+                ]
+        ]) ?>
     </p>
 
     <?= DetailView::widget([

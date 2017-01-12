@@ -80,7 +80,7 @@ SBAdminAsset::register($this);
             <ul class="nav navbar-nav side-nav">
                 <li class="<?= (Yii::$app->controller->id == "site") ? "active" : "" ?>">
                     <a href="<?= Url::to(["site/index"]) ?>">
-                        <i class="fa fa-fw fa-home"></i> Principal
+                        <i class="fa fa-fw fa-home"></i> <?= Yii::t('general', 'Home') ?>
                     </a>
                 </li>
                 <li class="<?= ((Yii::$app->controller->id == "user") || ((Yii::$app->controller->id == "department") && (Yii::$app->controller->action->id !== "info")) || (Yii::$app->controller->id == "download-category") || (Yii::$app->controller->id == "gallery-category") || (Yii::$app->controller->id == "calendar") || ((Yii::$app->controller->id == "page") && (Yii::$app->controller->action->id !== "info")) ) ? "active" : "" ?>">
@@ -89,7 +89,7 @@ SBAdminAsset::register($this);
                     </a>
                     <ul id="records" class="collapse">
                         <li>
-                            <a href="<?= Url::to(["calendar/index"]) ?>"><i class="fa fa-fw fa-calendar-o"></i> Calendários</a>
+                            <a href="<?= Url::to(["calendar/index"]) ?>"><i class="fa fa-fw fa-calendar-o"></i> <?= Yii::t('calendar', 'Calendars') ?></a>
                         </li>
                         <li>
                             <a href="<?= Url::to(["download-category/index"]) ?>"><i class="fa fa-fw fa-file-archive-o"></i> Categorias de arquivos</a>
@@ -189,7 +189,7 @@ SBAdminAsset::register($this);
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-dashboard"></i> <a href="<?= Url::to(["site/index"]) ?>">Principal</a>
+                            <i class="fa fa-dashboard"></i> <a href="<?= Url::to(["site/index"]) ?>"><?= Yii::t('general', 'Home') ?></a>
                         </li>
 
                         <?php

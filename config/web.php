@@ -6,10 +6,10 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'uresc-backend',
-    'name' => 'Administração',
+    'name' => 'Admin',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'language' => 'pt-BR',
+    'language' => 'en-US',
     'sourceLanguage' => 'en-US',
     'timeZone' => 'UTC',
     'components' => [
@@ -36,7 +36,17 @@ $config = [
             'dateFormat' => 'short',
             'timeFormat' => 'short',
             'nullDisplay' => ''
-        ]
+        ],
+        'i18n' => [
+            'translations' => [
+                'general*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                ],
+                'calendar*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                ],
+            ],
+        ],
     ],
     'modules' => [
         'ckeditor' => [
