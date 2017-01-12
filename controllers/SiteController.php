@@ -31,6 +31,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                'only' => ['logout', 'index', 'password'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -39,7 +40,7 @@ class SiteController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout', 'index', 'password', 'config'],
+                        'actions' => ['logout', 'index', 'password'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -162,7 +163,7 @@ class SiteController extends Controller
             }
         } else
         {
-            throw new NotFoundHttpException('A configuração solicitada não existe.');
+            throw new NotFoundHttpException(Yii::t('config', 'The requested setting does not exist.'));
         }
     }
 }

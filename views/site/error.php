@@ -11,7 +11,7 @@
 //Imports
 use yii\helpers\Html;
 
-$this->title = 'Erro';
+$this->title = Yii::t('general', 'Error');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -22,7 +22,10 @@ $this->params['breadcrumbs'] = [
 ?>
 
 <?= Html::tag('p', $exception->getMessage(), ['class' => 'lead']); ?>
-<?= Html::tag('br') ?>
-<?= Html::tag('p', '<strong>Código do erro</strong>: ' . $exception->getCode(), ['class' => 'lead']); ?>
-<?= Html::tag('p', '<strong>Linha do erro</strong>: ' . $exception->getLine(), ['class' => 'lead']); ?>
-<?= Html::tag('p', '<strong>Trace do erro</strong>: ' . $exception->getTraceAsString(), ['class' => 'lead']); ?>
+
+<?php if (YII_ENV_DEV) : ?>
+    <?= Html::tag('br') ?>
+    <?= Html::tag('p', '<strong>' . Yii::t('general', 'Error code:'). ' </strong>: ' . $exception->getCode(), ['class' => 'lead']); ?>
+    <?= Html::tag('p', '<strong>' . Yii::t('general', 'Error line:'). ' </strong>: ' . $exception->getLine(), ['class' => 'lead']); ?>
+    <?= Html::tag('p', '<strong>' . Yii::t('general', 'Error trace:'). ' </strong>: ' . $exception->getTraceAsString(), ['class' => 'lead']); ?>
+<?php endif; ?>

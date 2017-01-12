@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
     <div class="panel panel-default">
 
         <div class="panel-heading">
-            <h3 class="panel-title">Acesso</h3>
+            <h3 class="panel-title"><?= Yii::t('login', 'Log In to Admin') ?></h3>
         </div>
 
         <div class="panel-body">
@@ -45,7 +45,7 @@ use yii\widgets\ActiveForm;
                     'class' => 'form-control'
                 ]) ?>
 
-                <?= Html::submitButton('Entrar', [
+                <?= Html::submitButton(Yii::t('login', 'Log In'), [
                     'class' => 'btn btn-lg btn-success btn-block',
                     'name' => 'login-button'
                 ]) ?>

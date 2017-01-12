@@ -14,14 +14,6 @@ $this->title = Yii::t('general', 'Home');
 
 ?>
 <div class="row">
-    <div class="col-lg-12">
-        <div class="alert alert-info alert-dismissable">
-            <i class="fa fa-info-circle"></i> Principais estatísticas da página!
-        </div>
-    </div>
-</div>
-
-<div class="row">
     <div class="col-lg-3 col-md-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -57,7 +49,7 @@ $this->title = Yii::t('general', 'Home');
                     </div>
                 </div>
             </div>
-            <a href="<?= Url::toRoute(['contact/index']) ?>">
+            <a href="<?= Url::toRoute(['event/index']) ?>">
                 <div class="panel-footer">
                     <span class="pull-left">Visualizar eventos!</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -75,13 +67,13 @@ $this->title = Yii::t('general', 'Home');
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $centers ?></div>
-                        <div>Centros espíritas cadastrados</div>
+                        <div><?= Yii::t('center', 'Registered spiritist centers') ?></div>
                     </div>
                 </div>
             </div>
-            <a href="#">
+            <a href="<?= Url::toRoute(['center/index']) ?>">
                 <div class="panel-footer">
-                    <span class="pull-left">Visualizar centros!</span>
+                    <span class="pull-left"><?= Yii::t('center', 'View centers!') ?></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -101,7 +93,7 @@ $this->title = Yii::t('general', 'Home');
                     </div>
                 </div>
             </div>
-            <a href="#">
+            <a href="<?= Url::toRoute(['news/index']) ?>">
                 <div class="panel-footer">
                     <span class="pull-left">Visualizar notícias!</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

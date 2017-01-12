@@ -14,10 +14,10 @@ use yii\helpers\Url;
 use app\models\ChangePasswordForm;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Alterar senha';
+$this->title = Yii::t('password', 'Change password');
 $this->params['breadcrumbs'] = array(
     array(
-        "label" => "Alterar senha",
+        "label" => Yii::t('password', 'Change password'),
         "icon" => "fa-key",
         "active" => false,
         "url" => Url::to(array("site/password"))
@@ -36,17 +36,17 @@ $this->params['breadcrumbs'] = array(
         ); ?>
 
         <?= $form->field($model, 'oldPassword')->passwordInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbOldPassword']) ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe a sua senha atual.', ['id' => 'hbOldPassword', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('password', 'Enter the old password.'), ['id' => 'hbOldPassword', 'class' => 'help-block']) ?>
 
         <?= $form->field($model, 'newPassword')->passwordInput(['maxlength' => true, 'aria-describedby' => 'hbNewPassword']) ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe a nova senha.', ['id' => 'hbNewPassword', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('password', 'Enter the new password.'), ['id' => 'hbNewPassword', 'class' => 'help-block']) ?>
 
         <?= $form->field($model, 'repeatNewPassword')->passwordInput(['maxlength' => true, 'aria-describedby' => 'hbRepeatNewPassword']) ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Repita a senha do usuário que irá acessar o sistema.', ['id' => 'hbRepeatNewPassword', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('password', 'Enter the new password (again).'), ['id' => 'hbRepeatNewPassword', 'class' => 'help-block']) ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Alterar senha', ['class' => 'btn btn-success']) ?>
-            <?= Html::a('Cancelar', ['index'], ['class' => 'btn btn-danger']) ?>
+            <?= Html::submitButton(Yii::t('password', 'Change password'), ['class' => 'btn btn-success']) ?>
+            <?= Html::a(Yii::t('general', 'Cancel'), ['index'], ['class' => 'btn btn-danger']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

@@ -12,4 +12,9 @@ return [
     'Save' => '',
     'Cancel' => '',
     'Home' => '',
+    'Log Out' => '',
+    'Error' => '',
+    'Error code: ' => '',
+    'Error line: ' => '',
+    'Error trace: ' => '',
 ];

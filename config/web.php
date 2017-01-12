@@ -39,13 +39,7 @@ $config = [
         ],
         'i18n' => [
             'translations' => [
-                'general*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                ],
-                'calendar*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                ],
-                'center*' => [
+                '*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                 ],
             ],

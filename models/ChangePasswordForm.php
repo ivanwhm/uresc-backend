@@ -41,7 +41,7 @@ class ChangePasswordForm extends Model
     {
         return [
             [['oldPassword', 'newPassword', 'repeatNewPassword'], 'required'],
-            [['repeatNewPassword'], 'compare', 'compareAttribute' => 'newPassword', 'message' => 'As senhas informadas não são iguais.'],
+            [['repeatNewPassword'], 'compare', 'compareAttribute' => 'newPassword', 'message' => Yii::t('password', 'The entered passwords are differents.')],
             ['oldPassword', 'validatePassword'],
             [['newPassword', 'repeatNewPassword'], 'string', 'min' => 6],
         ];
@@ -53,9 +53,9 @@ class ChangePasswordForm extends Model
     public function attributeLabels()
     {
         return [
-            'oldPassword' => 'Senha atual',
-            'newPassword' => 'Nova senha',
-            'repeatNewPassword' => 'Repetir a nova senha',
+            'oldPassword' => Yii::t('password', 'Old password'),
+            'newPassword' => Yii::t('password', 'New password'),
+            'repeatNewPassword' => Yii::t('password', 'New password (again)'),
         ];
     }
 
@@ -73,7 +73,7 @@ class ChangePasswordForm extends Model
 
             if (!$user || !$user->validateAuthKey($this->oldPassword))
             {
-                $this->addError($attribute, 'A senha atual não é válida.');
+                $this->addError($attribute, Yii::t('password', 'The old password is incorrect.'));
             }
         }
     }

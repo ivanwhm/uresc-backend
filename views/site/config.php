@@ -15,7 +15,7 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Configurações';
+$this->title = Yii::t('config', 'Settings');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -33,19 +33,18 @@ $this->params['breadcrumbs'] = [
         <?php $form = ActiveForm::begin(['id' => 'config-form']); ?>
 
         <?= $form->field($model, 'page_title')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbPageTitle']) ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Descreva o título da página principal.', ['id' => 'hbPageTitle', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('config', 'Enter the main page title.'), ['id' => 'hbPageTitle', 'class' => 'help-block']) ?>
 
         <?= $form->field($model, 'phrase')->textInput(['maxlength' => true, 'aria-describedby' => 'hbPhrase']) ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Descreva a frase a ser exibida no cabeçalho da página principal.', ['id' => 'hbPhrase', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('config', 'Enter the main phrase.'), ['id' => 'hbPhrase', 'class' => 'help-block']) ?>
 
         <?= $form->field($model, 'phrase_author')->textInput(['maxlength' => true, 'aria-describedby' => 'hbAuthorPhrase']) ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Descreva o autor da frase a ser exibida no cabeçalho da página principal.', ['id' => 'hbAuthorPhrase', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('config', 'Enter the main phrase author.'), ['id' => 'hbAuthorPhrase', 'class' => 'help-block']) ?>
 
-        <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> Última alteração em ' . Yii::$app->getFormatter()->asDatetime($model->date_updated) . ' por ' . $model->getUserUpdated()->getName() . '.', ['class' => 'help-block']) ?>
-
+        <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> ' . $model->printLastUpdatedInformation(), ['class' => 'help-block']) ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Salvar', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(Yii::t('general', 'Save'), ['class' => 'btn btn-primary']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

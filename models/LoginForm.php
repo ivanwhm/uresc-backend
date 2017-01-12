@@ -66,7 +66,7 @@ class LoginForm extends Model
             if (!$user || !$user->validateAuthKey($this->password))
             {
                 $this->addError('username', '');
-                $this->addError('password', 'Usuário ou senha inválidos.');
+                $this->addError('password', Yii::t('login', 'Invalid username or password!'));
             }
         }
     }
@@ -109,8 +109,8 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => 'Usuário',
-            'password' => 'Senha'
+            'username' => Yii::t('login', 'Username'),
+            'password' => Yii::t('login', 'Password'),
         ];
     }
 }

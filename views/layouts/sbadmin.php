@@ -60,16 +60,16 @@ SBAdminAsset::register($this);
                             class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="<?= Url::to(["site/password"]) ?>"><i class="fa fa-fw fa-key"></i> Alterar senha</a>
+                        <a href="<?= Url::to(["site/password"]) ?>"><i class="fa fa-fw fa-key"></i> <?= Yii::t('password', 'Change password') ?></a>
                     </li>
                     <?php if (Yii::$app->getUser()->getIdentity()->getIsCanConfig()): ?>
                         <li>
-                            <a href="<?= Url::to(["site/config"]) ?>"><i class="fa fa-fw fa-gear"></i> Configurações</a>
+                            <a href="<?= Url::to(["site/config"]) ?>"><i class="fa fa-fw fa-gear"></i> <?= Yii::t('config', 'Settings') ?></a>
                         </li>
                     <?php endif; ?>
                     <li class="divider"></li>
                     <li>
-                        <a href="<?= Url::to(["site/logout"]) ?>"><i class="fa fa-fw fa-power-off"></i> Sair</a>
+                        <a href="<?= Url::to(["site/logout"]) ?>"><i class="fa fa-fw fa-power-off"></i> <?= Yii::t('general', 'Log Out') ?></a>
                     </li>
                 </ul>
             </li>

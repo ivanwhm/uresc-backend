@@ -51,13 +51,13 @@ class Config extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'phrase' => 'Frase principal',
-            'phrase_author' => 'Autor da frase principal',
-            'page_title' => 'Título da página principal',
-            'date_updated' => 'Data da última atualização',
-            'user_updated' => 'Usuário da última atualização',
-            'userupdated.name' => 'Usuário da última atualização',
+            'id' => Yii::t('config', 'ID'),
+            'phrase' => Yii::t('config', 'Main phrase'),
+            'phrase_author' => Yii::t('config', 'Main phase author'),
+            'page_title' => Yii::t('config', 'Main page title'),
+            'date_updated' => Yii::t('general', 'Date of the update'),
+            'user_updated' => Yii::t('general', 'User who do last update'),
+            'userupdated.name' => Yii::t('general', 'User who do last update'),
         ];
     }
 
@@ -91,6 +91,9 @@ class Config extends ActiveRecord
      */
     public function printLastUpdatedInformation()
     {
-        return 'Última alteração em ' . Yii::$app->getFormatter()->asDatetime($this->date_updated) . ' por ' . $this->getUserUpdated()->getName() . '.';
+        return Yii::t('general', 'Last update on {date} by {username}.', [
+            'date' => Yii::$app->getFormatter()->asDatetime($this->date_updated),
+            'username' => $this->getUserUpdated()->getName()
+        ]);
     }
 }

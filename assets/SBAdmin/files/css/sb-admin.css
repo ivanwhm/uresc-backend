@@ -79,6 +79,7 @@ body {
     background-color: #fff;
     -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    width: 200px;
 }
 
 .top-nav>.open>.dropdown-menu>li>a {

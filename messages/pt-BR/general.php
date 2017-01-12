@@ -12,4 +12,9 @@ return [
     'Save' => 'Salvar',
     'Cancel' => 'Cancelar',
     'Home' => 'Principal',
+    'Log Out' => 'Sair',
+    'Error' => 'Erro',
+    'Error code:' => 'Código do erro:',
+    'Error line:' => 'Linha do erro:',
+    'Error trace:' => 'Rastro do erro:',
 ];
