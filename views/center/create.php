@@ -15,10 +15,10 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Adicionar centro espírita';
+$this->title = Yii::t('center', 'Add spiritist center');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Centros espíritas",
+        "label" => Yii::t('center', 'Spiritist centers'),
         "icon" => "fa-hospital-o",
         "active" => false,
         "url" => Url::to(["center/index"])

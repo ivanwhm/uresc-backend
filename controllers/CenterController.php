@@ -133,7 +133,7 @@ class CenterController extends Controller
             $model->delete();
         } catch (Exception $ex)
         {
-            throw new NotFoundHttpException('Não é possível excluir o centro espírita selecionado.');
+            throw new NotFoundHttpException(Yii::t('center', 'You can not delete the selected spiritist center.'));
         }
 
         return $this->redirect(['index']);
@@ -155,7 +155,7 @@ class CenterController extends Controller
             return $model;
         } else
         {
-            throw new NotFoundHttpException('O centro espírita solicitado não existe.');
+            throw new NotFoundHttpException(Yii::t('center', 'The requested spiritist center does not exist.'));
         }
     }
 }

@@ -63,21 +63,21 @@ class Center extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Código',
-            'name' => 'Nome',
-            'address' => 'Endereço',
-            'neighborhood' => 'Bairro',
-            'city' => 'Cidade',
-            'state' => 'Estado',
-            'phone' => 'Telefone',
-            'email' => 'E-mail',
-            'business_hours' => 'Horário de funcionamento',
-            'date_created' => 'Data da criação',
-            'date_updated' => 'Data da última atualização',
-            'user_created' => 'Usuário que criou',
-            'user_updated' => 'Usuário da última atualização',
-            'usercreated.name' => 'Usuário que criou',
-            'userupdated.name' => 'Usuário da última atualização',
+            'id' => Yii::t('center', 'ID'),
+            'name' => Yii::t('center', 'Name'),
+            'address' => Yii::t('center', 'Address'),
+            'neighborhood' => Yii::t('center', 'Neighborhood'),
+            'city' => Yii::t('center', 'City'),
+            'state' => Yii::t('center', 'State'),
+            'phone' => Yii::t('center', 'Phone'),
+            'email' => Yii::t('center', 'E-mail'),
+            'business_hours' => Yii::t('center', 'Business hours'),
+            'date_created' => Yii::t('general', 'Date of creation'),
+            'date_updated' => Yii::t('general', 'Date of the update'),
+            'user_created' => Yii::t('general', 'User who created'),
+            'user_updated' => Yii::t('general', 'User who do last update'),
+            'usercreated.name' => Yii::t('general', 'User who created'),
+            'userupdated.name' => Yii::t('general', 'User who do last update'),
         ];
     }
 
@@ -137,7 +137,10 @@ class Center extends ActiveRecord
      */
     public function printCreatedInformation()
     {
-        return 'Criado em ' . Yii::$app->getFormatter()->asDatetime($this->date_created) . ' por ' . $this->getUserCreated()->getName() . '.';
+        return Yii::t('general', 'Created on {date} by {username}.', [
+            'date' => Yii::$app->getFormatter()->asDatetime($this->date_created),
+            'username' => $this->getUserCreated()->getName()
+        ]);
     }
 
     /**
@@ -147,6 +150,9 @@ class Center extends ActiveRecord
      */
     public function printLastUpdatedInformation()
     {
-        return 'Última alteração em ' . Yii::$app->getFormatter()->asDatetime($this->date_updated) . ' por ' . $this->getUserUpdated()->getName() . '.';
+        return Yii::t('general', 'Last update on {date} by {username}.', [
+            'date' => Yii::$app->getFormatter()->asDatetime($this->date_updated),
+            'username' => $this->getUserUpdated()->getName()
+        ]);
     }
 }

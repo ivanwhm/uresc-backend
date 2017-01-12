@@ -115,7 +115,7 @@ SBAdminAsset::register($this);
                 </li>
                 <li class="<?= (Yii::$app->controller->id == "center") ? "active" : "" ?>">
                     <a href="<?= Url::to(["center/index"]) ?>">
-                        <i class="fa fa-fw fa-hospital-o"></i> Centros espíritas
+                        <i class="fa fa-fw fa-hospital-o"></i> <?= Yii::t('center', 'Spiritist centers') ?>
                     </a>
                 </li>
                 <li class="<?= (Yii::$app->controller->id == "contact") ? "active" : "" ?>">

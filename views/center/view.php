@@ -15,10 +15,10 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
 
-$this->title = "Visualizar centro espírita";
+$this->title = Yii::t('center', 'View spiritist center');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Centros espíritas",
+        "label" => Yii::t('center', 'Spiritist centers'),
         "icon" => "fa-hospital-o",
         "active" => false,
         "url" => Url::to(["center/index"])
@@ -34,9 +34,15 @@ $this->params['breadcrumbs'] = [
 <div class="center-view">
 
     <p>
-        <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Excluir', ['delete', 'id' => $model->id], ['class' => 'btn btn-danger', 'data' => ['confirm' => 'Deseja excluir este centro espírita?', 'method' => 'post']]) ?>
+        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => Yii::t('center', 'Do you want to delete this spiritist center?'),
+                'method' => 'post'
+            ]
+        ]) ?>
     </p>
 
     <?= DetailView::widget([

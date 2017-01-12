@@ -45,6 +45,9 @@ $config = [
                 'calendar*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                 ],
+                'center*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                ],
             ],
         ],
     ],

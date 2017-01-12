@@ -15,7 +15,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Centros espíritas';
+$this->title = Yii::t('center', 'Spiritist centers');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'] = [
 <div class="center-index">
 
     <p>
-        <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'] = [
                         ], [
                             'class' => 'Center',
                             'data' => [
-                                'confirm' => 'Deseja excluir este centro espírita?',
+                                'confirm' => Yii::t('center', 'Do you want to delete this spiritist center?'),
                                 'method' => 'post',
                             ],
                         ]);
