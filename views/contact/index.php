@@ -4,18 +4,25 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
+ * @var $data Contact
+ * @var $model Contact
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports
+
+use \app\models\Contact;
 use yii\data\ActiveDataProvider;
+use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\grid\SerialColumn;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Contatos';
+
+$this->title = Yii::t('contact', 'Contacts');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -31,7 +38,7 @@ $this->params['breadcrumbs'] = [
         'dataProvider' => $dataProvider,
         'columns' => [
             [
-                'class' => 'yii\grid\SerialColumn'
+                'class' => SerialColumn::className()
             ],
             'id',
             'contact_email:email',
@@ -44,13 +51,16 @@ $this->params['breadcrumbs'] = [
                 },
             ],
             [
-                'class' => 'yii\grid\ActionColumn',
+                'class' => ActionColumn::className(),
+                'header' => Yii::t('general', 'Actions'),
                 'template' => '{view} {answer}',
                 'buttons' => [
                     'answer' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-send"></span>', [
                             'answer', 'id' => $model->id
-                        ], ['class' => 'Contact']);
+                        ], [
+                            'title' => Yii::t('contact', 'Answer it')
+                        ]);
                     },
                 ],
                 'visibleButtons' => [

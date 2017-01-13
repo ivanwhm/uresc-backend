@@ -15,10 +15,10 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
 
-$this->title = "Visualizar contato";
+$this->title = Yii::t('contact', 'View contact');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Contatos",
+        "label" => Yii::t('contact', 'Contacts'),
         "icon" => "fa-mail-reply-all",
         "active" => false,
         "url" => Url::to(["contact/index"])
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'] = [
 <div class="contact-view">
 
     <p>
-        <?= (!$model->getIsAnswerSent()) ? Html::a('Responder', ['answer', 'id' => $model->id], ['class' => 'btn btn-success']) : '' ?>
+        <?= (!$model->getIsAnswerSent()) ? Html::a(Yii::t('contact', 'Answer it'), ['answer', 'id' => $model->id], ['class' => 'btn btn-success']) : '' ?>
     </p>
 
     <?= DetailView::widget([
@@ -47,11 +47,23 @@ $this->params['breadcrumbs'] = [
             'contact_ip',
             [
                 'attribute' => 'answer_sent',
-                'value' => $model->getAnswerSent()
+                'value' => $model->getAnswerSent(),
+                'visible' => ($model->getIsAnswerSent())
             ],
-            'answer_date:datetime',
-            'answeruser.name',
-            'answer_message:ntext'
+            [
+                'attribute' => 'answer_date',
+                'format' => 'datetime',
+                'visible' => ($model->getIsAnswerSent())
+            ],
+            [
+                'attribute' => 'answeruser.name',
+                'visible' => ($model->getIsAnswerSent())
+            ],
+            [
+                'attribute' => 'answer_message',
+                'format' => 'ntext',
+                'visible' => ($model->getIsAnswerSent())
+            ]
         ],
     ]) ?>
 

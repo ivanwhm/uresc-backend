@@ -59,16 +59,16 @@ class Contact extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Código',
-            'contact_email' => 'E-mail',
-            'contact_message' => 'Mensagem',
-            'contact_date' => 'Data',
-            'contact_ip' => 'IP',
-            'answer_message' => 'Resposta',
-            'answer_date' => 'Data da resposta',
-            'answer_user_id' => 'Usuário que respondeu',
-            'answeruser.name' => 'Usuário que respondeu',
-            'answer_sent' => 'Respondido?',
+            'id' => Yii::t('contact', 'ID'),
+            'contact_email' => Yii::t('contact', 'E-mail'),
+            'contact_message' => Yii::t('contact', 'Message'),
+            'contact_date' => Yii::t('contact', 'Date'),
+            'contact_ip' => Yii::t('contact', 'IP'),
+            'answer_message' => Yii::t('contact', 'Answer'),
+            'answer_date' => Yii::t('contact', 'Answer date'),
+            'answer_user_id' => Yii::t('contact', 'User who answered'),
+            'answeruser.name' => Yii::t('contact', 'User who answered'),
+            'answer_sent' => Yii::t('contact', 'Did it answered?'),
         ];
     }
 
@@ -100,8 +100,8 @@ class Contact extends ActiveRecord
     public static function getSentData()
     {
         return [
-            self::ANSWER_SENT_YES => "Sim",
-            self::ANSWER_SENT_NO => "Não"
+            self::ANSWER_SENT_YES => Yii::t('general', 'Yes'),
+            self::ANSWER_SENT_NO => Yii::t('general', 'No')
         ];
     }
 

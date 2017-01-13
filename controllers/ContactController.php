@@ -89,7 +89,7 @@ class ContactController extends Controller
             return $model;
         } else
         {
-            throw new NotFoundHttpException('A mensagem solicitada não existe.');
+            throw new NotFoundHttpException(Yii::t('contact', 'The requested message does not exist.'));
         }
     }
 
@@ -108,7 +108,7 @@ class ContactController extends Controller
 
         if ($model->getIsAnswerSent())
         {
-            throw new NotFoundHttpException('Esta mensagem já foi respondida.');
+            throw new NotFoundHttpException(Yii::t('contact', 'This message was already answered.'));
         }
 
         if ($model->load(Yii::$app->request->post()))

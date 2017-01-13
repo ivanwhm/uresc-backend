@@ -1,0 +1,23 @@
+<?php
+return [
+    'ID' => '',
+    'E-mail' => '',
+    'Message' => '',
+    'Date' => '',
+    'IP' => '',
+    'Answer' => '',
+    'Answer date' => '',
+    'User who answered' => '',
+    'Did it answered?' => '',
+    'The requested message does not exist.' => '',
+    'This message was already answered.' => '',
+    'Contacts' => '',
+    'Answer contact' => '',
+    'View contact' => '',
+    'Answer it' => '',
+    'Contact\'s e-mail.' => '',
+    'Contact\'s message.' => '',
+    'Entered the text of the answer.' => '',
+    'View contacts!' => '',
+    'Unanswered contacts' => '',
+];

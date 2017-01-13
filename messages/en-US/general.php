@@ -17,4 +17,7 @@ return [
     'Error code: ' => '',
     'Error line: ' => '',
     'Error trace: ' => '',
+    'Yes' => '',
+    'No' => '',
+    'Actions' => '',
 ];

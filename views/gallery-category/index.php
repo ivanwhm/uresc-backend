@@ -10,7 +10,9 @@
 
 //Imports
 use yii\data\ActiveDataProvider;
+use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\grid\SerialColumn;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -35,7 +37,7 @@ $this->params['breadcrumbs'] = [
         'dataProvider' => $dataProvider,
         'columns' => [
             [
-                'class' => 'yii\grid\SerialColumn'
+                'class' => SerialColumn::className()
             ],
             'id',
             'name',
@@ -46,14 +48,14 @@ $this->params['breadcrumbs'] = [
                 },
             ],
             [
-                'class' => 'yii\grid\ActionColumn',
+                'class' => ActionColumn::className(),
+                'header' => Yii::t('general', 'Actions'),
                 'template' => '{view} {update} {delete}',
                 'buttons' => [
                     'delete' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-trash"></span>', [
                             'delete', 'id' => $model->id
                         ], [
-                            'class' => 'GalleryCategory',
                             'data' => [
                                 'confirm' => 'Deseja excluir esta categoria de galeria?',
                                 'method' => 'post',

@@ -17,4 +17,7 @@ return [
     'Error code:' => 'Código do erro:',
     'Error line:' => 'Linha do erro:',
     'Error trace:' => 'Rastro do erro:',
+    'Yes' => 'Sim',
+    'No' => 'Não',
+    'Actions' => 'Ações',
 ];

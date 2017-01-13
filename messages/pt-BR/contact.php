@@ -1,0 +1,23 @@
+<?php
+return [
+    'ID' => 'Código',
+    'E-mail' => 'E-mail',
+    'Message' => 'Mensagem',
+    'Date' => 'Data',
+    'IP' => 'IP',
+    'Answer' => 'Resposta',
+    'Answer date' => 'Data da resposta',
+    'User who answered' => 'Usuário que respondeu',
+    'Did it answered?' => 'Respondido?',
+    'The requested message does not exist.' => 'A mensagem solicitada não existe.',
+    'This message was already answered.' => 'Esta mensagem já foi respondida.',
+    'Contacts' => 'Contatos',
+    'Answer contact' => 'Responder contato',
+    'View contact' => 'Visualizar contato',
+    'Answer it' => 'Responder',
+    'Contact\'s e-mail.' => 'E-mail do contato.',
+    'Contact\'s message.' => 'Mensagem do contato.',
+    'Entered the text of the answer.' => 'Descreva o texto da resposta.',
+    'View contacts!' => 'Visualizar contatos!',
+    'Unanswered contacts' => 'Contatos sem resposta',
+];

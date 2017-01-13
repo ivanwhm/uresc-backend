@@ -120,7 +120,7 @@ SBAdminAsset::register($this);
                 </li>
                 <li class="<?= (Yii::$app->controller->id == "contact") ? "active" : "" ?>">
                     <a href="<?= Url::to(["contact/index"]) ?>">
-                        <i class="fa fa-fw fa-mail-reply-all"></i> Contatos
+                        <i class="fa fa-fw fa-mail-reply-all"></i> <?= Yii::t('contact', 'Contacts') ?>
                     </a>
                 </li>
                 <?php  $departments = Department::getDepartments() ?>

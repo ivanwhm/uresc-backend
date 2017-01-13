@@ -23,13 +23,13 @@ $this->title = Yii::t('general', 'Home');
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $contacts ?></div>
-                        <div>Contatos sem resposta</div>
+                        <div><?= Yii::t('contact', 'Unanswered contacts') ?></div>
                     </div>
                 </div>
             </div>
             <a href="<?= Url::toRoute(['contact/index']) ?>">
                 <div class="panel-footer">
-                    <span class="pull-left">Visualizar contatos!</span>
+                    <span class="pull-left"><?= Yii::t('contact', 'View contacts!') ?></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
