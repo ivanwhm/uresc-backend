@@ -34,9 +34,15 @@ $this->params['breadcrumbs'] = [
 <div class="page-view">
 
     <p>
-        <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Excluir', ['delete', 'id' => $model->id], ['class' => 'btn btn-danger', 'data' => ['confirm' => 'Deseja excluir esta página?', 'method' => 'post']]) ?>
+        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Deseja excluir esta página?',
+                'method' => 'post'
+            ]
+        ]) ?>
     </p>
 
     <?= DetailView::widget([

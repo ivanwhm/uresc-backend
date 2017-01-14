@@ -38,7 +38,9 @@ $this->params['breadcrumbs'] = [
         <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> ' . $model->printLastUpdatedInformation(), ['class' => 'help-block']) ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Salvar', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(Yii::t('general', 'Save'), [
+                'class' => $model->getIsNewRecord() ? 'btn btn-success' : 'btn btn-primary'
+            ]) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

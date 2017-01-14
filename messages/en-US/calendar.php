@@ -2,9 +2,6 @@
 return [
     'ID' => '',
     'Name' => '',
-    'Status' => '',
-    'Active' => '',
-    'Inactive' => '',
     'You can not delete the selected calendar.' => '',
     'The requested calendar does not exist.' => '',
     'Calendars' => '',

@@ -10,7 +10,9 @@
 
 //Imports
 use yii\data\ActiveDataProvider;
+use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\grid\SerialColumn;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -28,14 +30,14 @@ $this->params['breadcrumbs'] = [
 <div class="user-index">
 
     <p>
-        <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'columns' => [
                 [
-                    'class' => 'yii\grid\SerialColumn'
+                    'class' => SerialColumn::className()
                 ],
                 'id',
                 'name',
@@ -54,7 +56,8 @@ $this->params['breadcrumbs'] = [
                     },
                 ],
                 [
-                    'class' => 'yii\grid\ActionColumn',
+                    'class' => ActionColumn::className(),
+                    'header' => Yii::t('general', 'Actions'),
                     'template' => '{view} {update} {delete}',
                     'buttons' => [
                         'delete' => function($url, $model){

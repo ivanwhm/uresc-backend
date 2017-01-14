@@ -85,7 +85,7 @@ SBAdminAsset::register($this);
                 </li>
                 <li class="<?= ((Yii::$app->controller->id == "user") || ((Yii::$app->controller->id == "department") && (Yii::$app->controller->action->id !== "info")) || (Yii::$app->controller->id == "download-category") || (Yii::$app->controller->id == "gallery-category") || (Yii::$app->controller->id == "calendar") || ((Yii::$app->controller->id == "page") && (Yii::$app->controller->action->id !== "info")) ) ? "active" : "" ?>">
                     <a href="javascript:;" data-toggle="collapse" data-target="#records">
-                        <i class="fa fa-fw fa-pencil-square-o"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i>
+                        <i class="fa fa-fw fa-pencil-square-o"></i> <?= Yii::t('general', 'Records') ?> <i class="fa fa-fw fa-caret-down"></i>
                     </a>
                     <ul id="records" class="collapse">
                         <li>

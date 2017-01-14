@@ -20,4 +20,8 @@ return [
     'Yes' => 'Sim',
     'No' => 'Não',
     'Actions' => 'Ações',
+    'Records' => 'Cadastros',
+    'Status' => 'Estado',
+    'Active' => 'Ativo',
+    'Inactive' => 'Inativo',
 ];

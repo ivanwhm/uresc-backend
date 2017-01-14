@@ -34,9 +34,15 @@ $this->params['breadcrumbs'] = [
 <div class="news-view">
 
     <p>
-        <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
-        <?= (!$model->getIsPublished()) ? Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : '' ?>
-        <?= Html::a('Excluir', ['delete', 'id' => $model->id], ['class' => 'btn btn-danger', 'data' => ['confirm' => 'Deseja excluir esta notícia?', 'method' => 'post']]) ?>
+        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= (!$model->getIsPublished()) ? Html::a(Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : ''?>
+        <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Deseja excluir esta notícia?',
+                'method' => 'post'
+            ]
+        ]) ?>
         <?= (!$model->getIsPublished()) ? Html::a('Publicar', ['published', 'id' => $model->id], ['class' => 'btn btn-info', 'data' => ['confirm' => 'Deseja publicar esta notícia?', 'method' => 'post']]) : '' ?>
         <?= ($model->getIsPublished()) ? Html::a('Despublicar', ['unpublished', 'id' => $model->id], ['class' => 'btn btn-info', 'data' => ['confirm' => 'Deseja despublicar esta notícia?', 'method' => 'post']]) : '' ?>
     </p>

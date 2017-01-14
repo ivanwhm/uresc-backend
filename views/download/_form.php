@@ -44,11 +44,11 @@ use yii\widgets\ActiveForm;
     <?php endif; ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Salvar', [
+        <?= Html::submitButton(Yii::t('general', 'Save'), [
             'class' => $model->getIsNewRecord() ? 'btn btn-success' : 'btn btn-primary'
         ]) ?>
-        <?= Html::a('Cancelar', $model->getIsNewRecord() ? ['index'] : ['view', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
+        <?= Html::a(Yii::t('general', 'Cancel'), $model->getIsNewRecord() ? ['index'] : ['view', 'id' => $model->id], [
+            'class' => 'btn btn-danger'
         ]) ?>
     </div>
 

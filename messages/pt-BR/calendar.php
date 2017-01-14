@@ -2,9 +2,6 @@
 return [
     'ID' => 'Código',
     'Name' => 'Nome',
-    'Status' => 'Estado',
-    'Active' => 'Ativo',
-    'Inactive' => 'Inativo',
     'You can not delete the selected calendar.' => 'Não é possível excluir o calendário selecionado.',
     'The requested calendar does not exist.' => 'O calendário solicitado não existe.',
     'Calendars' => 'Calendários',

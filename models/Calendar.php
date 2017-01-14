@@ -59,7 +59,7 @@ class Calendar extends ActiveRecord
         return [
             'id' => Yii::t('calendar', 'ID'),
             'name' => Yii::t('calendar', 'Name'),
-            'status' => Yii::t('calendar', 'Status'),
+            'status' => Yii::t('general', 'Status'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),
             'user_created' => Yii::t('general', 'User who created'),
@@ -141,8 +141,8 @@ class Calendar extends ActiveRecord
     public static function getStatusData()
     {
         return [
-            self::STATUS_ACTIVE => Yii::t('calendar', 'Active'),
-            self::STATUS_INACTIVE => Yii::t('calendar', 'Inactive')
+            self::STATUS_ACTIVE => Yii::t('general', 'Active'),
+            self::STATUS_INACTIVE => Yii::t('general', 'Inactive')
         ];
     }
 

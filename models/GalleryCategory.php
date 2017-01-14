@@ -60,13 +60,13 @@ class GalleryCategory extends ActiveRecord
         return [
             'id' => 'Código',
             'name' => 'Nome',
-            'status' => 'Estado',
-            'date_created' => 'Data da criação',
-            'date_updated' => 'Data da última atualização',
-            'user_created' => 'Usuário que criou',
-            'user_updated' => 'Usuário da última atualização',
-            'usercreated.name' => 'Usuário que criou',
-            'userupdated.name' => 'Usuário da última atualização',
+            'status' => Yii::t('general', 'Status'),
+            'date_created' => Yii::t('general', 'Date of creation'),
+            'date_updated' => Yii::t('general', 'Date of the update'),
+            'user_created' => Yii::t('general', 'User who created'),
+            'user_updated' => Yii::t('general', 'User who do last update'),
+            'usercreated.name' => Yii::t('general', 'User who created'),
+            'userupdated.name' => Yii::t('general', 'User who do last update'),
         ];
     }
 
@@ -132,8 +132,8 @@ class GalleryCategory extends ActiveRecord
     public static function getStatusData()
     {
         return [
-            self::STATUS_ACTIVE => "Ativo",
-            self::STATUS_INACTIVE => "Inativo"
+            self::STATUS_ACTIVE => Yii::t('general', 'Active'),
+            self::STATUS_INACTIVE => Yii::t('general', 'Inactive')
         ];
     }
 
@@ -154,7 +154,10 @@ class GalleryCategory extends ActiveRecord
      */
     public function printCreatedInformation()
     {
-        return 'Criado em ' . Yii::$app->getFormatter()->asDatetime($this->date_created) . ' por ' . $this->getUserCreated()->getName() . '.';
+        return Yii::t('general', 'Created on {date} by {username}.', [
+            'date' => Yii::$app->getFormatter()->asDatetime($this->date_created),
+            'username' => $this->getUserCreated()->getName()
+        ]);
     }
 
     /**
@@ -164,6 +167,9 @@ class GalleryCategory extends ActiveRecord
      */
     public function printLastUpdatedInformation()
     {
-        return 'Última alteração em ' . Yii::$app->getFormatter()->asDatetime($this->date_updated) . ' por ' . $this->getUserUpdated()->getName() . '.';
+        return Yii::t('general', 'Last update on {date} by {username}.', [
+            'date' => Yii::$app->getFormatter()->asDatetime($this->date_updated),
+            'username' => $this->getUserUpdated()->getName()
+        ]);
     }
 }
