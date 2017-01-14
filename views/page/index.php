@@ -4,6 +4,7 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
+ * @var $model Page
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -16,8 +17,9 @@ use yii\grid\SerialColumn;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
+use \app\models\Page;
 
-$this->title = 'Páginas';
+$this->title = Yii::t('page', 'Pages');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -51,7 +53,7 @@ $this->params['breadcrumbs'] = [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [
-                                'confirm' => 'Deseja excluir esta página?',
+                                'confirm' => Yii::t('page', 'Do you want to delete this page?'),
                                 'method' => 'post',
                             ],
                         ]);

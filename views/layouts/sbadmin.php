@@ -101,7 +101,7 @@ SBAdminAsset::register($this);
                             <a href="<?= Url::to(["department/index"]) ?>"><i class="fa fa-fw fa-files-o"></i> Departamentos</a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(["page/index"]) ?>"><i class="fa fa-fw fa-clipboard"></i> Páginas</a>
+                            <a href="<?= Url::to(["page/index"]) ?>"><i class="fa fa-fw fa-clipboard"></i> <?= Yii::t('page', 'Pages') ?></a>
                         </li>
                         <li>
                             <a href="<?= Url::to(["user/index"]) ?>"><i class="fa fa-fw fa-user"></i> Usuários</a>
@@ -159,7 +159,7 @@ SBAdminAsset::register($this);
                 <?php if (count($pages) > 0) : ?>
                     <li class="<?= ((Yii::$app->controller->id == "page") && (Yii::$app->controller->action->id == "info")) ? "active" : "" ?>">
                         <a href="javascript:;" data-toggle="collapse" data-target="#page">
-                            <i class="fa fa-fw fa-clipboard"></i> Páginas <i class="fa fa-fw fa-caret-down"></i>
+                            <i class="fa fa-fw fa-clipboard"></i> <?= Yii::t('page', 'Pages') ?> <i class="fa fa-fw fa-caret-down"></i>
                         </a>
                         <ul id="page" class="collapse">
                             <?php foreach ($pages as $page) : ?>

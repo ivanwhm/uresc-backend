@@ -51,7 +51,6 @@ $config = [
             'preset' => 'standard',
             'widgetClientOptions' => [
                 'rows' =>'15',
-                'language' => 'pt',
             ],
         ],
         'datecontrol' =>  [

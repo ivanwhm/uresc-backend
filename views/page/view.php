@@ -15,10 +15,10 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
 
-$this->title = "Visualizar página";
+$this->title = Yii::t('page', 'View page');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Páginas",
+        "label" => Yii::t('page', 'Pages'),
         "icon" => "fa-clipboard",
         "active" => false,
         "url" => Url::to(["page/index"])
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'] = [
         <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Deseja excluir esta página?',
+                'confirm' => Yii::t('page', 'Do you want to delete this page?'),
                 'method' => 'post'
             ]
         ]) ?>

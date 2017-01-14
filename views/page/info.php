@@ -16,7 +16,7 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Página: ' . $model->name;
+$this->title = Yii::t('page', 'Page: {name}', ['name' => $model->name]);
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'] = [
         <?php $form = ActiveForm::begin(['id' => 'page-form']); ?>
 
         <?= $form->field($model, 'text')->widget(CKEditor::className()) ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Descreva o texto relacionado a página.', ['id' => 'hbName', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('page', 'Entered the related text of the page.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
         <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> ' . $model->printLastUpdatedInformation(), ['class' => 'help-block']) ?>
 
         <div class="form-group">

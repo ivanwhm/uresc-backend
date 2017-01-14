@@ -14,10 +14,10 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Adicionar página';
+$this->title = Yii::t('page', 'Add page');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Páginas",
+        "label" => Yii::t('page', 'Pages'),
         "icon" => "fa-clipboard",
         "active" => false,
         "url" => Url::to(["page/index"])

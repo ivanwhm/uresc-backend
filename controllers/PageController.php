@@ -155,7 +155,7 @@ class PageController extends Controller
             $model->delete();
         } catch (Exception $ex)
         {
-            throw new NotFoundHttpException('Não é possível excluir a página selecionada.');
+            throw new NotFoundHttpException(Yii::t('page', 'You can not delete the selected page.'));
         }
 
         return $this->redirect(['index']);
@@ -177,7 +177,7 @@ class PageController extends Controller
             return $model;
         } else
         {
-            throw new NotFoundHttpException('A página solicitada não existe.');
+            throw new NotFoundHttpException(Yii::t('page', 'The requested page does not exist.'));
         }
     }
 }

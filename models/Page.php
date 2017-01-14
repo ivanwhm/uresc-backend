@@ -55,9 +55,9 @@ class Page extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Código',
-            'name' => 'Nome',
-            'text' => 'Texto da página',
+            'id' => Yii::t('page', 'ID'),
+            'name' => Yii::t('page', 'Name'),
+            'text' => Yii::t('page', 'Text'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),
             'user_created' => Yii::t('general', 'User who created'),
