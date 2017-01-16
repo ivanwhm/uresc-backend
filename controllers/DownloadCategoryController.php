@@ -134,7 +134,7 @@ class DownloadCategoryController extends Controller
             $model->delete();
         } catch (Exception $ex)
         {
-            throw new NotFoundHttpException('Não é possível excluir a categoria de arquivos selecionada.');
+            throw new NotFoundHttpException(Yii::t('download_category', 'You can not delete the selected download category.'));
         }
 
         return $this->redirect(['index']);
@@ -156,7 +156,7 @@ class DownloadCategoryController extends Controller
             return $model;
         } else
         {
-            throw new NotFoundHttpException('A categoria de arquivos solicitada não existe.');
+            throw new NotFoundHttpException(Yii::t('download_category', 'The requested download category does not exist.'));
         }
     }
 }

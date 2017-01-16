@@ -25,10 +25,10 @@ use yii\widgets\ActiveForm;
     ); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe o nome da categoria de arquivo.', ['id' => 'hbName', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('download_category', 'Enter the name of the download category.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'status')->dropDownList(DownloadCategory::getStatusData(), ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe se a categoria de arquivo está ativa ou inativa.', ['id' => 'hbStatus', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('download_category', 'Please tell us if the download category is active or inactive.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 
     <?php if (!$model->getIsNewRecord()) : ?>
         <?= Html::tag('br') ?>

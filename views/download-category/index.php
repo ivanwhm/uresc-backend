@@ -4,11 +4,14 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
+ * @var $data DownloadCategory
+ * @var $model DownloadCategory
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports
+use app\models\DownloadCategory;
 use yii\data\ActiveDataProvider;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
@@ -17,7 +20,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Categorias de arquivos';
+$this->title = Yii::t('download_category', 'Download categories');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -57,7 +60,7 @@ $this->params['breadcrumbs'] = [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [
-                                'confirm' => 'Deseja excluir esta categoria de arquivo?',
+                                'confirm' => Yii::t('download_category', 'Do you want to delete this download category?'),
                                 'method' => 'post',
                             ],
                         ]);

@@ -13,10 +13,10 @@ use app\models\DownloadCategory;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Alterar categoria de arquivos';
+$this->title = Yii::t('download_category', 'Update download category');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Categorias de arquivos",
+        "label" => Yii::t('download_category', 'Download categories'),
         "icon" => "fa-file-archive-o",
         "active" => false,
         "url" => Url::to(["download-category/index"])

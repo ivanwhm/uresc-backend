@@ -59,8 +59,8 @@ class DownloadCategory extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Código',
-            'name' => 'Nome',
+            'id' => Yii::t('download_category', 'ID'),
+            'name' => Yii::t('download_category', 'Name'),
             'status' => Yii::t('general', 'Status'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),
@@ -117,7 +117,9 @@ class DownloadCategory extends ActiveRecord
     public static function getDownloadCategories()
     {
         $all = [];
-        $categories = self::find(['status' => self::STATUS_ACTIVE])->orderBy('name')->all();
+        $categories = self::find([
+            'status' => self::STATUS_ACTIVE
+        ])->orderBy('name')->all();
         foreach ($categories as $category)
         {
             $all[$category->id] = $category->name;
