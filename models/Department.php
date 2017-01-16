@@ -61,10 +61,10 @@ class Department extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Código',
-            'name' => 'Nome',
+            'id' => Yii::t('department', 'ID'),
+            'name' => Yii::t('department', 'Name'),
             'status' => Yii::t('general', 'Status'),
-            'info' => 'Texto do departamento',
+            'info' => Yii::t('department', 'Text'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),
             'user_created' => Yii::t('general', 'User who created'),
@@ -117,7 +117,9 @@ class Department extends ActiveRecord
      */
     public static function getDepartments()
     {
-        return self::find(['status' => self::STATUS_ACTIVE])->orderBy('name')->all();
+        return self::find([
+            'status' => self::STATUS_ACTIVE
+        ])->orderBy('name')->all();
     }
 
     /**

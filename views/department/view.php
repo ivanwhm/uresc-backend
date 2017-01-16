@@ -15,10 +15,10 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
 
-$this->title = "Visualizar departamento";
+$this->title = Yii::t('department', 'View department');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Departamentos",
+        "label" => Yii::t('department', 'Departments'),
         "icon" => "fa-files-o",
         "active" => false,
         "url" => Url::to(["department/index"])
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'] = [
         <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Deseja excluir este departamento?',
+                'confirm' => Yii::t('department', 'Do you want to delete this department?'),
                 'method' => 'post'
             ]
         ]) ?>

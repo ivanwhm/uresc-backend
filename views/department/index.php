@@ -4,11 +4,14 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
+ * @var $data Department
+ * @var $model Department
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports
+use app\models\Department;
 use yii\data\ActiveDataProvider;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
@@ -17,7 +20,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Departamentos';
+$this->title = Yii::t('department', 'Departments');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -57,7 +60,7 @@ $this->params['breadcrumbs'] = [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [
-                                'confirm' => 'Deseja excluir este departamento?',
+                                'confirm' => Yii::t('department', 'Do you want to delete this department?'),
                                 'method' => 'post',
                             ],
                         ]);

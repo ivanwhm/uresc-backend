@@ -13,10 +13,10 @@ use app\models\Department;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Alterar departamento';
+$this->title = Yii::t('department', 'Update department');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Departamentos",
+        "label" => Yii::t('department', 'Departments'),
         "icon" => "fa-files-o",
         "active" => false,
         "url" => Url::to(["department/index"])

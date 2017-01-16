@@ -156,7 +156,7 @@ class DepartmentController extends Controller
             $model->delete();
         } catch (Exception $ex)
         {
-            throw new NotFoundHttpException('Não é possível excluir o departamento selecionado.');
+            throw new NotFoundHttpException(Yii::t('department', 'You can not delete the selected department.'));
         }
 
         return $this->redirect(['index']);
@@ -178,7 +178,7 @@ class DepartmentController extends Controller
             return $model;
         } else
         {
-            throw new NotFoundHttpException('O departamento solicitado não existe.');
+            throw new NotFoundHttpException(Yii::t('department', 'The requested department does not exist.'));
         }
     }
 }

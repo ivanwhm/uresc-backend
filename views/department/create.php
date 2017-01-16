@@ -14,10 +14,10 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Adicionar departamento';
+$this->title = Yii::t('department', 'Add department');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Departamentos",
+        "label" => Yii::t('department', 'Departments'),
         "icon" => "fa-files-o",
         "active" => false,
         "url" => Url::to(["department/index"])
