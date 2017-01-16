@@ -26,16 +26,16 @@ use yii\widgets\ActiveForm;
     ); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe o nome do arquivo.', ['id' => 'hbName', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('download', 'Enter the name of the download.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'category_id')->dropDownList(DownloadCategory::getDownloadCategories(), ['prompt' => '---', 'aria-describedby' => 'hbCategory']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe a categoria do arquivo.', ['id' => 'hbCategory', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('download', 'Enter the category of the download.'), ['id' => 'hbCategory', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true, 'aria-describedby' => 'hbAddress']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe o endereço do arquivo.', ['id' => 'hbAddress', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('download', 'Enter the address of the download.'), ['id' => 'hbAddress', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'status')->dropDownList(Download::getStatusData(), ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe se o arquivo está ativo ou inativo.', ['id' => 'hbStatus', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('download', 'Please tell us if the download is active or inactive.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 
     <?php if (!$model->getIsNewRecord()) : ?>
         <?= Html::tag('br') ?>

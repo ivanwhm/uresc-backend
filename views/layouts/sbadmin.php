@@ -110,7 +110,7 @@ SBAdminAsset::register($this);
                 </li>
                 <li class="<?= (Yii::$app->controller->id == "download") ? "active" : "" ?>">
                     <a href="<?= Url::to(["download/index"]) ?>">
-                        <i class="fa fa-fw fa-archive"></i> Arquivos
+                        <i class="fa fa-fw fa-archive"></i> <?= Yii::t('download', 'Downloads') ?>
                     </a>
                 </li>
                 <li class="<?= (Yii::$app->controller->id == "center") ? "active" : "" ?>">

@@ -134,7 +134,7 @@ class DownloadController extends Controller
             $model->delete();
         } catch (Exception $ex)
         {
-            throw new NotFoundHttpException('Não é possível excluir o arquivo selecionado.');
+            throw new NotFoundHttpException(Yii::t('download', 'You can not delete the selected download.'));
         }
 
         return $this->redirect(['index']);
@@ -156,7 +156,7 @@ class DownloadController extends Controller
             return $model;
         } else
         {
-            throw new NotFoundHttpException('O arquivo solicitado não existe.');
+            throw new NotFoundHttpException(Yii::t('download', 'The requested download does not exist.'));
         }
     }
 }

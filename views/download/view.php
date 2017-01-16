@@ -15,10 +15,10 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
 
-$this->title = "Visualizar arquivo";
+$this->title = Yii::t('download', 'View download');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Arquivos",
+        "label" => Yii::t('download', 'Downloads'),
         "icon" => "fa-archive",
         "active" => false,
         "url" => Url::to(["download/index"])
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'] = [
         <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Deseja excluir este arquivo?',
+                'confirm' => Yii::t('download', 'Do you want to delete this download?'),
                 'method' => 'post'
             ]
         ]) ?>

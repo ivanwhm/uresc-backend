@@ -13,10 +13,10 @@ use app\models\Download;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Alterar arquivo';
+$this->title = Yii::t('download', 'Update download');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Arquivos",
+        "label" => Yii::t('download', 'Downloads'),
         "icon" => "fa-archive",
         "active" => false,
         "url" => Url::to(["download/index"])

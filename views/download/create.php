@@ -15,10 +15,10 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Adicionar um arquivo';
+$this->title = Yii::t('download', 'Add download');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Arquivos",
+        "label" => Yii::t('download', 'Downloads'),
         "icon" => "fa-archive",
         "active" => false,
         "url" => Url::to(["download/index"])

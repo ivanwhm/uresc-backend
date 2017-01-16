@@ -4,6 +4,8 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
+ * @var $data Download
+ * @var $model Download
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -16,8 +18,9 @@ use yii\grid\SerialColumn;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
+use \app\models\Download;
 
-$this->title = 'Arquivos';
+$this->title = Yii::t('download', 'Downloads');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -58,7 +61,7 @@ $this->params['breadcrumbs'] = [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [
-                                'confirm' => 'Deseja excluir este arquivo?',
+                                'confirm' => Yii::t('download', 'Do you want to delete this download?'),
                                 'method' => 'post',
                             ],
                         ]);
