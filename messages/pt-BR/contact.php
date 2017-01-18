@@ -17,7 +17,7 @@ return [
     'Answer it' => 'Responder',
     'Contact\'s e-mail.' => 'E-mail do contato.',
     'Contact\'s message.' => 'Mensagem do contato.',
-    'Entered the text of the answer.' => 'Descreva o texto da resposta.',
+    'Enter the text of the answer.' => 'Descreva o texto da resposta.',
     'View contacts!' => 'Visualizar contatos!',
     'Unanswered contacts' => 'Contatos sem resposta',
 ];

@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('contact', 'Contact\'s message.'), ['id' => 'hbContactMessage', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'answer_message')->textarea(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbAnswerMessage', 'rows' => 10]) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('contact', 'Entered the text of the answer.'), ['id' => 'hbAnswerMessage', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('contact', 'Enter the text of the answer.'), ['id' => 'hbAnswerMessage', 'class' => 'help-block']) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('contact', 'Answer it'), [

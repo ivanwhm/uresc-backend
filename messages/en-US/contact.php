@@ -17,7 +17,7 @@ return [
     'Answer it' => '',
     'Contact\'s e-mail.' => '',
     'Contact\'s message.' => '',
-    'Entered the text of the answer.' => '',
+    'Enter the text of the answer.' => '',
     'View contacts!' => '',
     'Unanswered contacts' => '',
 ];
