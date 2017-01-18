@@ -16,8 +16,8 @@ return [
     'Add news' => 'Adicionar notícia',
     'Update news' => 'Alterar notícia',
     'View news' => 'Visualizar notícia',
-    'Entered the title of the news.' => 'Informe o título da notícia.',
-    'Entered the text of the news.' => 'Descreva o texto da notícia.',
+    'Enter the title of the news.' => 'Informe o título da notícia.',
+    'Enter the text of the news.' => 'Descreva o texto da notícia.',
     'Unpublished news' => 'Notícias não publicadas',
     'View news!' => 'Visualizar notícias!',
 ];

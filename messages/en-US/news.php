@@ -16,8 +16,8 @@ return [
     'Add news' => '',
     'Update news' => '',
     'View news' => '',
-    'Entered the title of the news.' => '',
-    'Entered the text of the news.' => '',
+    'Enter the title of the news.' => '',
+    'Enter the text of the news.' => '',
     'Unpublished news' => '',
     'View news!' => '',
 ];
