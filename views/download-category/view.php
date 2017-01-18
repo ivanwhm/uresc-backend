@@ -15,10 +15,10 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
 
-$this->title = Yii::t('download_category', 'View download category');
+$this->title = Yii::t('download_category', 'View download\'s category');
 $this->params['breadcrumbs'] = [
     [
-        "label" => Yii::t('download_category', 'Download categories'),
+        "label" => Yii::t('download_category', 'Download\'s categories'),
         "icon" => "fa-file-archive-o",
         "active" => false,
         "url" => Url::to(["download-category/index"])
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'] = [
         <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('download_category', 'Do you want to delete this download category?'),
+                'confirm' => Yii::t('download_category', 'Do you want to delete this download\'s category?'),
                 'method' => 'post'
             ]
         ]) ?>

@@ -92,7 +92,7 @@ SBAdminAsset::register($this);
                             <a href="<?= Url::to(["calendar/index"]) ?>"><i class="fa fa-fw fa-calendar-o"></i> <?= Yii::t('calendar', 'Calendars') ?></a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(["download-category/index"]) ?>"><i class="fa fa-fw fa-file-archive-o"></i> <?= Yii::t('download_category', 'Download categories') ?></a>
+                            <a href="<?= Url::to(["download-category/index"]) ?>"><i class="fa fa-fw fa-file-archive-o"></i> <?= Yii::t('download_category', 'Download\'s categories') ?></a>
                         </li>
                         <li>
                             <a href="<?= Url::to(["gallery-category/index"]) ?>"><i class="fa fa-fw fa-file-picture-o"></i> <?= Yii::t('gallery_category', 'Gallery\'s categories') ?></a>

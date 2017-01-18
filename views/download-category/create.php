@@ -15,10 +15,10 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = Yii::t('download_category', 'Add download category');
+$this->title = Yii::t('download_category', 'Add download\'s category');
 $this->params['breadcrumbs'] = [
     [
-        "label" => Yii::t('download_category', 'Download categories'),
+        "label" => Yii::t('download_category', 'Download\'s categories'),
         "icon" => "fa-file-archive-o",
         "active" => false,
         "url" => Url::to(["download-category/index"])

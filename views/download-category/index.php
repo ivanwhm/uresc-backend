@@ -20,7 +20,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = Yii::t('download_category', 'Download categories');
+$this->title = Yii::t('download_category', 'Download\'s categories');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -60,7 +60,7 @@ $this->params['breadcrumbs'] = [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [
-                                'confirm' => Yii::t('download_category', 'Do you want to delete this download category?'),
+                                'confirm' => Yii::t('download_category', 'Do you want to delete this download\'s category?'),
                                 'method' => 'post',
                             ],
                         ]);
