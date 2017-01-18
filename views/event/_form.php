@@ -28,22 +28,22 @@ use yii\widgets\ActiveForm;
     ); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('event', 'Entered the name of the event.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('event', 'Enter the name of the event.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'calendar_id')->dropDownList(Calendar::getCalendars(), ['prompt' => '---', 'aria-describedby' => 'hbCalendar']) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('event', 'Select the calendar of the event.'), ['id' => 'hbCalendar', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'date')->widget(DateControl::classname(), ['type'=>DateControl::FORMAT_DATE]) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('event', 'Entered the date of the event.'), ['id' => 'hbDate', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('event', 'Enter the date of the event.'), ['id' => 'hbDate', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'start_time')->widget(DateControl::classname(), ['type'=>DateControl::FORMAT_TIME]) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('event', 'Entered the start time of the event.'), ['id' => 'hbStartTime', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('event', 'Enter the start time of the event.'), ['id' => 'hbStartTime', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'end_time')->widget(DateControl::classname(), ['type'=>DateControl::FORMAT_TIME]) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('event', 'Entered the end time of the event.'), ['id' => 'hbEndTime', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('event', 'Enter the end time of the event.'), ['id' => 'hbEndTime', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'place')->textarea(['maxlength' => true, 'rows' => 3, 'aria-describedby' => 'hbPlace']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('event', 'Entered the place (full address) of the event.'), ['id' => 'hbPlace', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('event', 'Enter the place (full address) of the event.'), ['id' => 'hbPlace', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'info')->widget(CKEditor::className()) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('event', 'Give us more information about the event.'), ['id' => 'hbInfo', 'class' => 'help-block']) ?>
