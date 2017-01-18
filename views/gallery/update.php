@@ -13,10 +13,10 @@ use app\models\Gallery;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Alterar arquivo da galeria';
+$this->title = Yii::t('gallery', 'Update gallery');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Galerias",
+        "label" => Yii::t('gallery', 'Galleries'),
         "icon" => "fa-picture-o",
         "active" => false,
         "url" => Url::to(["gallery/index"])

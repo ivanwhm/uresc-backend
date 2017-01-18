@@ -4,6 +4,8 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
+ * @var $data Gallery
+ * @var $model Gallery
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -16,8 +18,9 @@ use yii\grid\SerialColumn;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
+use \app\models\Gallery;
 
-$this->title = 'Galerias';
+$this->title = Yii::t('gallery', 'Galleries');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -58,7 +61,7 @@ $this->params['breadcrumbs'] = [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [
-                                'confirm' => 'Deseja excluir este arquivo da galeria?',
+                                'confirm' => Yii::t('gallery', 'Do you want to delete this gallery?'),
                                 'method' => 'post',
                             ],
                         ]);

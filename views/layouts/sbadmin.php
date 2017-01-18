@@ -147,7 +147,7 @@ SBAdminAsset::register($this);
                 </li>
                 <li class="<?= (Yii::$app->controller->id == "gallery") ? "active" : "" ?>">
                     <a href="<?= Url::to(["gallery/index"]) ?>">
-                        <i class="fa fa-fw fa-picture-o"></i> Galerias
+                        <i class="fa fa-fw fa-picture-o"></i> <?= Yii::t('gallery', 'Galleries') ?>
                     </a>
                 </li>
                 <li class="<?= (Yii::$app->controller->id == "news") ? "active" : "" ?>">

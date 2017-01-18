@@ -15,10 +15,10 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
 
-$this->title = "Visualizar arquivo da galeria";
+$this->title = Yii::t('gallery', 'View gallery');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Galerias",
+        "label" => Yii::t('gallery', 'Galleries'),
         "icon" => "fa-picture-o",
         "active" => false,
         "url" => Url::to(["gallery/index"])
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'] = [
         <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Deseja excluir este arquivo da galeria?',
+                'confirm' => Yii::t('gallery', 'Do you want to delete this gallery?'),
                 'method' => 'post'
             ]
         ]) ?>

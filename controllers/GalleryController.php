@@ -89,7 +89,7 @@ class GalleryController extends Controller
             return $model;
         } else
         {
-            throw new NotFoundHttpException('O arquivo solicitado não existe.');
+            throw new NotFoundHttpException(Yii::t('gallery', 'The requested gallery does not exist.'));
         }
     }
 
@@ -154,7 +154,7 @@ class GalleryController extends Controller
             $model->delete();
         } catch (Exception $ex)
         {
-            throw new NotFoundHttpException('Não é possível excluir o arquivo selecionado.');
+            throw new NotFoundHttpException(Yii::t('gallery', 'You can not delete the selected gallery.'));
         }
 
         return $this->redirect(['index']);

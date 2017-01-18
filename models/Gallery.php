@@ -63,11 +63,11 @@ class Gallery extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Código',
-            'name' => 'Nome',
-            'category_id' => 'Categoria',
-            'category.name' => 'Categoria',
-            'address' => 'Endereço do arquivo',
+            'id' => Yii::t('gallery', 'ID'),
+            'name' => Yii::t('gallery', 'Name'),
+            'category_id' => Yii::t('gallery', 'Category'),
+            'category.name' => Yii::t('gallery', 'Category'),
+            'address' => Yii::t('gallery', 'File address'),
             'status' => Yii::t('general', 'Status'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),

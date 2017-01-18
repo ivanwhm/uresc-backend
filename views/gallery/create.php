@@ -15,10 +15,10 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Adicionar um arquivo na galeria';
+$this->title = Yii::t('gallery', 'Add gallery');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Galerias",
+        "label" => Yii::t('gallery', 'Galleries'),
         "icon" => "fa-picture-o",
         "active" => false,
         "url" => Url::to(["gallery/index"])
