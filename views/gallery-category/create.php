@@ -15,10 +15,10 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Adicionar categoria de galerias';
+$this->title = Yii::t('gallery_category', 'Add gallery\'s category');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Categorias de galerias",
+        "label" => Yii::t('gallery_category', 'Gallery\'s categories'),
         "icon" => "fa-file-picture-o",
         "active" => false,
         "url" => Url::to(["gallery-category/index"])

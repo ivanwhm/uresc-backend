@@ -25,10 +25,10 @@ use yii\widgets\ActiveForm;
     ); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe o nome da categoria de galeria.', ['id' => 'hbName', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('gallery_category', 'Enter the name of the gallery\'s category.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'status')->dropDownList(GalleryCategory::getStatusData(), ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe se a categoria de galeria está ativa ou inativa.', ['id' => 'hbStatus', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('gallery_category', 'Please tell us if the gallery\'s category is active or inactive.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 
     <?php if (!$model->getIsNewRecord()) : ?>
         <?= Html::tag('br') ?>

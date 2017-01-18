@@ -134,7 +134,7 @@ class GalleryCategoryController extends Controller
             $model->delete();
         } catch (Exception $ex)
         {
-            throw new NotFoundHttpException('Não é possível excluir a categoria de galeria selecionada.');
+            throw new NotFoundHttpException(Yii::t('gallery_category', 'You can not delete the selected gallery\'s category.'));
         }
 
         return $this->redirect(['index']);
@@ -156,7 +156,7 @@ class GalleryCategoryController extends Controller
             return $model;
         } else
         {
-            throw new NotFoundHttpException('A categoria de galeria solicitada não existe.');
+            throw new NotFoundHttpException(Yii::t('gallery_category', 'The requested gallery\'s category does not exist.'));
         }
     }
 }
