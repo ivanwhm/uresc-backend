@@ -45,13 +45,13 @@ $this->title = Yii::t('general', 'Home');
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $events ?></div>
-                        <div>Eventos futuros</div>
+                        <div><?= Yii::t('event', 'Future events') ?></div>
                     </div>
                 </div>
             </div>
             <a href="<?= Url::toRoute(['event/index']) ?>">
                 <div class="panel-footer">
-                    <span class="pull-left">Visualizar eventos!</span>
+                    <span class="pull-left"><?= Yii::t('event', 'View events!') ?></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>

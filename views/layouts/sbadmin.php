@@ -142,7 +142,7 @@ SBAdminAsset::register($this);
                 <?php endif; ?>
                 <li class="<?= (Yii::$app->controller->id == "event") ? "active" : "" ?>">
                     <a href="<?= Url::to(["event/index"]) ?>">
-                        <i class="fa fa-fw fa-calendar"></i> Eventos
+                        <i class="fa fa-fw fa-calendar"></i> <?= Yii::t('event', 'Events') ?>
                     </a>
                 </li>
                 <li class="<?= (Yii::$app->controller->id == "gallery") ? "active" : "" ?>">

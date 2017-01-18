@@ -15,10 +15,10 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
 
-$this->title = "Visualizar evento";
+$this->title = Yii::t('event', 'View event');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Eventos",
+        "label" => Yii::t('event', 'Events'),
         "icon" => "fa-calendar",
         "active" => false,
         "url" => Url::to(["event/index"])
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'] = [
         <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Deseja excluir este evento?',
+                'confirm' => Yii::t('event', 'Do you want to delete this event?'),
                 'method' => 'post'
             ]
         ]) ?>

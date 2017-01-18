@@ -133,7 +133,7 @@ class EventController extends Controller
             $model->delete();
         } catch (Exception $ex)
         {
-            throw new NotFoundHttpException('Não é possível excluir o evento selecionado.');
+            throw new NotFoundHttpException(Yii::t('event', 'You can not delete the selected event.'));
         }
 
         return $this->redirect(['index']);
@@ -155,7 +155,7 @@ class EventController extends Controller
             return $model;
         } else
         {
-            throw new NotFoundHttpException('O evento solicitado não existe.');
+            throw new NotFoundHttpException(Yii::t('event', 'The requested event does not exist.'));
         }
     }
 }

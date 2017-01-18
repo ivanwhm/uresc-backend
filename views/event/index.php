@@ -4,6 +4,7 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
+ * @var $model Event
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -16,8 +17,9 @@ use yii\grid\SerialColumn;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
+use \app\models\Event;
 
-$this->title = 'Eventos';
+$this->title = Yii::t('event', 'Events');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -43,8 +45,8 @@ $this->params['breadcrumbs'] = [
             'name',
             'calendar.name',
             'date:date',
-            'start_time.time',
-            'end_time.time',
+            'start_time:time',
+            'end_time:time',
             [
                 'class' => ActionColumn::className(),
                 'header' => Yii::t('general', 'Actions'),
@@ -55,7 +57,7 @@ $this->params['breadcrumbs'] = [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [
-                                'confirm' => 'Deseja excluir este evento?',
+                                'confirm' => Yii::t('event', 'Do you want to delete this event?'),
                                 'method' => 'post',
                             ],
                         ]);

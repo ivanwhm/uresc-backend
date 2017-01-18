@@ -15,10 +15,10 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Adicionar evento';
+$this->title = Yii::t('event', 'Add event');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Eventos",
+        "label" => Yii::t('event', 'Events'),
         "icon" => "fa-calendar",
         "active" => false,
         "url" => Url::to(["event/index"])
