@@ -13,10 +13,10 @@ use app\models\News;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Alterar notícia';
+$this->title = Yii::t('news', 'Update news');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Notícias",
+        "label" => Yii::t('news', 'News'),
         "icon" => "fa-newspaper-o",
         "active" => false,
         "url" => Url::to(["news/index"])

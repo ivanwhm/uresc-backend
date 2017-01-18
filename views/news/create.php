@@ -15,10 +15,10 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Adicionar notícia';
+$this->title = Yii::t('news', 'Add news');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Notícias",
+        "label" => Yii::t('news', 'News'),
         "icon" => "fa-newspaper-o",
         "active" => false,
         "url" => Url::to(["news/index"])

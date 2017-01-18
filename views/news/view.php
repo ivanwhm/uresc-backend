@@ -15,10 +15,10 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
 
-$this->title = "Visualizar notícia";
+$this->title = Yii::t('news', 'View news');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Notícias",
+        "label" => Yii::t('news', 'News'),
         "icon" => "fa-newspaper-o",
         "active" => false,
         "url" => Url::to(["news/index"])
@@ -39,12 +39,24 @@ $this->params['breadcrumbs'] = [
         <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Deseja excluir esta notícia?',
+                'confirm' => Yii::t('news', 'Do you want to delete this news?'),
                 'method' => 'post'
             ]
         ]) ?>
-        <?= (!$model->getIsPublished()) ? Html::a('Publicar', ['published', 'id' => $model->id], ['class' => 'btn btn-info', 'data' => ['confirm' => 'Deseja publicar esta notícia?', 'method' => 'post']]) : '' ?>
-        <?= ($model->getIsPublished()) ? Html::a('Despublicar', ['unpublished', 'id' => $model->id], ['class' => 'btn btn-info', 'data' => ['confirm' => 'Deseja despublicar esta notícia?', 'method' => 'post']]) : '' ?>
+        <?= (!$model->getIsPublished()) ? Html::a(Yii::t('news', 'Publish'), ['published', 'id' => $model->id], [
+                'class' => 'btn btn-info',
+                'data' => [
+                    'confirm' => Yii::t('news', 'Do you want to publish this news?'),
+                    'method' => 'post'
+                ]
+        ]) : '' ?>
+        <?= ($model->getIsPublished()) ? Html::a(Yii::t('news', 'Unpublish'), ['unpublished', 'id' => $model->id], [
+                'class' => 'btn btn-info',
+                'data' => [
+                        'confirm' => Yii::t('news', 'Do you want to unpublish this news?'),
+                        'method' => 'post'
+                ]
+        ]) : '' ?>
     </p>
 
     <?= DetailView::widget([

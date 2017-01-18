@@ -152,7 +152,7 @@ SBAdminAsset::register($this);
                 </li>
                 <li class="<?= (Yii::$app->controller->id == "news") ? "active" : "" ?>">
                     <a href="<?= Url::to(["news/index"]) ?>">
-                        <i class="fa fa-fw fa-newspaper-o"></i> Notícias
+                        <i class="fa fa-fw fa-newspaper-o"></i> <?= Yii::t('news', 'News') ?>
                     </a>
                 </li>
                 <?php  $pages = Page::getPages() ?>

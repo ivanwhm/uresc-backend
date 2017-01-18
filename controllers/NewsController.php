@@ -89,7 +89,7 @@ class NewsController extends Controller
             return $model;
         } else
         {
-            throw new NotFoundHttpException('A notícia solicitada não existe.');
+            throw new NotFoundHttpException(Yii::t('news', 'The requested news does not exist.'));
         }
     }
 
@@ -130,7 +130,7 @@ class NewsController extends Controller
 
         if ($model->getIsPublished())
         {
-            throw new NotFoundHttpException('Notícias publicadas não podem ser alteradas.');
+            throw new NotFoundHttpException(Yii::t('news', 'Published news can not be updated.'));
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
@@ -161,7 +161,7 @@ class NewsController extends Controller
             $model->delete();
         } catch (Exception $ex)
         {
-            throw new NotFoundHttpException('Não é possível excluir a notícia selecionada.');
+            throw new NotFoundHttpException(Yii::t('news', 'You can not delete the selected news.'));
         }
 
         return $this->redirect(['index']);

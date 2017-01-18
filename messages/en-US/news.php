@@ -1,0 +1,23 @@
+<?php
+return [
+    'ID' => '',
+    'Title' => '',
+    'Text' => '',
+    'Published' => '',
+    'Published news can not be updated.' => '',
+    'You can not delete the selected news.' => '',
+    'The requested news does not exist.' => '',
+    'News' => '',
+    'Do you want to delete this news?' => '',
+    'Do you want to publish this news?' => '',
+    'Do you want to unpublish this news?' => '',
+    'Publish' => '',
+    'Unpublish' => '',
+    'Add news' => '',
+    'Update news' => '',
+    'View news' => '',
+    'Entered the title of the news.' => '',
+    'Entered the text of the news.' => '',
+    'Unpublished news' => '',
+    'View news!' => '',
+];

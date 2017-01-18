@@ -4,6 +4,8 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
+ * @var $data News
+ * @var $model News
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -16,8 +18,9 @@ use yii\grid\SerialColumn;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
+use \app\models\News;
 
-$this->title = 'Notícias';
+$this->title = Yii::t('news', 'News');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -61,7 +64,7 @@ $this->params['breadcrumbs'] = [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [
-                                'confirm' => 'Deseja excluir esta notícia?',
+                                'confirm' => Yii::t('news', 'Do you want to delete this news?'),
                                 'method' => 'post',
                             ],
                         ]);
@@ -70,8 +73,9 @@ $this->params['breadcrumbs'] = [
                         return Html::a('<span class="glyphicon glyphicon-upload"></span>', [
                             'published', 'id' => $model->id
                         ], [
+                            'title' => Yii::t('news', 'Publish'),
                             'data' => [
-                                'confirm' => 'Deseja publicar esta notícia?',
+                                'confirm' => Yii::t('news', 'Do you want to publish this news?'),
                                 'method' => 'post',
                             ],
                         ]);
@@ -80,8 +84,9 @@ $this->params['breadcrumbs'] = [
                         return Html::a('<span class="glyphicon glyphicon-download"></span>', [
                             'unpublished', 'id' => $model->id
                         ], [
+                            'title' => Yii::t('news', 'Unpublish'),
                             'data' => [
-                                'confirm' => 'Deseja despublicar esta notícia?',
+                                'confirm' => Yii::t('news', 'Do you want to unpublish this news?'),
                                 'method' => 'post',
                             ],
                         ]);

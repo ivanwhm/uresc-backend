@@ -89,13 +89,13 @@ $this->title = Yii::t('general', 'Home');
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $news ?></div>
-                        <div>Notícias não publicadas</div>
+                        <div><?= Yii::t('news', 'Unpublished news') ?></div>
                     </div>
                 </div>
             </div>
             <a href="<?= Url::toRoute(['news/index']) ?>">
                 <div class="panel-footer">
-                    <span class="pull-left">Visualizar notícias!</span>
+                    <span class="pull-left"><?= Yii::t('news', 'View news!') ?></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>

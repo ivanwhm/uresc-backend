@@ -60,10 +60,10 @@ class News extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Código',
-            'title' => 'Título',
-            'text' => 'Texto',
-            'published' => 'Publicado',
+            'id' => Yii::t('news', 'ID'),
+            'title' => Yii::t('news', 'Title'),
+            'text' => Yii::t('news', 'Text'),
+            'published' => Yii::t('news', 'Published'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),
             'user_created' => Yii::t('general', 'User who created'),

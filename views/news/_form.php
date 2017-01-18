@@ -26,10 +26,10 @@ use yii\widgets\ActiveForm;
     ); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbTitle']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Informe o título da notícia.', ['id' => 'hbTitle', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('news', 'Entered the title of the news.'), ['id' => 'hbTitle', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'text')->widget(CKEditor::className()) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> Descreva o texto da notícia.', ['id' => 'hbName', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('news', 'Entered the text of the news.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
     <?php if (!$model->getIsNewRecord()) : ?>
         <?= Html::tag('br') ?>
