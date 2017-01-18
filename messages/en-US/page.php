@@ -11,6 +11,6 @@ return [
     'Update page' => '',
     'View page' => '',
     'Page: {name}' => '',
-    'Entered the related text of the page.' => '',
-    'Entered the name of the page.' => '',
+    'Enter the related text of the page.' => '',
+    'Enter the name of the page.' => '',
 ];

@@ -11,6 +11,6 @@ return [
     'Update page' => 'Alterar página',
     'View page' => 'Visualizar página',
     'Page: {name}' => 'Página: {name}',
-    'Entered the related text of the page.' => 'Descreva o texto relacionado a página.',
-    'Entered the name of the page.' => 'Informe o nome da página.',
+    'Enter the related text of the page.' => 'Descreva o texto relacionado a página.',
+    'Enter the name of the page.' => 'Informe o nome da página.',
 ];
