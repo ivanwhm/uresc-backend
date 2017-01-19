@@ -28,6 +28,10 @@ class UreController extends Controller
         ]);
         //Adjust the system language
         Yii::$app->language = (!Yii::$app->getUser()->getIsGuest()) ? Yii::$app->getSession()->get('language') : $browserLanguage;
+        if (Yii::$app->hasModule('ckeditor'))
+        {
+            Yii::$app->getModule('ckeditor')->widgetClientOptions['language'] = Yii::$app->language;
+        }
     }
 
     /**

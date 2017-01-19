@@ -1,7 +1,7 @@
 <?php
 
+use kartik\date\DatePicker;
 use \kartik\datecontrol\Module;
-use \app\components\LanguageBehavior;
 
 $params = require(__DIR__ . '/params.php');
 
@@ -28,8 +28,6 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
         ],
         'formatter' => [
             'class' => 'app\components\UreFormatter',
@@ -51,38 +49,26 @@ $config = [
             'class' => '\wadeshuler\ckeditor\Module',
             'preset' => 'standard',
             'widgetClientOptions' => [
+                'lang' => 'pt-br',
                 'rows' =>'15',
             ],
         ],
         'datecontrol' =>  [
             'class' => '\kartik\datecontrol\Module',
             'displaySettings' => [
-                Module::FORMAT_DATE => 'dd/MM/yyyy',
-                Module::FORMAT_TIME => 'HH:mm',
-                Module::FORMAT_DATETIME => 'dd/MM/yyyy HH:mm',
+                Module::FORMAT_DATE => 'short',
+                Module::FORMAT_TIME => 'short',
             ],
             'saveSettings' => [
                 Module::FORMAT_DATE => 'php:Y-m-d',
                 Module::FORMAT_TIME => 'php:H:i:s',
-                Module::FORMAT_DATETIME => 'php:Y-m-d H:i:s',
             ],
             'displayTimezone' => 'UTC',
             'saveTimezone' => 'UTC',
             'autoWidget' => true,
             'autoWidgetSettings' => [
                 Module::FORMAT_DATE => [
-                    'type' => 3,
-                    'pluginOptions' => [
-                        'autoclose' => true
-                    ]
-                ],
-                Module::FORMAT_DATETIME => [
-                    'type' => 3,
-                    'pluginOptions' => [
-                        'autoclose' => true
-                    ]
-                ],
-                Module::FORMAT_TIME => [
+                    'type' => DatePicker::TYPE_COMPONENT_APPEND,
                     'pluginOptions' => [
                         'autoclose' => true
                     ]
