@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 //Imports
+use app\components\UreController;
 use app\models\Center;
 use app\models\ChangePasswordForm;
 use app\models\Config;
@@ -18,10 +19,9 @@ use app\models\News;
 use app\models\UserAccess;
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class SiteController extends Controller
+class SiteController extends UreController
 {
     /**
      * @inheritdoc
@@ -99,6 +99,7 @@ class SiteController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->getRequest()->post()) && $model->validate() && $model->login())
         {
+            Yii::$app->getSession()->set('language', Yii::$app->getUser()->getIdentity()->language);
             Yii::$app->getUser()->getIdentity()->storeLog(UserAccess::TYPE_CONNECTION);
             return $this->goBack();
         }

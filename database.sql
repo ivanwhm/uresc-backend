@@ -5,6 +5,7 @@ CREATE TABLE `user` (
 `username` varchar(255) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `password` varchar(255) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `can_config` char(1) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'N',
+`language` varchar(5) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'en-US',
 `salt` varchar(255) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `status` char(1) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'A',
 `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,

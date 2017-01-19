@@ -59,6 +59,12 @@ $this->params['breadcrumbs'] = [
                     },
                 ],
                 [
+                    'attribute' => 'language',
+                    'value' => function ($data) {
+                        return $data->getLanguage();
+                    },
+                ],
+                [
                     'class' => ActionColumn::className(),
                     'header' => Yii::t('general', 'Actions'),
                     'template' => '{view} {update} {delete}',

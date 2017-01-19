@@ -8,41 +8,15 @@
 namespace app\controllers;
 
 //Imports
+use app\components\UreController;
 use app\models\User;
 use Exception;
 use Yii;
 use yii\data\ActiveDataProvider;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class UserController extends Controller
+class UserController extends UreController
 {
-
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all User models.
@@ -87,6 +61,7 @@ class UserController extends Controller
         $model->new_password = '';
         $model->status = User::STATUS_ACTIVE;
         $model->can_config = User::CONFIG_NO;
+        $model->language = Yii::$app->getUser()->getIdentity()->language;
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
@@ -114,6 +89,10 @@ class UserController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
+            if (Yii::$app->getUser()->getId() == $model->id);
+            {
+                Yii::$app->getSession()->set('language', $model->language);
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else
         {

@@ -29,7 +29,7 @@ SBAdminAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Yii::$app->name ?> - <?= $this->title ?></title>
+    <title><?= Yii::t('general', 'Admin') ?> - <?= $this->title ?></title>
     <?php $this->head() ?>
 </head>
 <body>
@@ -49,7 +49,7 @@ SBAdminAsset::register($this);
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?= Url::to(["site/index"]) ?>"><?= Yii::$app->name ?></a>
+            <a class="navbar-brand" href="<?= Url::to(["site/index"]) ?>"><?= Yii::t('general', 'Admin') ?></a>
         </div>
 
         <!-- Top Menu Items -->

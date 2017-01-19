@@ -60,6 +60,10 @@ $this->params['breadcrumbs'] = [
                 'attribute' => 'can_config',
                 'value' => $model->getCanConfig()
             ],
+            [
+                'attribute' => 'language',
+                'value' => $model->getLanguage()
+            ],
             'date_created:datetime',
             'usercreated.name',
             'date_updated:datetime',

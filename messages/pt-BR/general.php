@@ -24,4 +24,7 @@ return [
     'Status' => 'Estado',
     'Active' => 'Ativo',
     'Inactive' => 'Inativo',
+    'English (United States)' => 'Inglês (Estados Unidos)',
+    'Portuguese (Brazil)' => 'Português (Brasil)',
+    'Admin' => 'Administração',
 ];

@@ -44,6 +44,9 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'can_config')->dropDownList(User::getCanConfigData(), ['prompt' => '---', 'aria-describedby' => 'hbConfig']) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('user', 'Please tell us if the user can access the settings.'), ['id' => 'hbConfig', 'class' => 'help-block']) ?>
 
+    <?= $form->field($model, 'language')->dropDownList(User::getLanguageData(), ['prompt' => '---', 'aria-describedby' => 'hbLanguage']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('user', 'Select the language of the user.'), ['id' => 'hbLanguage', 'class' => 'help-block']) ?>
+
     <?= $form->field($model, 'status')->dropDownList(User::getStatusData(), ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('user', 'Please tell us if the user is active or inactive.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 

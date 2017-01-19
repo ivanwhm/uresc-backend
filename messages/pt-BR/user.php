@@ -4,6 +4,7 @@ return [
     'Name' => 'Nome',
     'E-mail' => 'E-mail',
     'Can access the settings?' => 'Pode acessar as configurações?',
+    'Language' => 'Idioma',
     'Username' => 'Usuário de acesso',
     'Password' => 'Senha',
     'Password (again)' => 'Repita a senha',
@@ -21,4 +22,5 @@ return [
     'Enter the password of the user (again).' => 'Repita a senha do usuário.',
     'Please tell us if the user is active or inactive.' => 'Informe se o usuário está ativo ou inativo.',
     'Please tell us if the user can access the settings.' => 'Informe se o usuário pode acessar as configurações do sistema.',
+    'Select the language of the user.' => 'Selecione o idioma do usuário.',
 ];

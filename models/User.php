@@ -8,6 +8,7 @@
  * @property string $username Username of the user
  * @property string $password Password of the user
  * @property string $can_config Indicate if the user can configure the application
+ * @property string $language System language of the user
  * @property string $salt Password SALT of the user
  * @property string $status Status of the record
  * @property datetime $date_created Date of the user was created
@@ -38,8 +39,12 @@ class User extends ActiveRecord implements IdentityInterface
 
     const STATUS_ACTIVE = "A";
     const STATUS_INACTIVE = "I";
+
     const CONFIG_YES = "Y";
     const CONFIG_NO = "N";
+
+    const LANGUAGE_PT_BR = 'pt-BR';
+    const LANGUAGE_EN_US = 'en-US';
 
     /**
      * Attribute used to compare passwords.
@@ -63,7 +68,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['name', 'username', 'email', 'can_config', 'status'], 'required'],
+            [['name', 'username', 'email', 'can_config', 'language', 'status'], 'required'],
             [['username', 'email'], 'unique'],
             [['email'], 'email'],
             [['password', 'new_password'], 'required', 'on' => 'create'],
@@ -71,6 +76,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['password', 'date_created', 'date_updated', 'user_created', 'user_updated', 'salt'], 'safe'],
             [['name'], 'string', 'max' => 100],
             [['password'], 'string', 'min' => 6],
+            [['language'], 'string', 'max' => 5],
             [['email', 'username'], 'string', 'max' => 255],
         ];
     }
@@ -85,6 +91,7 @@ class User extends ActiveRecord implements IdentityInterface
             'name' => Yii::t('user', 'Name'),
             'email' => Yii::t('user', 'E-mail'),
             'can_config' => Yii::t('user', 'Can access the settings?'),
+            'language' => Yii::t('user', 'Language'),
             'username' => Yii::t('user', 'Username'),
             'password' => Yii::t('user', 'Password'),
             'new_password' => Yii::t('user', 'Password (again)'),
@@ -336,6 +343,16 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Returns the language description of the user.
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return ($this->language != '') ? self::getLanguageData()[$this->language] : '';
+    }
+
+    /**
      * Returns all the user status information.
      *
      * @return array
@@ -361,6 +378,18 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    /**
+     * Returns all the languages options.
+     *
+     * @return array
+     */
+    public static function getLanguageData()
+    {
+        return [
+            self::LANGUAGE_EN_US => Yii::t('general', 'English (United States)'),
+            self::LANGUAGE_PT_BR => Yii::t('general', 'Portuguese (Brazil)')
+        ];
+    }
     /**
      * Returns the created information to print on views.
      *

@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 //Imports
+use app\components\UreController;
 use app\models\Contact;
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -17,32 +18,8 @@ use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class ContactController extends Controller
+class ContactController extends UreController
 {
-
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all Contact models.
