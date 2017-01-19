@@ -14,10 +14,10 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Adicionar usuário';
+$this->title = Yii::t('user', 'Add user');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Usuários",
+        "label" => Yii::t('user', 'Users'),
         "icon" => "fa-user",
         "active" => false,
         "url" => Url::to(["user/index"])

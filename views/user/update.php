@@ -13,10 +13,10 @@ use app\models\User;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = 'Alterar usuário';
+$this->title = Yii::t('user', 'Update user');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Usuários",
+        "label" => Yii::t('user', 'Users'),
         "icon" => "fa-user",
         "active" => false,
         "url" => Url::to(["user/index"])

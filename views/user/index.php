@@ -4,6 +4,8 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
+ * @var $data User
+ * @var $model User
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -16,8 +18,9 @@ use yii\grid\SerialColumn;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
+use \app\models\User;
 
-$this->title = 'Usuários';
+$this->title = Yii::t('user', 'Users');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
@@ -66,7 +69,7 @@ $this->params['breadcrumbs'] = [
                             ], [
                                 'class' => '',
                                 'data' => [
-                                    'confirm' => 'Deseja excluir este usuário?',
+                                    'confirm' => Yii::t('user', 'Do you want to delete this user?'),
                                     'method' => 'post',
                                 ],
                             ]);

@@ -104,7 +104,7 @@ SBAdminAsset::register($this);
                             <a href="<?= Url::to(["page/index"]) ?>"><i class="fa fa-fw fa-clipboard"></i> <?= Yii::t('page', 'Pages') ?></a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(["user/index"]) ?>"><i class="fa fa-fw fa-user"></i> Usuários</a>
+                            <a href="<?= Url::to(["user/index"]) ?>"><i class="fa fa-fw fa-user"></i> <?= Yii::t('user', 'Users') ?></a>
                         </li>
                     </ul>
                 </li>

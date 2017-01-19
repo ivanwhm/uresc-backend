@@ -141,7 +141,7 @@ class UserController extends Controller
             $model->delete();
         } catch (Exception $ex)
         {
-            throw new NotFoundHttpException('Não é possível excluir o usuário selecionado.');
+            throw new NotFoundHttpException(Yii::t('user', 'You can not delete the selected user.'));
         }
 
         return $this->redirect(['index']);
@@ -163,7 +163,7 @@ class UserController extends Controller
             return $model;
         } else
         {
-            throw new NotFoundHttpException('O usuário solicitado não existe.');
+            throw new NotFoundHttpException(Yii::t('user', 'The requested user does not exist.'));
         }
     }
 }

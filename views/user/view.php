@@ -15,10 +15,10 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
 
-$this->title = "Visualizar usuário";
+$this->title = Yii::t('user', 'View user');
 $this->params['breadcrumbs'] = [
     [
-        "label" => "Usuários",
+        "label" => Yii::t('user', 'Users'),
         "icon" => "fa-user",
         "active" => false,
         "url" => Url::to(["user/index"])
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'] = [
         <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Deseja excluir este usuário?',
+                'confirm' => Yii::t('user', 'Do you want to delete this user?'),
                 'method' => 'post'
             ]
         ]) ?>
