@@ -168,16 +168,16 @@ CONSTRAINT `fk_news_user_created` FOREIGN KEY (`user_created`) REFERENCES `user`
 CONSTRAINT `fk_news_user_updated` FOREIGN KEY (`user_updated`) REFERENCES `user` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
-CREATE TABLE `config` (
+CREATE TABLE `settings` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 `phrase` varchar(255) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `phrase_author` varchar(150) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `page_title` varchar(150) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `user_updated` int(10) unsigned NOT NULL,
+`phone_mask` varchar(20) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 PRIMARY KEY (`id`),
-KEY `idx_user_updated` (`user_updated`),
-CONSTRAINT `fk_config_user_updated` FOREIGN KEY (`user_updated`) REFERENCES `user` (`id`) ON UPDATE CASCADE
+KEY `idx_settings_user_updated` (`user_updated`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 CREATE TABLE `contact` (
@@ -202,7 +202,7 @@ CREATE TABLE `center` (
 `neighborhood` varchar(100) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `city` varchar(150) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `state` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
-`phone` varchar(11) COLLATE utf8_swedish_ci DEFAULT '',
+`phone` varchar(20) COLLATE utf8_swedish_ci DEFAULT '',
 `email` varchar(150) COLLATE utf8_swedish_ci DEFAULT NULL,
 `business_hours` varchar(100) COLLATE utf8_swedish_ci DEFAULT NULL,
 `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -214,7 +214,7 @@ KEY `idx_center_user_created` (`user_created`),
 KEY `idx_center_user_updated` (`user_updated`),
 CONSTRAINT `fk_center_user_created` FOREIGN KEY (`user_created`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
 CONSTRAINT `fk_center_user_updated` FOREIGN KEY (`user_updated`) REFERENCES `user` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 CREATE TABLE `page` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,

@@ -11,11 +11,11 @@ namespace app\controllers;
 use app\components\UreController;
 use app\models\Center;
 use app\models\ChangePasswordForm;
-use app\models\Config;
 use app\models\Contact;
 use app\models\Event;
 use app\models\LoginForm;
 use app\models\News;
+use app\models\Settings;
 use app\models\UserAccess;
 use Yii;
 use yii\filters\AccessControl;
@@ -141,30 +141,30 @@ class SiteController extends UreController
     }
 
     /**
-     * Updates a page of an existing Config model.
+     * Updates a page of an existing Settings model.
      * If update is successful, the browser will be redirected to the 'config' page.
      *
      * @return string
      *
      * @throws NotFoundHttpException If the user cannot be deleted
      */
-    public function actionConfig()
+    public function actionSettings()
     {
-        if ((($model = Config::findOne(1)) !== null) and
+        if ((($model = Settings::findOne(1)) !== null) and
             (Yii::$app->getUser()->getIdentity()->getIsCanConfig()))
         {
             if ($model->load(Yii::$app->getRequest()->post()) && $model->save())
             {
-                return $this->redirect(['config']);
+                return $this->redirect(['settings']);
             } else
             {
-                return $this->render('config', [
+                return $this->render('settings', [
                     'model' => $model,
                 ]);
             }
         } else
         {
-            throw new NotFoundHttpException(Yii::t('config', 'The requested setting does not exist.'));
+            throw new NotFoundHttpException(Yii::t('settings', 'The requested setting does not exist.'));
         }
     }
 }

@@ -9,4 +9,6 @@ return [
     'Enter the main phrase.' => '',
     'Enter the main phrase author.' => '',
     'The requested setting does not exist.' => '',
+    'Phone mask' => '',
+    'Enter the mask to the phone\'s field.' => '',
 ];

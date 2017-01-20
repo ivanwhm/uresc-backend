@@ -64,7 +64,7 @@ SBAdminAsset::register($this);
                     </li>
                     <?php if (Yii::$app->getUser()->getIdentity()->getIsCanConfig()): ?>
                         <li>
-                            <a href="<?= Url::to(["site/config"]) ?>"><i class="fa fa-fw fa-gear"></i> <?= Yii::t('config', 'Settings') ?></a>
+                            <a href="<?= Url::to(["site/settings"]) ?>"><i class="fa fa-fw fa-gear"></i> <?= Yii::t('settings', 'Settings') ?></a>
                         </li>
                     <?php endif; ?>
                     <li class="divider"></li>

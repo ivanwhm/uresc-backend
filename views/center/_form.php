@@ -5,6 +5,7 @@
  * @var $this View
  * @var $model Center
  * @var $form ActiveForm
+ * @var $mask string
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -40,7 +41,7 @@ use yii\widgets\MaskedInput;
     <?= $form->field($model, 'state')->textInput(['maxlength' => true, 'aria-describedby' => 'hbState']) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('center', 'Enter the state of the spiritist center.'), ['id' => 'hbState', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'phone')->widget(MaskedInput::className(), ['mask' => '(99) 9999-9999']) ?>
+    <?= $form->field($model, 'phone')->widget(MaskedInput::className(), ['mask' => $mask]) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('center', 'Enter the phone of the spiritist center.'), ['id' => 'hbPhone', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'aria-describedby' => 'hbEmail']) ?>

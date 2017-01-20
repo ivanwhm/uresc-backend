@@ -30,7 +30,6 @@ $config = [
             'showScriptName' => false,
         ],
         'formatter' => [
-            'class' => 'app\components\UreFormatter',
             'datetimeFormat' => 'short',
             'dateFormat' => 'short',
             'timeFormat' => 'short',

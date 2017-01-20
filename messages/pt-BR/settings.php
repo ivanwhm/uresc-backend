@@ -9,4 +9,6 @@ return [
     'Enter the main phrase.' => 'Descreva a frase a ser exibida no cabeçalho da página principal.',
     'Enter the main phrase author.' => 'Descreva o autor da frase a ser exibida no cabeçalho da página principal.',
     'The requested setting does not exist.' => 'A configuração solicitada não existe.',
+    'Phone mask' => 'Máscara para telefone',
+    'Enter the mask to the phone\'s field.' => 'Informe a máscara para campos de telefone.',
 ];

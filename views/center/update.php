@@ -4,6 +4,7 @@
  *
  * @var $this View
  * @var $model Center
+ * @var $mask string
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -33,6 +34,7 @@ $this->params['breadcrumbs'] = [
 
     <?= $this->render('_form', [
         'model' => $model,
+        'mask' => $mask
     ]) ?>
 
 </div>

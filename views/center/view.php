@@ -54,7 +54,7 @@ $this->params['breadcrumbs'] = [
             'neighborhood',
             'city',
             'state',
-            'phone:phone',
+            'phone',
             'email:email',
             'business_hours:ntext',
             'date_created:datetime',

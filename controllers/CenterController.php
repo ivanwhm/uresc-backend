@@ -13,9 +13,7 @@ use app\models\Center;
 use Exception;
 use Yii;
 use yii\data\ActiveDataProvider;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
+use app\models\Settings;
 use yii\web\NotFoundHttpException;
 
 class CenterController extends UreController
@@ -59,6 +57,7 @@ class CenterController extends UreController
     public function actionCreate()
     {
         $model = new Center();
+        $mask = Settings::findOne(1)->phone_mask;
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
@@ -67,6 +66,7 @@ class CenterController extends UreController
         {
             return $this->render('create', [
                 'model' => $model,
+                'mask' => $mask
             ]);
         }
     }
@@ -81,6 +81,7 @@ class CenterController extends UreController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $mask = Settings::findOne(1)->phone_mask;
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
@@ -89,6 +90,7 @@ class CenterController extends UreController
         {
             return $this->render('update', [
                 'model' => $model,
+                'mask' => $mask
             ]);
         }
     }

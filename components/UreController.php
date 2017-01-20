@@ -32,6 +32,7 @@ class UreController extends Controller
         {
             Yii::$app->getModule('ckeditor')->widgetClientOptions['language'] = Yii::$app->language;
         }
+
     }
 
     /**
