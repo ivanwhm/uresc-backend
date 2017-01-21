@@ -6,10 +6,10 @@
  * @property string $title News' Title
  * @property string $text News
  * @property string $published Shows if news is published.
- * @property datetime $date_created Events's date of creation.
- * @property datetime $date_updated Events's date of updated.
- * @property integer $user_created Events's user created.
- * @property integer $user_updated Events's user updated.
+ * @property datetime $date_created News' date of creation.
+ * @property datetime $date_updated News' date of updated.
+ * @property integer $user_created News' user created.
+ * @property integer $user_updated News' user updated.
  *
  * @property User $userCreated User that created the news.
  * @property User $userUpdated User that updated the news.
