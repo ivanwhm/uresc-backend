@@ -51,14 +51,13 @@ $this->params['breadcrumbs'] = [
             'id',
             'name',
             'email:email',
-            'username',
             [
                 'attribute' => 'status',
                 'value' => $model->getStatus()
             ],
             [
-                'attribute' => 'can_config',
-                'value' => $model->getCanConfig()
+                'attribute' => 'can_access_settings',
+                'value' => $model->getCanAccessSettings()
             ],
             [
                 'attribute' => 'language',

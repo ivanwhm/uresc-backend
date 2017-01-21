@@ -60,7 +60,7 @@ class UserController extends UreController
         $model->password = '';
         $model->new_password = '';
         $model->status = User::STATUS_ACTIVE;
-        $model->can_config = User::CONFIG_NO;
+        $model->can_access_settings = User::SETTINGS_NO;
         $model->language = Yii::$app->getUser()->getIdentity()->language;
 
         if ($model->load(Yii::$app->request->post()) && $model->save())

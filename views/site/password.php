@@ -9,6 +9,7 @@
  */
 
 //Imports
+use kartik\password\PasswordInput;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\ChangePasswordForm;
@@ -35,13 +36,13 @@ $this->params['breadcrumbs'] = array(
             ]
         ); ?>
 
-        <?= $form->field($model, 'oldPassword')->passwordInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbOldPassword']) ?>
+        <?= $form->field($model, 'oldPassword')->widget(PasswordInput::classname(), ['options' => ['autofocus' => true, 'aria-describedby' => 'hbOldPassword'], 'pluginOptions' => ['showMeter' => false, 'toggleMask' => true]]); ?>
         <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('password', 'Enter the old password.'), ['id' => 'hbOldPassword', 'class' => 'help-block']) ?>
 
-        <?= $form->field($model, 'newPassword')->passwordInput(['maxlength' => true, 'aria-describedby' => 'hbNewPassword']) ?>
+        <?= $form->field($model, 'newPassword')->widget(PasswordInput::classname(), ['options' => ['aria-describedby' => 'hbNewPassword'], 'pluginOptions' => ['showMeter' => true, 'toggleMask' => true]]); ?>
         <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('password', 'Enter the new password.'), ['id' => 'hbNewPassword', 'class' => 'help-block']) ?>
 
-        <?= $form->field($model, 'repeatNewPassword')->passwordInput(['maxlength' => true, 'aria-describedby' => 'hbRepeatNewPassword']) ?>
+        <?= $form->field($model, 'repeatNewPassword')->widget(PasswordInput::classname(), ['options' => ['aria-describedby' => 'hbRepeatNewPassword'], 'pluginOptions' => ['showMeter' => true, 'toggleMask' => true]]); ?>
         <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('password', 'Enter the new password (again).'), ['id' => 'hbRepeatNewPassword', 'class' => 'help-block']) ?>
 
         <div class="form-group">

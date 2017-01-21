@@ -151,7 +151,7 @@ class SiteController extends UreController
     public function actionSettings()
     {
         if ((($model = Settings::findOne(1)) !== null) and
-            (Yii::$app->getUser()->getIdentity()->getIsCanConfig()))
+            (Yii::$app->getUser()->getIdentity()->getIsCanAccessSettings()))
         {
             if ($model->load(Yii::$app->getRequest()->post()) && $model->save())
             {

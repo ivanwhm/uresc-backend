@@ -62,7 +62,7 @@ SBAdminAsset::register($this);
                     <li>
                         <a href="<?= Url::to(["site/password"]) ?>"><i class="fa fa-fw fa-key"></i> <?= Yii::t('password', 'Change password') ?></a>
                     </li>
-                    <?php if (Yii::$app->getUser()->getIdentity()->getIsCanConfig()): ?>
+                    <?php if (Yii::$app->getUser()->getIdentity()->getIsCanAccessSettings()): ?>
                         <li>
                             <a href="<?= Url::to(["site/settings"]) ?>"><i class="fa fa-fw fa-gear"></i> <?= Yii::t('settings', 'Settings') ?></a>
                         </li>

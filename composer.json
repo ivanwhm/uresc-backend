@@ -22,7 +22,8 @@
         "wadeshuler/yii2-ckeditor-cdn": "~1.0",
         "kartik-v/yii2-datecontrol": "dev-master",
         "kartik-v/yii2-widget-datepicker": "@dev",
-        "kartik-v/yii2-widget-timepicker": "@dev"
+        "kartik-v/yii2-widget-timepicker": "@dev",
+        "kartik-v/yii2-password": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

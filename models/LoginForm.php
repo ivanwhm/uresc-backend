@@ -18,11 +18,11 @@ class LoginForm extends Model
 {
 
     /**
-     * The username.
+     * The user's e-mail.
      *
      * @var string
      */
-    public $username;
+    public $email;
 
     /**
      * The password.
@@ -45,7 +45,8 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            [['username', 'password'], 'required'],
+            [['email', 'password'], 'required'],
+            [['email'], 'email'],
             ['password', 'validatePassword'],
         ];
     }
@@ -65,8 +66,8 @@ class LoginForm extends Model
 
             if (!$user || !$user->validateAuthKey($this->password))
             {
-                $this->addError('username', '');
-                $this->addError('password', Yii::t('login', 'Invalid username or password!'));
+                $this->addError('email', '');
+                $this->addError('password', Yii::t('login', 'Invalid e-mail or password!'));
             }
         }
     }
@@ -86,7 +87,7 @@ class LoginForm extends Model
     }
 
     /**
-     * Finds user by [[username]]
+     * Finds user by [[email]]
      *
      * @return User
      */
@@ -96,7 +97,7 @@ class LoginForm extends Model
         {
             $this->_user = User::findOne([
                 'status' => User::STATUS_ACTIVE,
-                'username' => $this->username
+                'email' => $this->email
             ]);
         }
 
@@ -109,7 +110,7 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => Yii::t('login', 'Username'),
+            'email' => Yii::t('login', 'E-mail'),
             'password' => Yii::t('login', 'Password'),
         ];
     }

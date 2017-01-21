@@ -1,8 +1,8 @@
 <?php
 return [
-    'Username' => 'Usuário',
+    'E-mail' => 'E-mail',
     'Password' => 'Senha',
-    'Invalid username or password!' => 'Usuário ou senha inválidos.',
+    'Invalid e-mail or password!' => 'E-mail ou senha inválidos.',
     'Log In to Admin' => 'Acessar a administração',
     'Log In' => 'Entrar',
 ];

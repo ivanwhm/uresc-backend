@@ -11,6 +11,7 @@
 
 //Imports
 use app\models\User;
+use kartik\password\PasswordInput;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
@@ -30,18 +31,13 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'aria-describedby' => 'hbEmail']) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('user', 'Enter the e-mail of the user.'), ['id' => 'hbEmail', 'class' => 'help-block']) ?>
 
-    <?php if ($model->getIsNewRecord()) : ?>
-        <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'aria-describedby' => 'hbUsername']) ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('user', 'Enter the username of the user.'), ['id' => 'hbUsername', 'class' => 'help-block']) ?>
-    <?php endif; ?>
-
-    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true, 'aria-describedby' => 'hbPassword']) ?>
+    <?= $form->field($model, 'password')->widget(PasswordInput::classname(), ['options' => ['aria-describedby' => 'hbPassword'], 'pluginOptions' => ['showMeter' => true, 'toggleMask' => true]]); ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('user', 'Enter the password of the user.'), ['id' => 'hbPassword', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'new_password')->passwordInput(['maxlength' => true, 'aria-describedby' => 'hbNewPassword']) ?>
+    <?= $form->field($model, 'new_password')->widget(PasswordInput::classname(), ['options' => ['aria-describedby' => 'hbNewPassword'], 'pluginOptions' => ['showMeter' => true, 'toggleMask' => true]]); ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('user', 'Enter the password of the user (again).'), ['id' => 'hbNewPassword', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'can_config')->dropDownList(User::getCanConfigData(), ['prompt' => '---', 'aria-describedby' => 'hbConfig']) ?>
+    <?= $form->field($model, 'can_access_settings')->dropDownList(User::getCanAccessSettingsData(), ['prompt' => '---', 'aria-describedby' => 'hbConfig']) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('user', 'Please tell us if the user can access the settings.'), ['id' => 'hbConfig', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'language')->dropDownList(User::getLanguageData(), ['prompt' => '---', 'aria-describedby' => 'hbLanguage']) ?>

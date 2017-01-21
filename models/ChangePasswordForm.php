@@ -8,6 +8,7 @@
 namespace app\models;
 
 //Imports
+use kartik\password\StrengthValidator;
 use Yii;
 use yii\base\Model;
 
@@ -41,6 +42,8 @@ class ChangePasswordForm extends Model
     {
         return [
             [['oldPassword', 'newPassword', 'repeatNewPassword'], 'required'],
+            [['newPassword', 'repeatNewPassword'], StrengthValidator::className(), 'hasUser' => false, 'hasEmail' => false, 'min' => 6, 'max' => 30, 'lower' => 1, 'upper' => 1, 'digit' => 1, 'special' => 1],
+            [['newPassword'], 'compare', 'compareAttribute' => 'oldPassword', 'operator' => '!=', 'message' => Yii::t('password', 'The new password is the same of the old one.')],
             [['repeatNewPassword'], 'compare', 'compareAttribute' => 'newPassword', 'message' => Yii::t('password', 'The entered passwords are differents.')],
             ['oldPassword', 'validatePassword'],
             [['newPassword', 'repeatNewPassword'], 'string', 'min' => 6],

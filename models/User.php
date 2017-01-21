@@ -5,9 +5,8 @@
  * @property integer $id User unique code
  * @property string $name User full name
  * @property string $email User email address
- * @property string $username Username of the user
  * @property string $password Password of the user
- * @property string $can_config Indicate if the user can configure the application
+ * @property string $can_access_settings Indicate if the user can configure the application
  * @property string $language System language of the user
  * @property string $salt Password SALT of the user
  * @property string $status Status of the record
@@ -28,6 +27,7 @@
 namespace app\models;
 
 //Imports
+use kartik\password\StrengthValidator;
 use Yii;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
@@ -40,8 +40,8 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = "A";
     const STATUS_INACTIVE = "I";
 
-    const CONFIG_YES = "Y";
-    const CONFIG_NO = "N";
+    const SETTINGS_YES = "Y";
+    const SETTINGS_NO = "N";
 
     const LANGUAGE_PT_BR = 'pt-BR';
     const LANGUAGE_EN_US = 'en-US';
@@ -68,16 +68,17 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['name', 'username', 'email', 'can_config', 'language', 'status'], 'required'],
-            [['username', 'email'], 'unique'],
+            [['name', 'email', 'can_access_settings', 'language', 'status'], 'required'],
+            [['email'], 'unique'],
             [['email'], 'email'],
             [['password', 'new_password'], 'required', 'on' => 'create'],
-            [['new_password'], 'compare', 'compareAttribute' => 'password', 'message' => 'As senhas informadas não são iguais.'],
+            [['password', 'new_password'], StrengthValidator::className(), 'hasUser' => false, 'hasEmail' => false, 'min' => 6, 'max' => 30, 'lower' => 1, 'upper' => 1, 'digit' => 1, 'special' => 1],
+            [['new_password'], 'compare', 'compareAttribute' => 'password', 'message' => Yii::t('password', 'The entered passwords are differents.')],
             [['password', 'date_created', 'date_updated', 'user_created', 'user_updated', 'salt'], 'safe'],
             [['name'], 'string', 'max' => 100],
             [['password'], 'string', 'min' => 6],
             [['language'], 'string', 'max' => 5],
-            [['email', 'username'], 'string', 'max' => 255],
+            [['email'], 'string', 'max' => 255],
         ];
     }
 
@@ -90,9 +91,8 @@ class User extends ActiveRecord implements IdentityInterface
             'id' => Yii::t('user', 'ID'),
             'name' => Yii::t('user', 'Name'),
             'email' => Yii::t('user', 'E-mail'),
-            'can_config' => Yii::t('user', 'Can access the settings?'),
+            'can_access_settings' => Yii::t('user', 'Can access the settings?'),
             'language' => Yii::t('user', 'Language'),
-            'username' => Yii::t('user', 'Username'),
             'password' => Yii::t('user', 'Password'),
             'new_password' => Yii::t('user', 'Password (again)'),
             'salt' => 'SALT',
@@ -313,13 +313,13 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Returns if the user can access the configuration pages.
+     * Returns if the user can access the settings pages.
      *
      * @return bool
      */
-    public function getIsCanConfig()
+    public function getIsCanAccessSettings()
     {
-        return $this->can_config == self::CONFIG_YES;
+        return $this->can_access_settings == self::SETTINGS_YES;
     }
 
     /**
@@ -333,13 +333,13 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Returns the can config description of the user.
+     * Returns the can access settings description of the user.
      *
      * @return string
      */
-    public function getCanConfig()
+    public function getCanAccessSettings()
     {
-        return ($this->can_config != '') ? self::getCanConfigData()[$this->can_config] : '';
+        return ($this->can_access_settings != '') ? self::getCanAccessSettingsData()[$this->can_access_settings] : '';
     }
 
     /**
@@ -366,15 +366,15 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Returns all the config options.
+     * Returns all the can access settings options.
      *
      * @return array
      */
-    public static function getCanConfigData()
+    public static function getCanAccessSettingsData()
     {
         return [
-            self::CONFIG_YES => Yii::t('general', 'Yes'),
-            self::CONFIG_NO => Yii::t('general', 'No')
+            self::SETTINGS_YES => Yii::t('general', 'Yes'),
+            self::SETTINGS_NO => Yii::t('general', 'No')
         ];
     }
 

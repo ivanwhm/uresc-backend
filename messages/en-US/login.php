@@ -1,8 +1,8 @@
 <?php
 return [
-    'Username' => '',
+    'E-mail' => '',
     'Password' => '',
-    'Invalid username or password!' => '',
+    'Invalid e-mail or password!' => '',
     'Log In to Admin' => '',
     'Log In' => '',
 ];

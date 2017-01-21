@@ -36,7 +36,7 @@ use yii\widgets\ActiveForm;
             ]) ?>
 
             <fieldset>
-                <?= $form->field($model, 'username')->textInput([
+                <?= $form->field($model, 'email')->textInput([
                     'autofocus' => true,
                     'class' => 'form-control',
                 ]) ?>

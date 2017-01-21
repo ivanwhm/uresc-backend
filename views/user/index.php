@@ -45,7 +45,6 @@ $this->params['breadcrumbs'] = [
                 'id',
                 'name',
                 'email:email',
-                'username',
                 [
                     'attribute' => 'status',
                     'value' => function ($data) {
@@ -53,9 +52,9 @@ $this->params['breadcrumbs'] = [
                     },
                 ],
                 [
-                    'attribute' => 'can_config',
+                    'attribute' => 'can_access_settings',
                     'value' => function ($data) {
-                        return $data->getCanConfig();
+                        return $data->getCanAccessSettings();
                     },
                 ],
                 [
