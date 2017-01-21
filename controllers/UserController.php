@@ -27,6 +27,7 @@ class UserController extends UreController
     {
         $dataProvider = new ActiveDataProvider([
             'query' => User::find()->orderBy('name'),
+            'pagination' => false
         ]);
 
         return $this->render('index', [

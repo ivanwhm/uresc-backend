@@ -53,10 +53,12 @@ $this->params['breadcrumbs'] = [
             'email:email',
             [
                 'attribute' => 'status',
+                'format' => 'html',
                 'value' => $model->getStatus()
             ],
             [
                 'attribute' => 'can_access_settings',
+                'format' => 'html',
                 'value' => $model->getCanAccessSettings()
             ],
             [

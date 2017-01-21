@@ -32,6 +32,7 @@ use Yii;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\helpers\Html;
 use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface
@@ -329,7 +330,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getStatus()
     {
-        return ($this->status != '') ? self::getStatusData()[$this->status] : '';
+        return ($this->status != '') ? $result = Html::tag('span', Html::tag('i', '', ['class' => 'glyphicon ' . (($this->status == self::STATUS_ACTIVE) ? 'glyphicon-ok' : 'glyphicon-remove')]) . '  ' . self::getStatusData()[$this->status], ['class' => 'label ' . (($this->status == self::STATUS_ACTIVE) ? 'label-primary' : 'label-danger')]) : '';;
     }
 
     /**
@@ -339,7 +340,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getCanAccessSettings()
     {
-        return ($this->can_access_settings != '') ? self::getCanAccessSettingsData()[$this->can_access_settings] : '';
+        return ($this->can_access_settings != '') ? $result = Html::tag('span', Html::tag('i', '', ['class' => 'glyphicon ' . (($this->can_access_settings == self::SETTINGS_YES) ? 'glyphicon-ok' : 'glyphicon-remove')]) . '  ' . self::getCanAccessSettingsData()[$this->can_access_settings], ['class' => 'label ' . (($this->can_access_settings == self::SETTINGS_YES) ? 'label-primary' : 'label-danger')]) : '';;
     }
 
     /**
