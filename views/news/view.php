@@ -66,6 +66,7 @@ $this->params['breadcrumbs'] = [
             'title',
             [
                 'attribute' => 'published',
+                'format' => 'html',
                 'value' => $model->getPublished()
             ],
             'date_created:datetime',

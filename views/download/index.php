@@ -43,6 +43,7 @@ $this->params['breadcrumbs'] = [
             'category.name',
             [
                 'attribute' => 'status',
+                'format' => 'html',
                 'value' => function ($data) {
                     return $data->getStatus();
                 },

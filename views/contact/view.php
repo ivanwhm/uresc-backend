@@ -47,6 +47,7 @@ $this->params['breadcrumbs'] = [
             'contact_ip',
             [
                 'attribute' => 'answer_sent',
+                'format' => 'html',
                 'value' => $model->getAnswerSent(),
                 'visible' => ($model->getIsAnswerSent())
             ],

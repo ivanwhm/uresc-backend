@@ -42,6 +42,7 @@ $this->params['breadcrumbs'] = [
             'contact_message',
             [
                 'attribute' => 'answer_sent',
+                'format' => 'html',
                 'value' => function ($data) {
                     return $data->getAnswerSent();
                 },

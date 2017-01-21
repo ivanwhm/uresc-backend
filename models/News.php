@@ -22,6 +22,7 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\helpers\Html;
 
 class News extends ActiveRecord
 {
@@ -139,7 +140,7 @@ class News extends ActiveRecord
      */
     public function getPublished()
     {
-        return ($this->published != '') ? self::getPublishedData()[$this->published] : '';
+        return ($this->published != '') ? $result = Html::tag('span', Html::tag('i', '', ['class' => 'glyphicon ' . (($this->published == self::PUBLISHED_YES) ? 'glyphicon-ok' : 'glyphicon-remove')]) . '  ' . self::getPublishedData()[$this->published], ['class' => 'label ' . (($this->published == self::PUBLISHED_YES) ? 'label-primary' : 'label-danger')]) : '';
     }
 
     /**

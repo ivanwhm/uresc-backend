@@ -22,6 +22,7 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\helpers\Html;
 
 class DownloadCategory extends ActiveRecord
 {
@@ -147,7 +148,7 @@ class DownloadCategory extends ActiveRecord
      */
     public function getStatus()
     {
-        return ($this->status != '') ? self::getStatusData()[$this->status] : '';
+        return ($this->status != '') ? $result = Html::tag('span', Html::tag('i', '', ['class' => 'glyphicon ' . (($this->status == self::STATUS_ACTIVE) ? 'glyphicon-ok' : 'glyphicon-remove')]) . '  ' . self::getStatusData()[$this->status], ['class' => 'label ' . (($this->status == self::STATUS_ACTIVE) ? 'label-primary' : 'label-danger')]) : '';
     }
 
     /**

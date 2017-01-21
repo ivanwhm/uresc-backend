@@ -42,6 +42,7 @@ $this->params['breadcrumbs'] = [
             'name',
             [
                 'attribute' => 'status',
+                'format' => 'html',
                 'value' => function ($data) {
                     return $data->getStatus();
                 },

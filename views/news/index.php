@@ -42,6 +42,7 @@ $this->params['breadcrumbs'] = [
             'title',
             [
                 'attribute' => 'published',
+                'format' => 'html',
                 'value' => function ($data) {
                     return $data->getPublished();
                 },

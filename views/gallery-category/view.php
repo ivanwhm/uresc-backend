@@ -52,6 +52,7 @@ $this->params['breadcrumbs'] = [
             'name',
             [
                 'attribute' => 'status',
+                'format' => 'html',
                 'value' => $model->getStatus()
             ],
             'date_created:datetime',

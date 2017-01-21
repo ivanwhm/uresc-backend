@@ -54,6 +54,7 @@ $this->params['breadcrumbs'] = [
             'address:url',
             [
                 'attribute' => 'status',
+                'format' => 'html',
                 'value' => $model->getStatus()
             ],
             'date_created:datetime',

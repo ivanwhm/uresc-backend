@@ -21,6 +21,7 @@ namespace app\models;
 //Imports
 use Yii;
 use yii\db\ActiveRecord;
+use yii\helpers\Html;
 
 class Contact extends ActiveRecord
 {
@@ -112,7 +113,7 @@ class Contact extends ActiveRecord
      */
     public function getAnswerSent()
     {
-        return ($this->answer_sent != '') ? self::getSentData()[$this->answer_sent] : '';
+        return ($this->answer_sent != '') ? $result = Html::tag('span', Html::tag('i', '', ['class' => 'glyphicon ' . (($this->answer_sent == self::ANSWER_SENT_YES) ? 'glyphicon-ok' : 'glyphicon-remove')]) . '  ' . self::getSentData()[$this->answer_sent], ['class' => 'label ' . (($this->answer_sent == self::ANSWER_SENT_YES) ? 'label-primary' : 'label-danger')]) : '';
     }
 
     /**
