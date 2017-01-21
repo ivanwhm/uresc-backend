@@ -13,7 +13,6 @@
 use yii\data\ActiveDataProvider;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
-use yii\grid\SerialColumn;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -38,9 +37,6 @@ $this->params['breadcrumbs'] = [
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            [
-                'class' => SerialColumn::className()
-            ],
             'id',
             'name',
             [

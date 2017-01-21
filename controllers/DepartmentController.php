@@ -27,6 +27,7 @@ class DepartmentController extends UreController
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Department::find()->orderBy('name'),
+            'pagination' => false
         ]);
 
         return $this->render('index', [

@@ -27,6 +27,7 @@ class DownloadCategoryController extends UreController
     {
         $dataProvider = new ActiveDataProvider([
             'query' => DownloadCategory::find()->orderBy('name'),
+            'pagination' => false
         ]);
 
         return $this->render('index', [

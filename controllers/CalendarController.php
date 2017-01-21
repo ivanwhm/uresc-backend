@@ -30,6 +30,7 @@ class CalendarController extends UreController
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Calendar::find()->orderBy('name'),
+            'pagination' => false
         ]);
 
         return $this->render('index', [

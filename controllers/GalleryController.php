@@ -27,6 +27,7 @@ class GalleryController extends UreController
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Gallery::find()->orderBy('name'),
+            'pagination' => false
         ]);
 
         return $this->render('index', [

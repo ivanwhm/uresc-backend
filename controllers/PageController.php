@@ -9,6 +9,7 @@ namespace app\controllers;
 
 //Imports
 use app\components\UreController;
+use app\models\Menu;
 use app\models\Page;
 use Exception;
 use Yii;
@@ -27,6 +28,7 @@ class PageController extends UreController
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Page::find()->orderBy('name'),
+            'pagination' => false
         ]);
 
         return $this->render('index', [
@@ -59,6 +61,14 @@ class PageController extends UreController
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
+            $menu = new Menu();
+            $menu->name = $model->name;
+            $menu->type = Menu::TYPE_PAGE;
+            $menu->visible = Menu::VISIBLE_YES;
+            $menu->order = 999;
+            $menu->page_id = $model->id;
+            $menu->save(false);
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else
         {
@@ -81,6 +91,13 @@ class PageController extends UreController
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
+            $menu = Menu::findOne(['page_id' => $model->id]);
+            if ($menu instanceof Menu)
+            {
+                $menu->name = $model->name;
+                $menu->save(false);
+            }
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else
         {
@@ -126,6 +143,11 @@ class PageController extends UreController
         $model = $this->findModel($id);
         try
         {
+            $menu = Menu::findOne(['page_id' => $model->id]);
+            if ($menu instanceof Menu)
+            {
+                $menu->delete();
+            }
             $model->delete();
         } catch (Exception $ex)
         {

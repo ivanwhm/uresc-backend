@@ -28,6 +28,7 @@ class CenterController extends UreController
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Center::find()->orderBy('name'),
+            'pagination' => false
         ]);
 
         return $this->render('index', [

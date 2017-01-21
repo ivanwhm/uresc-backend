@@ -172,6 +172,11 @@ SBAdminAsset::register($this);
                         </ul>
                     </li>
                 <?php endif; ?>
+                <li class="<?= (Yii::$app->controller->id == "menu") ? "active" : "" ?>">
+                    <a href="<?= Url::to(["menu/index"]) ?>">
+                        <i class="fa fa-fw fa-bars"></i> <?= Yii::t('menu', 'Menus') ?>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

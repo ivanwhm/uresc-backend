@@ -229,3 +229,23 @@ KEY `idx_page_user_updated` (`user_updated`),
 CONSTRAINT `fk_page_user_created` FOREIGN KEY (`user_created`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
 CONSTRAINT `fk_page_user_updated` FOREIGN KEY (`user_updated`) REFERENCES `user` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+CREATE TABLE `menu` (
+`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+`name` varchar(50) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
+`visible` char(1) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'Y',
+`order` int(2) unsigned NOT NULL,
+`type` char(1) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'M',
+`page_id` int(11) unsigned DEFAULT NULL,
+`date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+`date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+`user_created` int(10) unsigned NOT NULL,
+`user_updated` int(10) unsigned NOT NULL,
+PRIMARY KEY (`id`),
+KEY `idx_menu_page_id` (`page_id`),
+KEY `idx_menu_user_created` (`user_created`),
+KEY `idx_menu_user_updated` (`user_updated`),
+CONSTRAINT `fk_menu_page_id` FOREIGN KEY (`page_id`) REFERENCES `page` (`id`) ON UPDATE CASCADE,
+CONSTRAINT `fk_menu_user_created` FOREIGN KEY (`user_created`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
+CONSTRAINT `fk_menu_user_updated` FOREIGN KEY (`user_updated`) REFERENCES `user` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;

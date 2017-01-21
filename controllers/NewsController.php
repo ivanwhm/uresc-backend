@@ -27,6 +27,7 @@ class NewsController extends UreController
     {
         $dataProvider = new ActiveDataProvider([
             'query' => News::find()->orderBy('title'),
+            'pagination' => false
         ]);
 
         return $this->render('index', [

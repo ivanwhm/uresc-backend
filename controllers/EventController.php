@@ -27,6 +27,7 @@ class EventController extends UreController
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Event::find()->orderBy('date desc'),
+            'pagination' => false
         ]);
 
         return $this->render('index', [

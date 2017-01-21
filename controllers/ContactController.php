@@ -30,6 +30,7 @@ class ContactController extends UreController
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Contact::find()->orderBy('contact_date desc'),
+            'pagination' => false
         ]);
 
         return $this->render('index', [
