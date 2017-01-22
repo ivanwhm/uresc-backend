@@ -67,22 +67,26 @@ class MenuController extends UreController
             throw new NotFoundHttpException(Yii::t('menu', 'The requested menu does not exist.'));
         }
     }
-
     /**
      * Updates an existing Menu model.
      * If update is successful, the browser will be redirected to the 'view' page.
      *
      * @param integer $id Menu ID
      * @return string
-     *
-     * @throws NotFoundHttpException if the model cannot be changed
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        Yii::$app->request->post();
-        $model->save();
-        return $this->redirect(['index']);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+        {
+            return $this->redirect(['index']);
+        } else
+        {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
     }
 
 }

@@ -43,13 +43,19 @@ $this->params['breadcrumbs'] = [
                     return $data->getType();
                 },
             ],
+            'order',
             [
                 'class' => ToggleColumn::className(),
                 'attribute' => 'visible',
                 'options' => ['style'=>'width:80px;'],
                 'linkTemplateOn' => '<a class="toggle-column btn btn-primary btn-xs btn-block" data-pjax="0" href="{url}"><i  class="glyphicon glyphicon-ok"></i> {label}</a>',
                 'linkTemplateOff' => '<a class="toggle-column btn btn-danger btn-xs btn-block" data-pjax="0" href="{url}"><i  class="glyphicon glyphicon-remove"></i> {label}</a>'
-            ]
+            ],
+            [
+                'class' => ActionColumn::className(),
+                'header' => Yii::t('general', 'Actions'),
+                'template' => '{update}'
+            ],
         ],
     ]);
     ?>

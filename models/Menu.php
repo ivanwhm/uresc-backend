@@ -187,5 +187,31 @@ class Menu extends ActiveRecord implements ToggleActionInterface
             'off' => ['value' => Menu::VISIBLE_NO, 'label'=> Yii::t('general', 'No')],
         ];
     }
+
+    /**
+     * Returns the created information to print on views.
+     *
+     * @return string
+     */
+    public function printCreatedInformation()
+    {
+        return Yii::t('general', 'Created on {date} by {username}.', [
+            'date' => Yii::$app->getFormatter()->asDatetime($this->date_created),
+            'username' => $this->getUserCreated()->getName()
+        ]);
+    }
+
+    /**
+     * Returns the last updated information to print on views.
+     *
+     * @return string
+     */
+    public function printLastUpdatedInformation()
+    {
+        return Yii::t('general', 'Last update on {date} by {username}.', [
+            'date' => Yii::$app->getFormatter()->asDatetime($this->date_updated),
+            'username' => $this->getUserUpdated()->getName()
+        ]);
+    }
 }
 
