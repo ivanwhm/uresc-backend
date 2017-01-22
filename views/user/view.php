@@ -10,6 +10,7 @@
 
 //Imports
 use app\models\User;
+use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -71,5 +72,24 @@ $this->params['breadcrumbs'] = [
             'userupdated.name',
         ],
     ]) ?>
+
+    <?= Html::tag('br') ?>
+    <?= Html::tag('h3', Yii::t('user', 'Last hits')) ?>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => [
+            'date:datetime',
+            [
+                'attribute' => 'type',
+                'format' => 'html',
+                'value' => function ($data) {
+                    return $data->getType();
+                },
+            ],
+            'ip',
+        ],
+    ]);
+    ?>
 
 </div>

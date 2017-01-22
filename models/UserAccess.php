@@ -16,8 +16,9 @@
 namespace app\models;
 
 //Imports
-use yii\db\ActiveQuery;
+use Yii;
 use yii\db\ActiveRecord;
+use yii\helpers\Html;
 
 class UserAccess extends ActiveRecord
 {
@@ -56,9 +57,9 @@ class UserAccess extends ActiveRecord
         return [
             'user_access_id' => 'User Access ID',
             'user_id' => 'User ID',
-            'date' => 'Date',
-            'ip' => 'IP',
-            'type' => 'Type',
+            'date' => Yii::t('user', 'Access date'),
+            'ip' => Yii::t('user', 'IP access'),
+            'type' => Yii::t('user', 'Connection type'),
         ];
     }
 
@@ -69,8 +70,30 @@ class UserAccess extends ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
+        return $this->findOne(['id' => $this->user_id]);
     }
 
+    /**
+     * Returns all the user type information.
+     *
+     * @return array
+     */
+    public static function getTypeData()
+    {
+        return [
+            self::TYPE_CONNECTION => Yii::t('user', 'Connection'),
+            self::TYPE_DISCONNECTION => Yii::t('user', 'Disconnection')
+        ];
+    }
+
+    /**
+     * Returns the type description of the user.
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return ($this->type != '') ? $result = Html::tag('span', Html::tag('i', '', ['class' => 'glyphicon ' . (($this->type == self::TYPE_CONNECTION) ? 'glyphicon-ok' : 'glyphicon-remove')]) . '  ' . self::getTypeData()[$this->type], ['class' => 'label ' . (($this->type == self::TYPE_CONNECTION) ? 'label-primary' : 'label-danger')]) : '';;
+    }
 
 }

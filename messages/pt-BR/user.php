@@ -21,4 +21,10 @@ return [
     'Please tell us if the user is active or inactive.' => 'Informe se o usuário está ativo ou inativo.',
     'Please tell us if the user can access the settings.' => 'Informe se o usuário pode acessar as configurações do sistema.',
     'Select the language of the user.' => 'Selecione o idioma do usuário.',
+    'Connection type' => 'Tipo de conexão',
+    'Access date' => 'Data do acesso',
+    'IP access' => 'IP do acesso',
+    'Connection' => 'Conexão',
+    'Disconnection' => 'Desconexão',
+    'Last hits' => 'Últimos acessos',
 ];

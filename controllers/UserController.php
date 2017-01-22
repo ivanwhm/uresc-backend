@@ -10,6 +10,7 @@ namespace app\controllers;
 //Imports
 use app\components\UreController;
 use app\models\User;
+use app\models\UserAccess;
 use Exception;
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -43,8 +44,14 @@ class UserController extends UreController
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $dataProvider = new ActiveDataProvider([
+            'query' => UserAccess::find()->onCondition(['user_id' => $model->id])->orderBy('date desc')
+        ]);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'dataProvider' => $dataProvider,
         ]);
     }
 

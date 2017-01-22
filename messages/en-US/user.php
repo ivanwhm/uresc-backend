@@ -21,4 +21,10 @@ return [
     'Please tell us if the user is active or inactive.' => '',
     'Please tell us if the user can access the settings.' => '',
     'Select the language of the user.' => '',
+    'Connection type' => '',
+    'Access date' => '',
+    'IP access' => '',
+    'Connection' => '',
+    'Disconnection' => '',
+    'Last hits' => '',
 ];
