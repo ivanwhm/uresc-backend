@@ -52,6 +52,14 @@ $config = [
                 'rows' =>'15',
             ],
         ],
+        'gridview' =>  [
+            'class' => '\kartik\grid\Module',
+            'i18n' => [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'basePath' => '@kvgrid/messages',
+                'forceTranslation' => true
+            ]
+        ],
         'datecontrol' =>  [
             'class' => '\kartik\datecontrol\Module',
             'displaySettings' => [

@@ -9,6 +9,4 @@ return [
     'Menu' => '',
     'The requested menu does not exist.' => '',
     'Menus' => '',
-    'Change menu order' => '',
-    'Enter the order of the menu.' => '',
 ];

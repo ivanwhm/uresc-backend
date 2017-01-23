@@ -13,6 +13,7 @@ use app\models\Menu;
 use dixonstarter\togglecolumn\actions\ToggleAction;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 
 class MenuController extends UreController
@@ -39,54 +40,37 @@ class MenuController extends UreController
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Menu::find()->orderBy('order'),
+            'query' => Menu::find()->orderBy('order')->indexBy('id'),
             'pagination' => false,
         ]);
+
+        //Make the order column editable.
+        if (Yii::$app->request->post('hasEditable'))
+        {
+            $menuId = Yii::$app->request->post('editableKey');
+            $model = Menu::findOne($menuId);
+            $out = Json::encode(['output'=>'', 'message'=>'']);
+
+            $posted = current($_POST['Menu']);
+            $post = ['Menu' => $posted];
+
+            if ($model->load($post))
+            {
+                $model->save();
+                $output = '';
+                if (isset($posted['order']))
+                {
+                    $output = Yii::$app->formatter->asInteger($model->order);
+                }
+                $out = Json::encode(['output'=>$output, 'message'=>'']);
+            }
+            echo $out;
+            return;
+        }
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
         ]);
-    }
-
-    /**
-     * Finds the Menu model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     *
-     * @param integer $id Menu ID
-     * @return Menu
-     *
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Menu::findOne($id)) !== null)
-        {
-            return $model;
-        } else
-        {
-            throw new NotFoundHttpException(Yii::t('menu', 'The requested menu does not exist.'));
-        }
-    }
-    /**
-     * Updates an existing Menu model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     *
-     * @param integer $id Menu ID
-     * @return string
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save())
-        {
-            return $this->redirect(['index']);
-        } else
-        {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
     }
 
 }

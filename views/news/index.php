@@ -12,8 +12,8 @@
 
 //Imports
 use yii\data\ActiveDataProvider;
-use yii\grid\ActionColumn;
-use yii\grid\GridView;
+use kartik\grid\ActionColumn;
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -54,6 +54,7 @@ $this->params['breadcrumbs'] = [
             [
                 'class' => ActionColumn::className(),
                 'header' => Yii::t('general', 'Actions'),
+                'width' => '100px',
                 'template' => '{view} {update} {delete} {published} {unpublished}',
                 'buttons' => [
                     'delete' => function ($url, $model) {

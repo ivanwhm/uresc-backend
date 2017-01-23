@@ -24,7 +24,10 @@
         "kartik-v/yii2-widget-datepicker": "@dev",
         "kartik-v/yii2-widget-timepicker": "@dev",
         "kartik-v/yii2-password": "@dev",
-        "dixonstarter/yii2-toggle-column": "*"
+        "dixonstarter/yii2-toggle-column": "*",
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-editable": "@dev",
+        "kartik-v/yii2-widget-touchspin": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

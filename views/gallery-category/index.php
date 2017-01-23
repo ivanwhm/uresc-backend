@@ -12,12 +12,12 @@
 
 //Imports
 use yii\data\ActiveDataProvider;
-use yii\grid\ActionColumn;
-use yii\grid\GridView;
+use kartik\grid\ActionColumn;
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
-use \app\models\GalleryCategory;
+use app\models\GalleryCategory;
 
 $this->title = Yii::t('gallery_category', 'Gallery\'s categories');
 $this->params['breadcrumbs'] = [

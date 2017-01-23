@@ -12,9 +12,11 @@
 
 //Imports
 use dixonstarter\togglecolumn\ToggleColumn;
+use kartik\editable\Editable;
 use yii\data\ActiveDataProvider;
-use yii\grid\ActionColumn;
-use yii\grid\GridView;
+use kartik\grid\ActionColumn;
+use kartik\grid\EditableColumn;
+use kartik\grid\GridView;
 use yii\helpers\Url;
 use yii\web\View;
 use app\models\Menu;
@@ -43,18 +45,25 @@ $this->params['breadcrumbs'] = [
                     return $data->getType();
                 },
             ],
-            'order',
+            [
+                'class' => EditableColumn::className(),
+                'attribute' => 'order',
+                'editableOptions' => [
+                    'inputType' => Editable::INPUT_SPIN,
+                    'options' => ['pluginOptions'=>['min' => 0, 'max' => 99]]
+                ],
+                'hAlign' => 'left',
+                'vAlign' => 'middle',
+                'width' => '150px',
+                'format' => ['integer'],
+                'refreshGrid' => true,
+            ],
             [
                 'class' => ToggleColumn::className(),
                 'attribute' => 'visible',
                 'options' => ['style'=>'width:80px;'],
                 'linkTemplateOn' => '<a class="toggle-column btn btn-primary btn-xs btn-block" data-pjax="0" href="{url}"><i  class="glyphicon glyphicon-ok"></i> {label}</a>',
                 'linkTemplateOff' => '<a class="toggle-column btn btn-danger btn-xs btn-block" data-pjax="0" href="{url}"><i  class="glyphicon glyphicon-remove"></i> {label}</a>'
-            ],
-            [
-                'class' => ActionColumn::className(),
-                'header' => Yii::t('general', 'Actions'),
-                'template' => '{update}'
             ],
         ],
     ]);
