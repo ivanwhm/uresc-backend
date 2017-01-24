@@ -10,27 +10,12 @@ namespace app\controllers;
 //Imports
 use app\components\UreController;
 use app\models\Menu;
-use dixonstarter\togglecolumn\actions\ToggleAction;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Json;
-use yii\web\NotFoundHttpException;
 
 class MenuController extends UreController
 {
-
-    /**
-     * @inheritdoc
-     */
-    public function actions(){
-        return [
-            'toggle-update' => [
-                'class' => ToggleAction::className(),
-                'modelClass' => Menu::className(),
-                'attribute' => 'visible',
-            ]
-        ];
-    }
 
     /**
      * Lists all Menu models.

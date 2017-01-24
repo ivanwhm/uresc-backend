@@ -23,14 +23,12 @@
 namespace app\models;
 
 //Imports
-use dixonstarter\togglecolumn\ToggleActionInterface;
-use dixonstarter\togglecolumn\ToggleActionTrait;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 
 
-class Menu extends ActiveRecord implements ToggleActionInterface
+class Menu extends ActiveRecord
 {
 
     const VISIBLE_YES = 'Y';
@@ -177,18 +175,6 @@ class Menu extends ActiveRecord implements ToggleActionInterface
     }
 
     /**
-     * @inheritdoc
-     */
-    use ToggleActionTrait;
-    public function getToggleItems()
-    {
-        return  [
-            'on' => ['value' => Menu::VISIBLE_YES, 'label'=> Yii::t('general', 'Yes')],
-            'off' => ['value' => Menu::VISIBLE_NO, 'label'=> Yii::t('general', 'No')],
-        ];
-    }
-
-    /**
      * Returns the created information to print on views.
      *
      * @return string
@@ -213,5 +199,6 @@ class Menu extends ActiveRecord implements ToggleActionInterface
             'username' => $this->getUserUpdated()->getName()
         ]);
     }
+
 }
 

@@ -11,16 +11,13 @@
  */
 
 //Imports
-use dixonstarter\togglecolumn\ToggleColumn;
+use app\models\Menu;
 use kartik\editable\Editable;
-use yii\data\ActiveDataProvider;
-use kartik\grid\ActionColumn;
 use kartik\grid\EditableColumn;
 use kartik\grid\GridView;
+use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
-use app\models\Menu;
-use yii\widgets\Pjax;
 
 $this->title = Yii::t('menu', 'Menus');
 $this->params['breadcrumbs'] = [
@@ -34,9 +31,10 @@ $this->params['breadcrumbs'] = [
 ?>
 <div class="news-index">
 
-    <?php Pjax::begin();?>
     <?= GridView::widget([
+        'id' => 'menu-grid',
         'dataProvider' => $dataProvider,
+        'pjax' => true,
         'columns' => [
             'name',
             [
@@ -56,18 +54,24 @@ $this->params['breadcrumbs'] = [
                 'vAlign' => 'middle',
                 'width' => '150px',
                 'format' => ['integer'],
-                'refreshGrid' => true,
+                'refreshGrid' => true
             ],
             [
-                'class' => ToggleColumn::className(),
+                'class' => EditableColumn::className(),
                 'attribute' => 'visible',
-                'options' => ['style'=>'width:80px;'],
-                'linkTemplateOn' => '<a class="toggle-column btn btn-primary btn-xs btn-block" data-pjax="0" href="{url}"><i  class="glyphicon glyphicon-ok"></i> {label}</a>',
-                'linkTemplateOff' => '<a class="toggle-column btn btn-danger btn-xs btn-block" data-pjax="0" href="{url}"><i  class="glyphicon glyphicon-remove"></i> {label}</a>'
+                'editableOptions' => [
+                    'inputType' => Editable::INPUT_DROPDOWN_LIST,
+                    'data' => Menu::getVisibleData(),
+                    'displayValueConfig' => Menu::getVisibleData(),
+                ],
+                'hAlign' => 'left',
+                'vAlign' => 'middle',
+                'width' => '150px',
+                'format' => ['text'],
+                'refreshGrid' => true
             ],
         ],
     ]);
     ?>
-    <?php Pjax::end();?>
 
 </div>
