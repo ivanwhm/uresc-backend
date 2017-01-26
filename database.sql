@@ -82,6 +82,7 @@ CONSTRAINT `fk_download_user_updated` FOREIGN KEY (`user_updated`) REFERENCES `u
 CREATE TABLE `gallery_category` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 `name` varchar(59) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
+`only_picture` char(1) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'Y',
 `status` char(1) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'A',
 `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,

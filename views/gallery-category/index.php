@@ -41,6 +41,13 @@ $this->params['breadcrumbs'] = [
             'id',
             'name',
             [
+                'attribute' => 'only_picture',
+                'format' => 'html',
+                'value' => function ($data) {
+                    return $data->getOnlyPicture();
+                },
+            ],
+            [
                 'attribute' => 'status',
                 'format' => 'html',
                 'value' => function ($data) {
