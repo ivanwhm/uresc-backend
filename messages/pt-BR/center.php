@@ -24,6 +24,6 @@ return [
     'Enter the phone of the spiritist center.' => 'Informe o telefone do centro espírita.',
     'Enter the e-mail of the spiritist center.' => 'Informe o e-mail do centro espírita.',
     'Enter the business hours of the spiritist center.' => 'Informe o horário de funcionamento do centro espírita.',
-    'Registered spiritist centers' => 'Centros espíritas cadastrados',
+    'Registered<br>spiritist centers' => 'Centros espíritas<br>cadastrados',
     'View centers!' => 'Visualizar centros!',
 ];

@@ -15,7 +15,7 @@ return [
     'Update event' => '',
     'View event' => '',
     'Do you want to delete this event?' => '',
-    'Future events' => '',
+    'Future<br>events' => '',
     'View events!'=> '',
     'Enter the name of the event.' => '',
     'Select the calendar of the event.' => '',

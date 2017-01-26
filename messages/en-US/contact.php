@@ -19,5 +19,5 @@ return [
     'Contact\'s message.' => '',
     'Enter the text of the answer.' => '',
     'View contacts!' => '',
-    'Unanswered contacts' => '',
+    'Unanswered<br>contacts' => '',
 ];

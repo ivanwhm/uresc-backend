@@ -18,6 +18,6 @@ return [
     'View news' => 'Visualizar notícia',
     'Enter the title of the news.' => 'Informe o título da notícia.',
     'Enter the text of the news.' => 'Descreva o texto da notícia.',
-    'Unpublished news' => 'Notícias não publicadas',
+    'Unpublished<br>news' => 'Notícias<br>não publicadas',
     'View news!' => 'Visualizar notícias!',
 ];

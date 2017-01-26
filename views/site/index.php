@@ -23,7 +23,7 @@ $this->title = Yii::t('general', 'Home');
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $contacts ?></div>
-                        <div><?= Yii::t('contact', 'Unanswered contacts') ?></div>
+                        <div><?= Yii::t('contact', 'Unanswered<br>contacts') ?></div>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@ $this->title = Yii::t('general', 'Home');
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $events ?></div>
-                        <div><?= Yii::t('event', 'Future events') ?></div>
+                        <div><?= Yii::t('event', 'Future<br>events') ?></div>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@ $this->title = Yii::t('general', 'Home');
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $centers ?></div>
-                        <div><?= Yii::t('center', 'Registered spiritist centers') ?></div>
+                        <div><?= Yii::t('center', 'Registered<br>spiritist centers') ?></div>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@ $this->title = Yii::t('general', 'Home');
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $news ?></div>
-                        <div><?= Yii::t('news', 'Unpublished news') ?></div>
+                        <div><?= Yii::t('news', 'Unpublished<br>news') ?></div>
                     </div>
                 </div>
             </div>

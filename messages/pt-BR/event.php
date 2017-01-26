@@ -15,7 +15,7 @@ return [
     'Update event' => 'Alterar evento',
     'View event' => 'Visualizar evento',
     'Do you want to delete this event?' => 'Deseja excluir este evento?',
-    'Future events' => 'Eventos futuros',
+    'Future<br>events' => 'Eventos<br>futuros',
     'View events!'=> 'Visualizar eventos!',
     'Enter the name of the event.' => 'Informe o nome do evento.',
     'Select the calendar of the event.' => 'Selecione o calendário do evento.',

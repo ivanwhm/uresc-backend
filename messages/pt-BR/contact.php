@@ -19,5 +19,5 @@ return [
     'Contact\'s message.' => 'Mensagem do contato.',
     'Enter the text of the answer.' => 'Descreva o texto da resposta.',
     'View contacts!' => 'Visualizar contatos!',
-    'Unanswered contacts' => 'Contatos sem resposta',
+    'Unanswered<br>contacts' => 'Contatos<br>sem resposta',
 ];
