@@ -10,7 +10,9 @@
 
 //Imports
 use app\models\Gallery;
+use kartik\dialog\DialogAsset;
 use kartik\grid\ActionColumn;
+use kartik\grid\CheckboxColumn;
 use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -45,7 +47,6 @@ $this->params['breadcrumbs'] = [
                 'method' => 'post'
             ]
         ]) ?>
-        <?= Html::a(Yii::t('gallery', 'Add files'), ['upload', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -70,11 +71,33 @@ $this->params['breadcrumbs'] = [
     <?= Html::tag('br') ?>
     <?= Html::tag('h3', Yii::t('gallery', 'Files')) ?>
 
+    <p>
+        <?php DialogAsset::register($this); ?>
+        <?= Html::a(Yii::t('gallery', 'Upload files'), ['upload', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('gallery', 'Delete files'), null, ['id' => 'deleteButton', 'class' => 'btn btn-danger']) ?>
+        <?= $this->registerJs("
+            $('#deleteButton').on('click', function()
+            {
+                var keys = $('#gallery-files-grid').yiiGridView('getSelectedRows');
+                if (keys != '')
+                {
+                    if (confirm('" . Yii::t('gallery', 'Do you want to delete selected files?') . "'))
+                    {
+                        window.location = '" . Url::to(['gallery/dropsel', 'gallery_id' => $model->id]) . "&ids='+keys;
+                    }
+                }
+            });
+        "); ?>
+    </p>
+
     <?= GridView::widget([
         'id' => 'gallery-files-grid',
         'dataProvider' => $dataProvider,
         'pjax' => true,
         'columns' => [
+            [
+                'class' => CheckboxColumn::className()
+            ],
             [
                 'attribute' => 'filename',
                 'format' => 'html',

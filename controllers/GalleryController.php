@@ -202,4 +202,34 @@ class GalleryController extends UreController
 
         return $this->redirect(['view', 'id' => $model->gallery_id]);
     }
+
+    /**
+     * Drops an group of files.
+     *
+     * @param $gallery_id Gallery ID.
+     * @param $ids Gallery File's ID.
+     * @return \yii\web\Response
+     *
+     * @throws NotFoundHttpException
+     */
+    public function actionDropsel($gallery_id, $ids)
+    {
+        $ids = mb_split(',', $ids);
+        foreach ($ids as $id)
+        {
+            if (($model = GalleryFiles::findOne($id)) !== null)
+            {
+                try
+                {
+                    unlink($model->getGallery()->getGalleryDirectory() . $model->filename);
+                    $model->delete();
+                } catch (Exception $ex)
+                {
+
+                }
+            }
+
+        }
+        return $this->redirect(['view', 'id' => $gallery_id]);
+    }
 }
