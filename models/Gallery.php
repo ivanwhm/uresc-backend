@@ -5,7 +5,6 @@
  * @property integer $id Gallery's ID.
  * @property string $name Gallery' name.
  * @property integer $category_id Gallery's category.
- * @property string $address Gallery's file address.
  * @property string $status Gallery's status.
  * @property datetime $date_created Gallery's date of creation.
  * @property datetime $date_updated Gallery's date of updated.
@@ -21,16 +20,27 @@
 namespace app\models;
 
 //Imports
+use Exception;
 use Yii;
+use yii\base\InvalidParamException;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\helpers\FileHelper;
 use yii\helpers\Html;
+use yii\web\UploadedFile;
 
 class Gallery extends ActiveRecord
 {
 
     const STATUS_ACTIVE = "A";
     const STATUS_INACTIVE = "I";
+
+    /**
+     * Files that will be upload.
+     *
+     * @var UploadedFile[]
+     */
+    public $files;
 
     /**
      * @inheritdoc
@@ -46,12 +56,11 @@ class Gallery extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'category_id', 'address'], 'required'],
+            [['name', 'category_id'], 'required'],
             [['date_created', 'date_updated', 'user_created', 'user_updated'], 'safe'],
             [['name'], 'string', 'max' => 50],
-            [['address'], 'string', 'max' => 255],
-            [['address'], 'url'],
             [['status'], 'string', 'max' => 1],
+            [['files'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg', 'maxFiles' => 10],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => GalleryCategory::className(), 'targetAttribute' => ['category_id' => 'id']],
             [['user_created'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_created' => 'id']],
             [['user_updated'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_updated' => 'id']],
@@ -68,7 +77,6 @@ class Gallery extends ActiveRecord
             'name' => Yii::t('gallery', 'Name'),
             'category_id' => Yii::t('gallery', 'Category'),
             'category.name' => Yii::t('gallery', 'Category'),
-            'address' => Yii::t('gallery', 'File address'),
             'status' => Yii::t('general', 'Status'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),
@@ -76,6 +84,7 @@ class Gallery extends ActiveRecord
             'user_updated' => Yii::t('general', 'User who do last update'),
             'usercreated.name' => Yii::t('general', 'User who created'),
             'userupdated.name' => Yii::t('general', 'User who do last update'),
+            'files' => Yii::t('gallery', 'Files')
         ];
     }
 
@@ -172,5 +181,55 @@ class Gallery extends ActiveRecord
             'date' => Yii::$app->getFormatter()->asDatetime($this->date_updated),
             'username' => $this->getUserUpdated()->getName()
         ]);
+    }
+
+    /**
+     * Do the gallery's file upload.
+     *
+     * @return bool
+     */
+    public function upload()
+    {
+        if ($this->validate())
+        {
+            foreach ($this->files as $file)
+            {
+                $galleryFile = new GalleryFiles();
+                $galleryFile->gallery_id = $this->id;
+                $galleryFile->filename = Yii::$app->getSecurity()->generateRandomString() . '.' . $file->extension;
+
+                try {
+                    $directory =  $this->getGalleryDirectory();
+
+                    if (FileHelper::createDirectory($directory))
+                    {
+                        if ($file->saveAs($directory . $galleryFile->filename))
+                        {
+                            $galleryFile->save(false);
+                        }
+
+                    } else
+                    {
+                        $this->addError('files', Yii::t('gallery', 'It is not possible to upload files now. Please, try again later.'));
+                        return false;
+                    }
+                } catch (Exception $e)
+                {
+                    $this->addError('files', Yii::t('gallery', 'It is not possible to upload files now. Please, try again later.'));
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Returns the gallery directory of the system.
+     *
+     * @return string
+     */
+    public function getGalleryDirectory()
+    {
+        return Yii::getAlias('@app') . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'gallery' . DIRECTORY_SEPARATOR. $this->id . DIRECTORY_SEPARATOR;
     }
 }

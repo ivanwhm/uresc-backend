@@ -10,10 +10,13 @@ namespace app\controllers;
 //Imports
 use app\components\UreController;
 use app\models\Gallery;
+use app\models\GalleryFiles;
 use Exception;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\helpers\FileHelper;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 class GalleryController extends UreController
 {
@@ -43,8 +46,14 @@ class GalleryController extends UreController
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $dataProvider = new ActiveDataProvider([
+            'query' => GalleryFiles::find()->onCondition(['gallery_id' => $model->id])->orderBy('filename')
+        ]);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'dataProvider' => $dataProvider
         ]);
     }
 
@@ -113,6 +122,27 @@ class GalleryController extends UreController
     }
 
     /**
+     * Upload files a existing Gallery model.
+     *
+     * @param integer $id Gallery ID
+     * @return string
+     */
+    public function actionUpload($id)
+    {
+        $model = $this->findModel($id);
+
+        if (Yii::$app->getRequest()->getIsPost())
+        {
+            $model->files = UploadedFile::getInstances($model, 'files');
+            if ($model->upload()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        }
+
+        return $this->render('upload', ['model' => $model]);
+    }
+
+    /**
      * Deletes an existing Gallery model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
@@ -133,5 +163,43 @@ class GalleryController extends UreController
         }
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Render an image from gallery.
+     *
+     * @param $id
+     */
+    public function actionImage($id)
+    {
+        if (($model = GalleryFiles::findOne($id)) !== null)
+        {
+            $this->renderPartial('_image', [
+                'model' => $model
+            ]);
+        }
+    }
+
+    /**
+     * Drops an specific file.
+     *
+     * @param $id Gallery File's ID.
+     * @return \yii\web\Response
+     *
+     * @throws NotFoundHttpException
+     */
+    public function actionDrop($id)
+    {
+        if (($model = GalleryFiles::findOne($id)) !== null)
+        try
+        {
+            unlink($model->getGallery()->getGalleryDirectory() . $model->filename);
+            $model->delete();
+        } catch (Exception $ex)
+        {
+            throw new NotFoundHttpException(Yii::t('gallery', 'You can not delete the selected file.'));
+        }
+
+        return $this->redirect(['view', 'id' => $model->gallery_id]);
     }
 }

@@ -31,9 +31,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'category_id')->dropDownList(GalleryCategory::getGalleryCategories(), ['prompt' => '---', 'aria-describedby' => 'hbCategory']) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('gallery', 'Enter the category of the gallery.'), ['id' => 'hbCategory', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true, 'aria-describedby' => 'hbAddress']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('gallery', 'Enter the file address of the gallery.'), ['id' => 'hbAddress', 'class' => 'help-block']) ?>
-
     <?= $form->field($model, 'status')->dropDownList(Gallery::getStatusData(), ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('gallery', 'Please tell us if the gallery is active or inactive.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 

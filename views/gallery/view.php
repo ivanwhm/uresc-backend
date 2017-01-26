@@ -10,6 +10,8 @@
 
 //Imports
 use app\models\Gallery;
+use kartik\grid\ActionColumn;
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -43,6 +45,7 @@ $this->params['breadcrumbs'] = [
                 'method' => 'post'
             ]
         ]) ?>
+        <?= Html::a(Yii::t('gallery', 'Add files'), ['upload', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -51,7 +54,6 @@ $this->params['breadcrumbs'] = [
             'id',
             'name',
             'category.name',
-            'address:url',
             [
                 'attribute' => 'status',
                 'format' => 'html',
@@ -63,5 +65,43 @@ $this->params['breadcrumbs'] = [
             'userupdated.name',
         ],
     ]) ?>
+
+
+    <?= Html::tag('br') ?>
+    <?= Html::tag('h3', Yii::t('gallery', 'Files')) ?>
+
+    <?= GridView::widget([
+        'id' => 'gallery-files-grid',
+        'dataProvider' => $dataProvider,
+        'pjax' => true,
+        'columns' => [
+            [
+                'attribute' => 'filename',
+                'format' => 'html',
+                'value' => function ($data) {
+                    return Html::img(Url::to(['gallery/image', 'id' => $data->id]));
+                },
+            ],
+            [
+                'class' => ActionColumn::className(),
+                'header' => Yii::t('general', 'Actions'),
+                'template' => '{delete}',
+                'buttons' => [
+                    'delete' => function($url, $model){
+                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', [
+                            'drop', 'id' => $model->id
+                        ], [
+                            'class' => '',
+                            'data' => [
+                                'confirm' => Yii::t('gallery', 'Do you want to delete this file?'),
+                                'method' => 'post',
+                            ],
+                        ]);
+                    }
+                ]
+            ],
+        ],
+    ]);
+    ?>
 
 </div>
