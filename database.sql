@@ -22,6 +22,7 @@ CREATE TABLE `user_access` (
 `user_access_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 `user_id` int(10) unsigned NOT NULL,
 `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+`session_id` varchar(128) COLLATE utf8_swedish_ci NOT NULL,
 `ip` varchar(255) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `type` char(1) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'C',
 PRIMARY KEY (`user_access_id`),

@@ -237,6 +237,7 @@ class User extends ActiveRecord implements IdentityInterface
         $log->type = $type;
         $log->date = new Expression('current_timestamp');
         $log->ip = Yii::$app->getRequest()->getUserIP();
+        $log->session_id = Yii::$app->getSession()->getId();
         $log->save(false);
     }
 

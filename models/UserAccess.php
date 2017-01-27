@@ -5,6 +5,7 @@
  * @property integer $user_access_id Unique code of user`s access
  * @property integer $user_id Unique code of user
  * @property datetime $date Date of connection
+ * @property string $session_id The session ID of the user.
  * @property string $ip IP of user
  * @property string $type Type of the connection
  *
@@ -40,10 +41,11 @@ class UserAccess extends ActiveRecord
     public function rules()
     {
         return [
-            [['user_access_id', 'user_id'], 'required'],
+            [['user_access_id', 'user_id', 'session_id'], 'required'],
             [['user_access_id', 'user_id'], 'integer'],
             [['date'], 'safe'],
             [['ip'], 'string', 'max' => 255],
+            [['session_id'], 'string', 'max' => 128],
             [['type'], 'string', 'max' => 1],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -57,6 +59,7 @@ class UserAccess extends ActiveRecord
         return [
             'user_access_id' => 'User Access ID',
             'user_id' => 'User ID',
+            'session_id' => 'Session ID',
             'date' => Yii::t('user', 'Access date'),
             'ip' => Yii::t('user', 'IP access'),
             'type' => Yii::t('user', 'Connection type'),
