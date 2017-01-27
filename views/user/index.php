@@ -36,51 +36,52 @@ $this->params['breadcrumbs'] = [
     </p>
 
     <?= GridView::widget([
-            'dataProvider' => $dataProvider,
-            'columns' => [
-                'id',
-                'name',
-                'email:email',
-                [
-                    'attribute' => 'status',
-                    'format' => 'html',
-                    'value' => function ($data) {
-                        return $data->getStatus();
-                    },
-                ],
-                [
-                    'attribute' => 'can_access_settings',
-                    'format' => 'html',
-                    'value' => function ($data) {
-                        return $data->getCanAccessSettings();
-                    },
-                ],
-                [
-                    'attribute' => 'language',
-                    'value' => function ($data) {
-                        return $data->getLanguage();
-                    },
-                ],
-                [
-                    'class' => ActionColumn::className(),
-                    'header' => Yii::t('general', 'Actions'),
-                    'template' => '{view} {update} {delete}',
-                    'buttons' => [
-                        'delete' => function($url, $model){
-                            return Html::a('<span class="glyphicon glyphicon-trash"></span>', [
-                                    'delete', 'id' => $model->id
-                            ], [
-                                'class' => '',
-                                'data' => [
-                                    'confirm' => Yii::t('user', 'Do you want to delete this user?'),
-                                    'method' => 'post',
-                                ],
-                            ]);
-                        }
-                    ]
-                ],
+        'dataProvider' => $dataProvider,
+        'pjax' => true,
+        'columns' => [
+            'id',
+            'name',
+            'email:email',
+            [
+                'attribute' => 'status',
+                'format' => 'html',
+                'value' => function ($data) {
+                    return $data->getStatus();
+                },
             ],
-        ]);
+            [
+                'attribute' => 'can_access_settings',
+                'format' => 'html',
+                'value' => function ($data) {
+                    return $data->getCanAccessSettings();
+                },
+            ],
+            [
+                'attribute' => 'language',
+                'value' => function ($data) {
+                    return $data->getLanguage();
+                },
+            ],
+            [
+                'class' => ActionColumn::className(),
+                'header' => Yii::t('general', 'Actions'),
+                'template' => '{view} {update} {delete}',
+                'buttons' => [
+                    'delete' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', [
+                            'delete', 'id' => $model->id
+                        ], [
+                            'class' => '',
+                            'data' => [
+                                'confirm' => Yii::t('user', 'Do you want to delete this user?'),
+                                'method' => 'post',
+                            ],
+                        ]);
+                    }
+                ]
+            ],
+        ],
+    ]);
     ?>
 
 </div>

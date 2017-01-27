@@ -35,6 +35,7 @@ $this->params['breadcrumbs'] = [
     </p>
 
     <?= GridView::widget([
+        'pjax' => true,
         'dataProvider' => $dataProvider,
         'columns' => [
             'id',

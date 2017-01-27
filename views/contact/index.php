@@ -34,6 +34,7 @@ $this->params['breadcrumbs'] = [
 <div class="contact-index">
 
     <?= GridView::widget([
+        'pjax' => true,
         'dataProvider' => $dataProvider,
         'columns' => [
             'id',

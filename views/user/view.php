@@ -14,7 +14,7 @@ use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
-use yii\widgets\DetailView;
+use kartik\detail\DetailView;
 
 $this->title = Yii::t('user', 'View user');
 $this->params['breadcrumbs'] = [
@@ -67,9 +67,15 @@ $this->params['breadcrumbs'] = [
                 'value' => $model->getLanguage()
             ],
             'date_created:datetime',
-            'usercreated.name',
+            [
+                'attribute' => 'user_created',
+                'value' => $model->getUserCreated()->getName()
+            ],
             'date_updated:datetime',
-            'userupdated.name',
+            [
+                'attribute' => 'user_updated',
+                'value' => $model->getUserUpdated()->getName()
+            ],
         ],
     ]) ?>
 
@@ -77,6 +83,7 @@ $this->params['breadcrumbs'] = [
     <?= Html::tag('h3', Yii::t('user', 'Last hits')) ?>
 
     <?= GridView::widget([
+        'pjax' => true,
         'dataProvider' => $dataProvider,
         'columns' => [
             'date:datetime',
