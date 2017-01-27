@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('calendar', 'Enter the name of the calendar.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'status')->dropDownList(Calendar::getStatusData(), ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('calendar', 'Please tell us if the calendar status is active or inactive.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('calendar', 'Please tell us if the calendar is active or inactive.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 
     <?php if (!$model->getIsNewRecord()) : ?>
         <?= Html::tag('br') ?>

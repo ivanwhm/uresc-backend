@@ -34,7 +34,7 @@ $this->params['breadcrumbs'] = [
         <?php $form = ActiveForm::begin(['id' => 'page-form']); ?>
 
         <?= $form->field($model, 'text')->widget(CKEditor::className()) ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('page', 'Entered the related text of the page.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('page', 'Enter the related text of the page.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
         <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> ' . $model->printLastUpdatedInformation(), ['class' => 'help-block']) ?>
 
         <div class="form-group">

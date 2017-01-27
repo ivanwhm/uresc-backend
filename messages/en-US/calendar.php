@@ -10,5 +10,5 @@ return [
     'Update calendar' => '',
     'View calendar' => '',
     'Enter the name of the calendar.' => '',
-    'Please tell us if the calendar status is active or inactive.' => '',
+    'Please tell us if the calendar is active or inactive.' => '',
 ];

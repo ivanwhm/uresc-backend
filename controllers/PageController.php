@@ -65,7 +65,7 @@ class PageController extends UreController
             $menu->name = $model->name;
             $menu->type = Menu::TYPE_PAGE;
             $menu->visible = Menu::VISIBLE_YES;
-            $menu->order = 999;
+            $menu->order = 99;
             $menu->page_id = $model->id;
             $menu->save(false);
 

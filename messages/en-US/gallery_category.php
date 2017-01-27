@@ -11,6 +11,4 @@ return [
     'View gallery\'s category' => '',
     'Enter the name of the gallery\'s category.' => '',
     'Please tell us if the gallery\'s category is active or inactive.' => '',
-    'Only for pictures' => 'Somente para fotos',
-    'Please tell us if the gallery\'s category is only for pictures.' => '',
 ];

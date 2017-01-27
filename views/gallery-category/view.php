@@ -51,11 +51,6 @@ $this->params['breadcrumbs'] = [
             'id',
             'name',
             [
-                'attribute' => 'only_picture',
-                'format' => 'html',
-                'value' => $model->getOnlyPicture()
-            ],
-            [
                 'attribute' => 'status',
                 'format' => 'html',
                 'value' => $model->getStatus()

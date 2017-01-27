@@ -90,7 +90,7 @@ class Contact extends ActiveRecord
      */
     public static function getContactsAwaitingAnswer()
     {
-        return self::find(['answer_sent' => self::ANSWER_SENT_NO])->count();
+        return count(self::findAll(['answer_sent' => self::ANSWER_SENT_NO]));
     }
 
     /**

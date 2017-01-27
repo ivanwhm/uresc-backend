@@ -3,7 +3,7 @@ return [
     'ID' => 'Código',
     'Name' => 'Nome',
     'Category' => 'Categoria',
-    'File address' => 'Endereço do arquivo',
+    'Download address' => 'Endereço do arquivo',
     'You can not delete the selected download.' => 'Não é possível excluir o arquivo selecionado.',
     'The requested download does not exist.' => 'O arquivo solicitado não existe.',
     'Downloads' => 'Arquivos',

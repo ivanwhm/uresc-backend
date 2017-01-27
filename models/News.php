@@ -117,7 +117,7 @@ class News extends ActiveRecord
      */
     public static function getUnpublishedNews()
     {
-        return self::find(['published' => self::PUBLISHED_NO])->count();
+        return count(self::findAll(['published' => self::PUBLISHED_NO]));
     }
 
     /**

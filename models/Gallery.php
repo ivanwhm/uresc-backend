@@ -60,7 +60,7 @@ class Gallery extends ActiveRecord
             [['date_created', 'date_updated', 'user_created', 'user_updated'], 'safe'],
             [['name'], 'string', 'max' => 50],
             [['status'], 'string', 'max' => 1],
-            [['files'], 'file', 'skipOnEmpty' => false, 'extensions' => 'jpeg, jpg', 'maxFiles' => 10],
+            [['files'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpeg, jpg', 'maxFiles' => 10],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => GalleryCategory::className(), 'targetAttribute' => ['category_id' => 'id']],
             [['user_created'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_created' => 'id']],
             [['user_updated'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_updated' => 'id']],

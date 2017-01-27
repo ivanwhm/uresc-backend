@@ -4,7 +4,6 @@
  *
  * @property integer $id Gallery category's unique ID.
  * @property string $name Gallery category's name
- * @property string $only_picture Define if the gallery category's is only for pictures.
  * @property string $status Gallery category's status.
  * @property datetime $date_created Gallery category's date of creation.
  * @property datetime $date_updated Gallery category's date of updated.
@@ -47,10 +46,10 @@ class GalleryCategory extends ActiveRecord
     {
         return [
             [['user_created', 'user_updated', 'date_created', 'date_updated'], 'safe'],
-            [['name', 'only_picture', 'status'], 'required'],
+            [['name', 'status'], 'required'],
             [['user_created', 'user_updated'], 'integer'],
             [['name'], 'string', 'max' => 59],
-            [['only_picture', 'status'], 'string', 'max' => 1],
+            [['status'], 'string', 'max' => 1],
             [['user_created'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_created' => 'id']],
             [['user_updated'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_updated' => 'id']],
         ];
@@ -64,7 +63,6 @@ class GalleryCategory extends ActiveRecord
         return [
             'id' => Yii::t('gallery_category', 'ID'),
             'name' => Yii::t('gallery_category', 'Name'),
-            'only_picture' => Yii::t('gallery_category', 'Only for pictures'),
             'status' => Yii::t('general', 'Status'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),
@@ -142,20 +140,6 @@ class GalleryCategory extends ActiveRecord
         ];
     }
 
-
-    /**
-     * Returns all the gallery category only for pictures options.
-     *
-     * @return array
-     */
-    public static function getOnlyPictureData()
-    {
-        return [
-            self::ONLY_PICTURE_YES => Yii::t('general', 'Yes'),
-            self::ONLY_PICTURE_NO => Yii::t('general', 'No')
-        ];
-    }
-
     /**
      * Returns the description of gallery category status.
      *
@@ -164,16 +148,6 @@ class GalleryCategory extends ActiveRecord
     public function getStatus()
     {
         return ($this->status != '') ? $result = Html::tag('span', Html::tag('i', '', ['class' => 'glyphicon ' . (($this->status == self::STATUS_ACTIVE) ? 'glyphicon-ok' : 'glyphicon-remove')]) . '  ' . self::getStatusData()[$this->status], ['class' => 'label ' . (($this->status == self::STATUS_ACTIVE) ? 'label-primary' : 'label-danger')]) : '';
-    }
-
-    /**
-     * Returns the description of gallery category only for picture.
-     *
-     * @return string
-     */
-    public function getOnlyPicture()
-    {
-        return ($this->only_picture != '') ? $result = Html::tag('span', Html::tag('i', '', ['class' => 'glyphicon ' . (($this->only_picture == self::ONLY_PICTURE_YES) ? 'glyphicon-ok' : 'glyphicon-remove')]) . '  ' . self::getOnlyPictureData()[$this->only_picture], ['class' => 'label ' . (($this->only_picture == self::ONLY_PICTURE_YES) ? 'label-primary' : 'label-danger')]) : '';
     }
 
     /**
