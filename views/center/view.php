@@ -13,7 +13,7 @@ use app\models\Center;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
-use yii\widgets\DetailView;
+use kartik\detail\DetailView;
 
 $this->title = Yii::t('center', 'View spiritist center');
 $this->params['breadcrumbs'] = [
@@ -58,9 +58,15 @@ $this->params['breadcrumbs'] = [
             'email:email',
             'business_hours:ntext',
             'date_created:datetime',
-            'usercreated.name',
+            [
+                'attribute' => 'user_created',
+                'value' => $model->getUserCreated()->getName()
+            ],
             'date_updated:datetime',
-            'userupdated.name',
+            [
+                'attribute' => 'user_updated',
+                'value' => $model->getUserUpdated()->getName()
+            ],
         ],
     ]) ?>
 

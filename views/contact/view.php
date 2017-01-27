@@ -13,7 +13,7 @@ use app\models\Contact;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
-use yii\widgets\DetailView;
+use kartik\detail\DetailView;
 
 $this->title = Yii::t('contact', 'View contact');
 $this->params['breadcrumbs'] = [
@@ -57,7 +57,8 @@ $this->params['breadcrumbs'] = [
                 'visible' => ($model->getIsAnswerSent())
             ],
             [
-                'attribute' => 'answeruser.name',
+                'attribute' => 'answer_user_id',
+                'value' => $model->getAnswerUser()->getName(),
                 'visible' => ($model->getIsAnswerSent())
             ],
             [

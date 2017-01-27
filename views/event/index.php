@@ -39,7 +39,12 @@ $this->params['breadcrumbs'] = [
         'columns' => [
             'id',
             'name',
-            'calendar.name',
+            [
+                'attribute' => 'calendar_id',
+                'value' => function ($data) {
+                    return $data->getCalendar()->name;
+                }
+            ],
             'date:date',
             'start_time:time',
             'end_time:time',

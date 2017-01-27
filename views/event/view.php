@@ -13,7 +13,7 @@ use app\models\Event;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
-use yii\widgets\DetailView;
+use kartik\detail\DetailView;
 
 $this->title = Yii::t('event', 'View event');
 $this->params['breadcrumbs'] = [
@@ -50,15 +50,24 @@ $this->params['breadcrumbs'] = [
         'attributes' => [
             'id',
             'name',
-            'calendar.name',
+            [
+                'attribute' => 'calendar_id',
+                'value' => $model->getCalendar()->name
+            ],
             'date:date',
             'start_time:time',
             'end_time:time',
             'place:ntext',
             'date_created:datetime',
-            'usercreated.name',
+            [
+                'attribute' => 'user_created',
+                'value' => $model->getUserCreated()->getName()
+            ],
             'date_updated:datetime',
-            'userupdated.name',
+            [
+                'attribute' => 'user_updated',
+                'value' => $model->getUserUpdated()->getName()
+            ],
         ],
     ]) ?>
 

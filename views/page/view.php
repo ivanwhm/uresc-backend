@@ -13,7 +13,7 @@ use app\models\Page;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
-use yii\widgets\DetailView;
+use kartik\detail\DetailView;
 
 $this->title = Yii::t('page', 'View page');
 $this->params['breadcrumbs'] = [
@@ -51,9 +51,15 @@ $this->params['breadcrumbs'] = [
             'id',
             'name',
             'date_created:datetime',
-            'usercreated.name',
+            [
+                'attribute' => 'user_created',
+                'value' => $model->getUserCreated()->getName()
+            ],
             'date_updated:datetime',
-            'userupdated.name',
+            [
+                'attribute' => 'user_updated',
+                'value' => $model->getUserUpdated()->getName()
+            ],
         ],
     ]) ?>
 

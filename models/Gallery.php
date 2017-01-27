@@ -76,14 +76,11 @@ class Gallery extends ActiveRecord
             'id' => Yii::t('gallery', 'ID'),
             'name' => Yii::t('gallery', 'Name'),
             'category_id' => Yii::t('gallery', 'Category'),
-            'category.name' => Yii::t('gallery', 'Category'),
             'status' => Yii::t('general', 'Status'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),
             'user_created' => Yii::t('general', 'User who created'),
             'user_updated' => Yii::t('general', 'User who do last update'),
-            'usercreated.name' => Yii::t('general', 'User who created'),
-            'userupdated.name' => Yii::t('general', 'User who do last update'),
             'files' => Yii::t('gallery', 'Files')
         ];
     }

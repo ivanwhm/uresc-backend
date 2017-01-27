@@ -63,7 +63,6 @@ class Event extends ActiveRecord
         return [
             'id' => Yii::t('event', 'ID'),
             'calendar_id' => Yii::t('event', 'Calendar'),
-            'calendar.name' => Yii::t('event', 'Calendar'),
             'name' => Yii::t('event', 'Name'),
             'date' => Yii::t('event', 'Date'),
             'start_time' => Yii::t('event', 'Start time'),
@@ -74,8 +73,6 @@ class Event extends ActiveRecord
             'date_updated' => Yii::t('general', 'Date of the update'),
             'user_created' => Yii::t('general', 'User who created'),
             'user_updated' => Yii::t('general', 'User who do last update'),
-            'usercreated.name' => Yii::t('general', 'User who created'),
-            'userupdated.name' => Yii::t('general', 'User who do last update'),
         ];
     }
 

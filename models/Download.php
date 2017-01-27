@@ -66,15 +66,12 @@ class Download extends ActiveRecord
             'id' => Yii::t('download', 'ID'),
             'name' => Yii::t('download', 'Name'),
             'category_id' => Yii::t('download', 'Category'),
-            'category.name' => Yii::t('download', 'Category'),
             'address' => Yii::t('download', 'Download address'),
             'status' => Yii::t('general', 'Status'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),
             'user_created' => Yii::t('general', 'User who created'),
             'user_updated' => Yii::t('general', 'User who do last update'),
-            'usercreated.name' => Yii::t('general', 'User who created'),
-            'userupdated.name' => Yii::t('general', 'User who do last update'),
         ];
     }
 

@@ -68,7 +68,6 @@ class Contact extends ActiveRecord
             'answer_message' => Yii::t('contact', 'Answer'),
             'answer_date' => Yii::t('contact', 'Answer date'),
             'answer_user_id' => Yii::t('contact', 'User who answered'),
-            'answeruser.name' => Yii::t('contact', 'User who answered'),
             'answer_sent' => Yii::t('contact', 'Did it answered?'),
         ];
     }

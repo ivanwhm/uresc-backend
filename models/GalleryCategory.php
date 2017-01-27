@@ -68,8 +68,6 @@ class GalleryCategory extends ActiveRecord
             'date_updated' => Yii::t('general', 'Date of the update'),
             'user_created' => Yii::t('general', 'User who created'),
             'user_updated' => Yii::t('general', 'User who do last update'),
-            'usercreated.name' => Yii::t('general', 'User who created'),
-            'userupdated.name' => Yii::t('general', 'User who do last update'),
         ];
     }
 

@@ -40,7 +40,12 @@ $this->params['breadcrumbs'] = [
         'columns' => [
             'id',
             'name',
-            'category.name',
+            [
+                'attribute' => 'category_id',
+                'value' => function ($data) {
+                    return $data->getCategory()->name;
+                },
+            ],
             [
                 'attribute' => 'status',
                 'format' => 'html',
