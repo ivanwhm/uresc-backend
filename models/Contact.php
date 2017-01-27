@@ -3,6 +3,7 @@
  * This is the model class for table "contact".
  *
  * @property integer $id Contact's ID.
+ * @property string $contact_name Contact's name.
  * @property string $contact_email Contact's e-mail.
  * @property string $contact_message Contact's message.
  * @property datetime $contact_date Contact's date.
@@ -47,8 +48,6 @@ class Contact extends ActiveRecord
             [['contact_message', 'answer_message'], 'string'],
             [['contact_date', 'answer_date', 'answer_sent'], 'safe'],
             [['answer_user_id'], 'integer'],
-            [['contact_email'], 'string', 'max' => 150],
-            [['contact_ip'], 'string', 'max' => 255],
             [['answer_sent'], 'string', 'max' => 1],
             [['answer_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['answer_user_id' => 'id']],
         ];
@@ -61,6 +60,7 @@ class Contact extends ActiveRecord
     {
         return [
             'id' => Yii::t('contact', 'ID'),
+            'contact_name' => Yii::t('contact', 'Name'),
             'contact_email' => Yii::t('contact', 'E-mail'),
             'contact_message' => Yii::t('contact', 'Message'),
             'contact_date' => Yii::t('contact', 'Date'),

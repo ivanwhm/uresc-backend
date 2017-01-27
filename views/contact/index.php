@@ -37,9 +37,9 @@ $this->params['breadcrumbs'] = [
         'dataProvider' => $dataProvider,
         'columns' => [
             'id',
+            'contact_name',
             'contact_email:email',
             'contact_date:datetime',
-            'contact_message',
             [
                 'attribute' => 'answer_sent',
                 'format' => 'html',

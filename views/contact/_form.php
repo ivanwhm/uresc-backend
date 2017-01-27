@@ -24,6 +24,9 @@ use yii\widgets\ActiveForm;
         ]
     ); ?>
 
+    <?= $form->field($model, 'contact_name')->textInput(['maxlength' => true, 'readonly' => true, 'aria-describedby' => 'hbContactName']) ?>
+    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('contact', 'Contact\'s name.'), ['id' => 'hbContactName', 'class' => 'help-block']) ?>
+
     <?= $form->field($model, 'contact_email')->textInput(['maxlength' => true, 'readonly' => true, 'aria-describedby' => 'hbContactEmail']) ?>
     <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('contact', 'Contact\'s e-mail.'), ['id' => 'hbContactEmail', 'class' => 'help-block']) ?>
 

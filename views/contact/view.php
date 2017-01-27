@@ -41,6 +41,7 @@ $this->params['breadcrumbs'] = [
         'model' => $model,
         'attributes' => [
             'id',
+            'contact_name',
             'contact_email:email',
             'contact_date:datetime',
             'contact_message:ntext',
@@ -58,7 +59,7 @@ $this->params['breadcrumbs'] = [
             ],
             [
                 'attribute' => 'answer_user_id',
-                'value' => $model->getAnswerUser()->getName(),
+                'value' => ($model->getIsAnswerSent()) ? $model->getAnswerUser()->getName() : '',
                 'visible' => ($model->getIsAnswerSent())
             ],
             [

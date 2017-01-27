@@ -199,6 +199,7 @@ KEY `idx_settings_user_updated` (`user_updated`)
 
 CREATE TABLE `contact` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+`contact_name` varchar(100) COLLATE utf8_swedish_ci NOT NULL,
 `contact_email` varchar(150) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `contact_message` text COLLATE utf8_swedish_ci NOT NULL,
 `contact_date` datetime NOT NULL,

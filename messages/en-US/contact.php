@@ -1,6 +1,7 @@
 <?php
 return [
     'ID' => '',
+    'Name' => '',
     'E-mail' => '',
     'Message' => '',
     'Date' => '',
@@ -15,6 +16,7 @@ return [
     'Answer contact' => '',
     'View contact' => '',
     'Answer it' => '',
+    'Contact\'s name.' => '',
     'Contact\'s e-mail.' => '',
     'Contact\'s message.' => '',
     'Enter the text of the answer.' => '',

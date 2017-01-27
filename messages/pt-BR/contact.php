@@ -1,6 +1,7 @@
 <?php
 return [
     'ID' => 'Código',
+    'Name' => 'Nome',
     'E-mail' => 'E-mail',
     'Message' => 'Mensagem',
     'Date' => 'Data',
@@ -15,6 +16,7 @@ return [
     'Answer contact' => 'Responder contato',
     'View contact' => 'Visualizar contato',
     'Answer it' => 'Responder',
+    'Contact\'s name.' => 'Nome do contato',
     'Contact\'s e-mail.' => 'E-mail do contato.',
     'Contact\'s message.' => 'Mensagem do contato.',
     'Enter the text of the answer.' => 'Descreva o texto da resposta.',
