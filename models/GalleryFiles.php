@@ -20,11 +20,10 @@
 namespace app\models;
 
 //Imports
+use app\components\UreActiveRecord;
 use Yii;
-use yii\db\ActiveRecord;
-use yii\db\Expression;
 
-class GalleryFiles extends ActiveRecord
+class GalleryFiles extends UreActiveRecord
 {
 
     /**
@@ -77,44 +76,6 @@ class GalleryFiles extends ActiveRecord
     public function getGallery()
     {
         return Gallery::findOne(['id' => $this->gallery_id]);
-    }
-
-    /**
-     * Returns the user that created the file.
-     *
-     * @return User
-     */
-    public function getUserCreated()
-    {
-        return User::findOne(['id' => $this->user_created]);
-    }
-
-    /**
-     * Returns the user that updated the file.
-     *
-     * @return User
-     */
-    public function getUserUpdated()
-    {
-        return User::findOne(['id' => $this->user_updated]);
-    }
-
-
-    /**
-     * @inheritdoc
-     */
-    public function beforeSave($insert)
-    {
-        if ($insert)
-        {
-            $this->date_created = new Expression('current_timestamp');
-            $this->user_created = Yii::$app->getUser()->getId();
-        }
-
-        $this->date_updated = new Expression('current_timestamp');
-        $this->user_updated = Yii::$app->getUser()->getId();
-
-        return parent::beforeSave($insert);
     }
 
 }

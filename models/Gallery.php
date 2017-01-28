@@ -20,16 +20,14 @@
 namespace app\models;
 
 //Imports
+use app\components\UreActiveRecord;
 use Exception;
 use Yii;
-use yii\base\InvalidParamException;
-use yii\db\ActiveRecord;
-use yii\db\Expression;
 use yii\helpers\FileHelper;
 use yii\helpers\Html;
 use yii\web\UploadedFile;
 
-class Gallery extends ActiveRecord
+class Gallery extends UreActiveRecord
 {
 
     const STATUS_ACTIVE = "A";
@@ -96,42 +94,6 @@ class Gallery extends ActiveRecord
     }
 
     /**
-     * Returns the user that created the gallery category.
-     *
-     * @return User
-     */
-    public function getUserCreated()
-    {
-        return User::findOne(['id' => $this->user_created]);
-    }
-
-    /**
-     * Returns the user that updated the gallery category.
-     *
-     * @return User
-     */
-    public function getUserUpdated()
-    {
-        return User::findOne(['id' => $this->user_updated]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function beforeSave($insert)
-    {
-        if ($insert) {
-            $this->date_created = new Expression('current_timestamp');
-            $this->user_created = Yii::$app->getUser()->getId();
-        }
-
-        $this->date_updated = new Expression('current_timestamp');
-        $this->user_updated = Yii::$app->getUser()->getId();
-
-        return parent::beforeSave($insert);
-    }
-
-    /**
      * Return the description of gallery status.
      *
      * @return string
@@ -152,32 +114,6 @@ class Gallery extends ActiveRecord
             self::STATUS_ACTIVE => Yii::t('general', 'Active'),
             self::STATUS_INACTIVE => Yii::t('general', 'Inactive')
         ];
-    }
-
-    /**
-     * Returns the created information to print on views.
-     *
-     * @return string
-     */
-    public function printCreatedInformation()
-    {
-        return Yii::t('general', 'Created on {date} by {username}.', [
-            'date' => Yii::$app->getFormatter()->asDatetime($this->date_created),
-            'username' => $this->getUserCreated()->getName()
-        ]);
-    }
-
-    /**
-     * Returns the last updated information to print on views.
-     *
-     * @return string
-     */
-    public function printLastUpdatedInformation()
-    {
-        return Yii::t('general', 'Last update on {date} by {username}.', [
-            'date' => Yii::$app->getFormatter()->asDatetime($this->date_updated),
-            'username' => $this->getUserUpdated()->getName()
-        ]);
     }
 
     /**

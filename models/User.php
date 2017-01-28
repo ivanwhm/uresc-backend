@@ -27,15 +27,15 @@
 namespace app\models;
 
 //Imports
+use app\components\UreActiveRecord;
 use kartik\password\StrengthValidator;
 use Yii;
 use yii\db\ActiveQuery;
-use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\helpers\Html;
 use yii\web\IdentityInterface;
 
-class User extends ActiveRecord implements IdentityInterface
+class User extends UreActiveRecord implements IdentityInterface
 {
 
     const STATUS_ACTIVE = "A";
@@ -257,13 +257,8 @@ class User extends ActiveRecord implements IdentityInterface
     {
         if ($insert)
         {
-            $this->date_created = new Expression('current_timestamp');
-            $this->user_created = Yii::$app->getUser()->getId();
             $this->salt = Yii::$app->getSecurity()->generateRandomString(64);
         }
-
-        $this->date_updated = new Expression('current_timestamp');
-        $this->user_updated = Yii::$app->getUser()->getId();
 
         if ($this->password != '')
         {
@@ -279,26 +274,6 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         return parent::beforeSave($insert);
-    }
-
-    /**
-     * Returns the information about the user that created the record.
-     *
-     * @return User
-     */
-    public function getUserCreated()
-    {
-        return $this->findOne(['id' => $this->user_created]);
-    }
-
-    /**
-     * Returns the information about the user of the last record updated.
-     *
-     * @return User
-     */
-    public function getUserUpdated()
-    {
-        return $this->findOne(['id' => $this->user_updated]);
     }
 
     /**
@@ -390,30 +365,6 @@ class User extends ActiveRecord implements IdentityInterface
             self::LANGUAGE_PT_BR => Yii::t('general', 'Portuguese (Brazil)')
         ];
     }
-    /**
-     * Returns the created information to print on views.
-     *
-     * @return string
-     */
-    public function printCreatedInformation()
-    {
-        return Yii::t('general', 'Created on {date} by {username}.', [
-            'date' => Yii::$app->getFormatter()->asDatetime($this->date_created),
-            'username' => $this->getUserCreated()->getName()
-        ]);
-    }
 
-    /**
-     * Returns the last updated information to print on views.
-     *
-     * @return string
-     */
-    public function printLastUpdatedInformation()
-    {
-        return Yii::t('general', 'Last update on {date} by {username}.', [
-            'date' => Yii::$app->getFormatter()->asDatetime($this->date_updated),
-            'username' => $this->getUserUpdated()->getName()
-        ]);
-    }
 }
 

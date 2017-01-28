@@ -23,12 +23,10 @@
 namespace app\models;
 
 //Imports
+use app\components\UreActiveRecord;
 use Yii;
-use yii\db\ActiveRecord;
-use yii\db\Expression;
 
-
-class Menu extends ActiveRecord
+class Menu extends UreActiveRecord
 {
 
     const VISIBLE_YES = 'Y';
@@ -92,41 +90,6 @@ class Menu extends ActiveRecord
     {
         return Page::findOne(['id' => $this->page_id]);
     }
-    /**
-     * Returns the user that created the news.
-     *
-     * @return User
-     */
-    public function getUserCreated()
-    {
-        return User::findOne(['id' => $this->user_created]);
-    }
-
-    /**
-     * Returns the user that updated the news.
-     *
-     * @return User
-     */
-    public function getUserUpdated()
-    {
-        return User::findOne(['id' => $this->user_updated]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function beforeSave($insert)
-    {
-        if ($insert) {
-            $this->date_created = new Expression('current_timestamp');
-            $this->user_created = Yii::$app->getUser()->getId();
-        }
-
-        $this->date_updated = new Expression('current_timestamp');
-        $this->user_updated = Yii::$app->getUser()->getId();
-
-        return parent::beforeSave($insert);
-    }
 
     /**
      * Returns all the visible options.
@@ -172,32 +135,6 @@ class Menu extends ActiveRecord
     public function getType()
     {
         return ($this->type != '') ? self::getTypeData()[$this->type] : '';
-    }
-
-    /**
-     * Returns the created information to print on views.
-     *
-     * @return string
-     */
-    public function printCreatedInformation()
-    {
-        return Yii::t('general', 'Created on {date} by {username}.', [
-            'date' => Yii::$app->getFormatter()->asDatetime($this->date_created),
-            'username' => $this->getUserCreated()->getName()
-        ]);
-    }
-
-    /**
-     * Returns the last updated information to print on views.
-     *
-     * @return string
-     */
-    public function printLastUpdatedInformation()
-    {
-        return Yii::t('general', 'Last update on {date} by {username}.', [
-            'date' => Yii::$app->getFormatter()->asDatetime($this->date_updated),
-            'username' => $this->getUserUpdated()->getName()
-        ]);
     }
 
 }

@@ -20,11 +20,11 @@
 namespace app\models;
 
 //Imports
+use app\components\UreActiveRecord;
 use Yii;
-use yii\db\ActiveRecord;
 use yii\helpers\Html;
 
-class Contact extends ActiveRecord
+class Contact extends UreActiveRecord
 {
 
     const ANSWER_SENT_YES = "Y";

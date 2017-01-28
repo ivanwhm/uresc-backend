@@ -17,11 +17,11 @@
 namespace app\models;
 
 //Imports
+use app\components\UreActiveRecord;
 use Yii;
-use yii\db\ActiveRecord;
 use yii\helpers\Html;
 
-class UserAccess extends ActiveRecord
+class UserAccess extends UreActiveRecord
 {
 
     const TYPE_CONNECTION = 'C';

@@ -16,11 +16,10 @@
 namespace app\models;
 
 //Imports
+use app\components\UreActiveRecord;
 use Yii;
-use yii\db\ActiveRecord;
-use yii\db\Expression;
 
-class Settings extends ActiveRecord
+class Settings extends UreActiveRecord
 {
     /**
      * @inheritdoc
@@ -62,39 +61,4 @@ class Settings extends ActiveRecord
         ];
     }
 
-
-    /**
-     * Returns the user that updated the settings.
-     *
-     * @return User
-     */
-    public function getUserUpdated()
-    {
-        return User::findOne(['id' => $this->user_updated]);
-    }
-
-
-    /**
-     * @inheritdoc
-     */
-    public function beforeSave($insert)
-    {
-        $this->date_updated = new Expression('current_timestamp');
-        $this->user_updated = Yii::$app->getUser()->getId();
-
-        return parent::beforeSave($insert);
-    }
-
-    /**
-     * Returns the last updated information to print on views.
-     *
-     * @return string
-     */
-    public function printLastUpdatedInformation()
-    {
-        return Yii::t('general', 'Last update on {date} by {username}.', [
-            'date' => Yii::$app->getFormatter()->asDatetime($this->date_updated),
-            'username' => $this->getUserUpdated()->getName()
-        ]);
-    }
 }
