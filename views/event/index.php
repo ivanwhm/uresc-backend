@@ -42,8 +42,9 @@ $this->params['breadcrumbs'] = [
             'name',
             [
                 'attribute' => 'calendar_id',
+                'format' => 'html',
                 'value' => function ($data) {
-                    return $data->getCalendar()->name;
+                    return Html::a($data->getCalendar()->name, $data->getCalendar()->getLink());
                 }
             ],
             'date:date',

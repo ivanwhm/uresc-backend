@@ -16,6 +16,7 @@ use kartik\editable\Editable;
 use kartik\grid\EditableColumn;
 use kartik\grid\GridView;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
 
@@ -36,7 +37,13 @@ $this->params['breadcrumbs'] = [
         'dataProvider' => $dataProvider,
         'pjax' => true,
         'columns' => [
-            'name',
+            [
+                'attribute' => 'name',
+                'format' => 'html',
+                'value' => function ($data) {
+                    return ($data->type == Menu::TYPE_PAGE) ? Html::a($data->getPage()->name, $data->getPage()->getLink()) : $data->name;
+                },
+            ],
             [
                 'attribute' => 'type',
                 'value' => function ($data) {

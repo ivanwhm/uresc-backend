@@ -21,6 +21,7 @@ namespace app\models;
 use app\components\UreActiveRecord;
 use Yii;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 class Calendar extends UreActiveRecord
 {
@@ -104,6 +105,16 @@ class Calendar extends UreActiveRecord
             self::STATUS_ACTIVE => Yii::t('general', 'Active'),
             self::STATUS_INACTIVE => Yii::t('general', 'Inactive')
         ];
+    }
+
+    /**
+     * Returns the link to calendar visualization info.
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return Url::to(['calendar/view', 'id' => $this->id]);
     }
 
 }

@@ -39,7 +39,13 @@ $this->params['breadcrumbs'] = [
         'dataProvider' => $dataProvider,
         'columns' => [
             'id',
-            'name',
+            [
+                'attribute' => 'name',
+                'format' => 'html',
+                'value' => function($data) {
+                    return Html::a($data->name, $data->getLink());
+                }
+            ],
             [
                 'class' => ActionColumn::className(),
                 'header' => Yii::t('general', 'Actions'),

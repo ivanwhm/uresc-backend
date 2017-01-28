@@ -40,7 +40,13 @@ $this->params['breadcrumbs'] = [
         'dataProvider' => $dataProvider,
         'columns' => [
             'id',
-            'name',
+            [
+                'attribute' => 'name',
+                'format' => 'html',
+                'value' => function($data) {
+                    return Html::a($data->name, $data->getLink());
+                }
+            ],
             [
                 'attribute' => 'status',
                 'format' => 'html',

@@ -20,6 +20,7 @@ namespace app\models;
 //Imports
 use app\components\UreActiveRecord;
 use Yii;
+use yii\helpers\Url;
 
 class Page extends UreActiveRecord
 {
@@ -72,6 +73,16 @@ class Page extends UreActiveRecord
     public static function getPages()
     {
         return self::find()->orderBy('name')->all();
+    }
+
+    /**
+     * Returns the link to page info.
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return Url::to(['page/info', 'id' => $this->id]);
     }
 
 }

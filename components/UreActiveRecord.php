@@ -12,6 +12,7 @@ use app\models\User;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\helpers\Html;
 
 class UreActiveRecord extends ActiveRecord
 {
@@ -71,7 +72,7 @@ class UreActiveRecord extends ActiveRecord
         {
             return Yii::t('general', 'Created on {date} by {username}.', [
                 'date' => Yii::$app->getFormatter()->asDatetime($this->date_created),
-                'username' => $this->getUserCreated()->getName()
+                'username' => Html::a($this->getUserCreated()->getName(), $this->getUserCreated()->getLink())
             ]);
         }
     }
@@ -87,7 +88,7 @@ class UreActiveRecord extends ActiveRecord
         {
             return Yii::t('general', 'Last update on {date} by {username}.', [
                 'date' => Yii::$app->getFormatter()->asDatetime($this->date_updated),
-                'username' => $this->getUserUpdated()->getName()
+                'username' => Html::a($this->getUserUpdated()->getName(), $this->getUserUpdated()->getLink())
             ]);
         }
     }

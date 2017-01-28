@@ -52,7 +52,8 @@ $this->params['breadcrumbs'] = [
             'name',
             [
                 'attribute' => 'calendar_id',
-                'value' => $model->getCalendar()->name
+                'format' => 'html',
+                'value' => Html::a($model->getCalendar()->name, $model->getCalendar()->getLink())
             ],
             'date:date',
             'start_time:time',
@@ -61,12 +62,14 @@ $this->params['breadcrumbs'] = [
             'date_created:datetime',
             [
                 'attribute' => 'user_created',
-                'value' => $model->getUserCreated()->getName()
+                'format' => 'html',
+                'value' => Html::a($model->getUserCreated()->getName(), $model->getUserCreated()->getLink())
             ],
             'date_updated:datetime',
             [
                 'attribute' => 'user_updated',
-                'value' => $model->getUserUpdated()->getName()
+                'format' => 'html',
+                'value' => Html::a($model->getUserUpdated()->getName(), $model->getUserUpdated()->getLink())
             ],
         ],
     ]) ?>

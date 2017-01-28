@@ -22,6 +22,7 @@ namespace app\models;
 use app\components\UreActiveRecord;
 use Yii;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 class DownloadCategory extends UreActiveRecord
 {
@@ -110,4 +111,13 @@ class DownloadCategory extends UreActiveRecord
         return ($this->status != '') ? $result = Html::tag('span', Html::tag('i', '', ['class' => 'glyphicon ' . (($this->status == self::STATUS_ACTIVE) ? 'glyphicon-ok' : 'glyphicon-remove')]) . '  ' . self::getStatusData()[$this->status], ['class' => 'label ' . (($this->status == self::STATUS_ACTIVE) ? 'label-primary' : 'label-danger')]) : '';
     }
 
+    /**
+     * Returns the link to download's category visualization info.
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return Url::to(['download-category/view', 'id' => $this->id]);
+    }
 }

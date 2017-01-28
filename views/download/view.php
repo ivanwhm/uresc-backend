@@ -52,7 +52,8 @@ $this->params['breadcrumbs'] = [
             'name',
             [
                 'attribute' => 'category_id',
-                'value' => $model->getCategory()->name
+                'format' => 'html',
+                'value' => Html::a($model->getCategory()->name, $model->getCategory()->getLink())
             ],
             'address:url',
             [
@@ -63,12 +64,14 @@ $this->params['breadcrumbs'] = [
             'date_created:datetime',
             [
                 'attribute' => 'user_created',
-                'value' => $model->getUserCreated()->getName()
+                'format' => 'html',
+                'value' => Html::a($model->getUserCreated()->getName(), $model->getUserCreated()->getLink())
             ],
             'date_updated:datetime',
             [
                 'attribute' => 'user_updated',
-                'value' => $model->getUserUpdated()->getName()
+                'format' => 'html',
+                'value' => Html::a($model->getUserUpdated()->getName(), $model->getUserUpdated()->getLink())
             ],
         ],
     ]) ?>

@@ -33,6 +33,7 @@ use Yii;
 use yii\db\ActiveQuery;
 use yii\db\Expression;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\web\IdentityInterface;
 
 class User extends UreActiveRecord implements IdentityInterface
@@ -364,6 +365,16 @@ class User extends UreActiveRecord implements IdentityInterface
             self::LANGUAGE_EN_US => Yii::t('general', 'English (United States)'),
             self::LANGUAGE_PT_BR => Yii::t('general', 'Portuguese (Brazil)')
         ];
+    }
+
+    /**
+     * Returns the link to user visualization info.
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return Url::to(['user/view', 'id' => $this->id]);
     }
 
 }

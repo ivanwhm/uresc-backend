@@ -21,6 +21,7 @@ namespace app\models;
 use app\components\UreActiveRecord;
 use Yii;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 class GalleryCategory extends UreActiveRecord
 {
@@ -107,6 +108,16 @@ class GalleryCategory extends UreActiveRecord
     public function getStatus()
     {
         return ($this->status != '') ? $result = Html::tag('span', Html::tag('i', '', ['class' => 'glyphicon ' . (($this->status == self::STATUS_ACTIVE) ? 'glyphicon-ok' : 'glyphicon-remove')]) . '  ' . self::getStatusData()[$this->status], ['class' => 'label ' . (($this->status == self::STATUS_ACTIVE) ? 'label-primary' : 'label-danger')]) : '';
+    }
+
+    /**
+     * Returns the link to gallery's category visualization info.
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return Url::to(['gallery-category/view', 'id' => $this->id]);
     }
 
 }

@@ -59,7 +59,8 @@ $this->params['breadcrumbs'] = [
             ],
             [
                 'attribute' => 'answer_user_id',
-                'value' => ($model->getIsAnswerSent()) ? $model->getAnswerUser()->getName() : '',
+                'format' => 'html',
+                'value' => ($model->getIsAnswerSent()) ? Html::a($model->getAnswerUser()->getName(), $model->getAnswerUser()->getLink()) : '',
                 'visible' => ($model->getIsAnswerSent())
             ],
             [

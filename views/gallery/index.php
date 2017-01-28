@@ -43,8 +43,9 @@ $this->params['breadcrumbs'] = [
             'name',
             [
                 'attribute' => 'category_id',
+                'format' => 'html',
                 'value' => function ($data) {
-                    return $data->getCategory()->name;
+                    return Html::a($data->getCategory()->name, $data->getCategory()->getLink());
                 },
             ],
             [
