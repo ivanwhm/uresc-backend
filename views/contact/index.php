@@ -13,6 +13,7 @@
 //Imports
 
 use app\models\Contact;
+use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use kartik\grid\ActionColumn;
 use kartik\grid\GridView;
@@ -25,7 +26,7 @@ $this->title = Yii::t('contact', 'Contacts');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => "fa-mail-reply-all",
+        "icon" => Icon::show('mail-reply-all'),
         "active" => true,
         "url" => Url::to(["contact/index"])
     ]
@@ -44,7 +45,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'answer_sent',
                 'format' => 'html',
-                'value' => function ($data) {
+                'value' => function (Contact $data) {
                     return $data->getAnswerSent();
                 },
             ],
@@ -53,8 +54,8 @@ $this->params['breadcrumbs'] = [
                 'header' => Yii::t('general', 'Actions'),
                 'template' => '{view} {answer}',
                 'buttons' => [
-                    'answer' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-send"></span>', [
+                    'answer' => function ($url, Contact $model) {
+                        return Html::a(Icon::show('send', '', Icon::BSG), [
                             'answer', 'id' => $model->id
                         ], [
                             'title' => Yii::t('contact', 'Answer it')

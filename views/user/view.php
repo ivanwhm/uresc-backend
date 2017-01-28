@@ -10,7 +10,9 @@
 
 //Imports
 use app\models\User;
+use app\models\UserAccess;
 use kartik\grid\GridView;
+use kartik\icons\Icon;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -20,13 +22,13 @@ $this->title = Yii::t('user', 'View user');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('user', 'Users'),
-        "icon" => "fa-user",
+        "icon" => Icon::show('user'),
         "active" => false,
         "url" => Url::to(["user/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-user",
+        "icon" => Icon::show('eye'),
         "active" => true,
         "url" => Url::to(["user/view", 'id' => $model->id])
     ]
@@ -35,9 +37,9 @@ $this->params['breadcrumbs'] = [
 <div class="user-view">
 
     <p>
-        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Icon::show('pencil') . Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Icon::show('trash') . Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('user', 'Do you want to delete this user?'),
@@ -64,7 +66,8 @@ $this->params['breadcrumbs'] = [
             ],
             [
                 'attribute' => 'language',
-                'value' => $model->getLanguage()
+                'format' => 'html',
+                'value' => Icon::show($model->getLanguageCountry(), '', Icon::FI) . $model->getLanguage()
             ],
             'date_created:datetime',
             [
@@ -92,7 +95,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'type',
                 'format' => 'html',
-                'value' => function ($data) {
+                'value' => function (UserAccess $data) {
                     return $data->getType();
                 },
             ],

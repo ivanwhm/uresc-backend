@@ -4,13 +4,12 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
- * @var $data User
- * @var $model User
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports
+use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use kartik\grid\ActionColumn;
 use kartik\grid\GridView;
@@ -23,7 +22,7 @@ $this->title = Yii::t('user', 'Users');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => "fa-user",
+        "icon" => Icon::show('user'),
         "active" => true,
         "url" => Url::to(["user/index"])
     ]
@@ -32,7 +31,7 @@ $this->params['breadcrumbs'] = [
 <div class="user-index">
 
     <p>
-        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -45,21 +44,22 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'status',
                 'format' => 'html',
-                'value' => function ($data) {
+                'value' => function (User $data) {
                     return $data->getStatus();
                 },
             ],
             [
                 'attribute' => 'can_access_settings',
                 'format' => 'html',
-                'value' => function ($data) {
+                'value' => function (User $data) {
                     return $data->getCanAccessSettings();
                 },
             ],
             [
                 'attribute' => 'language',
-                'value' => function ($data) {
-                    return $data->getLanguage();
+                'format' => 'html',
+                'value' => function (User $data) {
+                    return Icon::show($data->getLanguageCountry(), '', Icon::FI) . $data->getLanguage();
                 },
             ],
             [
@@ -67,8 +67,8 @@ $this->params['breadcrumbs'] = [
                 'header' => Yii::t('general', 'Actions'),
                 'template' => '{view} {update} {delete}',
                 'buttons' => [
-                    'delete' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', [
+                    'delete' => function ($url, User $model) {
+                        return Html::a(Icon::show('trash', '', Icon::BSG), [
                             'delete', 'id' => $model->id
                         ], [
                             'class' => '',

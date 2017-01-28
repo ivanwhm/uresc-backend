@@ -4,8 +4,6 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
- * @var $data Menu
- * @var $model Menu
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -15,6 +13,7 @@ use app\models\Menu;
 use kartik\editable\Editable;
 use kartik\grid\EditableColumn;
 use kartik\grid\GridView;
+use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -24,7 +23,7 @@ $this->title = Yii::t('menu', 'Menus');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => "fa-bars",
+        "icon" => Icon::show('bars'),
         "active" => true,
         "url" => Url::to(["menu/index"])
     ]
@@ -40,13 +39,13 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'name',
                 'format' => 'html',
-                'value' => function ($data) {
+                'value' => function (Menu $data) {
                     return ($data->type == Menu::TYPE_PAGE) ? Html::a($data->getPage()->name, $data->getPage()->getLink()) : $data->name;
                 },
             ],
             [
                 'attribute' => 'type',
-                'value' => function ($data) {
+                'value' => function (Menu $data) {
                     return $data->getType();
                 },
             ],

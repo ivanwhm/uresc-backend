@@ -12,6 +12,7 @@
 
 //Imports
 use app\models\Center;
+use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
@@ -20,13 +21,13 @@ $this->title = Yii::t('center', 'Add spiritist center');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('center', 'Spiritist centers'),
-        "icon" => "fa-hospital-o",
+        "icon" => Icon::show('hospital-o'),
         "active" => false,
         "url" => Url::to(["center/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-hospital-o",
+        "icon" => Icon::show('plus'),
         "active" => true
     ]
 ];

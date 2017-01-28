@@ -367,6 +367,20 @@ class User extends UreActiveRecord implements IdentityInterface
         ];
     }
 
+
+    /**
+     * Returns all the languages country options.
+     *
+     * @return array
+     */
+    public static function getLanguageCountryData()
+    {
+        return [
+            self::LANGUAGE_EN_US => 'us',
+            self::LANGUAGE_PT_BR => 'br'
+        ];
+    }
+
     /**
      * Returns the link to user visualization info.
      *
@@ -375,6 +389,16 @@ class User extends UreActiveRecord implements IdentityInterface
     public function getLink()
     {
         return Url::to(['user/view', 'id' => $this->id]);
+    }
+
+    /**
+     * Returns the language country description of the user.
+     *
+     * @return string
+     */
+    public function getLanguageCountry()
+    {
+        return ($this->language != '') ? self::getLanguageCountryData()[$this->language] : '';
     }
 
 }

@@ -4,13 +4,12 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
- * @var $data News
- * @var $model News
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports
+use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use kartik\grid\ActionColumn;
 use kartik\grid\GridView;
@@ -23,7 +22,7 @@ $this->title = Yii::t('news', 'News');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => "fa-newspaper-o",
+        "icon" => Icon::show('newspaper-o'),
         "active" => true,
         "url" => Url::to(["news/index"])
     ]
@@ -32,7 +31,7 @@ $this->params['breadcrumbs'] = [
 <div class="news-index">
 
     <p>
-        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -44,7 +43,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'published',
                 'format' => 'html',
-                'value' => function ($data) {
+                'value' => function (News $data) {
                     return $data->getPublished();
                 },
             ],
@@ -58,8 +57,8 @@ $this->params['breadcrumbs'] = [
                 'width' => '100px',
                 'template' => '{view} {update} {delete} {published} {unpublished}',
                 'buttons' => [
-                    'delete' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', [
+                    'delete' => function ($url, News $model) {
+                        return Html::a(Icon::show('trash', '', Icon::BSG), [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [
@@ -68,8 +67,8 @@ $this->params['breadcrumbs'] = [
                             ],
                         ]);
                     },
-                    'published' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-upload"></span>', [
+                    'published' => function ($url, News $model) {
+                        return Html::a(Icon::show('upload', '', Icon::BSG), [
                             'published', 'id' => $model->id
                         ], [
                             'title' => Yii::t('news', 'Publish'),
@@ -79,8 +78,8 @@ $this->params['breadcrumbs'] = [
                             ],
                         ]);
                     },
-                    'unpublished' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-download"></span>', [
+                    'unpublished' => function ($url, News $model) {
+                        return Html::a(Icon::show('download', '', Icon::BSG), [
                             'unpublished', 'id' => $model->id
                         ], [
                             'title' => Yii::t('news', 'Unpublish'),

@@ -10,6 +10,7 @@
 
 //Imports
 use app\models\User;
+use kartik\icons\Icon;
 use yii\helpers\Url;
 use yii\web\View;
 
@@ -17,13 +18,13 @@ $this->title = Yii::t('user', 'Update user');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('user', 'Users'),
-        "icon" => "fa-user",
+        "icon" => Icon::show('user'),
         "active" => false,
         "url" => Url::to(["user/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-user",
+        "icon" => Icon::show('pencil'),
         "active" => true,
         "url" => Url::to(["user/update", 'id' => $model->id])
     ]

@@ -12,6 +12,7 @@
 //Imports
 use app\models\Calendar;
 use app\models\User;
+use kartik\icons\Icon;
 use yii\helpers\Url;
 use yii\web\View;
 
@@ -19,13 +20,13 @@ $this->title = Yii::t('calendar', 'Update calendar');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('calendar', 'Calendars'),
-        "icon" => "fa-calendar-o",
+        "icon" => Icon::show('calendar-o'),
         "active" => false,
         "url" => Url::to(["calendar/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-calendar-o",
+        "icon" => Icon::show('pencil'),
         "active" => true,
         "url" => Url::to(["calendar/update", 'id' => $model->id])
     ]

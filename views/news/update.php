@@ -10,6 +10,7 @@
 
 //Imports
 use app\models\News;
+use kartik\icons\Icon;
 use yii\helpers\Url;
 use yii\web\View;
 
@@ -17,13 +18,13 @@ $this->title = Yii::t('news', 'Update news');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('news', 'News'),
-        "icon" => "fa-newspaper-o",
+        "icon" => Icon::show('newspaper-o'),
         "active" => false,
         "url" => Url::to(["news/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-newspaper-o",
+        "icon" => Icon::show('pencil'),
         "active" => true,
         "url" => Url::to(["news/update", 'id' => $model->id])
     ]

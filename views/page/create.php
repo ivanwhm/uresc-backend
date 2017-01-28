@@ -10,6 +10,7 @@
  */
 
 //Imports
+use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
@@ -18,13 +19,13 @@ $this->title = Yii::t('page', 'Add page');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('page', 'Pages'),
-        "icon" => "fa-clipboard",
+        "icon" => Icon::show('clipboard'),
         "active" => false,
         "url" => Url::to(["page/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-clipboard",
+        "icon" => Icon::show('plus'),
         "active" => true
     ]
 ];

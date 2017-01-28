@@ -10,6 +10,7 @@
 
 //Imports
 use app\models\Event;
+use kartik\icons\Icon;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -19,13 +20,13 @@ $this->title = Yii::t('event', 'View event');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('event', 'Events'),
-        "icon" => "fa-calendar",
+        "icon" => Icon::show('calendar'),
         "active" => false,
         "url" => Url::to(["event/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-calendar",
+        "icon" => Icon::show('eye'),
         "active" => true,
         "url" => Url::to(["event/view", 'id' => $model->id])
     ]
@@ -34,9 +35,9 @@ $this->params['breadcrumbs'] = [
 <div class="event-view">
 
     <p>
-        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Icon::show('pencil') . Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Icon::show('trash') . Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('event', 'Do you want to delete this event?'),

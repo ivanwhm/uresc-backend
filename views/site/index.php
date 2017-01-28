@@ -8,6 +8,7 @@
  */
 
 //Imports
+use kartik\icons\Icon;
 use yii\helpers\Url;
 
 $this->title = Yii::t('general', 'Home');
@@ -19,7 +20,7 @@ $this->title = Yii::t('general', 'Home');
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-mail-reply-all fa-5x"></i>
+                        <?= Icon::show('mail-reply-all', ['class' => 'fa-5x']) ?>
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $contacts ?></div>
@@ -30,7 +31,7 @@ $this->title = Yii::t('general', 'Home');
             <a href="<?= Url::toRoute(['contact/index']) ?>">
                 <div class="panel-footer">
                     <span class="pull-left"><?= Yii::t('contact', 'View contacts!') ?></span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <span class="pull-right"><?= Icon::show('arrow-circle-right') ?></span>
                     <div class="clearfix"></div>
                 </div>
             </a>
@@ -41,7 +42,7 @@ $this->title = Yii::t('general', 'Home');
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-calendar fa-5x"></i>
+                        <?= Icon::show('calendar', ['class' => 'fa-5x']) ?>
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $events ?></div>
@@ -52,7 +53,7 @@ $this->title = Yii::t('general', 'Home');
             <a href="<?= Url::toRoute(['event/index']) ?>">
                 <div class="panel-footer">
                     <span class="pull-left"><?= Yii::t('event', 'View events!') ?></span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <span class="pull-right"><?= Icon::show('arrow-circle-right') ?></span>
                     <div class="clearfix"></div>
                 </div>
             </a>
@@ -63,7 +64,7 @@ $this->title = Yii::t('general', 'Home');
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-hospital-o fa-5x"></i>
+                        <?= Icon::show('hospital-o', ['class' => 'fa-5x']) ?>
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $centers ?></div>
@@ -74,7 +75,7 @@ $this->title = Yii::t('general', 'Home');
             <a href="<?= Url::toRoute(['center/index']) ?>">
                 <div class="panel-footer">
                     <span class="pull-left"><?= Yii::t('center', 'View centers!') ?></span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <span class="pull-right"><?= Icon::show('arrow-circle-right') ?></span>
                     <div class="clearfix"></div>
                 </div>
             </a>
@@ -85,7 +86,7 @@ $this->title = Yii::t('general', 'Home');
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-newspaper-o fa-5x"></i>
+                        <?= Icon::show('newspaper-o', ['class' => 'fa-5x']) ?>
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $news ?></div>
@@ -96,7 +97,7 @@ $this->title = Yii::t('general', 'Home');
             <a href="<?= Url::toRoute(['news/index']) ?>">
                 <div class="panel-footer">
                     <span class="pull-left"><?= Yii::t('news', 'View news!') ?></span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <span class="pull-right"><?= Icon::show('arrow-circle-right') ?></span>
                     <div class="clearfix"></div>
                 </div>
             </a>

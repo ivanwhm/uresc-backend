@@ -11,7 +11,7 @@
 
 //Imports
 use app\models\Gallery;
-use app\models\GalleryCategory;
+use kartik\icons\Icon;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
@@ -29,13 +29,13 @@ use yii\widgets\ActiveForm;
     ); ?>
 
     <?= $form->field($model, 'files[]')->fileInput(['multiple' => true, 'accept' => 'image/*']) ?>
-    <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('gallery', 'Select all the files to upload.'), ['id' => 'hbFiles', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', Icon::show('info-circle') . Yii::t('gallery', 'Select all the files to upload.'), ['id' => 'hbFiles', 'class' => 'help-block']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('general', 'Save'), [
+        <?= Html::submitButton(Icon::show('upload') . Yii::t('general', 'Save'), [
             'class' => $model->getIsNewRecord() ? 'btn btn-success' : 'btn btn-primary'
         ]) ?>
-        <?= Html::a(Yii::t('general', 'Cancel'), $model->getIsNewRecord() ? ['index'] : ['view', 'id' => $model->id], [
+        <?= Html::a(Icon::show('ban') . Yii::t('general', 'Cancel'), $model->getIsNewRecord() ? ['index'] : ['view', 'id' => $model->id], [
             'class' => 'btn btn-danger'
         ]) ?>
     </div>

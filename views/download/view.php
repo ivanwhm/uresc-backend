@@ -10,22 +10,23 @@
 
 //Imports
 use app\models\Download;
+use kartik\detail\DetailView;
+use kartik\icons\Icon;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
-use kartik\detail\DetailView;
 
 $this->title = Yii::t('download', 'View download');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('download', 'Downloads'),
-        "icon" => "fa-archive",
+        "icon" => Icon::show('archive'),
         "active" => false,
         "url" => Url::to(["download/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-archive",
+        "icon" => Icon::show('eye'),
         "active" => true,
         "url" => Url::to(["download/view", 'id' => $model->id])
     ]
@@ -34,9 +35,9 @@ $this->params['breadcrumbs'] = [
 <div class="download-view">
 
     <p>
-        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Icon::show('pencil') . Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Icon::show('trash') . Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('download', 'Do you want to delete this download?'),

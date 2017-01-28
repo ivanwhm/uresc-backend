@@ -10,6 +10,7 @@
 
 //Imports
 use app\models\Department;
+use kartik\icons\Icon;
 use wadeshuler\ckeditor\widgets\CKEditor;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -22,7 +23,7 @@ $this->title = Yii::t('department', 'Department: {name}',[
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => "fa-file-o",
+        "icon" => Icon::show('files-o'),
         "active" => true,
         "url" => Url::to(["department/info", 'id' => $model->id])
     ]
@@ -36,11 +37,11 @@ $this->params['breadcrumbs'] = [
         <?php $form = ActiveForm::begin(['id' => 'department-form']); ?>
 
         <?= $form->field($model, 'info')->widget(CKEditor::className()) ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('department', 'Enter the text of the department.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-user"></i> ' . $model->printLastUpdatedInformation(), ['class' => 'help-block']) ?>
+        <?= Html::tag('span', Icon::show('info-circle') . Yii::t('department', 'Enter the text of the department.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', Icon::show('user') . $model->printLastUpdatedInformation(), ['class' => 'help-block']) ?>
 
         <div class="form-group">
-            <?= Html::submitButton(Yii::t('general', 'Save'), [
+            <?= Html::submitButton(Icon::show('download') . Yii::t('general', 'Save'), [
                 'class' => $model->getIsNewRecord() ? 'btn btn-success' : 'btn btn-primary'
             ]) ?>
         </div>

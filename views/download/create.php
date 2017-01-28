@@ -11,6 +11,7 @@
 
 //Imports
 use app\models\Download;
+use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
@@ -19,13 +20,13 @@ $this->title = Yii::t('download', 'Add download');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('download', 'Downloads'),
-        "icon" => "fa-archive",
+        "icon" => Icon::show('archive'),
         "active" => false,
         "url" => Url::to(["download/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-archive",
+        "icon" => Icon::show('plus'),
         "active" => true
     ]
 ];

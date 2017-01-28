@@ -10,6 +10,7 @@
 
 //Imports
 use app\models\Contact;
+use kartik\icons\Icon;
 use yii\helpers\Url;
 use yii\web\View;
 
@@ -17,13 +18,13 @@ $this->title = Yii::t('contact', 'Answer contact');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('contact', 'Contacts'),
-        "icon" => "fa-mail-reply-all",
+        "icon" => Icon::show('mail-reply-all'),
         "active" => false,
         "url" => Url::to(["contact/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-mail-reply-all",
+        "icon" => Icon::show('send'),
         "active" => true,
         "url" => Url::to(["contact/answer", 'id' => $model->id])
     ]

@@ -4,12 +4,12 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
- * @var $model Page
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports
+use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use kartik\grid\ActionColumn;
 use kartik\grid\GridView;
@@ -22,7 +22,7 @@ $this->title = Yii::t('page', 'Pages');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => "fa-clipboard",
+        "icon" => Icon::show('clipboard'),
         "active" => true,
         "url" => Url::to(["page/index"])
     ]
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'] = [
 <div class="page-index">
 
     <p>
-        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'name',
                 'format' => 'html',
-                'value' => function($data) {
+                'value' => function(Page $data) {
                     return Html::a($data->name, $data->getLink());
                 }
             ],
@@ -51,8 +51,8 @@ $this->params['breadcrumbs'] = [
                 'header' => Yii::t('general', 'Actions'),
                 'template' => '{view} {update} {delete}',
                 'buttons' => [
-                    'delete' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', [
+                    'delete' => function ($url, Page $model) {
+                        return Html::a(Icon::show('trash', '', Icon::BSG), [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [

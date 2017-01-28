@@ -10,6 +10,7 @@
 
 //Imports
 use app\models\Contact;
+use kartik\icons\Icon;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -19,13 +20,13 @@ $this->title = Yii::t('contact', 'View contact');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('contact', 'Contacts'),
-        "icon" => "fa-mail-reply-all",
+        "icon" => Icon::show('mail-reply-all'),
         "active" => false,
         "url" => Url::to(["contact/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-mail-reply-all",
+        "icon" => Icon::show('eye'),
         "active" => true,
         "url" => Url::to(["contact/view", 'id' => $model->id])
     ]
@@ -34,7 +35,7 @@ $this->params['breadcrumbs'] = [
 <div class="contact-view">
 
     <p>
-        <?= (!$model->getIsAnswerSent()) ? Html::a(Yii::t('contact', 'Answer it'), ['answer', 'id' => $model->id], ['class' => 'btn btn-success']) : '' ?>
+        <?= (!$model->getIsAnswerSent()) ? Html::a(Icon::show('send', [], Icon::BSG) . Yii::t('contact', 'Answer it'), ['answer', 'id' => $model->id], ['class' => 'btn btn-success']) : '' ?>
     </p>
 
     <?= DetailView::widget([

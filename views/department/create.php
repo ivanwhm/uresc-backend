@@ -10,6 +10,7 @@
  */
 
 //Imports
+use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
@@ -18,13 +19,13 @@ $this->title = Yii::t('department', 'Add department');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('department', 'Departments'),
-        "icon" => "fa-files-o",
+        "icon" => Icon::show('files-o'),
         "active" => false,
         "url" => Url::to(["department/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-files-o",
+        "icon" => Icon::show('plus'),
         "active" => true
     ]
 ];

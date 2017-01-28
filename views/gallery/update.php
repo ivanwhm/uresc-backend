@@ -10,6 +10,7 @@
 
 //Imports
 use app\models\Gallery;
+use kartik\icons\Icon;
 use yii\helpers\Url;
 use yii\web\View;
 
@@ -17,13 +18,13 @@ $this->title = Yii::t('gallery', 'Update gallery');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('gallery', 'Galleries'),
-        "icon" => "fa-picture-o",
+        "icon" => Icon::show('picture-o'),
         "active" => false,
         "url" => Url::to(["gallery/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-picture-o",
+        "icon" => Icon::show('pencil'),
         "active" => true,
         "url" => Url::to(["gallery/update", 'id' => $model->id])
     ]

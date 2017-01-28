@@ -9,6 +9,7 @@
  */
 
 //Imports
+use kartik\icons\Icon;
 use kartik\password\PasswordInput;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -19,7 +20,7 @@ $this->title = Yii::t('password', 'Change password');
 $this->params['breadcrumbs'] = array(
     array(
         "label" => Yii::t('password', 'Change password'),
-        "icon" => "fa-key",
+        "icon" => Icon::show('key'),
         "active" => false,
         "url" => Url::to(array("site/password"))
     )
@@ -37,17 +38,17 @@ $this->params['breadcrumbs'] = array(
         ); ?>
 
         <?= $form->field($model, 'oldPassword')->widget(PasswordInput::classname(), ['options' => ['autofocus' => true, 'aria-describedby' => 'hbOldPassword'], 'pluginOptions' => ['showMeter' => false, 'toggleMask' => true]]); ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('password', 'Enter the old password.'), ['id' => 'hbOldPassword', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', Icon::show('info-circle') . Yii::t('password', 'Enter the old password.'), ['id' => 'hbOldPassword', 'class' => 'help-block']) ?>
 
         <?= $form->field($model, 'newPassword')->widget(PasswordInput::classname(), ['options' => ['aria-describedby' => 'hbNewPassword'], 'pluginOptions' => ['showMeter' => true, 'toggleMask' => true]]); ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('password', 'Enter the new password.'), ['id' => 'hbNewPassword', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', Icon::show('info-circle') . Yii::t('password', 'Enter the new password.'), ['id' => 'hbNewPassword', 'class' => 'help-block']) ?>
 
         <?= $form->field($model, 'repeatNewPassword')->widget(PasswordInput::classname(), ['options' => ['aria-describedby' => 'hbRepeatNewPassword'], 'pluginOptions' => ['showMeter' => true, 'toggleMask' => true]]); ?>
-        <?= Html::tag('span', '<i class="fa fa-fw fa-question"></i> ' . Yii::t('password', 'Enter the new password (again).'), ['id' => 'hbRepeatNewPassword', 'class' => 'help-block']) ?>
+        <?= Html::tag('span', Icon::show('info-circle') . Yii::t('password', 'Enter the new password (again).'), ['id' => 'hbRepeatNewPassword', 'class' => 'help-block']) ?>
 
         <div class="form-group">
-            <?= Html::submitButton(Yii::t('password', 'Change password'), ['class' => 'btn btn-success']) ?>
-            <?= Html::a(Yii::t('general', 'Cancel'), ['index'], ['class' => 'btn btn-danger']) ?>
+            <?= Html::submitButton(Icon::show('pencil') . Yii::t('password', 'Change password'), ['class' => 'btn btn-success']) ?>
+            <?= Html::a(Icon::show('ban') . Yii::t('general', 'Cancel'), ['index'], ['class' => 'btn btn-danger']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

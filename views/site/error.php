@@ -9,13 +9,14 @@
  */
 
 //Imports
+use kartik\icons\Icon;
 use yii\helpers\Html;
 
 $this->title = Yii::t('general', 'Error');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => "fa-times",
+        "icon" => Icon::show('times'),
         "active" => true
     ]
 ];

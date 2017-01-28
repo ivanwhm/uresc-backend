@@ -11,6 +11,7 @@
 
 //Imports
 use app\models\Event;
+use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
@@ -19,13 +20,13 @@ $this->title = Yii::t('event', 'Add event');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('event', 'Events'),
-        "icon" => "fa-calendar",
+        "icon" => Icon::show('calendar'),
         "active" => false,
         "url" => Url::to(["event/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-calendar",
+        "icon" => Icon::show('plus'),
         "active" => true
     ]
 ];

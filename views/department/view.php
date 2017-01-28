@@ -10,6 +10,7 @@
 
 //Imports
 use app\models\Department;
+use kartik\icons\Icon;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -19,13 +20,13 @@ $this->title = Yii::t('department', 'View department');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('department', 'Departments'),
-        "icon" => "fa-files-o",
+        "icon" => Icon::show('files-o'),
         "active" => false,
         "url" => Url::to(["department/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-files-o",
+        "icon" => Icon::show('eye'),
         "active" => true,
         "url" => Url::to(["department/view", 'id' => $model->id])
     ]
@@ -34,9 +35,9 @@ $this->params['breadcrumbs'] = [
 <div class="department-view">
 
     <p>
-        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Icon::show('pencil') . Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Icon::show('trash') . Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('department', 'Do you want to delete this department?'),

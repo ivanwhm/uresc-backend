@@ -4,14 +4,13 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
- * @var $data DownloadCategory
- * @var $model DownloadCategory
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports
 use app\models\DownloadCategory;
+use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use kartik\grid\ActionColumn;
 use kartik\grid\GridView;
@@ -23,7 +22,7 @@ $this->title = Yii::t('download_category', 'Download\'s categories');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => "fa-file-archive-o",
+        "icon" => Icon::show('file-archive-o'),
         "active" => true,
         "url" => Url::to(["download-category/index"])
     ]
@@ -32,7 +31,7 @@ $this->params['breadcrumbs'] = [
 <div class="download-category-index">
 
     <p>
-        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -44,7 +43,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'status',
                 'format' => 'html',
-                'value' => function ($data) {
+                'value' => function (DownloadCategory $data) {
                     return $data->getStatus();
                 },
             ],
@@ -53,8 +52,8 @@ $this->params['breadcrumbs'] = [
                 'header' => Yii::t('general', 'Actions'),
                 'template' => '{view} {update} {delete}',
                 'buttons' => [
-                    'delete' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', [
+                    'delete' => function ($url, DownloadCategory $model) {
+                        return Html::a(Icon::show('trash', '', Icon::BSG), [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [

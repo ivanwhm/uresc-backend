@@ -28,7 +28,6 @@ class SBAdminAsset extends AssetBundle
      */
     public $css = [
         "css/sb-admin.css",
-        "css/font-awesome.css"
     ];
 
     /**

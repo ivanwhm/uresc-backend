@@ -10,6 +10,7 @@
 
 //Imports
 use app\models\News;
+use kartik\icons\Icon;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -19,13 +20,13 @@ $this->title = Yii::t('news', 'View news');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('news', 'News'),
-        "icon" => "fa-newspaper-o",
+        "icon" => Icon::show('newspaper-o'),
         "active" => false,
         "url" => Url::to(["news/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-newspaper-o",
+        "icon" => Icon::show('eye'),
         "active" => true,
         "url" => Url::to(["news/view", 'id' => $model->id])
     ]
@@ -34,23 +35,23 @@ $this->params['breadcrumbs'] = [
 <div class="news-view">
 
     <p>
-        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
-        <?= (!$model->getIsPublished()) ? Html::a(Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : ''?>
-        <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= (!$model->getIsPublished()) ? Html::a(Icon::show('pencil') . Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : ''?>
+        <?= Html::a(Icon::show('trash') . Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('news', 'Do you want to delete this news?'),
                 'method' => 'post'
             ]
         ]) ?>
-        <?= (!$model->getIsPublished()) ? Html::a(Yii::t('news', 'Publish'), ['published', 'id' => $model->id], [
+        <?= (!$model->getIsPublished()) ? Html::a(Icon::show('upload') . Yii::t('news', 'Publish'), ['published', 'id' => $model->id], [
                 'class' => 'btn btn-info',
                 'data' => [
                     'confirm' => Yii::t('news', 'Do you want to publish this news?'),
                     'method' => 'post'
                 ]
         ]) : '' ?>
-        <?= ($model->getIsPublished()) ? Html::a(Yii::t('news', 'Unpublish'), ['unpublished', 'id' => $model->id], [
+        <?= ($model->getIsPublished()) ? Html::a(Icon::show('download') . Yii::t('news', 'Unpublish'), ['unpublished', 'id' => $model->id], [
                 'class' => 'btn btn-info',
                 'data' => [
                         'confirm' => Yii::t('news', 'Do you want to unpublish this news?'),

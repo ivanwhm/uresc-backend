@@ -14,6 +14,7 @@ use kartik\dialog\DialogAsset;
 use kartik\grid\ActionColumn;
 use kartik\grid\CheckboxColumn;
 use kartik\grid\GridView;
+use kartik\icons\Icon;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -23,13 +24,13 @@ $this->title = Yii::t('gallery', 'View gallery');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('gallery', 'Galleries'),
-        "icon" => "fa-picture-o",
+        "icon" => Icon::show('picture-o'),
         "active" => false,
         "url" => Url::to(["gallery/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => "fa-picture-o",
+        "icon" => Icon::show('eye'),
         "active" => true,
         "url" => Url::to(["gallery/view", 'id' => $model->id])
     ]
@@ -38,9 +39,9 @@ $this->params['breadcrumbs'] = [
 <div class="gallery-view">
 
     <p>
-        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Icon::show('pencil') . Yii::t('general', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Icon::show('trash') . Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('gallery', 'Do you want to delete this gallery?'),
@@ -86,8 +87,8 @@ $this->params['breadcrumbs'] = [
 
     <p>
         <?php DialogAsset::register($this); ?>
-        <?= Html::a(Yii::t('gallery', 'Upload files'), ['upload', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('gallery', 'Delete files'), null, ['id' => 'deleteButton', 'class' => 'btn btn-danger']) ?>
+        <?= Html::a(Icon::show('upload') . Yii::t('gallery', 'Upload files'), ['upload', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Icon::show('trash') . Yii::t('gallery', 'Delete files'), null, ['id' => 'deleteButton', 'class' => 'btn btn-danger']) ?>
         <?= $this->registerJs("
             $('#deleteButton').on('click', function()
             {
@@ -114,7 +115,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'filename',
                 'format' => 'html',
-                'value' => function ($data) {
+                'value' => function (Gallery $data) {
                     return Html::img(Url::to(['gallery/image', 'id' => $data->id]));
                 },
             ],
@@ -123,8 +124,8 @@ $this->params['breadcrumbs'] = [
                 'header' => Yii::t('general', 'Actions'),
                 'template' => '{delete}',
                 'buttons' => [
-                    'delete' => function($url, $model){
-                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', [
+                    'delete' => function($url, Gallery $model){
+                        return Html::a(Icon::show('trash', '', Icon::BSG), [
                             'drop', 'id' => $model->id
                         ], [
                             'class' => '',

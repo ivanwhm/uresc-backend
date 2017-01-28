@@ -4,12 +4,12 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
- * @var $model Event
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports
+use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use kartik\grid\ActionColumn;
 use kartik\grid\GridView;
@@ -22,7 +22,7 @@ $this->title = Yii::t('event', 'Events');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => "fa-calendar",
+        "icon" => Icon::show('calendar'),
         "active" => true,
         "url" => Url::to(["event/index"])
     ]
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'] = [
 <div class="event-index">
 
     <p>
-        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -43,7 +43,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'calendar_id',
                 'format' => 'html',
-                'value' => function ($data) {
+                'value' => function (Event $data) {
                     return Html::a($data->getCalendar()->name, $data->getCalendar()->getLink());
                 }
             ],
@@ -55,8 +55,8 @@ $this->params['breadcrumbs'] = [
                 'header' => Yii::t('general', 'Actions'),
                 'template' => '{view} {update} {delete}',
                 'buttons' => [
-                    'delete' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', [
+                    'delete' => function ($url, Event $model) {
+                        return Html::a(Icon::show('trash', '', Icon::BSG), [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [

@@ -4,13 +4,12 @@
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
- * @var $data Download
- * @var $model Download
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports
+use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use kartik\grid\ActionColumn;
 use kartik\grid\GridView;
@@ -23,7 +22,7 @@ $this->title = Yii::t('download', 'Downloads');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => "fa-archive",
+        "icon" => Icon::show('archive'),
         "active" => true,
         "url" => Url::to(["download/index"])
     ]
@@ -32,7 +31,7 @@ $this->params['breadcrumbs'] = [
 <div class="download-index">
 
     <p>
-        <?= Html::a(Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -44,14 +43,14 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'category_id',
                 'format' => 'html',
-                'value' => function ($data) {
+                'value' => function (Download $data) {
                     return Html::a($data->getCategory()->name, $data->getCategory()->getLink());
                 }
             ],
             [
                 'attribute' => 'status',
                 'format' => 'html',
-                'value' => function ($data) {
+                'value' => function (Download $data) {
                     return $data->getStatus();
                 },
             ],
@@ -60,8 +59,8 @@ $this->params['breadcrumbs'] = [
                 'header' => Yii::t('general', 'Actions'),
                 'template' => '{view} {update} {delete}',
                 'buttons' => [
-                    'delete' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', [
+                    'delete' => function ($url, Download $model) {
+                        return Html::a(Icon::show('trash', '', Icon::BSG), [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [
