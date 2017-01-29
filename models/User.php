@@ -211,7 +211,8 @@ class User extends UreActiveRecord implements IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        return $this->passwordCrypt($authKey, $this->salt) === $this->getAuthKey();
+        $key = $this->passwordCrypt($authKey, $this->salt);
+        return  $key === $this->getAuthKey();
     }
 
     /**

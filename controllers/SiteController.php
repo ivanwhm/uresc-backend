@@ -180,6 +180,8 @@ class SiteController extends UreController
         //Change de user language
         $user = User::findOne(Yii::$app->getUser()->getId());
         $user->language = $lang;
+        $user->password = '';
+        $user->new_password = '';
         $user->save(false);
         //Refresh session data
         Yii::$app->getSession()->set('language', $lang);
