@@ -16,6 +16,7 @@ use app\models\Event;
 use app\models\LoginForm;
 use app\models\News;
 use app\models\Settings;
+use app\models\User;
 use app\models\UserAccess;
 use Yii;
 use yii\filters\AccessControl;
@@ -166,5 +167,23 @@ class SiteController extends UreController
         {
             throw new NotFoundHttpException(Yii::t('settings', 'The requested setting does not exist.'));
         }
+    }
+
+    /**
+     * Logout action.
+     *
+     * @param string $lang Language
+     * @return string
+     */
+    public function actionLanguage($lang)
+    {
+        //Change de user language
+        $user = User::findOne(Yii::$app->getUser()->getId());
+        $user->language = $lang;
+        $user->save(false);
+        //Refresh session data
+        Yii::$app->getSession()->set('language', $lang);
+
+        return $this->goHome();
     }
 }

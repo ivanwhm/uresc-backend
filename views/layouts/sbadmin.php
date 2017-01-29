@@ -14,6 +14,7 @@
 use app\assets\SBAdmin\SBAdminAsset;
 use app\models\Department;
 use app\models\Page;
+use app\models\User;
 use kartik\icons\Icon;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -58,6 +59,23 @@ SBAdminAsset::register($this);
 
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <?= Icon::show(Yii::$app->getUser()->getIdentity()->getLanguageCountry(), [], Icon::FI) . ' ' . Icon::show('caret-down') ?>
+                </a>
+                <ul class="dropdown-menu">
+                    <?php
+                        $languages = User::getLanguageCountryData();
+                        foreach (User::getLanguageData() as $key => $value)
+                        {
+                            echo Html::beginTag('li');
+                            $text = Icon::show($languages[$key], [], Icon::FI) . $value;
+                            echo Html::a($text, Url::to(['site/language', 'lang' => $key]));
+                            echo Html::endTag('li');
+                        }
+                    ?>
+                </ul>
+            </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <?= Icon::show('user') . Yii::$app->getUser()->getIdentity()->getName()  . ' ' . Icon::show('caret-down') ?>

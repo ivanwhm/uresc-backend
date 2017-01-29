@@ -393,7 +393,6 @@ class User extends UreActiveRecord implements IdentityInterface
 
     /**
      * Returns the language country description of the user.
-     *
      * @return string
      */
     public function getLanguageCountry()
