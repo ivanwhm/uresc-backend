@@ -12,6 +12,7 @@
 //Imports
 use app\models\Department;
 use kartik\icons\Icon;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
@@ -28,7 +29,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('department', 'Enter the name of the department.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'status')->dropDownList(Department::getStatusData(), ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
+    <?= $form->field($model, 'status')->widget(Select2::classname(), ['data' => Department::getStatusData(), 'options' => ['prompt' => '---', 'aria-describedby' => 'hbStatus']]) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('department', 'Please tell us if the department is active or inactive.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 
     <?php if (!$model->getIsNewRecord()) : ?>

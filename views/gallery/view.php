@@ -10,6 +10,7 @@
 
 //Imports
 use app\models\Gallery;
+use app\models\GalleryFiles;
 use kartik\dialog\DialogAsset;
 use kartik\grid\ActionColumn;
 use kartik\grid\CheckboxColumn;
@@ -115,7 +116,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'filename',
                 'format' => 'html',
-                'value' => function (Gallery $data) {
+                'value' => function (GalleryFiles $data) {
                     return Html::img(Url::to(['gallery/image', 'id' => $data->id]));
                 },
             ],
@@ -124,7 +125,7 @@ $this->params['breadcrumbs'] = [
                 'header' => Yii::t('general', 'Actions'),
                 'template' => '{delete}',
                 'buttons' => [
-                    'delete' => function($url, Gallery $model){
+                    'delete' => function($url, GalleryFiles $model){
                         return Html::a(Icon::show('trash', '', Icon::BSG), [
                             'drop', 'id' => $model->id
                         ], [

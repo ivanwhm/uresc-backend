@@ -13,6 +13,7 @@
 use app\models\Gallery;
 use app\models\GalleryCategory;
 use kartik\icons\Icon;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
@@ -29,10 +30,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('gallery', 'Enter the name of the gallery.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'category_id')->dropDownList(GalleryCategory::getGalleryCategories(), ['prompt' => '---', 'aria-describedby' => 'hbCategory']) ?>
+    <?= $form->field($model, 'category_id')->widget(Select2::classname(), ['data' => GalleryCategory::getGalleryCategories(), 'options' => ['prompt' => '---', 'aria-describedby' => 'hbCategory']]) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('gallery', 'Enter the category of the gallery.'), ['id' => 'hbCategory', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'status')->dropDownList(Gallery::getStatusData(), ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
+    <?= $form->field($model, 'status')->widget(Select2::classname(), ['data' => Gallery::getStatusData(), 'options' => ['prompt' => '---', 'aria-describedby' => 'hbStatus']]) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('gallery', 'Please tell us if the gallery is active or inactive.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 
     <?php if (!$model->getIsNewRecord()) : ?>

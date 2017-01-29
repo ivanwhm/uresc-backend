@@ -28,6 +28,7 @@ namespace app\models;
 
 //Imports
 use app\components\UreActiveRecord;
+use kartik\icons\Icon;
 use kartik\password\StrengthValidator;
 use Yii;
 use yii\db\ActiveQuery;
@@ -358,16 +359,16 @@ class User extends UreActiveRecord implements IdentityInterface
     /**
      * Returns all the languages options.
      *
+     * @param bool $showIcon Show de icon flag.
      * @return array
      */
-    public static function getLanguageData()
+    public static function getLanguageData($showIcon = false)
     {
         return [
-            self::LANGUAGE_EN_US => Yii::t('general', 'English (United States)'),
-            self::LANGUAGE_PT_BR => Yii::t('general', 'Portuguese (Brazil)')
+            self::LANGUAGE_EN_US => (($showIcon)? Icon::show(self::getLanguageCountryData()[self::LANGUAGE_EN_US], [], Icon::FI):'') . Yii::t('general', 'English (United States)'),
+            self::LANGUAGE_PT_BR => (($showIcon)? Icon::show(self::getLanguageCountryData()[self::LANGUAGE_PT_BR], [], Icon::FI):'') . Yii::t('general', 'Portuguese (Brazil)')
         ];
     }
-
 
     /**
      * Returns all the languages country options.

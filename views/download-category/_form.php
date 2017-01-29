@@ -12,6 +12,7 @@
 //Imports
 use app\models\DownloadCategory;
 use kartik\icons\Icon;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
@@ -28,7 +29,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('download_category', 'Enter the name of the download\'s category.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'status')->dropDownList(DownloadCategory::getStatusData(), ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
+    <?= $form->field($model, 'status')->widget(Select2::classname(), ['data' => DownloadCategory::getStatusData(), 'options' => ['prompt' => '---', 'aria-describedby' => 'hbStatus']]) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('download_category', 'Please tell us if the download\'s category is active or inactive.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 
     <?php if (!$model->getIsNewRecord()) : ?>

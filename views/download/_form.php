@@ -13,6 +13,7 @@
 use app\models\Download;
 use app\models\DownloadCategory;
 use kartik\icons\Icon;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
@@ -29,13 +30,13 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('download', 'Enter the name of the download.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'category_id')->dropDownList(DownloadCategory::getDownloadCategories(), ['prompt' => '---', 'aria-describedby' => 'hbCategory']) ?>
+    <?= $form->field($model, 'category_id')->widget(Select2::classname(), ['data' => DownloadCategory::getDownloadCategories(), 'options' => ['prompt' => '---', 'aria-describedby' => 'hbCategory']]) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('download', 'Enter the category of the download.'), ['id' => 'hbCategory', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true, 'aria-describedby' => 'hbAddress']) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('download', 'Enter the address of the download.'), ['id' => 'hbAddress', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'status')->dropDownList(Download::getStatusData(), ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
+    <?= $form->field($model, 'status')->widget(Select2::classname(), ['data' => Download::getStatusData(), 'options' => ['prompt' => '---', 'aria-describedby' => 'hbStatus']]) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('download', 'Please tell us if the download is active or inactive.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 
     <?php if (!$model->getIsNewRecord()) : ?>

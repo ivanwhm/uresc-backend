@@ -12,6 +12,7 @@
 //Imports
 use app\models\GalleryCategory;
 use kartik\icons\Icon;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
@@ -28,7 +29,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('gallery_category', 'Enter the name of the gallery\'s category.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'status')->dropDownList(GalleryCategory::getStatusData(), ['prompt' => '---', 'aria-describedby' => 'hbStatus']) ?>
+    <?= $form->field($model, 'status')->widget(Select2::classname(), ['data' => GalleryCategory::getStatusData(), 'options' => ['prompt' => '---', 'aria-describedby' => 'hbStatus']]) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('gallery_category', 'Please tell us if the gallery\'s category is active or inactive.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
 
     <?php if (!$model->getIsNewRecord()) : ?>

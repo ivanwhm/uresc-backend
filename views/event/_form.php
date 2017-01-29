@@ -14,6 +14,7 @@ use app\models\Calendar;
 use app\models\Event;
 use kartik\datecontrol\DateControl;
 use kartik\icons\Icon;
+use kartik\select2\Select2;
 use wadeshuler\ckeditor\widgets\CKEditor;
 use yii\helpers\Html;
 use yii\web\View;
@@ -31,7 +32,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('event', 'Enter the name of the event.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'calendar_id')->dropDownList(Calendar::getCalendars(), ['prompt' => '---', 'aria-describedby' => 'hbCalendar']) ?>
+    <?= $form->field($model, 'calendar_id')->widget(Select2::classname(), ['data' => Calendar::getCalendars(), 'options' => ['prompt' => '---', 'aria-describedby' => 'hbCalendar']]) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('event', 'Select the calendar of the event.'), ['id' => 'hbCalendar', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'date')->widget(DateControl::classname(), ['type'=>DateControl::FORMAT_DATE]) ?>
