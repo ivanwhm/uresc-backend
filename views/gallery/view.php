@@ -122,7 +122,6 @@ $this->params['breadcrumbs'] = [
             ],
             [
                 'class' => ActionColumn::className(),
-                'header' => Yii::t('general', 'Actions'),
                 'template' => '{delete}',
                 'buttons' => [
                     'delete' => function($url, GalleryFiles $model){

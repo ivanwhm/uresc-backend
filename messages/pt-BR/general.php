@@ -19,7 +19,6 @@ return [
     'Error trace:' => 'Rastro do erro:',
     'Yes' => 'Sim',
     'No' => 'Não',
-    'Actions' => 'Ações',
     'Records' => 'Cadastros',
     'Status' => 'Estado',
     'Active' => 'Ativo',

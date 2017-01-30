@@ -51,7 +51,6 @@ $this->params['breadcrumbs'] = [
             ],
             [
                 'class' => ActionColumn::className(),
-                'header' => Yii::t('general', 'Actions'),
                 'template' => '{view} {answer}',
                 'buttons' => [
                     'answer' => function ($url, Contact $model) {

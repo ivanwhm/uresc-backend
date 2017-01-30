@@ -19,7 +19,6 @@ return [
     'Error trace: ' => '',
     'Yes' => '',
     'No' => '',
-    'Actions' => '',
     'Records' => '',
     'Status' => '',
     'Active' => '',

@@ -53,7 +53,6 @@ $this->params['breadcrumbs'] = [
             ],
             [
                 'class' => ActionColumn::className(),
-                'header' => Yii::t('general', 'Actions'),
                 'width' => '100px',
                 'template' => '{view} {update} {delete} {published} {unpublished}',
                 'buttons' => [

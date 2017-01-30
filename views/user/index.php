@@ -64,7 +64,6 @@ $this->params['breadcrumbs'] = [
             ],
             [
                 'class' => ActionColumn::className(),
-                'header' => Yii::t('general', 'Actions'),
                 'template' => '{view} {update} {delete}',
                 'buttons' => [
                     'delete' => function ($url, User $model) {

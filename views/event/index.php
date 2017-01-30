@@ -52,7 +52,6 @@ $this->params['breadcrumbs'] = [
             'end_time:time',
             [
                 'class' => ActionColumn::className(),
-                'header' => Yii::t('general', 'Actions'),
                 'template' => '{view} {update} {delete}',
                 'buttons' => [
                     'delete' => function ($url, Event $model) {
