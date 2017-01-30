@@ -40,6 +40,13 @@ $this->params['breadcrumbs'] = [
         'columns' => [
             'id',
             [
+                'attribute' => 'icon',
+                'format' => 'html',
+                'value' => function(Page $data) {
+                    return (($data->icon == ''?Icon::show('clipboard'):Icon::show($data->icon)));
+                }
+            ],
+            [
                 'attribute' => 'name',
                 'format' => 'html',
                 'value' => function(Page $data) {

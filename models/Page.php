@@ -4,6 +4,7 @@
  *
  * @property integer $id Page's ID.
  * @property string $name Page's name.
+ * @property string $icon Icon to represent page.
  * @property string $text Page's text.
  * @property datetime $date_created Page's date of creation.
  * @property datetime $date_updated Page's date of updated.
@@ -40,10 +41,11 @@ class Page extends UreActiveRecord
         return [
             [['name'], 'required'],
             [['text'], 'required', 'on' => 'info'],
-            [['text'], 'string'],
+            [['text', 'icon'], 'string'],
             [['user_created', 'user_updated', 'date_created', 'date_updated'], 'safe'],
             [['user_created', 'user_updated'], 'integer'],
             [['name'], 'string', 'max' => 150],
+            [['icon'], 'string', 'max' => 50],
             [['user_created'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_created' => 'id']],
             [['user_updated'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_updated' => 'id']],
         ];
@@ -57,6 +59,7 @@ class Page extends UreActiveRecord
         return [
             'id' => Yii::t('page', 'ID'),
             'name' => Yii::t('page', 'Name'),
+            'icon' => Yii::t('page', 'Icon'),
             'text' => Yii::t('page', 'Text'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),

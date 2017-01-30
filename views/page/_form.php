@@ -28,6 +28,9 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('page', 'Enter the name of the page.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
+    <?= $form->field($model, 'icon')->textInput(['maxlength' => true, 'aria-describedby' => 'hbIcon']) ?>
+    <?= Html::tag('span', Icon::show('info-circle') . Yii::t('page', 'Enter the icon description based on font-awesome library of the page.'), ['id' => 'hbIcon', 'class' => 'help-block']) ?>
+
     <?php if (!$model->getIsNewRecord()) : ?>
         <?= Html::tag('br') ?>
         <?= Html::tag('span', Icon::show('user') . $model->printCreatedInformation(), ['class' => 'help-block']) ?>

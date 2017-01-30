@@ -205,7 +205,7 @@ SBAdminAsset::register($this);
                             <?php foreach ($pages as $page) : ?>
                                 <li>
                                     <a href="<?= Url::to(["page/info", 'id' => $page->id]) ?>">
-                                        <?= Icon::show('clipboard') . $page->name ?>
+                                        <?= (($page->icon == ''?Icon::show('clipboard'):Icon::show($page->icon))) . $page->name ?>
                                     </a>
                                 </li>
                             <?php endforeach; ?>

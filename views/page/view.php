@@ -51,6 +51,11 @@ $this->params['breadcrumbs'] = [
         'attributes' => [
             'id',
             [
+                'attribute' => 'icon',
+                'format' => 'html',
+                'value' => (($model->icon == ''?Icon::show('clipboard'):Icon::show($model->icon)))
+            ],
+            [
                 'attribute' => 'name',
                 'format' => 'html',
                 'value' => Html::a($model->name, $model->getLink())
