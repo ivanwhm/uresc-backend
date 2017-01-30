@@ -11,6 +11,7 @@
  * @property string $phone Center's phone.
  * @property string $email Center's email.
  * @property string $business_hours Center's business hours.
+ * @property integer $calendar_id Calendar of the center.
  * @property datetime $date_created Center's date of creation.
  * @property datetime $date_updated Center's date of updated.
  * @property integer $user_created Center's user created.
@@ -44,8 +45,8 @@ class Center extends UreActiveRecord
     {
         return [
             [['name', 'address', 'city', 'neighborhood', 'state', 'business_hours'], 'required'],
-            [['user_created', 'user_updated'], 'integer'],
-            [['user_created', 'user_updated', 'date_created', 'date_updated'], 'safe'],
+            [['user_created', 'user_updated', 'calendar_id'], 'integer'],
+            [['user_created', 'user_updated', 'date_created', 'date_updated', 'calendar_id'], 'safe'],
             [['name', 'neighborhood', 'business_hours'], 'string', 'max' => 100],
             [['address'], 'string', 'max' => 255],
             [['city', 'email'], 'string', 'max' => 150],
@@ -72,6 +73,7 @@ class Center extends UreActiveRecord
             'phone' => Yii::t('center', 'Phone'),
             'email' => Yii::t('center', 'E-mail'),
             'business_hours' => Yii::t('center', 'Business hours'),
+            'calendar_id' => Yii::t('center', 'Calendar'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),
             'user_created' => Yii::t('general', 'User who created'),
@@ -87,6 +89,18 @@ class Center extends UreActiveRecord
     public static function getCenterCount()
     {
         return self::find()->count();
+    }
+
+
+    /**
+     * Returns the calendar of the event.
+     *
+     * @return Calendar
+     */
+    public function getCalendar()
+    {
+        $calendar = Calendar::findOne(['id' => $this->calendar_id]);
+        return $calendar;
     }
 
 }

@@ -9,6 +9,7 @@
  */
 
 //Imports
+use app\models\Calendar;
 use app\models\Center;
 use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
@@ -41,7 +42,13 @@ $this->params['breadcrumbs'] = [
             'id',
             'name',
             'city',
-            'state',
+            [
+                'attribute' => 'calendar_id',
+                'format' => 'html',
+                'value' => function (Center $data) {
+                    return ($data->getCalendar() instanceof Calendar) ? Html::a($data->getCalendar()->name, $data->getCalendar()->getLink()) : '';
+                }
+            ],
             [
                 'class' => ActionColumn::className(),
                 'template' => '{view} {update} {delete}',

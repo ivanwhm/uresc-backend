@@ -11,8 +11,10 @@
  */
 
 //Imports
+use app\models\Calendar;
 use app\models\Center;
 use kartik\icons\Icon;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
@@ -50,6 +52,9 @@ use yii\widgets\MaskedInput;
 
     <?= $form->field($model, 'business_hours')->textarea(['maxlength' => true, 'row' => 5, 'aria-describedby' => 'hbBusinessHours']) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('center', 'Enter the business hours of the spiritist center.'), ['id' => 'hbBusinessHours', 'class' => 'help-block']) ?>
+
+    <?= $form->field($model, 'calendar_id')->widget(Select2::classname(), ['data' => Calendar::getCalendars(), 'options' => ['prompt' => '---', 'aria-describedby' => 'hbCalendar']]) ?>
+    <?= Html::tag('span', Icon::show('info-circle') . Yii::t('center', 'Select the calendar of the spiritist center.'), ['id' => 'hbCalendar', 'class' => 'help-block']) ?>
 
     <?php if (!$model->getIsNewRecord()) : ?>
         <?= Html::tag('br') ?>

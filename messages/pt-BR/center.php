@@ -9,6 +9,7 @@ return [
     'Phone' => 'Telefone',
     'E-mail' => 'E-mail',
     'Business hours' => 'Horário de funcionamento',
+    'Calendar' => 'Calendário',
     'You can not delete the selected spiritist center.' => 'Não é possível excluir o centro espírita selecionado.',
     'The requested spiritist center does not exist.' => 'O centro espírita solicitado não existe.',
     'Spiritist centers' => 'Centros espíritas',
@@ -26,4 +27,5 @@ return [
     'Enter the business hours of the spiritist center.' => 'Informe o horário de funcionamento do centro espírita.',
     'Registered<br>spiritist centers' => 'Centros espíritas<br>cadastrados',
     'View centers!' => 'Visualizar centros!',
+    'Select the calendar of the spiritist center.' => 'Selecione o calendário do centro espírita.',
 ];

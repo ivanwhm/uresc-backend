@@ -9,6 +9,7 @@ return [
     'Phone' => '',
     'E-mail' => '',
     'Business hours' => '',
+    'Calendar' => 'Calendário',
     'You can not delete the selected spiritist center.' => '',
     'The requested spiritist center does not exist.' => '',
     'Spiritist centers' => '',
@@ -26,4 +27,5 @@ return [
     'Enter the business hours of the spiritist center.' => '',
     'Registered<br>spiritist centers' => '',
     'View centers!' => '',
+    'Select the calendar of the spiritist center.' => '',
 ];

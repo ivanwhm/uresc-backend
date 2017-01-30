@@ -9,6 +9,7 @@
  */
 
 //Imports
+use app\models\Calendar;
 use app\models\Center;
 use kartik\icons\Icon;
 use yii\helpers\Html;
@@ -58,6 +59,11 @@ $this->params['breadcrumbs'] = [
             'phone',
             'email:email',
             'business_hours:ntext',
+            [
+                'attribute' => 'calendar_id',
+                'format' => 'html',
+                'value' => ($model->getCalendar() instanceof Calendar) ? Html::a($model->getCalendar()->name, $model->getCalendar()->getLink()) : ''
+            ],
             'date_created:datetime',
             [
                 'attribute' => 'user_created',
