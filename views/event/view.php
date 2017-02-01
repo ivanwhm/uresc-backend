@@ -56,9 +56,14 @@ $this->params['breadcrumbs'] = [
                 'format' => 'html',
                 'value' => Html::a($model->getCalendar()->name, $model->getCalendar()->getLink())
             ],
-            'date:date',
-            'start_time:time',
-            'end_time:time',
+            [
+                'label' => Yii::t('event', 'Starts'),
+                'value' => $model->printStarts()
+            ],
+            [
+                'label' => Yii::t('event', 'Ends'),
+                'value' => $model->printEnds()
+            ],
             'place:ntext',
             'date_created:datetime',
             [

@@ -47,9 +47,20 @@ $this->params['breadcrumbs'] = [
                     return Html::a($data->getCalendar()->name, $data->getCalendar()->getLink());
                 }
             ],
-            'date:date',
-            'start_time:time',
-            'end_time:time',
+            [
+                'header' => Yii::t('event', 'Starts'),
+                'format' => 'raw',
+                'value' => function (Event $data) {
+                    return $data->printStarts();
+                }
+            ],
+            [
+                'header' => Yii::t('event', 'Ends'),
+                'format' => 'raw',
+                'value' => function (Event $data) {
+                    return $data->printEnds();
+                }
+            ],
             [
                 'class' => ActionColumn::className(),
                 'template' => '{view} {update} {delete}',

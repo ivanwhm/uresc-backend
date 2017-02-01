@@ -5,7 +5,9 @@
  * @property integer $id Event's ID.
  * @property integer $calendar_id Event's calendar.
  * @property string $name Event's name.
- * @property date $date Event's date.
+ * @property date $start_date Event's start date.
+ * @property date $end_date Event's end date
+ * @property string $all_day It's an all day event.
  * @property time $start_time Event's start time.
  * @property time $end_time Event's end time.
  * @property string $place Event's place.
@@ -29,6 +31,10 @@ use Yii;
 
 class Event extends UreActiveRecord
 {
+
+    const ALL_DAY_YES = 'Y';
+    const ALL_DAY_NO = 'N';
+
     /**
      * @inheritdoc
      */
@@ -43,11 +49,18 @@ class Event extends UreActiveRecord
     public function rules()
     {
         return [
-            [['calendar_id', 'date', 'start_time', 'end_time', 'place'], 'required'],
+            [['calendar_id', 'start_date', 'end_date', 'all_day', 'place'], 'required'],
+            [['start_time', 'end_time'], 'required', 'when' => function($model) {
+                return $model->all_day == 'N';
+            }, 'whenClient' => "function (attribute, value) {
+                    return $('#even-all_day').val() == 'N';
+            }"],
             [['calendar_id', 'user_created', 'user_updated'], 'integer'],
             [['date_created', 'date_updated', 'user_created', 'user_updated'], 'safe'],
-            [['info', 'place'], 'string'],
+            [['info', 'place', 'all_day'], 'string'],
             [['name'], 'string', 'max' => 100],
+            [['end_date'], 'compare', 'compareAttribute' => 'start_date', 'operator' => '>=', 'skipOnEmpty' => true],
+            [['end_time'], 'compare', 'compareAttribute' => 'start_time', 'operator' => '>=', 'skipOnEmpty' => true],
             [['calendar_id'], 'exist', 'skipOnError' => true, 'targetClass' => Calendar::className(), 'targetAttribute' => ['calendar_id' => 'id']],
             [['user_created'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_created' => 'id']],
             [['user_updated'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_updated' => 'id']],
@@ -63,7 +76,9 @@ class Event extends UreActiveRecord
             'id' => Yii::t('event', 'ID'),
             'calendar_id' => Yii::t('event', 'Calendar'),
             'name' => Yii::t('event', 'Name'),
-            'date' => Yii::t('event', 'Date'),
+            'start_date' => Yii::t('event', 'Start date'),
+            'end_date' => Yii::t('event', 'End date'),
+            'all_day' => Yii::t('event', 'All day event'),
             'start_time' => Yii::t('event', 'Start time'),
             'end_time' => Yii::t('event', 'End time'),
             'place' => Yii::t('event', 'Place'),
@@ -93,7 +108,53 @@ class Event extends UreActiveRecord
      */
     public static function getFurtherEvents()
     {
-        return self::find(['date > now()'])->count();
+        return self::find(['start_date > now()'])->count();
+    }
+
+
+    /**
+     * Returns all the can access settings options.
+     *
+     * @return array
+     */
+    public static function getAlLDayEventData()
+    {
+        return [
+            self::ALL_DAY_YES => Yii::t('general', 'Yes'),
+            self::ALL_DAY_NO => Yii::t('general', 'No')
+        ];
+    }
+
+    /**
+     * Prints the start date and time.
+     *
+     * @return string
+     */
+    public function printStarts()
+    {
+        $date = Yii::$app->getFormatter()->asDate($this->start_date);
+        $time = '';
+        if ($this->all_day == Event::ALL_DAY_NO)
+        {
+            $time = ' ' . Yii::$app->getFormatter()->asTime($this->start_time);
+        }
+        return $date.$time;
+    }
+
+    /**
+     * Prints the start date and time.
+     *
+     * @return string
+     */
+    public function printEnds()
+    {
+        $date = Yii::$app->getFormatter()->asDate($this->end_date);
+        $time = '';
+        if ($this->all_day == Event::ALL_DAY_NO)
+        {
+            $time = ' ' . Yii::$app->getFormatter()->asTime($this->end_time);
+        }
+        return $date.$time;
     }
 
 }

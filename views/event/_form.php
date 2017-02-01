@@ -12,6 +12,7 @@
 //Imports
 use app\models\Calendar;
 use app\models\Event;
+use app\models\User;
 use kartik\datecontrol\DateControl;
 use kartik\icons\Icon;
 use kartik\select2\Select2;
@@ -35,14 +36,36 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'calendar_id')->widget(Select2::classname(), ['data' => Calendar::getCalendars(), 'options' => ['prompt' => '---', 'aria-describedby' => 'hbCalendar']]) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('event', 'Select the calendar of the event.'), ['id' => 'hbCalendar', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'date')->widget(DateControl::classname(), ['type'=>DateControl::FORMAT_DATE]) ?>
-    <?= Html::tag('span', Icon::show('info-circle') . Yii::t('event', 'Enter the date of the event.'), ['id' => 'hbDate', 'class' => 'help-block']) ?>
+    <?= $form->field($model, 'start_date')->widget(DateControl::classname(), ['type'=>DateControl::FORMAT_DATE]) ?>
+    <?= Html::tag('span', Icon::show('info-circle') . Yii::t('event', 'Enter the start date of the event.'), ['id' => 'hbStartDate', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'start_time')->widget(DateControl::classname(), ['type'=>DateControl::FORMAT_TIME]) ?>
-    <?= Html::tag('span', Icon::show('info-circle') . Yii::t('event', 'Enter the start time of the event.'), ['id' => 'hbStartTime', 'class' => 'help-block']) ?>
+    <?= $form->field($model, 'end_date')->widget(DateControl::classname(), ['type'=>DateControl::FORMAT_DATE]) ?>
+    <?= Html::tag('span', Icon::show('info-circle') . Yii::t('event', 'Enter the end date of the event.'), ['id' => 'hbEndDate', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'end_time')->widget(DateControl::classname(), ['type'=>DateControl::FORMAT_TIME]) ?>
-    <?= Html::tag('span', Icon::show('info-circle') . Yii::t('event', 'Enter the end time of the event.'), ['id' => 'hbEndTime', 'class' => 'help-block']) ?>
+    <?= $form->field($model, 'all_day')->widget(Select2::classname(), [
+            'data' => Event::getAlLDayEventData(),
+            'options' => [
+                'prompt' => '---',
+                'aria-describedby' => 'hbConfig',
+                'onChange' => '                    
+                    if ($(this).val() == "' . Event::ALL_DAY_YES . '") {
+                        $("#event_time").fadeOut("slow");
+                    } else if ($(this).val() == "' . Event::ALL_DAY_NO . '") {
+                        $("#event_time").fadeIn("slow");
+                    }',
+        ]
+    ]) ?>
+    <?= Html::tag('span', Icon::show('info-circle') . Yii::t('user', 'Please tell us if the user can access the settings.'), ['id' => 'hbConfig', 'class' => 'help-block']) ?>
+
+    <div id="event_time" style="<?= ($model->all_day == Event::ALL_DAY_YES) ? 'display: none;' : '' ?>">
+
+        <?= $form->field($model, 'start_time')->widget(DateControl::classname(), ['type' => DateControl::FORMAT_TIME]) ?>
+        <?= Html::tag('span', Icon::show('info-circle') . Yii::t('event', 'Enter the start time of the event.'), ['id' => 'hbStartTime', 'class' => 'help-block']) ?>
+
+        <?= $form->field($model, 'end_time')->widget(DateControl::classname(), ['type' => DateControl::FORMAT_TIME]) ?>
+        <?= Html::tag('span', Icon::show('info-circle') . Yii::t('event', 'Enter the end time of the event.'), ['id' => 'hbEndTime', 'class' => 'help-block']) ?>
+
+    </div>
 
     <?= $form->field($model, 'place')->textarea(['maxlength' => true, 'rows' => 3, 'aria-describedby' => 'hbPlace']) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('event', 'Enter the place (full address) of the event.'), ['id' => 'hbPlace', 'class' => 'help-block']) ?>

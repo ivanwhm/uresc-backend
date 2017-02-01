@@ -150,9 +150,11 @@ CREATE TABLE `event` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 `calendar_id` int(11) unsigned NOT NULL,
 `name` varchar(100) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
-`date` date NOT NULL,
-`start_time` time NOT NULL,
-`end_time` time NOT NULL,
+`start_date` date NOT NULL,
+`end_date` date NOT NULL,
+`all_day` char(1) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'N',
+`start_time` time DEFAULT NULL,
+`end_time` time DEFAULT NULL,
 `place` text COLLATE utf8_swedish_ci NOT NULL,
 `info` text COLLATE utf8_swedish_ci,
 `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -167,7 +169,7 @@ KEY `fk_event_user_updated` (`user_updated`),
 CONSTRAINT `fk_event_calendar_id` FOREIGN KEY (`calendar_id`) REFERENCES `calendar` (`id`) ON UPDATE CASCADE,
 CONSTRAINT `fk_event_user_created` FOREIGN KEY (`user_created`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
 CONSTRAINT `fk_event_user_updated` FOREIGN KEY (`user_updated`) REFERENCES `user` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 CREATE TABLE `news` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,

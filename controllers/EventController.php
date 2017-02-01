@@ -26,7 +26,7 @@ class EventController extends UreController
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Event::find()->orderBy('date desc'),
+            'query' => Event::find()->orderBy('start_date desc'),
             'pagination' => false
         ]);
 
@@ -57,6 +57,7 @@ class EventController extends UreController
     public function actionCreate()
     {
         $model = new Event();
+        $model->all_day = Event::ALL_DAY_NO;
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {

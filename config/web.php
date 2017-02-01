@@ -89,6 +89,10 @@ $config = [
                         'autoclose' => true
                     ]
                 ],
+                Module::FORMAT_TIME => [
+                    'pluginOptions' => [
+                        'defaultTime' => false
+                    ]                ],
             ],
         ]
     ],
