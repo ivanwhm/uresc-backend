@@ -20,7 +20,9 @@ use app\models\User;
 use app\models\UserAccess;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\FileHelper;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 class SiteController extends UreController
 {
@@ -91,6 +93,8 @@ class SiteController extends UreController
     {
 
         $this->layout = 'login';
+        $settings = Settings::findOne(1);
+        $hasLogo = @file_exists(Settings::getLogoDirectory() . $settings->login_logo_image);
 
         if (!Yii::$app->getUser()->getIsGuest())
         {
@@ -107,6 +111,8 @@ class SiteController extends UreController
 
         return $this->render('login', [
             'model' => $model,
+            'logo' => $settings->login_logo_image,
+            'hasLogo' => $hasLogo
         ]);
     }
 
@@ -154,15 +160,27 @@ class SiteController extends UreController
         if ((($model = Settings::findOne(1)) !== null) and
             (Yii::$app->getUser()->getIdentity()->getIsCanAccessSettings()))
         {
-            if ($model->load(Yii::$app->getRequest()->post()) && $model->save())
+            $hasLogo = @file_exists(Settings::getLogoDirectory() . $model->login_logo_image);
+
+            if ($model->load(Yii::$app->getRequest()->post()))
             {
-                return $this->redirect(['settings']);
-            } else
-            {
-                return $this->render('settings', [
-                    'model' => $model,
-                ]);
+                $model->logo = UploadedFile::getInstance($model, 'logo');
+                if ($model->upload() && $model->save())
+                {
+                    return $this->redirect(['settings']);
+                } else
+                {
+                    return $this->render('settings', [
+                        'model' => $model,
+                        'hasLogo' => $hasLogo
+                    ]);
+                }
             }
+
+            return $this->render('settings', [
+                'model' => $model,
+                'hasLogo' => $hasLogo
+            ]);
         } else
         {
             throw new NotFoundHttpException(Yii::t('settings', 'The requested setting does not exist.'));

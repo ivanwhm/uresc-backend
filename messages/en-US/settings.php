@@ -11,4 +11,7 @@ return [
     'The requested setting does not exist.' => '',
     'Phone mask' => '',
     'Enter the mask to the phone\'s field.' => '',
+    'Login screen image' => '',
+    'It is not possible to upload logo now. Please, try again later.' => '',
+    'Select logo file to upload.' => '',
 ];

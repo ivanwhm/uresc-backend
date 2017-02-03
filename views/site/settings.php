@@ -4,6 +4,7 @@
  *
  * @var $this View
  * @var $model Settings
+ * @var $hasLogo boolean
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -44,6 +45,18 @@ $this->params['breadcrumbs'] = [
 
         <?= $form->field($model, 'phone_mask')->textInput(['maxlength' => true, 'aria-describedby' => 'hbSettings']) ?>
         <?= Html::tag('span', Icon::show('info-circle') . Yii::t('settings', 'Enter the mask to the phone\'s field.'), ['id' => 'hbSettings', 'class' => 'help-block']) ?>
+
+        <?= $form->field($model, 'logo')->fileInput(['multiple' => false, 'accept' => 'image/*']) ?>
+        <?= Html::tag('span', Icon::show('info-circle') . Yii::t('settings', 'Select logo file to upload.'), ['id' => 'hbLogo', 'class' => 'help-block']) ?>
+
+        <?php
+            if ($hasLogo && $model->login_logo_image != '')
+            {
+                echo Html::tag('br');
+                echo Html::img($model->login_logo_image);
+                echo Html::tag('br') . Html::tag('br');
+            }
+        ?>
 
         <?= Html::tag('span', Icon::show('user') . $model->printLastUpdatedInformation(), ['class' => 'help-block']) ?>
 
