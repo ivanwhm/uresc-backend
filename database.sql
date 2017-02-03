@@ -216,7 +216,7 @@ KEY `idx_contact_answer_user_id` (`answer_user_id`),
 CONSTRAINT `fk_contact_answer_user_id` FOREIGN KEY (`answer_user_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
-CREATE TABLE `center` (
+CREATE TABLE `centre` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 `name` varchar(100) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `address` varchar(255) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
@@ -226,16 +226,19 @@ CREATE TABLE `center` (
 `phone` varchar(20) COLLATE utf8_swedish_ci DEFAULT '',
 `email` varchar(150) COLLATE utf8_swedish_ci DEFAULT NULL,
 `business_hours` varchar(100) COLLATE utf8_swedish_ci DEFAULT NULL,
+`calendar_id` int(11) unsigned DEFAULT NULL,
 `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `user_created` int(10) unsigned NOT NULL,
 `user_updated` int(10) unsigned NOT NULL,
 PRIMARY KEY (`id`),
-KEY `idx_center_user_created` (`user_created`),
-KEY `idx_center_user_updated` (`user_updated`),
-CONSTRAINT `fk_center_user_created` FOREIGN KEY (`user_created`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
-CONSTRAINT `fk_center_user_updated` FOREIGN KEY (`user_updated`) REFERENCES `user` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+KEY `idx_centre_user_created` (`user_created`),
+KEY `idx_centre_user_updated` (`user_updated`),
+KEY `fk_centre_calendar_id` (`calendar_id`),
+CONSTRAINT `fk_centre_calendar_id` FOREIGN KEY (`calendar_id`) REFERENCES `calendar` (`id`) ON UPDATE CASCADE,
+CONSTRAINT `fk_centre_user_created` FOREIGN KEY (`user_created`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
+CONSTRAINT `fk_centre_user_updated` FOREIGN KEY (`user_updated`) REFERENCES `user` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 CREATE TABLE `page` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,

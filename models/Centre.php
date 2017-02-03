@@ -1,24 +1,24 @@
 <?php
 /**
- * This is the model class for table "center".
+ * This is the model class for table "centre".
  *
- * @property integer $id Center's ID.
- * @property string $name Center's name.
- * @property string $address Center's address.
- * @property string $neighborhood Center's neighborhood.
- * @property string $city Center's city.
- * @property string $state Center's state.
- * @property string $phone Center's phone.
- * @property string $email Center's email.
- * @property string $business_hours Center's business hours.
- * @property integer $calendar_id Calendar of the center.
- * @property datetime $date_created Center's date of creation.
- * @property datetime $date_updated Center's date of updated.
- * @property integer $user_created Center's user created.
- * @property integer $user_updated Center's user updated.
+ * @property integer $id Centre's ID.
+ * @property string $name Centre's name.
+ * @property string $address Centre's address.
+ * @property string $neighborhood Centre's neighborhood.
+ * @property string $city Centre's city.
+ * @property string $state Centre's state.
+ * @property string $phone Centre's phone.
+ * @property string $email Centre's email.
+ * @property string $business_hours Centre's business hours.
+ * @property integer $calendar_id Calendar of the centre.
+ * @property datetime $date_created Centre's date of creation.
+ * @property datetime $date_updated Centre's date of updated.
+ * @property integer $user_created Centre's user created.
+ * @property integer $user_updated Centre's user updated.
  *
- * @property User $userCreated User that created the center.
- * @property User $userUpdated User that updated the center.
+ * @property User $userCreated User that created the centre.
+ * @property User $userUpdated User that updated the centre.
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -28,14 +28,14 @@ namespace app\models;
 use app\components\UreActiveRecord;
 use Yii;
 
-class Center extends UreActiveRecord
+class Centre extends UreActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'center';
+        return 'centre';
     }
 
     /**
@@ -64,16 +64,16 @@ class Center extends UreActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('center', 'ID'),
-            'name' => Yii::t('center', 'Name'),
-            'address' => Yii::t('center', 'Address'),
-            'neighborhood' => Yii::t('center', 'Neighborhood'),
-            'city' => Yii::t('center', 'City'),
-            'state' => Yii::t('center', 'State'),
-            'phone' => Yii::t('center', 'Phone'),
-            'email' => Yii::t('center', 'E-mail'),
-            'business_hours' => Yii::t('center', 'Business hours'),
-            'calendar_id' => Yii::t('center', 'Calendar'),
+            'id' => Yii::t('centre', 'ID'),
+            'name' => Yii::t('centre', 'Name'),
+            'address' => Yii::t('centre', 'Address'),
+            'neighborhood' => Yii::t('centre', 'Neighborhood'),
+            'city' => Yii::t('centre', 'City'),
+            'state' => Yii::t('centre', 'State'),
+            'phone' => Yii::t('centre', 'Phone'),
+            'email' => Yii::t('centre', 'E-mail'),
+            'business_hours' => Yii::t('centre', 'Business hours'),
+            'calendar_id' => Yii::t('centre', 'Calendar'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),
             'user_created' => Yii::t('general', 'User who created'),
@@ -82,11 +82,11 @@ class Center extends UreActiveRecord
     }
 
     /**
-     * Return all the spiritists centers.
+     * Return all the spiritists centres.
      *
      * @return integer
      */
-    public static function getCenterCount()
+    public static function getCentreCount()
     {
         return self::find()->count();
     }

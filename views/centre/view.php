@@ -1,39 +1,39 @@
 <?php
 /**
- * Displays the update page to Center CRUD.
+ * Displays the update page to Centre CRUD.
  *
  * @var $this View
- * @var $model Center
+ * @var $model Centre
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports
 use app\models\Calendar;
-use app\models\Center;
+use app\models\Centre;
 use kartik\icons\Icon;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
 use kartik\detail\DetailView;
 
-$this->title = Yii::t('center', 'View spiritist center');
+$this->title = Yii::t('centre', 'View spiritist centre');
 $this->params['breadcrumbs'] = [
     [
-        "label" => Yii::t('center', 'Spiritist centers'),
+        "label" => Yii::t('centre', 'Spiritist centres'),
         "icon" => Icon::show('hospital-o'),
         "active" => false,
-        "url" => Url::to(["center/index"])
+        "url" => Url::to(["centre/index"])
     ],
     [
         "label" => $this->title,
         "icon" => Icon::show('eye'),
         "active" => true,
-        "url" => Url::to(["center/view", 'id' => $model->id])
+        "url" => Url::to(["centre/view", 'id' => $model->id])
     ]
 ];
 ?>
-<div class="center-view">
+<div class="centre-view">
 
     <p>
         <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
@@ -41,7 +41,7 @@ $this->params['breadcrumbs'] = [
         <?= Html::a(Icon::show('trash') . Yii::t('general', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('center', 'Do you want to delete this spiritist center?'),
+                'confirm' => Yii::t('centre', 'Do you want to delete this spiritist centre?'),
                 'method' => 'post'
             ]
         ]) ?>

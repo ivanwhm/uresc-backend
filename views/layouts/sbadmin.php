@@ -153,9 +153,9 @@ SBAdminAsset::register($this);
                         <?= Icon::show('archive') . Yii::t('download', 'Downloads') ?>
                     </a>
                 </li>
-                <li class="<?= (Yii::$app->controller->id == "center") ? "active" : "" ?>">
-                    <a href="<?= Url::to(["center/index"]) ?>">
-                        <?= Icon::show('hospital-o') . Yii::t('center', 'Spiritist centers') ?>
+                <li class="<?= (Yii::$app->controller->id == "centre") ? "active" : "" ?>">
+                    <a href="<?= Url::to(["centre/index"]) ?>">
+                        <?= Icon::show('hospital-o') . Yii::t('centre', 'Spiritist centres') ?>
                     </a>
                 </li>
                 <li class="<?= (Yii::$app->controller->id == "contact") ? "active" : "" ?>">

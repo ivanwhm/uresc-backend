@@ -1,6 +1,6 @@
 <?php
 /**
- * Displays the index page to Center CRUD.
+ * Displays the index page to Centre CRUD.
  *
  * @var $this View
  * @var $dataProvider ActiveDataProvider
@@ -10,7 +10,7 @@
 
 //Imports
 use app\models\Calendar;
-use app\models\Center;
+use app\models\Centre;
 use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use kartik\grid\ActionColumn;
@@ -19,17 +19,17 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = Yii::t('center', 'Spiritist centers');
+$this->title = Yii::t('centre', 'Spiritist centres');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
         "icon" => Icon::show('hospital-o'),
         "active" => true,
-        "url" => Url::to(["center/index"])
+        "url" => Url::to(["centre/index"])
     ]
 ];
 ?>
-<div class="center-index">
+<div class="centre-index">
 
     <p>
         <?= Html::a(Icon::show('plus') . Yii::t('general', 'Add'), ['create'], ['class' => 'btn btn-success']) ?>
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'calendar_id',
                 'format' => 'html',
-                'value' => function (Center $data) {
+                'value' => function (Centre $data) {
                     return ($data->getCalendar() instanceof Calendar) ? Html::a($data->getCalendar()->name, $data->getCalendar()->getLink()) : '';
                 }
             ],
@@ -53,12 +53,12 @@ $this->params['breadcrumbs'] = [
                 'class' => ActionColumn::className(),
                 'template' => '{view} {update} {delete}',
                 'buttons' => [
-                    'delete' => function ($url, Center $model) {
+                    'delete' => function ($url, Centre $model) {
                         return Html::a(Icon::show('trash', '', Icon::BSG), [
                             'delete', 'id' => $model->id
                         ], [
                             'data' => [
-                                'confirm' => Yii::t('center', 'Do you want to delete this spiritist center?'),
+                                'confirm' => Yii::t('centre', 'Do you want to delete this spiritist centre?'),
                                 'method' => 'post',
                             ],
                         ]);

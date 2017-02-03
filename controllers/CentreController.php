@@ -1,6 +1,6 @@
 <?php
 /**
- * This class is responsible to manager the Center CRUD related pages.
+ * This class is responsible to manager the Centre CRUD related pages.
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
@@ -9,25 +9,25 @@ namespace app\controllers;
 
 //Imports
 use app\components\UreController;
-use app\models\Center;
+use app\models\Centre;
 use Exception;
 use Yii;
 use yii\data\ActiveDataProvider;
 use app\models\Settings;
 use yii\web\NotFoundHttpException;
 
-class CenterController extends UreController
+class CentreController extends UreController
 {
 
     /**
-     * Lists all Center models.
+     * Lists all Centre models.
      *
      * @return string
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Center::find()->orderBy('name'),
+            'query' => Centre::find()->orderBy('name'),
             'pagination' => false
         ]);
 
@@ -37,9 +37,9 @@ class CenterController extends UreController
     }
 
     /**
-     * Displays a single Center model.
+     * Displays a single Centre model.
      *
-     * @param integer $id Center ID
+     * @param integer $id Centre ID
      * @return string
      */
     public function actionView($id)
@@ -50,14 +50,14 @@ class CenterController extends UreController
     }
 
     /**
-     * Creates a new Center model.
+     * Creates a new Centre model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      *
      * @return string
      */
     public function actionCreate()
     {
-        $model = new Center();
+        $model = new Centre();
         $mask = Settings::findOne(1)->phone_mask;
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
@@ -73,10 +73,10 @@ class CenterController extends UreController
     }
 
     /**
-     * Updates an existing Center model.
+     * Updates an existing Centre model.
      * If update is successful, the browser will be redirected to the 'view' page.
      *
-     * @param integer $id Center ID
+     * @param integer $id Centre ID
      * @return string
      */
     public function actionUpdate($id)
@@ -97,10 +97,10 @@ class CenterController extends UreController
     }
 
     /**
-     * Deletes an existing Center model.
+     * Deletes an existing Centre model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
-     * @param integer $id Center ID
+     * @param integer $id Centre ID
      * @return string
      *
      * @throws NotFoundHttpException if the model cannot be deleted
@@ -113,29 +113,29 @@ class CenterController extends UreController
             $model->delete();
         } catch (Exception $ex)
         {
-            throw new NotFoundHttpException(Yii::t('center', 'You can not delete the selected spiritist center.'));
+            throw new NotFoundHttpException(Yii::t('centre', 'You can not delete the selected spiritist centre.'));
         }
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Center model based on its primary key value.
+     * Finds the Centre model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      *
-     * @param integer $id Center ID
-     * @return Center
+     * @param integer $id Centre ID
+     * @return Centre
      *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Center::findOne($id)) !== null)
+        if (($model = Centre::findOne($id)) !== null)
         {
             return $model;
         } else
         {
-            throw new NotFoundHttpException(Yii::t('center', 'The requested spiritist center does not exist.'));
+            throw new NotFoundHttpException(Yii::t('centre', 'The requested spiritist centre does not exist.'));
         }
     }
 }

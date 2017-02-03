@@ -1,37 +1,39 @@
 <?php
 /**
- * Displays the update page to Center CRUD.
+ * Displays the create page to Centre CRUD.
  *
  * @var $this View
- * @var $model Center
+ * @var $dataProvider ActiveDataProvider
+ * @var $model Centre
  * @var $mask string
  *
  * @author Ivan Wilhelm <ivan.whm@me.com>
  */
 
 //Imports
-use app\models\Center;
+use app\models\Centre;
 use kartik\icons\Icon;
+use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
-$this->title = Yii::t('center', 'Update spiritist center');
+$this->title = Yii::t('centre', 'Add spiritist centre');
 $this->params['breadcrumbs'] = [
     [
-        "label" => Yii::t('center', 'Spiritist centers'),
+        "label" => Yii::t('centre', 'Spiritist centres'),
         "icon" => Icon::show('hospital-o'),
         "active" => false,
-        "url" => Url::to(["center/index"])
+        "url" => Url::to(["centre/index"])
     ],
     [
         "label" => $this->title,
-        "icon" => Icon::show('pencil'),
-        "active" => true,
-        "url" => Url::to(["center/update", 'id' => $model->id])
+        "icon" => Icon::show('plus'),
+        "active" => true
     ]
 ];
+
 ?>
-<div class="center-update">
+<div class="centre-create">
 
     <?= $this->render('_form', [
         'model' => $model,

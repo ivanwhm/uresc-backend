@@ -9,7 +9,7 @@ namespace app\controllers;
 
 //Imports
 use app\components\UreController;
-use app\models\Center;
+use app\models\Centre;
 use app\models\ChangePasswordForm;
 use app\models\Contact;
 use app\models\Event;
@@ -61,7 +61,7 @@ class SiteController extends UreController
         return $this->render('index',[
             'contacts' => Contact::getContactsAwaitingAnswer(),
             'events' => Event::getFurtherEvents(),
-            'centers' => Center::getCenterCount(),
+            'centres' => Centre::getCentreCount(),
             'news' => News::getUnpublishedNews()
         ]);
     }

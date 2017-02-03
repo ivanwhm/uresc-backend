@@ -67,14 +67,14 @@ $this->title = Yii::t('general', 'Home');
                         <?= Icon::show('hospital-o', ['class' => 'fa-5x']) ?>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?= $centers ?></div>
-                        <div><?= Yii::t('center', 'Registered<br>spiritist centers') ?></div>
+                        <div class="huge"><?= $centres ?></div>
+                        <div><?= Yii::t('centre', 'Registered<br>spiritist centres') ?></div>
                     </div>
                 </div>
             </div>
             <a href="<?= Url::toRoute(['center/index']) ?>">
                 <div class="panel-footer">
-                    <span class="pull-left"><?= Yii::t('center', 'View centers!') ?></span>
+                    <span class="pull-left"><?= Yii::t('centre', 'View centres!') ?></span>
                     <span class="pull-right"><?= Icon::show('arrow-circle-right') ?></span>
                     <div class="clearfix"></div>
                 </div>
