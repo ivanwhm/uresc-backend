@@ -37,6 +37,15 @@ $this->params['breadcrumbs'] = [
         'pjax' => true,
         'columns' => [
             [
+                'attribute' => 'icon',
+                'format' => 'html',
+                'hAlign' => GridView::ALIGN_CENTER,
+                'width' => '60px',
+                'value' => function(Menu $data) {
+                    return (($data->icon == '' ? Icon::show('bars') : Icon::show($data->icon)));
+                }
+            ],
+            [
                 'attribute' => 'name',
                 'format' => 'html',
                 'value' => function (Menu $data) {

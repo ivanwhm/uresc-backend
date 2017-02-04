@@ -9,4 +9,5 @@ return [
     'Menu' => '',
     'The requested menu does not exist.' => '',
     'Menus' => '',
+    'Icon' => '',
 ];

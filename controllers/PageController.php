@@ -63,6 +63,7 @@ class PageController extends UreController
         {
             $menu = new Menu();
             $menu->name = $model->name;
+            $menu->icon = $model->icon;
             $menu->type = Menu::TYPE_PAGE;
             $menu->visible = Menu::VISIBLE_YES;
             $menu->order = 99;
@@ -95,6 +96,7 @@ class PageController extends UreController
             if ($menu instanceof Menu)
             {
                 $menu->name = $model->name;
+                $menu->icon = $model->icon;
                 $menu->save(false);
             }
 
