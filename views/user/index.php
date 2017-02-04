@@ -44,7 +44,6 @@ $this->params['breadcrumbs'] = [
                 'width' => '70px',
             ],
             'name',
-            'email:email',
             [
                 'attribute' => 'status',
                 'format' => 'html',
