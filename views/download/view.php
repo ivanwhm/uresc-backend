@@ -58,6 +58,11 @@ $this->params['breadcrumbs'] = [
             ],
             'address:url',
             [
+                'attribute' => 'cover_filename',
+                'format' => 'html',
+                'value' => Html::img(Url::to(['download/image', 'id' => $model->id]))
+            ],
+            [
                 'attribute' => 'status',
                 'format' => 'html',
                 'value' => $model->getStatus()

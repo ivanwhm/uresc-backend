@@ -15,4 +15,7 @@ return [
     'Enter the category of the download.' => '',
     'Enter the address of the download.' => '',
     'Please tell us if the download is active or inactive.' => '',
+    'Cover' => '',
+    'It is not possible to upload cover image now. Please, try again later.' => '',
+    'Select cover file to upload.' => '',
 ];

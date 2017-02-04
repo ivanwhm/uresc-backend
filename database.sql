@@ -66,6 +66,7 @@ CREATE TABLE `download` (
 `name` varchar(50) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `category_id` int(11) unsigned NOT NULL,
 `address` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+`cover_filename` varchar(150) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `status` char(1) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'A',
 `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,

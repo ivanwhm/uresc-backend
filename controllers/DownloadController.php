@@ -14,6 +14,7 @@ use Exception;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 class DownloadController extends UreController
 {
@@ -59,15 +60,16 @@ class DownloadController extends UreController
         $model = new Download();
         $model->status = Download::STATUS_ACTIVE;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save())
-        {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else
-        {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        if ($model->load(Yii::$app->getRequest()->post())) {
+            $model->file = UploadedFile::getInstance($model, 'file');
+            if ($model->upload() && ($model->save()))
+            {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -81,15 +83,17 @@ class DownloadController extends UreController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save())
+        if ($model->load(Yii::$app->getRequest()->post()))
         {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else
-        {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            $model->file = UploadedFile::getInstance($model, 'file');
+            if ($model->upload() && ($model->save()))
+            {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -106,6 +110,7 @@ class DownloadController extends UreController
         $model = $this->findModel($id);
         try
         {
+            unlink($model->getCoverDirectory() . $model->cover_filename);
             $model->delete();
         } catch (Exception $ex)
         {
@@ -134,4 +139,21 @@ class DownloadController extends UreController
             throw new NotFoundHttpException(Yii::t('download', 'The requested download does not exist.'));
         }
     }
+
+
+    /**
+     * Render an image from cover.
+     *
+     * @param $id
+     */
+    public function actionImage($id)
+    {
+        if (($model = $this->findModel($id)) !== null)
+        {
+            $this->renderPartial('_image', [
+                'model' => $model
+            ]);
+        }
+    }
+
 }

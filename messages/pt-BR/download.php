@@ -15,4 +15,7 @@ return [
     'Enter the category of the download.' => 'Informe a categoria do arquivo.',
     'Enter the address of the download.' => 'Informe o endereço do arquivo.',
     'Please tell us if the download is active or inactive.' => 'Informe se o arquivo está ativo ou inativo.',
+    'Cover' => 'Arquivo da capa',
+    'It is not possible to upload cover image now. Please, try again later.' => 'Não é possível enviar a imagem da capa agora. Por favor, tente novamente mais tarde.',
+    'Select cover file to upload.' => 'Selecione o arquivo de capa para enviar.',
 ];
