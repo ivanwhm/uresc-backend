@@ -18,6 +18,8 @@ return [
     'View news' => '',
     'Enter the title of the news.' => '',
     'Enter the text of the news.' => '',
-    'Unpublished<br>news' => '',
+    'Unpublished news' => '',
     'View news!' => '',
+    'Date of publication' => '',
+    'User who published' => '',
 ];

@@ -13,6 +13,7 @@ use app\models\News;
 use Exception;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\db\Expression;
 use yii\web\NotFoundHttpException;
 
 class NewsController extends UreController
@@ -154,6 +155,8 @@ class NewsController extends UreController
     {
         $model = $this->findModel($id);
         $model->published = News::PUBLISHED_YES;
+        $model->date_published = new Expression('current_timestamp');
+        $model->user_published = Yii::$app->getUser()->getIdentity()->getId();
         $model->save(false);
 
         return $this->redirect(['view', 'id' => $model->id]);
@@ -170,6 +173,8 @@ class NewsController extends UreController
     {
         $model = $this->findModel($id);
         $model->published = News::PUBLISHED_NO;
+        $model->date_published = null;
+        $model->user_published = null;
         $model->save(false);
 
         return $this->redirect(['view', 'id' => $model->id]);

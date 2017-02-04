@@ -19,12 +19,12 @@ $this->title = Yii::t('general', 'Home');
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="row">
-                    <div class="col-xs-3">
+                    <div class="col-xs-5">
                         <?= Icon::show('mail-reply-all', ['class' => 'fa-5x']) ?>
                     </div>
-                    <div class="col-xs-9 text-right">
+                    <div class="col-xs-7 text-right">
                         <div class="huge"><?= $contacts ?></div>
-                        <div><?= Yii::t('contact', 'Unanswered<br>contacts') ?></div>
+                        <div><?= Yii::t('contact', 'Unanswered contacts') ?></div>
                     </div>
                 </div>
             </div>
@@ -41,12 +41,12 @@ $this->title = Yii::t('general', 'Home');
         <div class="panel panel-green">
             <div class="panel-heading">
                 <div class="row">
-                    <div class="col-xs-3">
+                    <div class="col-xs-5">
                         <?= Icon::show('calendar', ['class' => 'fa-5x']) ?>
                     </div>
-                    <div class="col-xs-9 text-right">
+                    <div class="col-xs-7 text-right">
                         <div class="huge"><?= $events ?></div>
-                        <div><?= Yii::t('event', 'Future<br>events') ?></div>
+                        <div><?= Yii::t('event', 'Events in the future') ?></div>
                     </div>
                 </div>
             </div>
@@ -63,12 +63,12 @@ $this->title = Yii::t('general', 'Home');
         <div class="panel panel-yellow">
             <div class="panel-heading">
                 <div class="row">
-                    <div class="col-xs-3">
+                    <div class="col-xs-5">
                         <?= Icon::show('hospital-o', ['class' => 'fa-5x']) ?>
                     </div>
-                    <div class="col-xs-9 text-right">
+                    <div class="col-xs-7 text-right">
                         <div class="huge"><?= $centres ?></div>
-                        <div><?= Yii::t('centre', 'Registered<br>spiritist centres') ?></div>
+                        <div><?= Yii::t('centre', 'Registered spiritist centres') ?></div>
                     </div>
                 </div>
             </div>
@@ -85,12 +85,12 @@ $this->title = Yii::t('general', 'Home');
         <div class="panel panel-red">
             <div class="panel-heading">
                 <div class="row">
-                    <div class="col-xs-3">
+                    <div class="col-xs-5">
                         <?= Icon::show('newspaper-o', ['class' => 'fa-5x']) ?>
                     </div>
-                    <div class="col-xs-9 text-right">
+                    <div class="col-xs-7 text-right">
                         <div class="huge"><?= $news ?></div>
-                        <div><?= Yii::t('news', 'Unpublished<br>news') ?></div>
+                        <div><?= Yii::t('news', 'Unpublished news') ?></div>
                     </div>
                 </div>
             </div>

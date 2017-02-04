@@ -10,6 +10,7 @@
 
 //Imports
 use app\models\News;
+use app\models\User;
 use kartik\icons\Icon;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -69,6 +70,17 @@ $this->params['breadcrumbs'] = [
                 'attribute' => 'published',
                 'format' => 'html',
                 'value' => $model->getPublished()
+            ],
+            [
+                'attribute' => 'date_published',
+                'format' => 'datetime',
+                'visible' => ($model->getIsPublished())
+            ],
+            [
+                'attribute' => 'user_published',
+                'format' => 'html',
+                'value' => ($model->getUserPublished() instanceof User) ? Html::a($model->getUserPublished()->getName(), $model->getUserPublished()->getLink()) : '',
+                'visible' => ($model->getIsPublished())
             ],
             'date_created:datetime',
             [

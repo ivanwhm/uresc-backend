@@ -177,16 +177,20 @@ CREATE TABLE `news` (
 `title` varchar(255) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `text` text COLLATE utf8_swedish_ci NOT NULL,
 `published` char(1) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'N',
+`date_published` datetime DEFAULT NULL,
 `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+`user_published` int(10) unsigned DEFAULT NULL,
 `user_created` int(10) unsigned NOT NULL,
 `user_updated` int(10) unsigned NOT NULL,
 PRIMARY KEY (`id`),
 KEY `idx_news_user_created` (`user_created`),
 KEY `idx_news_user_updated` (`user_updated`),
+KEY `idx_news_user_published` (`user_published`),
+CONSTRAINT `fK_news_user_published` FOREIGN KEY (`user_published`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
 CONSTRAINT `fk_news_user_created` FOREIGN KEY (`user_created`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
 CONSTRAINT `fk_news_user_updated` FOREIGN KEY (`user_updated`) REFERENCES `user` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 CREATE TABLE `settings` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,

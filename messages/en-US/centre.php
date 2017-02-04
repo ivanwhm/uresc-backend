@@ -25,7 +25,7 @@ return [
     'Enter the phone of the spiritist centre.' => '',
     'Enter the e-mail of the spiritist centre.' => '',
     'Enter the business hours of the spiritist centre.' => '',
-    'Registered<br>spiritist centres' => '',
+    'Registered spiritist centres' => '',
     'View centres!' => '',
     'Select the calendar of the spiritist centre.' => '',
 ];

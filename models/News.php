@@ -6,11 +6,14 @@
  * @property string $title News' Title
  * @property string $text News
  * @property string $published Shows if news is published.
+ * @property datetime $date_published News's date of publication.
  * @property datetime $date_created News' date of creation.
  * @property datetime $date_updated News' date of updated.
+ * @property integer $user_published News' user of publication.
  * @property integer $user_created News' user created.
  * @property integer $user_updated News' user updated.
  *
+ * @property User $userPublished User that published the news.
  * @property User $userCreated User that created the news.
  * @property User $userUpdated User that updated the news.
  *
@@ -45,10 +48,11 @@ class News extends UreActiveRecord
         return [
             [['title', 'text'], 'required'],
             [['text'], 'string'],
-            [['user_created', 'user_updated', 'date_created', 'date_updated'], 'safe'],
+            [['user_published', 'user_created', 'user_updated', 'date_published', 'date_created', 'date_updated'], 'safe'],
             [['user_created', 'user_updated'], 'integer'],
             [['title'], 'string', 'max' => 255],
             [['published'], 'string', 'max' => 1],
+            [['user_published'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_published' => 'id']],
             [['user_created'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_created' => 'id']],
             [['user_updated'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_updated' => 'id']],
         ];
@@ -64,6 +68,8 @@ class News extends UreActiveRecord
             'title' => Yii::t('news', 'Title'),
             'text' => Yii::t('news', 'Text'),
             'published' => Yii::t('news', 'Published'),
+            'date_published' => Yii::t('news', 'Date of publication'),
+            'user_published' => Yii::t('news', 'User who published'),
             'date_created' => Yii::t('general', 'Date of creation'),
             'date_updated' => Yii::t('general', 'Date of the update'),
             'user_created' => Yii::t('general', 'User who created'),
@@ -112,6 +118,17 @@ class News extends UreActiveRecord
     public function getIsPublished()
     {
         return $this->published == self::PUBLISHED_YES;
+    }
+
+
+    /**
+     * Returns the user that published the record.
+     *
+     * @return User
+     */
+    public function getUserPublished()
+    {
+        return User::findOne(['id' => $this->user_published]);
     }
 
 }

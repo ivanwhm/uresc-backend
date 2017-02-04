@@ -9,6 +9,7 @@
  */
 
 //Imports
+use app\models\User;
 use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
 use kartik\grid\ActionColumn;
@@ -53,9 +54,17 @@ $this->params['breadcrumbs'] = [
                 },
             ],
             [
-                'attribute' => 'date_created',
+                'attribute' => 'date_published',
                 'format' => ['datetime', 'short'],
                 'width' => '150px',
+            ],
+            [
+                'attribute' => 'user_published',
+                'format' => 'html',
+                'width' => '200px',
+                'value' => function (News $data) {
+                    return ($data->getUserPublished() instanceof User) ? Html::a($data->getUserPublished()->name, $data->getUserPublished()->getLink()) : '';
+                }
             ],
             [
                 'class' => ActionColumn::className(),
