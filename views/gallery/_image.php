@@ -16,7 +16,7 @@ $file = $model->getGallery()->getGalleryDirectory() . $model->filename;
 if (($image instanceof \Imagine\Imagick\Imagine) or ($image instanceof \Imagine\Gd\Imagine))
 {
     $imageFile = $image->open($file);
-    $resize = $imageFile->getSize()->widen(300);
+    $resize = $imageFile->getSize()->widen(150);
     $imageFile->resize($resize, ImageInterface::FILTER_UNDEFINED)->show('jpeg');
 }
 exit;

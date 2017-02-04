@@ -88,6 +88,7 @@ $this->params['breadcrumbs'] = [
 
     <p>
         <?php DialogAsset::register($this); ?>
+        <?= Html::a(Icon::show('plus') . Yii::t('gallery', 'Add link'), ['link', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a(Icon::show('upload') . Yii::t('gallery', 'Upload files'), ['upload', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a(Icon::show('trash') . Yii::t('gallery', 'Delete files'), null, ['id' => 'deleteButton', 'class' => 'btn btn-danger']) ?>
         <?= $this->registerJs("
@@ -120,6 +121,7 @@ $this->params['breadcrumbs'] = [
                     return Html::img(Url::to(['gallery/image', 'id' => $data->id]));
                 },
             ],
+            'address:url',
             [
                 'class' => ActionColumn::className(),
                 'template' => '{delete}',

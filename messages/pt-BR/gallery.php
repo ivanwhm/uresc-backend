@@ -22,4 +22,9 @@ return [
     'Filename' => 'Arquivo',
     'You can not delete the selected file.' => 'Não é possível excluir o arquivo selecionado.',
     'Do you want to delete selected files?' => 'Deseja excluir os arquivos selecionados?',
+    'Address' => 'Endereço',
+    'Cover' => 'Imagem de capa',
+    'Add link' => 'Adicionar endereço',
+    'Enter the address of the download.' => 'Informe o endereço do arquivo.',
+    'Select cover file to upload.' => 'Selecione o arquivo de capa para enviar.',
 ];

@@ -22,4 +22,9 @@ return [
     'Filename' => '',
     'You can not delete the selected file.' => '',
     'Do you want to delete selected files?' => '',
+    'Address' => '',
+    'Cover' => '',
+    'Add link' => '',
+    'Enter the address of the download.' => '',
+    'Select cover file to upload.' => '',
 ];

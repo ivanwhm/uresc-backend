@@ -16,6 +16,7 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\helpers\FileHelper;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 use yii\web\UploadedFile;
 
 class GalleryController extends UreController
@@ -88,7 +89,7 @@ class GalleryController extends UreController
         $model = new Gallery();
         $model->status = Gallery::STATUS_ACTIVE;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save())
+        if ($model->load(Yii::$app->getRequest->post()) && $model->save())
         {
             return $this->redirect(['view', 'id' => $model->id]);
         } else
@@ -110,7 +111,7 @@ class GalleryController extends UreController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save())
+        if ($model->load(Yii::$app->getRequest->post()) && $model->save())
         {
             return $this->redirect(['view', 'id' => $model->id]);
         } else
@@ -140,6 +141,33 @@ class GalleryController extends UreController
         }
 
         return $this->render('upload', ['model' => $model]);
+    }
+
+
+    /**
+     * Upload files like links to an existing Gallery model.
+     *
+     * @param integer $id Gallery ID
+     * @return string
+     */
+    public function actionLink($id)
+    {
+        $model = new GalleryFiles();
+        $model->setScenario('link');
+        $model->gallery_id = $id;
+
+        if ($model->load(Yii::$app->getRequest()->post()))
+        {
+            $model->file = UploadedFile::getInstance($model, 'file');
+            if ($model->upload() && $model->save())
+            {
+                return $this->redirect(['view', 'id' => $model->gallery_id]);
+            }
+        }
+
+        return $this->render('link', [
+            'model' => $model
+        ]);
     }
 
     /**
@@ -184,7 +212,7 @@ class GalleryController extends UreController
      * Drops an specific file.
      *
      * @param $id Gallery File's ID.
-     * @return \yii\web\Response
+     * @return Response
      *
      * @throws NotFoundHttpException
      */
@@ -208,7 +236,7 @@ class GalleryController extends UreController
      *
      * @param $gallery_id Gallery ID.
      * @param $ids Gallery File's ID.
-     * @return \yii\web\Response
+     * @return Response
      *
      * @throws NotFoundHttpException
      */
