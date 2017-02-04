@@ -38,10 +38,16 @@ $this->params['breadcrumbs'] = [
         'pjax' => true,
         'dataProvider' => $dataProvider,
         'columns' => [
-            'id',
+            [
+                'attribute' => 'id',
+                'hAlign' => GridView::ALIGN_LEFT,
+                'width' => '70px',
+            ],
             [
                 'attribute' => 'icon',
                 'format' => 'html',
+                'hAlign' => GridView::ALIGN_CENTER,
+                'width' => '60px',
                 'value' => function(Page $data) {
                     return (($data->icon == ''?Icon::show('clipboard'):Icon::show($data->icon)));
                 }

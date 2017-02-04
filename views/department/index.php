@@ -38,7 +38,11 @@ $this->params['breadcrumbs'] = [
         'pjax' => true,
         'dataProvider' => $dataProvider,
         'columns' => [
-            'id',
+            [
+                'attribute' => 'id',
+                'hAlign' => GridView::ALIGN_LEFT,
+                'width' => '70px',
+            ],
             [
                 'attribute' => 'name',
                 'format' => 'html',
@@ -49,6 +53,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'status',
                 'format' => 'html',
+                'width' => '120px',
                 'value' => function (Department $data) {
                     return $data->getStatus();
                 },

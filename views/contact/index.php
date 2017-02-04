@@ -38,13 +38,22 @@ $this->params['breadcrumbs'] = [
         'pjax' => true,
         'dataProvider' => $dataProvider,
         'columns' => [
-            'id',
+            [
+                'attribute' => 'id',
+                'hAlign' => GridView::ALIGN_LEFT,
+                'width' => '70px',
+            ],
             'contact_name',
             'contact_email:email',
-            'contact_date:datetime',
+            [
+                'attribute' => 'contact_date',
+                'format' => 'datetime',
+                'width' => '150px',
+            ],
             [
                 'attribute' => 'answer_sent',
                 'format' => 'html',
+                'width' => '120px',
                 'value' => function (Contact $data) {
                     return $data->getAnswerSent();
                 },

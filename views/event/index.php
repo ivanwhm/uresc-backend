@@ -38,11 +38,16 @@ $this->params['breadcrumbs'] = [
         'pjax' => true,
         'dataProvider' => $dataProvider,
         'columns' => [
-            'id',
+            [
+                'attribute' => 'id',
+                'hAlign' => GridView::ALIGN_LEFT,
+                'width' => '70px',
+            ],
             'name',
             [
                 'attribute' => 'calendar_id',
                 'format' => 'html',
+                'width' => '180px',
                 'value' => function (Event $data) {
                     return Html::a($data->getCalendar()->name, $data->getCalendar()->getLink());
                 }
@@ -50,6 +55,7 @@ $this->params['breadcrumbs'] = [
             [
                 'header' => Yii::t('event', 'Starts'),
                 'format' => 'raw',
+                'width' => '180px',
                 'value' => function (Event $data) {
                     return $data->printStarts();
                 }
@@ -57,6 +63,7 @@ $this->params['breadcrumbs'] = [
             [
                 'header' => Yii::t('event', 'Ends'),
                 'format' => 'raw',
+                'width' => '180px',
                 'value' => function (Event $data) {
                     return $data->printEnds();
                 }

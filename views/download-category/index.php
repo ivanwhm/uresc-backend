@@ -38,11 +38,16 @@ $this->params['breadcrumbs'] = [
         'pjax' => true,
         'dataProvider' => $dataProvider,
         'columns' => [
-            'id',
+            [
+                'attribute' => 'id',
+                'hAlign' => GridView::ALIGN_LEFT,
+                'width' => '70px',
+            ],
             'name',
             [
                 'attribute' => 'status',
                 'format' => 'html',
+                'width' => '120px',
                 'value' => function (DownloadCategory $data) {
                     return $data->getStatus();
                 },

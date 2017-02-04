@@ -38,11 +38,16 @@ $this->params['breadcrumbs'] = [
         'pjax' => true,
         'dataProvider' => $dataProvider,
         'columns' => [
-            'id',
+            [
+                'attribute' => 'id',
+                'hAlign' => GridView::ALIGN_LEFT,
+                'width' => '70px',
+            ],
             'name',
             [
                 'attribute' => 'category_id',
                 'format' => 'html',
+                'width' => '180px',
                 'value' => function (Gallery $data) {
                     return Html::a($data->getCategory()->name, $data->getCategory()->getLink());
                 },
@@ -50,6 +55,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'status',
                 'format' => 'html',
+                'width' => '120px',
                 'value' => function (Gallery $data) {
                     return $data->getStatus();
                 },

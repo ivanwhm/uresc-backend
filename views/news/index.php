@@ -38,18 +38,24 @@ $this->params['breadcrumbs'] = [
         'pjax' => true,
         'dataProvider' => $dataProvider,
         'columns' => [
-            'id',
+            [
+                'attribute' => 'id',
+                'hAlign' => GridView::ALIGN_LEFT,
+                'width' => '70px',
+            ],
             'title',
             [
                 'attribute' => 'published',
                 'format' => 'html',
+                'width' => '120px',
                 'value' => function (News $data) {
                     return $data->getPublished();
                 },
             ],
             [
                 'attribute' => 'date_created',
-                'format' => ['datetime', 'short']
+                'format' => ['datetime', 'short'],
+                'width' => '150px',
             ],
             [
                 'class' => ActionColumn::className(),

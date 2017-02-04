@@ -38,12 +38,17 @@ $this->params['breadcrumbs'] = [
         'dataProvider' => $dataProvider,
         'pjax' => true,
         'columns' => [
-            'id',
+            [
+                'attribute' => 'id',
+                'hAlign' => GridView::ALIGN_LEFT,
+                'width' => '70px',
+            ],
             'name',
             'email:email',
             [
                 'attribute' => 'status',
                 'format' => 'html',
+                'width' => '120px',
                 'value' => function (User $data) {
                     return $data->getStatus();
                 },
