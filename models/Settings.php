@@ -9,6 +9,7 @@
  * @property datetime $date_updated Settings' date of updated.
  * @property integer $user_updated Settings' user updated.
  * @property string $login_logo_image Imagem to be used on the login page.
+ * @property string $default_business_hours The default business hours to new spiritist centres records.
  *
  * @property User $userUpdated User that updated the calendar.
  *
@@ -45,10 +46,11 @@ class Settings extends UreActiveRecord
     public function rules()
     {
         return [
-            [['date_updated', 'user_updated', 'login_logo_image', 'logo'], 'safe'],
+            [['date_updated', 'user_updated', 'login_logo_image', 'logo', 'default_business_hours'], 'safe'],
             [['phrase', 'phrase_author', 'page_title', 'phone_mask'], 'required'],
             [['user_updated'], 'integer'],
             [['phrase'], 'string', 'max' => 255],
+            [['default_business_hours'], 'string', 'max' => 100],
             [['phrase_author', 'page_title'], 'string', 'max' => 150],
             [['logo'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpeg, jpg, png', 'maxFiles' => 1],
             [['user_updated'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_updated' => 'id']],
@@ -69,6 +71,7 @@ class Settings extends UreActiveRecord
             'date_updated' => Yii::t('general', 'Date of the update'),
             'user_updated' => Yii::t('general', 'User who do last update'),
             'logo' => Yii::t('settings', 'Login screen image'),
+            'default_business_hours' => Yii::t('settings', 'Default business hours'),
         ];
     }
 
@@ -79,21 +82,19 @@ class Settings extends UreActiveRecord
      */
     public function upload()
     {
-        if ($this->validate() && ($this->logo instanceof UploadedFile)) {
-            try {
-                $this->logo->saveAs(self::getLogoDirectory() . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo.' . $this->logo->getExtension());
-                $image = DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo.' . $this->logo->getExtension();
-                $this->login_logo_image = $image;
+        if ($this->validate() && ($this->logo instanceof UploadedFile))
+        {
+            try
+            {
+                $this->login_logo_image = DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo.' . $this->logo->getExtension();
+                $this->logo->saveAs(self::getLogoDirectory() . $this->login_logo_image);
                 $this->logo = null;
-                return true;
             } catch (Exception $e) {
                 $this->addError('logo', Yii::t('settings', 'It is not possible to upload logo now. Please, try again later.'));
                 return false;
             }
-        } else
-        {
-            return false;
         }
+        return true;
     }
 
     /**

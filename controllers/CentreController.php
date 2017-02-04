@@ -57,19 +57,20 @@ class CentreController extends UreController
      */
     public function actionCreate()
     {
-        $model = new Centre();
-        $mask = Settings::findOne(1)->phone_mask;
+        $settings = Settings::findOne(1);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save())
+        $model = new Centre();
+        $model->business_hours = $settings->default_business_hours;
+
+        if ($model->load(Yii::$app->getRequest()->post()) && $model->save())
         {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else
-        {
-            return $this->render('create', [
-                'model' => $model,
-                'mask' => $mask
-            ]);
         }
+
+        return $this->render('create', [
+            'model' => $model,
+            'mask' => $settings->phone_mask
+        ]);
     }
 
     /**
@@ -84,16 +85,15 @@ class CentreController extends UreController
         $model = $this->findModel($id);
         $mask = Settings::findOne(1)->phone_mask;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save())
+        if ($model->load(Yii::$app->getRequest()->post()) && $model->save())
         {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else
-        {
-            return $this->render('update', [
-                'model' => $model,
-                'mask' => $mask
-            ]);
         }
+
+        return $this->render('update', [
+            'model' => $model,
+            'mask' => $mask
+        ]);
     }
 
     /**

@@ -58,6 +58,9 @@ $this->params['breadcrumbs'] = [
             }
         ?>
 
+        <?= $form->field($model, 'default_business_hours')->textarea(['maxlength' => true, 'rows' => 5, 'aria-describedby' => 'hbDefaultBusinessHours']) ?>
+        <?= Html::tag('span', Icon::show('info-circle') . Yii::t('settings', 'Enter the default business hours to a new spiritist centre record.'), ['id' => 'hbDefaultBusinessHours', 'class' => 'help-block']) ?>
+
         <?= Html::tag('span', Icon::show('user') . $model->printLastUpdatedInformation(), ['class' => 'help-block']) ?>
 
         <div class="form-group">

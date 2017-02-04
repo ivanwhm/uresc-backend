@@ -50,7 +50,7 @@ use yii\widgets\MaskedInput;
     <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'aria-describedby' => 'hbEmail']) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('centre', 'Enter the e-mail of the spiritist centre.'), ['id' => 'hbEmail', 'class' => 'help-block']) ?>
 
-    <?= $form->field($model, 'business_hours')->textarea(['maxlength' => true, 'row' => 5, 'aria-describedby' => 'hbBusinessHours']) ?>
+    <?= $form->field($model, 'business_hours')->textarea(['maxlength' => true, 'rows' => 5, 'aria-describedby' => 'hbBusinessHours']) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('centre', 'Enter the business hours of the spiritist centre.'), ['id' => 'hbBusinessHours', 'class' => 'help-block']) ?>
 
     <?= $form->field($model, 'calendar_id')->widget(Select2::classname(), ['data' => Calendar::getCalendars(), 'options' => ['prompt' => '---', 'aria-describedby' => 'hbCalendar']]) ?>

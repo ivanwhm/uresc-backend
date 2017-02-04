@@ -14,4 +14,6 @@ return [
     'Login screen image' => 'Logotipo para a tela de login',
     'It is not possible to upload logo now. Please, try again later.' => 'Não é possível enviar os arquivos agora. Por favor, tente novamente mais tarde.',
     'Select logo file to upload.' => 'Selecionar o arquivo de logo para enviar.',
+    'Default business hours' => 'Horário de funcionamento padrão',
+    'Enter the default business hours to a new spiritist centre record.' => 'Informe o horário de funcionamento padrão para um novo registro de centro espírita.',
 ];

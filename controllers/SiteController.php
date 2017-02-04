@@ -167,13 +167,7 @@ class SiteController extends UreController
                 $model->logo = UploadedFile::getInstance($model, 'logo');
                 if ($model->upload() && $model->save())
                 {
-                    return $this->redirect(['settings']);
-                } else
-                {
-                    return $this->render('settings', [
-                        'model' => $model,
-                        'hasLogo' => $hasLogo
-                    ]);
+                    return $this->redirect(['index']);
                 }
             }
 

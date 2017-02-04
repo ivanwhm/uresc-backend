@@ -14,4 +14,6 @@ return [
     'Login screen image' => '',
     'It is not possible to upload logo now. Please, try again later.' => '',
     'Select logo file to upload.' => '',
+    'Default business hours' => '',
+    'Enter the default business hours to a new spiritist centre record.' => '',
 ];
