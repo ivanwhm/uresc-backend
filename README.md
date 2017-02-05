@@ -1,7 +1,7 @@
 Portal Administrativo União Regional Espírita
 =============================================================================
 
-Esta ferramenta é parte de um portal voltado as uniões regionais espíritas do estado de Santa Catarina, para permitir a divulgação do doutrina espírita.
+Esta ferramenta é parte de um portal voltado as uniões regionais espíritas do estado de Santa Catarina, para permitir a divulgação da Doutrina Espírita.
 
 Atualmente a ferramenta de administração do portal conta com os seguintes recursos:
 
@@ -15,7 +15,7 @@ Atualmente a ferramenta de administração do portal conta com os seguintes recu
  - **Múltiplo idiomas**: suporte a múltiplos idiomas. Atualmente disponível em Português do Brasil e Inglês dos Estados Unidos da América.
  - **Configurações**: permite configurar quase todos os aspectos do portal, como tema utilizado, mensagens informativas, ordenação de menu e recursos que serão utilizados no portal.
  
-Atualmente a página foi ciada para a [4ª União Regional Espírita de Santa Catarina](http://www.ure4-fec.org.br), porém, o código-fonte está totalmente liberado para download e adaptação. Caso você deseje utilizar esta ferramenta em sua união regional, estamos à disposição para auxiliar em todos os aspectos.
+Atualmente a página foi criada para a [4ª União Regional Espírita de Santa Catarina](http://www.ure4-fec.org.br), porém, o código-fonte está totalmente liberado para download e adaptação. Caso você deseje utilizar esta ferramenta em sua união regional, estamos à disposição para auxiliar em todos os aspectos.
 
 A ferramenta foi desenvolvida utilizando os seguintes recursos:
 
