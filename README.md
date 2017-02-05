@@ -1,6 +1,10 @@
 Portal Administrativo União Regional Espírita
 =============================================================================
 
+[Click here](README.en-US.md) to access the English (United States) version.
+
+A página principal pode ser encontrada [aqui](https://github.com/ivanwhm/uresc-frontend).
+
 Esta ferramenta é parte de um portal voltado as uniões regionais espíritas do estado de Santa Catarina, para permitir a divulgação da Doutrina Espírita.
 
 Atualmente a ferramenta de administração do portal conta com os seguintes recursos:
@@ -11,7 +15,7 @@ Atualmente a ferramenta de administração do portal conta com os seguintes recu
  - **Eventos**: possibilita que seja criado um ou mais calendários de eventos para divulgação de atividades. Estes calendários permitem que sejam vinculados aos centros espíritas e desta forma possam ser divulgados eventos específicos.
  - **Notícias**: possibilita o cadastro, alteração e publicação de notícias.
  - **Departamentos**: permite que os usuários criem páginas personalizadas, porém voltadas aos departamentos da união regional e possam por meio delas divulgar textos, links, imagens, vídeos, etc.
- - **Usuários**: Cadastro completo de usuários.
+ - **Usuários**: cadastro completo de usuários.
  - **Múltiplo idiomas**: suporte a múltiplos idiomas. Atualmente disponível em Português do Brasil e Inglês dos Estados Unidos da América.
  - **Configurações**: permite configurar quase todos os aspectos do portal, como tema utilizado, mensagens informativas, ordenação de menu e recursos que serão utilizados no portal.
  

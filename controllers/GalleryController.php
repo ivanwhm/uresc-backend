@@ -111,7 +111,7 @@ class GalleryController extends UreController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->getRequest->post()) && $model->save())
+        if ($model->load(Yii::$app->getRequest()->post()) && $model->save())
         {
             return $this->redirect(['view', 'id' => $model->id]);
         } else
