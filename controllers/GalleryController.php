@@ -89,7 +89,7 @@ class GalleryController extends UreController
         $model = new Gallery();
         $model->status = Gallery::STATUS_ACTIVE;
 
-        if ($model->load(Yii::$app->getRequest->post()) && $model->save())
+        if ($model->load(Yii::$app->getRequest()->post()) && $model->save())
         {
             return $this->redirect(['view', 'id' => $model->id]);
         } else

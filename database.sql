@@ -249,6 +249,7 @@ CONSTRAINT `fk_centre_user_updated` FOREIGN KEY (`user_updated`) REFERENCES `use
 CREATE TABLE `page` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 `name` varchar(150) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
+`icon` varchar(50) COLLATE utf8_swedish_ci,
 `text` text COLLATE utf8_swedish_ci,
 `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
