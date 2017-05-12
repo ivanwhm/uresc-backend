@@ -35,6 +35,9 @@ class Menu extends UreActiveRecord
 
     const TYPE_MENU = 'M';
     const TYPE_PAGE = 'P';
+    const TYPE_DEPARTMENT = 'D';
+    const TYPE_GALLERY = 'G';
+    const TYPE_FILE = 'F';
 
     /**
      * @inheritdoc
@@ -78,8 +81,6 @@ class Menu extends UreActiveRecord
             'date_updated' => Yii::t('general', 'Date of the update'),
             'user_created' => Yii::t('general', 'User who created'),
             'user_updated' => Yii::t('general', 'User who do last update'),
-            'usercreated.name' => Yii::t('general', 'User who created'),
-            'userupdated.name' => Yii::t('general', 'User who do last update'),
         ];
     }
 
@@ -115,7 +116,10 @@ class Menu extends UreActiveRecord
     {
         return [
             self::TYPE_MENU => Yii::t('menu', 'Menu'),
-            self::TYPE_PAGE => Yii::t('menu', 'Page')
+            self::TYPE_PAGE => Yii::t('menu', 'Page'),
+            self::TYPE_DEPARTMENT => Yii::t('menu', 'Department'),
+            self::TYPE_GALLERY => Yii::t('menu', 'Gallery'),
+            self::TYPE_FILE => Yii::t('menu', 'File'),
         ];
     }
 

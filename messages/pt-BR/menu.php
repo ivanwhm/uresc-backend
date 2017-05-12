@@ -10,4 +10,7 @@ return [
     'The requested menu does not exist.' => 'O menu solicitado não existe.',
     'Menus' => 'Menus',
     'Icon' => 'Ícone',
+    'Department' => 'Departamento',
+    'Gallery' => 'Galeria',
+    'File' => 'Arquivo',
 ];
