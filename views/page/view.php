@@ -53,7 +53,7 @@ $this->params['breadcrumbs'] = [
             [
                 'attribute' => 'icon',
                 'format' => 'html',
-                'value' => (($model->icon == ''?Icon::show('clipboard'):Icon::show($model->icon)))
+                'value' => (($model->icon == ''?Icon::show('clipboard'):Icon::show($model->icon, [], $model->icon_library)))
             ],
             [
                 'attribute' => 'name',

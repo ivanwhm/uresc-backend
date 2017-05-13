@@ -10,6 +10,7 @@ return [
     'The requested menu does not exist.' => '',
     'Menus' => '',
     'Icon' => '',
+    'Icon library' => '',
     'Department' => '',
     'Gallery' => '',
     'File' => '',

@@ -3,6 +3,7 @@ return [
     'ID' => '',
     'Name' => '',
     'Icon' => '',
+    'Icon library' => '',
     'Text' => '',
     'You can not delete the selected page.' => '',
     'The requested page does not exist.' => '',
@@ -14,5 +15,6 @@ return [
     'Page: {name}' => '',
     'Enter the related text of the page.' => '',
     'Enter the name of the page.' => '',
-    'Enter the icon description based on font-awesome library of the page.' => '',
+    'Enter the icon description of the page.' => '',
+    'Select the icon library regarding the icon.' => '',
 ];

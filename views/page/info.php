@@ -21,7 +21,7 @@ $this->title = Yii::t('page', 'Page: {name}', ['name' => $model->name]);
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => (($model->icon == ''?Icon::show('clipboard'):Icon::show($model->icon))),
+        "icon" => (($model->icon == ''?Icon::show('clipboard'):Icon::show($model->icon, [], $model->icon_library))),
         "active" => true,
         "url" => Url::to(["page/info", 'id' => $model->id])
     ]

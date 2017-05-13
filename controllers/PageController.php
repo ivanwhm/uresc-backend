@@ -64,6 +64,7 @@ class PageController extends UreController
             $menu = new Menu();
             $menu->name = $model->name;
             $menu->icon = $model->icon;
+            $menu->icon_library = $model->icon_library;
             $menu->type = Menu::TYPE_PAGE;
             $menu->visible = Menu::VISIBLE_YES;
             $menu->order = 99;
@@ -97,6 +98,7 @@ class PageController extends UreController
             {
                 $menu->name = $model->name;
                 $menu->icon = $model->icon;
+                $menu->icon_library = $model->icon_library;
                 $menu->save(false);
             }
 

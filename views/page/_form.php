@@ -12,6 +12,7 @@
 //Imports
 use app\models\Page;
 use kartik\icons\Icon;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
@@ -28,8 +29,11 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'autofocus' => true, 'aria-describedby' => 'hbName']) ?>
     <?= Html::tag('span', Icon::show('info-circle') . Yii::t('page', 'Enter the name of the page.'), ['id' => 'hbName', 'class' => 'help-block']) ?>
 
+    <?= $form->field($model, 'icon_library')->widget(Select2::classname(), ['data' => Page::getIconLibraryData(), 'options' => ['prompt' => '---', 'aria-describedby' => 'hbStatus']]) ?>
+    <?= Html::tag('span', Icon::show('info-circle') . Yii::t('page', 'Select the icon library regarding the icon.'), ['id' => 'hbStatus', 'class' => 'help-block']) ?>
+
     <?= $form->field($model, 'icon')->textInput(['maxlength' => true, 'aria-describedby' => 'hbIcon']) ?>
-    <?= Html::tag('span', Icon::show('info-circle') . Yii::t('page', 'Enter the icon description based on font-awesome library of the page.'), ['id' => 'hbIcon', 'class' => 'help-block']) ?>
+    <?= Html::tag('span', Icon::show('info-circle') . Yii::t('page', 'Enter the icon description of the page.'), ['id' => 'hbIcon', 'class' => 'help-block']) ?>
 
     <?php if (!$model->getIsNewRecord()) : ?>
         <?= Html::tag('br') ?>

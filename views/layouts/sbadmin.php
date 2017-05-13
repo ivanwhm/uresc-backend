@@ -34,6 +34,8 @@ SBAdminAsset::register($this);
     <?= Icon::map($this, Icon::FA); ?>
     <?= Icon::map($this, Icon::BSG); ?>
     <?= Icon::map($this, Icon::FI); ?>
+    <?= Icon::map($this, Icon::TYP); ?>
+    <?= Icon::map($this, Icon::WHHG); ?>
     <title><?= Yii::t('general', 'Admin') ?> - <?= $this->title ?></title>
     <?php $this->head() ?>
 </head>
@@ -205,7 +207,7 @@ SBAdminAsset::register($this);
                             <?php foreach ($pages as $page) : ?>
                                 <li>
                                     <a href="<?= Url::to(["page/info", 'id' => $page->id]) ?>">
-                                        <?= (($page->icon == ''?Icon::show('clipboard'):Icon::show($page->icon))) . $page->name ?>
+                                        <?= (($page->icon == ''?Icon::show('clipboard'):Icon::show($page->icon, [], $page->icon_library))) . $page->name ?>
                                     </a>
                                 </li>
                             <?php endforeach; ?>

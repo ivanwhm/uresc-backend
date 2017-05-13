@@ -42,7 +42,7 @@ $this->params['breadcrumbs'] = [
                 'hAlign' => GridView::ALIGN_CENTER,
                 'width' => '60px',
                 'value' => function(Menu $data) {
-                    return (($data->icon == '' ? Icon::show('bars') : Icon::show($data->icon)));
+                    return (($data->icon == '' ? Icon::show('bars') : Icon::show($data->icon, [], $data->icon_library)));
                 }
             ],
             [
