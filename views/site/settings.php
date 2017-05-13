@@ -12,6 +12,7 @@
 //Imports
 use app\models\Settings;
 use kartik\icons\Icon;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -42,6 +43,9 @@ $this->params['breadcrumbs'] = [
 
         <?= $form->field($model, 'phrase_author')->textInput(['maxlength' => true, 'aria-describedby' => 'hbAuthorPhrase']) ?>
         <?= Html::tag('span', Icon::show('info-circle') . Yii::t('settings', 'Enter the main phrase author.'), ['id' => 'hbAuthorPhrase', 'class' => 'help-block']) ?>
+
+        <?= $form->field($model, 'language')->widget(Select2::classname(), ['data' => Settings::getLanguageData(), 'options' => ['prompt' => '---', 'aria-describedby' => 'hbLanguage']]) ?>
+        <?= Html::tag('span', Icon::show('info-circle') . Yii::t('settings', 'Main page language'), ['id' => 'hbLanguage', 'class' => 'help-block']) ?>
 
         <?= $form->field($model, 'phone_mask')->textInput(['maxlength' => true, 'aria-describedby' => 'hbSettings']) ?>
         <?= Html::tag('span', Icon::show('info-circle') . Yii::t('settings', 'Enter the mask to the phone\'s field.'), ['id' => 'hbSettings', 'class' => 'help-block']) ?>

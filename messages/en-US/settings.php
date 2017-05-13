@@ -16,4 +16,5 @@ return [
     'Select logo file to upload.' => '',
     'Default business hours' => '',
     'Enter the default business hours to a new spiritist centre record.' => '',
+    'Main page language' => '',
 ];

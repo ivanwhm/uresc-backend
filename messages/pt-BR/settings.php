@@ -16,4 +16,5 @@ return [
     'Select logo file to upload.' => 'Selecionar o arquivo de logo para enviar.',
     'Default business hours' => 'Horário de funcionamento padrão',
     'Enter the default business hours to a new spiritist centre record.' => 'Informe o horário de funcionamento padrão para um novo registro de centro espírita.',
+    'Main page language' => 'Idioma da página principal',
 ];

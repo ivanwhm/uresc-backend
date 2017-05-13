@@ -202,6 +202,7 @@ CREATE TABLE `settings` (
 `phone_mask` varchar(20) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `login_logo_image` varchar(150) COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
 `default_business_hours` varchar(100) COLLATE utf8_swedish_ci DEFAULT NULL,
+`language` varchar(5) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'en-US',
 PRIMARY KEY (`id`),
 KEY `idx_settings_user_updated` (`user_updated`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
