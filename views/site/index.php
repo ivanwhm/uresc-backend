@@ -64,7 +64,7 @@ $this->title = Yii::t('general', 'Home');
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-5">
-                        <?= Icon::show('hospital-o', ['class' => 'fa-5x']) ?>
+                        <?= Icon::show('map-marker', ['class' => 'fa-5x']) ?>
                     </div>
                     <div class="col-xs-7 text-right">
                         <div class="huge"><?= $centres ?></div>

@@ -23,7 +23,7 @@ $this->title = Yii::t('centre', 'Spiritist centres');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => Icon::show('hospital-o'),
+        "icon" => Icon::show('map-marker'),
         "active" => true,
         "url" => Url::to(["centre/index"])
     ]

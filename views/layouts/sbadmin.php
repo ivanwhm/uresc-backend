@@ -33,7 +33,6 @@ SBAdminAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <?= Icon::map($this, Icon::FA); ?>
     <?= Icon::map($this, Icon::FI); ?>
-    <?= Icon::map($this, Icon::TYP); ?>
     <?= Icon::map($this, Icon::WHHG); ?>
     <title><?= Yii::t('general', 'Admin') ?> - <?= $this->title ?></title>
     <?php $this->head() ?>
@@ -134,7 +133,7 @@ SBAdminAsset::register($this);
                         </li>
                         <li>
                             <a href="<?= Url::to(["department/index"]) ?>">
-                                <?= Icon::show('files-o') . Yii::t('department', 'Departments') ?>
+                                <?= Icon::show('file-text-o') . Yii::t('department', 'Departments') ?>
                             </a>
                         </li>
                         <li>
@@ -151,12 +150,12 @@ SBAdminAsset::register($this);
                 </li>
                 <li class="<?= (Yii::$app->controller->id == "download") ? "active" : "" ?>">
                     <a href="<?= Url::to(["download/index"]) ?>">
-                        <?= Icon::show('archive') . Yii::t('download', 'Downloads') ?>
+                        <?= Icon::show('download') . Yii::t('download', 'Downloads') ?>
                     </a>
                 </li>
                 <li class="<?= (Yii::$app->controller->id == "centre") ? "active" : "" ?>">
                     <a href="<?= Url::to(["centre/index"]) ?>">
-                        <?= Icon::show('hospital-o') . Yii::t('centre', 'Spiritist centres') ?>
+                        <?= Icon::show('map-marker') . Yii::t('centre', 'Spiritist centres') ?>
                     </a>
                 </li>
                 <li class="<?= (Yii::$app->controller->id == "contact") ? "active" : "" ?>">
@@ -168,13 +167,13 @@ SBAdminAsset::register($this);
                 <?php if (count($departments) > 0) : ?>
                     <li class="<?= ((Yii::$app->controller->id == "department") && (Yii::$app->controller->action->id == "info")) ? "active" : "" ?>">
                         <a href="javascript:;" data-toggle="collapse" data-target="#department">
-                            <?= Icon::show('file-o') . Yii::t('department', 'Departments') . ' ' . Icon::show('caret-down')?>
+                            <?= Icon::show('file-text-o') . Yii::t('department', 'Departments') . ' ' . Icon::show('caret-down')?>
                         </a>
                         <ul id="department" class="collapse">
                             <?php foreach ($departments as $department) : ?>
                                 <li>
                                     <a href="<?= Url::to(["department/info", 'id' => $department->id]) ?>">
-                                        <?= Icon::show('file-o') . $department->name ?>
+                                        <?= Icon::show('file-text-o') . $department->name ?>
                                     </a>
                                 </li>
                             <?php endforeach; ?>

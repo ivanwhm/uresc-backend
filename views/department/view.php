@@ -20,7 +20,7 @@ $this->title = Yii::t('department', 'View department');
 $this->params['breadcrumbs'] = [
     [
         "label" => Yii::t('department', 'Departments'),
-        "icon" => Icon::show('files-o'),
+        "icon" => Icon::show('file-text-o'),
         "active" => false,
         "url" => Url::to(["department/index"])
     ],

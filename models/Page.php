@@ -102,7 +102,6 @@ class Page extends UreActiveRecord
     {
         return [
             Icon::FA => 'Font Awesome',
-            Icon::TYP => 'Typicons',
             Icon::WHHG => 'Web Hosting Hub Glyphs',
         ];
     }

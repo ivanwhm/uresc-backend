@@ -22,7 +22,7 @@ $this->title = Yii::t('download', 'Downloads');
 $this->params['breadcrumbs'] = [
     [
         "label" => $this->title,
-        "icon" => Icon::show('archive'),
+        "icon" => Icon::show('download'),
         "active" => true,
         "url" => Url::to(["download/index"])
     ]
