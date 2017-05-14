@@ -32,7 +32,6 @@ SBAdminAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <?= Html::csrfMetaTags() ?>
     <?= Icon::map($this, Icon::FA); ?>
-    <?= Icon::map($this, Icon::BSG); ?>
     <?= Icon::map($this, Icon::FI); ?>
     <?= Icon::map($this, Icon::TYP); ?>
     <?= Icon::map($this, Icon::WHHG); ?>

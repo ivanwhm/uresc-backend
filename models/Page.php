@@ -101,7 +101,6 @@ class Page extends UreActiveRecord
     public static function getIconLibraryData()
     {
         return [
-            Icon::BSG => 'Bootstrap Glyphicons',
             Icon::FA => 'Font Awesome',
             Icon::TYP => 'Typicons',
             Icon::WHHG => 'Web Hosting Hub Glyphs',
